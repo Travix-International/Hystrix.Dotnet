@@ -24,7 +24,7 @@ namespace Hystrix.Dotnet
         {
         }
 
-        [Obsolete("This constructor is only use for testing in order to inject a DateTimeProvider mock")]
+        //[Obsolete("This constructor is only use for testing in order to inject a DateTimeProvider mock")]
         public HystrixRollingPercentile(DateTimeProvider dateTimeProvider, int timeInMilliseconds, int numberOfBuckets, int bucketDataLength, IHystrixConfigurationService configurationService)
         {
             if (timeInMilliseconds <= 0)
@@ -79,7 +79,7 @@ namespace Hystrix.Dotnet
                 {
                     GetCurrentBucket().Data.AddValue(v);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //Log.Error("Failed to add value: " + v, e);
                 }

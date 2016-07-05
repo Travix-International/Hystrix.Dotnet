@@ -39,13 +39,17 @@
       }
     },
     "net45": {
-      "dependencies": {
-        "Microsoft.Net.Http": "2.2.29"
+      "frameworkAssemblies": {
+        "System.Configuration": "4.0.0.0",
+        "System.Net.Http": "4.0.0.0",
+        "System.Web": "4.0.0.0"
       }
     },
     "net46": { 
-      "dependencies": {
-        "Microsoft.Net.Http": "2.2.29"
+      "frameworkAssemblies": {
+        "System.Configuration": "4.0.0.0",
+        "System.Net.Http": "4.0.0.0",
+        "System.Web": "4.0.0.0"
       }
     }
   }

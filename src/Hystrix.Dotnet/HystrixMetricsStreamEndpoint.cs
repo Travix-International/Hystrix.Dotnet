@@ -57,7 +57,7 @@ namespace Hystrix.Dotnet
                         await Task.Delay(pollingInterval, token).ConfigureAwait(false);
                     }
                 }
-                catch (HttpException e)
+                catch (HttpException)
                 {
                     //Log.Error("An error occured in Hystrix outputstream", e);
                 }

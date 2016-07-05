@@ -145,7 +145,7 @@ namespace Hystrix.Dotnet
                 {
                     await LoadRemoteConfigInternal().ConfigureAwait(false);
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     //Log.Warn(string.Format("Failed loading {0}", configurationFileUrl), exception);
                 }
@@ -175,9 +175,9 @@ namespace Hystrix.Dotnet
                         configurationObject = DeserializeResponse(await httpClient.GetStringAsync(configurationFileUrl).ConfigureAwait(false));
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Log.WarnFormat(string.Format("Loading config from {0} for group {1} and key {2} has failed. Falling back to {3}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl, defaultConfigurationFileUrl), ex);
+                    //Log.WarnFormat(string.Format("Loading config from {0} for group {1} and key {2} has failed. Falling back to {3}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl, defaultConfigurationFileUrl), ex);
 
                     fallbackToDefault = true;
                 }
