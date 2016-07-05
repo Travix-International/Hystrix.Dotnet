@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Threading;
-using log4net;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixRollingPercentile
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixRollingPercentile));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixRollingPercentile));
 
         private readonly CircularArray<RollingPercentileBucket> buckets;
         private readonly DateTimeProvider dateTimeProvider;
@@ -82,7 +81,7 @@ namespace Hystrix.Dotnet
                 }
                 catch (Exception e)
                 {
-                    Log.Error("Failed to add value: " + v, e);
+                    //Log.Error("Failed to add value: " + v, e);
                 }
             }
         }

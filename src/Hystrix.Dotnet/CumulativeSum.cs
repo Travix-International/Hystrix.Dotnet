@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using ConcurrencyUtilities;
 
 namespace Hystrix.Dotnet
 {

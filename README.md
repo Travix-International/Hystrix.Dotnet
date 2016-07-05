@@ -2,6 +2,10 @@
 
 A combination of circuit breaker and timeout. The .net version of the open source [Hystrix library](https://github.com/Netflix/Hystrix library) built by Netflix.
 
+[![Build Status .NET](https://ci.appveyor.com/api/projects/status/github/Travix-International/Hystrix.Dotnet?svg=true)](https://ci.appveyor.com/project/Travix-International/Hystrix.Dotnet/)
+[![Version](https://img.shields.io/nuget/v/Hystrix.Dotnet.svg)](https://www.nuget.org/packages/Hystrix.Dotnet)
+[![License](https://img.shields.io/github/license/Travix-International/Hystrix.Dotnet.svg)](https://github.com/Travix-International/Hystrix.Dotnet/blob/master/LICENSE)
+
 Why?
 --------------------------------
 

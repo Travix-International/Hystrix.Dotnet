@@ -6,14 +6,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using log4net;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet
 {
     internal class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint, IDisposable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixMetricsStreamEndpoint));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixMetricsStreamEndpoint));
 
         private readonly IHystrixCommandFactory commandFactory;
         private readonly int pollingInterval;
@@ -44,7 +43,7 @@ namespace Hystrix.Dotnet
             {
                 try
                 {
-                    Log.Info("Start writing to Hystrix outputstream");
+                    //Log.Info("Start writing to Hystrix outputstream");
 
                     while (true)
                     {
@@ -60,11 +59,11 @@ namespace Hystrix.Dotnet
                 }
                 catch (HttpException e)
                 {
-                    Log.Error("An error occured in Hystrix outputstream", e);
+                    //Log.Error("An error occured in Hystrix outputstream", e);
                 }
                 finally
                 {
-                    Log.Info("Flushing and closing Hystrix outputstream");
+                    //Log.Info("Flushing and closing Hystrix outputstream");
 
                     // Close output stream as we are done
                     response.OutputStream.Flush();

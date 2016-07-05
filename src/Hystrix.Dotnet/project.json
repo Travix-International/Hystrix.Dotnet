@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0-*",
+  "description": "A combination of circuit breaker and timeout. The .net version of the open source Hystrix library built by Netflix.",
+
+  "packOptions": {
+    "projectUrl": "https://github.com/Travix-International/Hystrix.Dotnet",
+    "licenseUrl": "https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/Travix-International/Hystrix.Dotnet.git"
+    }
+  },
+
+  "authors": [ "Travix International" ],
+  "tooling": {
+    "defaultNamespace": "Hystrix.Dotnet"
+  },
+  
+  "buildOptions": {
+     "warningsAsErrors": true
+  },
+
+  "dependencies": {
+    "JitterMagic": "1.1.2",
+    "Newtonsoft.Json": "9.0.1"
+  },  
+
+  "frameworks": {
+    "netstandard1.3": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0",
+        "System.Net.Http": "4.1.0"
+      }
+    },
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": "1.0.0",
+        "System.Net.Http": "4.1.0"
+      }
+    },
+    "net46": { 
+      "dependencies": {
+        "Microsoft.Net.Http": "2.2.29"
+      }
+    }
+  }
+}

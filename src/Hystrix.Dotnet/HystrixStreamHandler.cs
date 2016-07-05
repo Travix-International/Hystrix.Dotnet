@@ -2,13 +2,12 @@
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
-using log4net;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixStreamHandler : HttpTaskAsyncHandler
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixStreamHandler));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixStreamHandler));
 
         private readonly IHystrixMetricsStreamEndpoint endpoint;
 
@@ -22,14 +21,14 @@ namespace Hystrix.Dotnet
                 pollingInterval = 500;
             }
 
-            Log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
+            //Log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
 
             endpoint = new HystrixMetricsStreamEndpoint(new HystrixCommandFactory(), pollingInterval);
         }
 
         public override async Task ProcessRequestAsync(HttpContext context)
         {
-            Log.Info("Starting HystrixStreamHandler request");
+            //Log.Info("Starting HystrixStreamHandler request");
 
             var response = context.Response;
 
@@ -51,7 +50,7 @@ namespace Hystrix.Dotnet
 
             await endpoint.PushContentToOutputStream(new HttpResponseWrapper(response)).ConfigureAwait(false);
 
-            Log.Info("Ending HystrixStreamHandler request");
+            //Log.Info("Ending HystrixStreamHandler request");
         }
 
         public override bool IsReusable

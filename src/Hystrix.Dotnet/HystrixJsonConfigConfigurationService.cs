@@ -5,14 +5,13 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using JitterMagic;
-using log4net;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixJsonConfigConfigurationService : IHystrixConfigurationService, IDisposable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
 
         private const string BaseLocationAppsettingName = "HystrixJsonConfigConfigurationService-BaseLocation";
 
@@ -54,17 +53,17 @@ namespace Hystrix.Dotnet
         /// </summary>
         private void LoadWebConfigValues()
         {
-            Log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+            //Log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
             pollingIntervalInMillisecond = GetConfigurationValueAsInteger(PollingIntervalInMillisecondsAppsettingName, 5000);
 
-            Log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
+            //Log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
 
             var baseLocation = GetConfigurationValue(BaseLocationAppsettingName);
-            Log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, baseLocation);
+            //Log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, baseLocation);
 
             var locationPattern = GetConfigurationValue(LocationPatternAppsettingName);
-            Log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, locationPattern);
+            //Log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, locationPattern);
 
             Uri baseLocationUrl;
             if (!Uri.TryCreate(baseLocation, UriKind.Absolute, out baseLocationUrl))
@@ -124,7 +123,7 @@ namespace Hystrix.Dotnet
                     {
                         // wait for an interval with jitter
                         var interval = Jitter.Apply(pollingIntervalInMillisecond);
-                        Log.DebugFormat("Loading configuration from {0} in {1}ms", configurationFileUrl, interval);
+                        //Log.DebugFormat("Loading configuration from {0} in {1}ms", configurationFileUrl, interval);
                         await Task.Delay(interval, token).ConfigureAwait(false);
 
                         await LoadRemoteConfig().ConfigureAwait(false);
@@ -148,14 +147,14 @@ namespace Hystrix.Dotnet
                 }
                 catch (Exception exception)
                 {
-                    Log.Warn(string.Format("Failed loading {0}", configurationFileUrl), exception);
+                    //Log.Warn(string.Format("Failed loading {0}", configurationFileUrl), exception);
                 }
             }).ConfigureAwait(false);
         }
 
         private async Task LoadRemoteConfigInternal(int timeoutInMilliseconds = 1000)
         {
-            Log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
+            //Log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
 
             if (configurationFileUrl.Scheme == Uri.UriSchemeFile)
             {
@@ -195,7 +194,7 @@ namespace Hystrix.Dotnet
             else
             {
                 var message = string.Format("Schema {0} for base url {1} is not supported", configurationFileUrl.Scheme, configurationFileUrl);
-                Log.Error(message);
+                //Log.Error(message);
                 throw new NotSupportedException(message);
             }
         }

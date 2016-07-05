@@ -1,6 +1,4 @@
-﻿using ConcurrencyUtilities;
-
-namespace Hystrix.Dotnet
+﻿namespace Hystrix.Dotnet
 {
     public class PercentileBucketData
     {

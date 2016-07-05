@@ -3,13 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using log4net;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixCommandFactory : IHystrixCommandFactory
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixCommandFactory));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixCommandFactory));
         private static readonly ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand> CommandsDictionary = new ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand>();
 
         private const string ConfigurationserviceimplementationAppsettingName = "HystrixCommandFactory-ConfigurationServiceImplementation";
@@ -27,12 +26,12 @@ namespace Hystrix.Dotnet
                 commandIdentifier,
                 ci =>
                 {
-                    Log.DebugFormat("Added a new command with group {0} and key {1}.", ci.GroupKey, ci.CommandKey);
+                    //Log.DebugFormat("Added a new command with group {0} and key {1}.", ci.GroupKey, ci.CommandKey);
                     return CreateHystrixCommand(ci);
                 },
                 (ci, command) =>
                 {
-                    Log.DebugFormat("Command with group {0} and key {1} already exists, not creating it again.", ci.GroupKey, ci.CommandKey);
+                    //Log.DebugFormat("Command with group {0} and key {1} already exists, not creating it again.", ci.GroupKey, ci.CommandKey);
                     return command;
                 });
 

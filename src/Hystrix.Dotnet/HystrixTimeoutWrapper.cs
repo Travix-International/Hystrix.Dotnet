@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using log4net;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixTimeoutWrapper : IHystrixTimeoutWrapper
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixTimeoutWrapper));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixTimeoutWrapper));
 
         private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixConfigurationService configurationService;
@@ -56,7 +55,7 @@ namespace Hystrix.Dotnet
             }
 
             // timeout, no fallback
-            Log.WarnFormat("Executing sync function has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+            //Log.WarnFormat("Executing sync function has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
             throw new HystrixTimeoutException();
         }
@@ -88,7 +87,7 @@ namespace Hystrix.Dotnet
             }
 
             // timeout, no fallback
-            Log.WarnFormat("Executing async task has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+            //Log.WarnFormat("Executing async task has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
             throw new HystrixTimeoutException();
         }

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Threading;
-using log4net;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixCircuitBreaker : IHystrixCircuitBreaker
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixCircuitBreaker));
+        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixCircuitBreaker));
 
         private readonly DateTimeProvider dateTimeProvider;
         private readonly HystrixCommandIdentifier commandIdentifier;
@@ -102,7 +101,7 @@ namespace Hystrix.Dotnet
                 // update circuitOpenedOrLastTestedTime if it hasn't been updated by another request in the meantime
                 Interlocked.CompareExchange(ref circuitOpenedOrLastTestedTime, dateTimeProvider.GetCurrentTimeInMilliseconds(), localCircuitOpenedOrLastTestedTime) == localCircuitOpenedOrLastTestedTime)
             {
-                Log.InfoFormat("Allowing single test request through circuit breaker for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+                //Log.InfoFormat("Allowing single test request through circuit breaker for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
                 // this thread is the first one here and can do a canary request
                 return true;
@@ -116,7 +115,7 @@ namespace Hystrix.Dotnet
         {
             if (!circuitIsOpen)
             {
-                Log.WarnFormat("Circuit breaker for group {0} and key {1} has opened.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+                //Log.WarnFormat("Circuit breaker for group {0} and key {1} has opened.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
                 circuitIsOpen = true;
                 circuitOpenedOrLastTestedTime = dateTimeProvider.GetCurrentTimeInMilliseconds();                
@@ -128,7 +127,7 @@ namespace Hystrix.Dotnet
         {
             if (circuitIsOpen)
             {
-                Log.InfoFormat("Circuit breaker for group {0} and key {1} has closed.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+                //Log.InfoFormat("Circuit breaker for group {0} and key {1} has closed.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
                 commandMetrics.ResetCounter();
 
