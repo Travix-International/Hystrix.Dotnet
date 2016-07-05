@@ -1,0 +1,95 @@
+# Compiled source #
+###################
+*.com
+*.class
+# *.dll
+# *.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+[Tt]humbs.db
+
+# MSBuild by convention additions #
+######################
+[Bb]in/
+[Dd]ebug*/
+[Rr]elease*/
+[Oo]bj/
+[Ss]ql/
+[Cc]sx/
+*ReSharper*
+Build/Bin/
+Build/Coverage/
+Build/IntegrationTestResults/
+Build/Releases/
+Build/TestResults/
+Build/CodeAnalysis/
+Build/CodeCoverage/
+Build/Tools/
+*.suo
+*.dbmdl
+*GeneratedSetVersionFile*
+Static/Css/[a-zA-Z0-9\.\-/]*.min.css
+Static/Js/[a-zA-Z0-9\.\-]*.min.js
+*.testsettings
+*.DotSettings
+.hg/
+.svn/
+.sass-cache/
+*.user
+Dependencies/NuGet/
+Build/Scripts/buildversion.txt
+node_modules/
+packages/
+BUILD/*
+
+# Exclude auto-generated Service Reference files
+*.datasource
+
+# NCrunch
+*.ncrunchproject
+*.ncrunchsolution
+# Resharper unit tests #
+########################
+[Tt]estResults/*
+=======
+Applications/Api/JMeter/results/
+_NCrunch_MOAP/*
+
+Unit tests.playlist
+Applications/ATS/Haddock.AppService.Ats/NhibernateLog.txt
+NDependOut1/
+MOAP.ndproj
+QueryResult.xls
+pingme.txt

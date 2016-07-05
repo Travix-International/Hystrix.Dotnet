@@ -1,0 +1,16 @@
+{
+"HystrixCommandEnabled": true,
+"CommandTimeoutInMilliseconds":25000,
+"CircuitBreakerForcedOpen":false,
+"CircuitBreakerForcedClosed":false,
+"CircuitBreakerErrorThresholdPercentage":15,
+"CircuitBreakerSleepWindowInMilliseconds":5000,
+"CircuitBreakerRequestVolumeThreshold":20,
+"MetricsHealthSnapshotIntervalInMilliseconds":2500,
+"MetricsRollingStatisticalWindowInMilliseconds":10000,
+"MetricsRollingStatisticalWindowBuckets":10,
+"MetricsRollingPercentileEnabled":true,
+"MetricsRollingPercentileWindowInMilliseconds":60000,
+"MetricsRollingPercentileWindowBuckets":12,
+"MetricsRollingPercentileBucketSize":1000
+}

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83CE149D-089F-4C35-9605-9E39CFD689D4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hystrix.Dotnet</RootNamespace>
+    <AssemblyName>Hystrix.Dotnet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ConcurrencyUtilities, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ConcurrencyUtils.0.1.4\lib\net45\ConcurrencyUtilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JitterMagic, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\JitterMagic.1.0.5\lib\net45\JitterMagic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DateTimeProvider.cs" />
+    <Compile Include="FakeHystrixCommand.cs" />
+    <Compile Include="FakeHystrixCommandFactory.cs" />
+    <Compile Include="HystrixJsonConfigConfigurationService.cs" />
+    <Compile Include="HystrixStreamHandler.cs" />
+    <Compile Include="HystrixThreadPoolMetrics.cs" />
+    <Compile Include="IHystrixThreadPoolMetrics.cs" />
+    <Compile Include="PercentileBucketData.cs" />
+    <Compile Include="RollingPercentileBucket.cs" />
+    <Compile Include="RollingNumberBucket.cs" />
+    <Compile Include="CircularArray.cs" />
+    <Compile Include="CumulativeSum.cs" />
+    <Compile Include="HystrixCircuitBreaker.cs" />
+    <Compile Include="HystrixCommand.cs" />
+    <Compile Include="HystrixCommandException.cs" />
+    <Compile Include="HystrixCommandFactory.cs" />
+    <Compile Include="HystrixCommandIdentifier.cs" />
+    <Compile Include="HystrixHealthCounts.cs" />
+    <Compile Include="HystrixCommandMetrics.cs" />
+    <Compile Include="HystrixMetricsStreamEndpoint.cs" />
+    <Compile Include="HystrixRollingNumber.cs" />
+    <Compile Include="HystrixRollingNumberEvent.cs" />
+    <Compile Include="HystrixRollingPercentile.cs" />
+    <Compile Include="HystrixTimeoutException.cs" />
+    <Compile Include="HystrixTimeoutWrapper.cs" />
+    <Compile Include="HystrixWebConfigConfigurationService.cs" />
+    <Compile Include="IHystrixCircuitBreaker.cs" />
+    <Compile Include="IHystrixCommand.cs" />
+    <Compile Include="IHystrixCommandFactory.cs" />
+    <Compile Include="IHystrixConfigurationService.cs" />
+    <Compile Include="IHystrixCommandMetrics.cs" />
+    <Compile Include="IHystrixMetricsStreamEndpoint.cs" />
+    <Compile Include="IHystrixTimeoutWrapper.cs" />
+    <Compile Include="LongMaxUpdater.cs" />
+    <Compile Include="PercentileSnapshot.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

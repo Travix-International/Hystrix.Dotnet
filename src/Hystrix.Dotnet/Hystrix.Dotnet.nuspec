@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Travix International B.V.</authors>
+    <owners>Travix International B.V.</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.net version of Netflix' Hystrix library</description>
+    <tags>circuit breaker</tags>
+  </metadata>
+</package>
