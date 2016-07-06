@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
     /// <summary>
     /// Atomic long value. Operations exposed on this class are performed using System.Threading.Interlocked class and are thread safe.

@@ -1,4 +1,4 @@
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
     internal interface AtomicValue<T> : VolatileValue<T>
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
      /// <summary>
     /// Helper class to generate Random values is a thread safe way. Not suitable for cryptographic operations.

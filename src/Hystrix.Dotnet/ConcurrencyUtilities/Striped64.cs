@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
     public abstract class Striped64
     {

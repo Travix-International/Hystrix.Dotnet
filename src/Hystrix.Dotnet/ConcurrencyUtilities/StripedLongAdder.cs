@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
     /// <summary>
     /// One or more variables that together maintain an initially zero sum.

@@ -1,6 +1,6 @@
-﻿namespace Hystrix.Dotnet
+﻿namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
-    internal class LongMaxUpdater : Striped64
+    public class LongMaxUpdater : Striped64
     {
         /**
             * Creates a new instance with initial maximum of {@code

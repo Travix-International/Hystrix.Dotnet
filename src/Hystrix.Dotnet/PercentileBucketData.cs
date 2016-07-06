@@ -1,4 +1,6 @@
-﻿namespace Hystrix.Dotnet
+﻿using Hystrix.Dotnet.ConcurrencyUtilities;
+
+namespace Hystrix.Dotnet
 {
     public class PercentileBucketData
     {
