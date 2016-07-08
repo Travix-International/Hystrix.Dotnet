@@ -13,7 +13,7 @@ namespace Hystrix.Dotnet
             {
                 throw new ArgumentNullException("groupKey");
             }
-            if (string.Empty.Equals(groupKey, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Empty.Equals(groupKey, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException("groupKey");
             }
@@ -21,7 +21,7 @@ namespace Hystrix.Dotnet
             {
                 throw new ArgumentNullException("commandKey");
             }
-            if (string.Empty.Equals(commandKey, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Empty.Equals(commandKey, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException("commandKey");
             }
@@ -52,7 +52,7 @@ namespace Hystrix.Dotnet
 
         public bool Equals(HystrixCommandIdentifier obj)
         {
-            return obj != null && obj.GroupKey.Equals(GroupKey, StringComparison.InvariantCultureIgnoreCase) && obj.CommandKey.Equals(CommandKey, StringComparison.InvariantCultureIgnoreCase);
+            return obj != null && obj.GroupKey.Equals(GroupKey, StringComparison.OrdinalIgnoreCase) && obj.CommandKey.Equals(CommandKey, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

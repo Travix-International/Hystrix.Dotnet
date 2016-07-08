@@ -1,11 +1,16 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using JitterMagic;
 using Newtonsoft.Json;
+
+#if !COREFX
+
+using System.Configuration;
+
+#endif
 
 namespace Hystrix.Dotnet
 {

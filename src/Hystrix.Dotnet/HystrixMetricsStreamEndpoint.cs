@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !COREFX
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -264,3 +266,5 @@ namespace Hystrix.Dotnet
         }
     }
 }
+
+#endif

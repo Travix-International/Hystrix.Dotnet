@@ -1,3 +1,5 @@
+#if !COREFX
+
 using System.Threading.Tasks;
 using System.Web;
 
@@ -10,3 +12,5 @@ namespace Hystrix.Dotnet
         Task<string> GetCommandJson(IHystrixCommand command);
     }
 }
+
+#endif

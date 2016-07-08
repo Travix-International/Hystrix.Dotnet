@@ -5,6 +5,9 @@
   "packOptions": {
     "projectUrl": "https://github.com/Travix-International/Hystrix.Dotnet",
     "licenseUrl": "https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE",
+    "summary": ".net version of Netflix' Hystrix library.",
+    "requireLicenseAcceptance": false,
+    "owners": [ "Travix International" ],
     "repository": {
       "type": "git",
       "url": "git://github.com/Travix-International/Hystrix.Dotnet.git"
@@ -17,7 +20,8 @@
   },
   
   "buildOptions": {
-     "warningsAsErrors": true
+	  "warningsAsErrors": true,
+    "nowarn": [ "0618" ]
   },
 
   "dependencies": {
@@ -26,16 +30,25 @@
   },  
 
   "frameworks": {
-    "netstandard1.1": {
+    "netstandard1.3": {
+      "buildOptions": {
+        "define": [ "COREFX" ]
+      },
       "dependencies": {
         "NETStandard.Library": "1.6.0",
-        "System.Net.Http": "4.1.0"
+        "System.Threading.Thread": "4.0.0",
+        "System.Net.Http": "4.1.0",
+        "System.Diagnostics.Contracts": "4.0.1"
       }
     },
     "netcoreapp1.0": {
+      "buildOptions": {
+        "define": [ "COREFX" ]
+      },
       "dependencies": {
         "Microsoft.NETCore.App": "1.0.0",
-        "System.Net.Http": "4.1.0"
+        "System.Net.Http": "4.1.0",
+        "System.Diagnostics.Contracts": "4.0.1"
       }
     },
     "net45": {

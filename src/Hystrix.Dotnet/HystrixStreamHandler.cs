@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !COREFX
+
+using System;
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
@@ -64,3 +66,5 @@ namespace Hystrix.Dotnet
         }
     }
 }
+
+#endif
