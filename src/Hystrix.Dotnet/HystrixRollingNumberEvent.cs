@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 
 namespace Hystrix.Dotnet
 {
@@ -69,10 +71,11 @@ namespace Hystrix.Dotnet
         private static bool HasAttribute<T>(HystrixRollingNumberEvent hystrixRollingNumberEvent)
         {
             var type = typeof(HystrixRollingNumberEvent);
-            var memInfo = type.GetMember(hystrixRollingNumberEvent.ToString());
+
+            var memInfo = type.GetTypeInfo().GetMember(hystrixRollingNumberEvent.ToString());
             var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
 
-            return attributes.Length > 0;
+            return attributes.Any();
         }
     }
 }

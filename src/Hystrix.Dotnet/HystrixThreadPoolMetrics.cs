@@ -1,6 +1,4 @@
-﻿#if !COREFX
-
-using System;
+﻿using System;
 using System.Threading;
 
 namespace Hystrix.Dotnet
@@ -57,9 +55,13 @@ namespace Hystrix.Dotnet
         {
             //return threadPool.getMaximumPoolSize();
             int maxWorkerThreads;
-            int maxCompletionPortThreads;
 
+            #if !COREFX
+            int maxCompletionPortThreads;
             ThreadPool.GetMaxThreads(out maxWorkerThreads, out maxCompletionPortThreads);
+            #else
+            maxWorkerThreads = 0;
+            #endif
 
             return maxWorkerThreads;
         }
@@ -67,9 +69,13 @@ namespace Hystrix.Dotnet
         public int GetCurrentAvailableThreads()
         {
             int availableWorkerThreads;
-            int availableCompletionPortThreads;
 
+            #if !COREFX
+            int availableCompletionPortThreads;
             ThreadPool.GetAvailableThreads(out availableWorkerThreads, out availableCompletionPortThreads);
+            #else
+            availableWorkerThreads = 0;
+            #endif
 
             return availableWorkerThreads;
         }
@@ -137,5 +143,3 @@ namespace Hystrix.Dotnet
         }
     }
 }
-
-#endif
