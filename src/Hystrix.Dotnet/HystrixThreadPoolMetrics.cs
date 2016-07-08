@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !COREFX
+
+using System;
 using System.Threading;
 
 namespace Hystrix.Dotnet
@@ -135,3 +137,5 @@ namespace Hystrix.Dotnet
         }
     }
 }
+
+#endif

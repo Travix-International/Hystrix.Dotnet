@@ -57,13 +57,6 @@
         "System.Net.Http": "4.0.0.0",
         "System.Web": "4.0.0.0"
       }
-    },
-    "net46": { 
-      "frameworkAssemblies": {
-        "System.Configuration": "4.0.0.0",
-        "System.Net.Http": "4.0.0.0",
-        "System.Web": "4.0.0.0"
-      }
     }
   }
 }

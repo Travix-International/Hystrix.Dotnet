@@ -161,14 +161,22 @@ namespace Hystrix.Dotnet
         {
             //Log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
 
+            #if !COREFX
             if (configurationFileUrl.Scheme == Uri.UriSchemeFile)
+            #else
+            if (configurationFileUrl.Scheme == "file")
+            #endif
             {
                 using (var reader = File.OpenText(configurationFileUrl.LocalPath))
                 {
                     configurationObject = DeserializeResponse(await reader.ReadToEndAsync().ConfigureAwait(false));
                 }
             }
+            #if !COREFX
             else if (configurationFileUrl.Scheme == Uri.UriSchemeHttp || configurationFileUrl.Scheme == Uri.UriSchemeHttps)
+            #else
+            else if (configurationFileUrl.Scheme == "http" || configurationFileUrl.Scheme == "https")
+            #endif
             {
                 bool fallbackToDefault = false;
 
