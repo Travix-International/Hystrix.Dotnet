@@ -1,11 +1,9 @@
-﻿#if !COREFX
-
-using System;
+﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.AspNet
 {
     public class HystrixStreamHandler : HttpTaskAsyncHandler
     {
@@ -13,12 +11,12 @@ namespace Hystrix.Dotnet
 
         private readonly IHystrixMetricsStreamEndpoint endpoint;
 
-        private const string PollingIntervalInMilliseconds = "HystrixStreamHandler-PollingIntervalInMilliseconds";
+        private const string pollingIntervalInMilliseconds = "HystrixStreamHandler-PollingIntervalInMilliseconds";
 
         public HystrixStreamHandler()
         {
             int pollingInterval;
-            if (!int.TryParse(ConfigurationManager.AppSettings[PollingIntervalInMilliseconds], out pollingInterval))
+            if (!int.TryParse(ConfigurationManager.AppSettings[pollingIntervalInMilliseconds], out pollingInterval))
             {
                 pollingInterval = 500;
             }
@@ -55,10 +53,7 @@ namespace Hystrix.Dotnet
             //Log.Info("Ending HystrixStreamHandler request");
         }
 
-        public override bool IsReusable
-        {
-            get { return false; }
-        }
+        public override bool IsReusable => false;
 
         public override void ProcessRequest(HttpContext context)
         {
@@ -66,5 +61,3 @@ namespace Hystrix.Dotnet
         }
     }
 }
-
-#endif

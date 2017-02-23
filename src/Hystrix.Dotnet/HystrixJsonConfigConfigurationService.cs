@@ -73,17 +73,17 @@ namespace Hystrix.Dotnet
             Uri baseLocationUrl;
             if (!Uri.TryCreate(baseLocation, UriKind.Absolute, out baseLocationUrl))
             {
-                throw new ConfigurationErrorsException(BaseLocationAppsettingName + " has to contain a valid url.");
+                throw new ConfigurationException(BaseLocationAppsettingName + " has to contain a valid url.");
             }
 
             if (!Uri.TryCreate(baseLocationUrl, string.Format(locationPattern, commandIdentifier.GroupKey, commandIdentifier.CommandKey), out configurationFileUrl))
             {
-                throw new ConfigurationErrorsException(BaseLocationAppsettingName + " has to contain a valid url.");
+                throw new ConfigurationException(BaseLocationAppsettingName + " has to contain a valid url.");
             }
 
             if (!Uri.TryCreate(baseLocationUrl, "Default.json", out defaultConfigurationFileUrl))
             {
-                throw new ConfigurationErrorsException(BaseLocationAppsettingName + " has to contain a valid url.");
+                throw new ConfigurationException(BaseLocationAppsettingName + " has to contain a valid url.");
             }
         }
 

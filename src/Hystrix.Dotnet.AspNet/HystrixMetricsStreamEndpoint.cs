@@ -1,6 +1,4 @@
-﻿#if !COREFX
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
 
-namespace Hystrix.Dotnet
+namespace Hystrix.Dotnet.AspNet
 {
     internal class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint, IDisposable
     {
@@ -18,18 +16,18 @@ namespace Hystrix.Dotnet
 
         private readonly IHystrixCommandFactory commandFactory;
         private readonly int pollingInterval;
-        private static readonly DateTimeProvider DateTimeProvider = new DateTimeProvider();
+        private static readonly DateTimeProvider dateTimeProvider = new DateTimeProvider();
         private CancellationTokenSource cancellationTokenSource;
 
         public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, int pollingInterval)
         {
             if (commandFactory == null)
             {
-                throw new ArgumentNullException("commandFactory");
+                throw new ArgumentNullException(nameof(commandFactory));
             }
             if (pollingInterval < 100)
             {
-                throw new ArgumentOutOfRangeException("pollingInterval", "Parameter pollingInterval needs to be greater than or equal to 100");
+                throw new ArgumentOutOfRangeException(nameof(pollingInterval), "Parameter pollingInterval needs to be greater than or equal to 100");
             }
 
             this.commandFactory = commandFactory;
@@ -125,7 +123,7 @@ namespace Hystrix.Dotnet
                 type = "HystrixCommand",
                 name = commandIdentifier.CommandKey,
                 group = commandIdentifier.GroupKey,
-                currentTime = DateTimeProvider.GetCurrentTimeInMilliseconds(),
+                currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds(),
                 isCircuitBreakerOpen = circuitBreaker != null && circuitBreaker.CircuitIsOpen,
 
                 errorPercentage = healthCounts.GetErrorPercentage(),
@@ -230,7 +228,7 @@ namespace Hystrix.Dotnet
                 type = "HystrixThreadPool",
                 name = command.CommandIdentifier.CommandKey,
 
-                currentTime = DateTimeProvider.GetCurrentTimeInMilliseconds(),
+                currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds(),
                 currentActiveCount = threadPoolMetrics.GetCurrentActiveCount(),
                 currentCompletedTaskCount = threadPoolMetrics.GetCurrentCompletedTaskCount(),
                 currentCorePoolSize = threadPoolMetrics.GetCurrentCorePoolSize(),
@@ -266,5 +264,3 @@ namespace Hystrix.Dotnet
         }
     }
 }
-
-#endif

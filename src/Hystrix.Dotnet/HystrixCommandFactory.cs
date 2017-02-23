@@ -3,12 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-#if !COREFX
-
-using System.Configuration;
-
-#endif
-
 namespace Hystrix.Dotnet
 {
     public class HystrixCommandFactory : IHystrixCommandFactory
@@ -52,7 +46,8 @@ namespace Hystrix.Dotnet
         {
             var configurationServiceImplementation = ConfigurationManager.AppSettings[ConfigurationserviceimplementationAppsettingName];
 
-            var configurationService = configurationServiceImplementation != null && configurationServiceImplementation.Equals("HystrixJsonConfigConfigurationService", StringComparison.OrdinalIgnoreCase) ? (IHystrixConfigurationService)new HystrixJsonConfigConfigurationService(commandIdentifier) : (IHystrixConfigurationService)new HystrixWebConfigConfigurationService(commandIdentifier);
+            var configurationService = configurationServiceImplementation != null && configurationServiceImplementation.Equals("HystrixJsonConfigConfigurationService", StringComparison.OrdinalIgnoreCase)
+                ? (IHystrixConfigurationService)new HystrixJsonConfigConfigurationService(commandIdentifier) : (IHystrixConfigurationService)new HystrixWebConfigConfigurationService(commandIdentifier);
 
             var commandMetrics = new HystrixCommandMetrics(commandIdentifier, configurationService);
             var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationService);
