@@ -4,8 +4,8 @@ namespace Hystrix.Dotnet
 {
     public class HystrixCommandIdentifier
     {
-        public string GroupKey { get; private set; }
-        public string CommandKey { get; private set; }
+        public string GroupKey { get; }
+        public string CommandKey { get; }
 
         public HystrixCommandIdentifier(string groupKey, string commandKey)
         {

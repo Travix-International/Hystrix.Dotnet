@@ -6,46 +6,59 @@ using System.Threading.Tasks;
 using JitterMagic;
 using Newtonsoft.Json;
 
-#if !COREFX
-
-using System.Configuration;
-
-#endif
-
 namespace Hystrix.Dotnet
 {
     public class HystrixJsonConfigConfigurationService : IHystrixConfigurationService, IDisposable
     {
         //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
 
-        private const string BaseLocationAppsettingName = "HystrixJsonConfigConfigurationService-BaseLocation";
+        private HystrixCommandOptions configurationObject;
 
-        private const string LocationPatternAppsettingName = "HystrixJsonConfigConfigurationService-LocationPattern";
+        private readonly int pollingIntervalInMillisecond;
 
-        private const string PollingIntervalInMillisecondsAppsettingName = "HystrixJsonConfigConfigurationService-PollingIntervalInMilliseconds";
+        private readonly Uri configurationFileUrl;
 
-        private readonly HystrixCommandIdentifier commandIdentifier;
-
-        private ConfigurationObject configurationObject;
-
-        private int pollingIntervalInMillisecond;
-
-        private Uri configurationFileUrl;
-
-        private Uri defaultConfigurationFileUrl;
+        private readonly Uri defaultConfigurationFileUrl;
 
         private CancellationTokenSource cancellationTokenSource;
 
-        public HystrixJsonConfigConfigurationService(HystrixCommandIdentifier commandIdentifier)
+        public HystrixJsonConfigConfigurationService(HystrixCommandIdentifier commandIdentifier, HystrixJsonConfigurationSourceOptions options)
         {
             if (commandIdentifier == null)
             {
-                throw new ArgumentNullException("commandIdentifier");
+                throw new ArgumentNullException(nameof(commandIdentifier));
             }
 
-            this.commandIdentifier = commandIdentifier;
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
 
-            LoadWebConfigValues();
+            //Log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+
+            //Log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
+
+            //Log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, baseLocation);
+
+            //Log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, locationPattern);
+
+            pollingIntervalInMillisecond = options.PollingIntervalInMilliseconds;
+
+            Uri baseLocationUrl;
+            if (!Uri.TryCreate(EnsureTrailingSlash(options.BaseLocation), UriKind.Absolute, out baseLocationUrl))
+            {
+                throw new ConfigurationException("Options.BaseLocation has to contain a valid url.");
+            }
+
+            if (!Uri.TryCreate(baseLocationUrl, string.Format(options.LocationPattern, commandIdentifier.GroupKey, commandIdentifier.CommandKey), out configurationFileUrl))
+            {
+                throw new ConfigurationException("Options.BaseLocation has to contain a valid url.");
+            }
+
+            if (!Uri.TryCreate(baseLocationUrl, "Default.json", out defaultConfigurationFileUrl))
+            {
+                throw new ConfigurationException("Options.BaseLocation has to contain a valid url.");
+            }
 
             // load remote config synchronous first time (might throw an aggregate exception)
             LoadRemoteConfigInternal(60000).Wait();
@@ -53,66 +66,7 @@ namespace Hystrix.Dotnet
             LoadRemoteConfigAfterInterval();
         }
 
-        /// <summary>
-        /// Load the web config values necessary for this class to fetch config remotely
-        /// </summary>
-        private void LoadWebConfigValues()
-        {
-            //Log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
-
-            pollingIntervalInMillisecond = GetConfigurationValueAsInteger(PollingIntervalInMillisecondsAppsettingName, 5000);
-
-            //Log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
-
-            var baseLocation = GetConfigurationValue(BaseLocationAppsettingName);
-            //Log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, baseLocation);
-
-            var locationPattern = GetConfigurationValue(LocationPatternAppsettingName);
-            //Log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, locationPattern);
-
-            Uri baseLocationUrl;
-            if (!Uri.TryCreate(baseLocation, UriKind.Absolute, out baseLocationUrl))
-            {
-                throw new ConfigurationException(BaseLocationAppsettingName + " has to contain a valid url.");
-            }
-
-            if (!Uri.TryCreate(baseLocationUrl, string.Format(locationPattern, commandIdentifier.GroupKey, commandIdentifier.CommandKey), out configurationFileUrl))
-            {
-                throw new ConfigurationException(BaseLocationAppsettingName + " has to contain a valid url.");
-            }
-
-            if (!Uri.TryCreate(baseLocationUrl, "Default.json", out defaultConfigurationFileUrl))
-            {
-                throw new ConfigurationException(BaseLocationAppsettingName + " has to contain a valid url.");
-            }
-        }
-
-        /// <summary>
-        /// Parse config value as integer
-        /// </summary>
-        /// <param name="configKey"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        private int GetConfigurationValueAsInteger(string configKey, int defaultValue)
-        {
-            int value;
-            if (int.TryParse(GetConfigurationValue(configKey), out value))
-            {
-                return value;
-            }
-
-            return defaultValue;
-        }
-
-        /// <summary>
-        /// Load config value as string
-        /// </summary>
-        /// <param name="configKey"></param>
-        /// <returns></returns>
-        private string GetConfigurationValue(string configKey)
-        {
-            return ConfigurationManager.AppSettings[configKey];
-        }
+        private static string EnsureTrailingSlash(string str) => str.EndsWith("/") || str.EndsWith(@"\") ? str : str + "/";
 
         /// <summary>
         /// Run background polling for remote config changes
@@ -212,9 +166,9 @@ namespace Hystrix.Dotnet
             }
         }
 
-        private ConfigurationObject DeserializeResponse(string json)
+        private HystrixCommandOptions DeserializeResponse(string json)
         {            
-            return JsonConvert.DeserializeObject<ConfigurationObject>(json);
+            return JsonConvert.DeserializeObject<HystrixCommandOptions>(json);
         }
 
         /// <inheritdoc/>
@@ -300,36 +254,36 @@ namespace Hystrix.Dotnet
             return configurationObject == null || configurationObject.HystrixCommandEnabled;
         }
 
-        internal class ConfigurationObject
-        {
-            public bool HystrixCommandEnabled { get; set; }
+        //internal class ConfigurationObject
+        //{
+        //    public bool HystrixCommandEnabled { get; set; }
 
-            public int CommandTimeoutInMilliseconds { get; set; }
+        //    public int CommandTimeoutInMilliseconds { get; set; }
 
-            public bool CircuitBreakerForcedOpen { get; set; }
+        //    public bool CircuitBreakerForcedOpen { get; set; }
 
-            public bool CircuitBreakerForcedClosed { get; set; }
+        //    public bool CircuitBreakerForcedClosed { get; set; }
 
-            public int CircuitBreakerErrorThresholdPercentage { get; set; }
+        //    public int CircuitBreakerErrorThresholdPercentage { get; set; }
 
-            public int CircuitBreakerSleepWindowInMilliseconds { get; set; }
+        //    public int CircuitBreakerSleepWindowInMilliseconds { get; set; }
 
-            public int CircuitBreakerRequestVolumeThreshold { get; set; }
+        //    public int CircuitBreakerRequestVolumeThreshold { get; set; }
 
-            public int MetricsHealthSnapshotIntervalInMilliseconds { get; set; }
+        //    public int MetricsHealthSnapshotIntervalInMilliseconds { get; set; }
 
-            public int MetricsRollingStatisticalWindowInMilliseconds { get; set; }
+        //    public int MetricsRollingStatisticalWindowInMilliseconds { get; set; }
 
-            public int MetricsRollingStatisticalWindowBuckets { get; set; }
+        //    public int MetricsRollingStatisticalWindowBuckets { get; set; }
 
-            public bool MetricsRollingPercentileEnabled { get; set; }
+        //    public bool MetricsRollingPercentileEnabled { get; set; }
 
-            public int MetricsRollingPercentileWindowInMilliseconds { get; set; }
+        //    public int MetricsRollingPercentileWindowInMilliseconds { get; set; }
 
-            public int MetricsRollingPercentileWindowBuckets { get; set; }
+        //    public int MetricsRollingPercentileWindowBuckets { get; set; }
 
-            public int MetricsRollingPercentileBucketSize { get; set; }
-        }
+        //    public int MetricsRollingPercentileBucketSize { get; set; }
+        //}
 
         internal class SingleSetting 
         {

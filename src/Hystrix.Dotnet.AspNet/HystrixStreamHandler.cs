@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.Extensions.Options;
 
 namespace Hystrix.Dotnet.AspNet
 {
@@ -23,7 +24,8 @@ namespace Hystrix.Dotnet.AspNet
 
             //Log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
 
-            endpoint = new HystrixMetricsStreamEndpoint(new HystrixCommandFactory(), pollingInterval);
+            // TODO: Instantiate the options based on the ConfigurationManager
+            endpoint = new HystrixMetricsStreamEndpoint(new HystrixCommandFactory(Options.Create(new HystrixOptions())), pollingInterval);
         }
 
         public override async Task ProcessRequestAsync(HttpContext context)

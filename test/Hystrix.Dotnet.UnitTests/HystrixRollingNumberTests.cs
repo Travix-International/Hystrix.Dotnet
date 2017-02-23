@@ -13,7 +13,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var timeInMilliseconds = 0;
                 var numberOfBuckets = 10;
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingNumber(timeInMilliseconds, numberOfBuckets));
             }
 
@@ -23,7 +23,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 0;
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingNumber(timeInMilliseconds, numberOfBuckets));
             }
 
@@ -33,7 +33,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 7;
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingNumber(timeInMilliseconds, numberOfBuckets));
             }
 
@@ -43,7 +43,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 10;
 
-                // act
+                // Act
                 var rollingNumber = new HystrixRollingNumber(timeInMilliseconds, numberOfBuckets);
 
                 Assert.Equal(10000, rollingNumber.TimeInMilliseconds);
@@ -56,7 +56,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 10;
 
-                // act
+                // Act
                 var rollingNumber = new HystrixRollingNumber(timeInMilliseconds, numberOfBuckets);
 
                 Assert.Equal(1000, rollingNumber.BucketSizeInMillseconds);
@@ -71,7 +71,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 long valueOfLatestBucket = rollingNumber.GetValueOfLatestBucket(HystrixRollingNumberEvent.Success);
 
                 Assert.Equal(0L, valueOfLatestBucket);
@@ -85,7 +85,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 rollingNumber.Increment(HystrixRollingNumberEvent.Success);
 
                 long valueOfLatestBucket = rollingNumber.GetValueOfLatestBucket(HystrixRollingNumberEvent.Success);
@@ -101,7 +101,7 @@ namespace Hystrix.Dotnet.UnitTests
                 long value = 15;
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 rollingNumber.Add(HystrixRollingNumberEvent.Success, value);
 
                 long valueOfLatestBucket = rollingNumber.GetValueOfLatestBucket(HystrixRollingNumberEvent.Success);
@@ -117,7 +117,7 @@ namespace Hystrix.Dotnet.UnitTests
                 long value = 15;
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 rollingNumber.UpdateRollingMax(HystrixRollingNumberEvent.CommandMaxActive, value);
 
                 long valueOfLatestBucket = rollingNumber.GetValueOfLatestBucket(HystrixRollingNumberEvent.CommandMaxActive);
@@ -136,7 +136,7 @@ namespace Hystrix.Dotnet.UnitTests
                 long rollingSumBeforeReset = rollingNumber.GetRollingSum(HystrixRollingNumberEvent.Success);
                 Assert.Equal(1L, rollingSumBeforeReset);
 
-                // act
+                // Act
                 rollingNumber.Reset();
 
                 long rollingSumAfterReset = rollingNumber.GetRollingSum(HystrixRollingNumberEvent.Success);
@@ -151,7 +151,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 long cumulativeSum = rollingNumber.GetCumulativeSum(HystrixRollingNumberEvent.Success);
 
                 Assert.Equal(0L, cumulativeSum);
@@ -165,7 +165,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 long value =  rollingNumber.GetRollingSum(HystrixRollingNumberEvent.Success);
 
                 Assert.Equal(0, value);
@@ -179,7 +179,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 long[] values = rollingNumber.GetValues(HystrixRollingNumberEvent.Success);
 
                 Assert.Equal(1, values.Length);
@@ -193,7 +193,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var rollingNumber = new HystrixRollingNumber(10000, 10);
 
-                // act
+                // Act
                 long rollingMaxValue = rollingNumber.GetRollingMaxValue(HystrixRollingNumberEvent.Success);
 
                 Assert.Equal(0L, rollingMaxValue);

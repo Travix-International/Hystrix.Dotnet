@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using Hystrix.Dotnet.ConcurrencyUtilities;
 using Moq;
 using Xunit;
 
@@ -17,7 +18,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
 
@@ -29,7 +30,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
 
@@ -41,7 +42,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var bucketDataLength = 99;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
 
@@ -52,7 +53,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var numberOfBuckets = 0;
                 var bucketDataLength = 100;
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, null));
             }
 
@@ -64,7 +65,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
         }
@@ -81,7 +82,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(x => x.GetMetricsRollingPercentileEnabled()).Returns(true);
                 var rollingPercentile = new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object);
 
-                // act
+                // Act
                 rollingPercentile.AddValue(243);
             }
         }
@@ -102,7 +103,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 Thread.Sleep(1500);
 
-                // act
+                // Act
                 var mean = rollingPercentile.GetMean();
 
                 Assert.Equal(200, mean);

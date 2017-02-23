@@ -9,7 +9,7 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Returns_True_For_Success()
             {
-                // act
+                // Act
                 bool isCounter = HystrixRollingNumberEvent.Success.IsCounter();
 
                 Assert.True(isCounter);
@@ -18,7 +18,7 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Returns_False_For_CommandMaxActive()
             {
-                // act
+                // Act
                 bool isCounter = HystrixRollingNumberEvent.CommandMaxActive.IsCounter();
 
                 Assert.False(isCounter);
@@ -30,7 +30,7 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Returns_False_For_Success()
             {
-                // act
+                // Act
                 bool isMaxUpdater = HystrixRollingNumberEvent.Success.IsMaxUpdater();
 
                 Assert.False(isMaxUpdater);
@@ -39,7 +39,7 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Returns_True_For_CommandMaxActive()
             {
-                // act
+                // Act
                 bool isMaxUpdater = HystrixRollingNumberEvent.CommandMaxActive.IsMaxUpdater();
 
                 Assert.True(isMaxUpdater);

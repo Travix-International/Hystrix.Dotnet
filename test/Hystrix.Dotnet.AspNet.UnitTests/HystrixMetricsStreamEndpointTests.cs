@@ -2,10 +2,11 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
-namespace Hystrix.Dotnet.UnitTests
+namespace Hystrix.Dotnet.AspNet.UnitTests
 {
     public class HystrixMetricsStreamEndpointTests
     {
@@ -21,7 +22,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 int pollingInterval = 1000;
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixMetricsStreamEndpoint(null, pollingInterval));
             }
 
@@ -30,7 +31,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var commandFactoryMock = new Mock<IHystrixCommandFactory>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixMetricsStreamEndpoint(commandFactoryMock.Object, 99));
             }
         }
@@ -45,12 +46,12 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public async Task Returns_Json_String_In_Hystrix_Format_For_HystrixCommand()
             {
-                HystrixCommandFactory commandFactory = new HystrixCommandFactory();
+                HystrixCommandFactory commandFactory = new HystrixCommandFactory(Options.Create(new HystrixOptions()));
                 int pollingInterval = 1000;
                 var endpoint = new HystrixMetricsStreamEndpoint(commandFactory, pollingInterval);
                 var hystrixCommand = commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandX"));
 
-                // act
+                // Act
                 var commandJson = await endpoint.GetCommandJson(hystrixCommand);
 
                 Assert.NotNull(commandJson);
@@ -67,7 +68,7 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public async Task Writes_Command_Json_For_All_HystrixCommands_To_OutputStream()
             {
-                HystrixCommandFactory commandFactory = new HystrixCommandFactory();
+                HystrixCommandFactory commandFactory = new HystrixCommandFactory(Options.Create(new HystrixOptions()));
                 int pollingInterval = 1000;
                 var endpoint = new HystrixMetricsStreamEndpoint(commandFactory, pollingInterval);
                 commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandX"));
@@ -75,7 +76,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var httpResponseMock = new Mock<HttpResponseBase>();
                 httpResponseMock.Setup(x => x.OutputStream).Returns(new MemoryStream());
 
-                // act
+                // Act
                 await endpoint.WriteAllCommandsJsonToOutputStream(httpResponseMock.Object);
             }
         }

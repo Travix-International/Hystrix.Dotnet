@@ -19,7 +19,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var threadPoolMetricsMock = new Mock<IHystrixThreadPoolMetrics>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommand(null, timeoutWrapperMock.Object, circuitBreakerMock.Object, commandMetricsMock.Object, threadPoolMetricsMock.Object, configurationServiceMock.Object));
             }
 
@@ -32,7 +32,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var threadPoolMetricsMock = new Mock<IHystrixThreadPoolMetrics>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommand(commandIdentifier, null, circuitBreakerMock.Object, commandMetricsMock.Object, threadPoolMetricsMock.Object, configurationServiceMock.Object));
             }
 
@@ -45,7 +45,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var threadPoolMetricsMock = new Mock<IHystrixThreadPoolMetrics>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommand(commandIdentifier, timeoutWrapperMock.Object, null, commandMetricsMock.Object, threadPoolMetricsMock.Object, configurationServiceMock.Object));
             }
 
@@ -58,7 +58,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var threadPoolMetricsMock = new Mock<IHystrixThreadPoolMetrics>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommand(commandIdentifier, timeoutWrapperMock.Object, circuitBreakerMock.Object, null, threadPoolMetricsMock.Object, configurationServiceMock.Object));
             }
 
@@ -71,7 +71,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var commandMetricsMock = new Mock<IHystrixCommandMetrics>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommand(commandIdentifier, timeoutWrapperMock.Object, circuitBreakerMock.Object, commandMetricsMock.Object, null, configurationServiceMock.Object));
             }
 
@@ -84,7 +84,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var commandMetricsMock = new Mock<IHystrixCommandMetrics>();
                 var threadPoolMetricsMock = new Mock<IHystrixThreadPoolMetrics>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommand(commandIdentifier, timeoutWrapperMock.Object, circuitBreakerMock.Object, commandMetricsMock.Object, threadPoolMetricsMock.Object, null));
             }
         }
@@ -116,7 +116,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(false);
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunction);
 
                 Assert.Equal("a value", value);
@@ -131,7 +131,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Returns((Func<string> primary, CancellationTokenSource cancellationTokenSource) => primary());
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunction);
 
                 Assert.Equal("a value", value);
@@ -146,7 +146,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(true);
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
             }
 
@@ -159,7 +159,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
 
-                // act
+                // Act
                 var hystrixCommandException = Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 Assert.IsType<HystrixTimeoutException>(hystrixCommandException.InnerExceptions[0]);
@@ -175,7 +175,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary, CancellationTokenSource cancellationTokenSource) => primary());
 
-                // act
+                // Act
                 var hystrixCommandException = Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunctionMock.Object));
 
                 Assert.IsType<Exception>(hystrixCommandException.InnerExceptions[0]);
@@ -190,7 +190,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.IncrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -205,7 +205,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadExecution());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -220,7 +220,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 circuitBreakerMock.Setup(x => x.CloseCircuit());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 circuitBreakerMock.VerifyAll();
@@ -235,7 +235,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddCommandExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -250,7 +250,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.MarkSuccess());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -266,7 +266,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.MarkTimeout());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -283,7 +283,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkFailure());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -300,7 +300,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkExceptionThrown());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -315,7 +315,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -330,7 +330,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -346,7 +346,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -362,7 +362,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 threadPoolMetricsMock.VerifyAll();
@@ -379,7 +379,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -396,7 +396,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunctionMock.Object));
 
                 threadPoolMetricsMock.VerifyAll();
@@ -411,7 +411,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.MarkShortCircuited());
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -426,7 +426,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -442,7 +442,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -459,7 +459,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -474,7 +474,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 Assert.Throws<HystrixCommandException>(() => hystrixCommand.Execute(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -509,7 +509,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(false);
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 Assert.Equal("a value", value);
@@ -525,7 +525,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Returns((Func<string> primary, CancellationTokenSource cancellationTokenSource) => primary());
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 Assert.Equal("a value", value);
@@ -541,7 +541,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(true);
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunction, fallbackFunction);
                 
                 Assert.Equal("an alternative value", value);
@@ -557,7 +557,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunction, fallbackFunction);
                 
                 Assert.Equal("an alternative value", value);
@@ -574,7 +574,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
 
-                // act
+                // Act
                 string value = hystrixCommand.Execute(primaryFunctionMock.Object, fallbackFunction);
 
                 Assert.Equal("an alternative value", value);
@@ -590,7 +590,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.IncrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -606,7 +606,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadExecution());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -622,7 +622,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 circuitBreakerMock.Setup(x => x.CloseCircuit());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 circuitBreakerMock.VerifyAll();
@@ -638,7 +638,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddCommandExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -654,7 +654,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.MarkSuccess());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -671,7 +671,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.MarkTimeout());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -689,7 +689,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkFailure());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -707,7 +707,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkExceptionThrown());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -723,7 +723,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -739,7 +739,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -756,7 +756,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -773,7 +773,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -791,7 +791,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -809,7 +809,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunctionMock.Object, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -825,7 +825,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.MarkShortCircuited());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -841,7 +841,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -858,7 +858,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -876,7 +876,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.Execute(primaryFunctionMock.Object, null)).Returns((Func<string> primary) => primary());
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -892,7 +892,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -908,7 +908,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.MarkFallbackSuccess());
 
-                // act
+                // Act
                 hystrixCommand.Execute(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -927,7 +927,7 @@ namespace Hystrix.Dotnet.UnitTests
                 // http://stackoverflow.com/questions/537308/how-to-verify-that-method-was-not-called-in-moq
                 commandMetricsMock.Setup(x => x.MarkFallbackSuccess()).Throws(new Exception("Shouldn't be called."));
 
-                // act
+                // Act
                 Assert.Throws<Exception>(() => hystrixCommand.Execute(primaryFunction, fallbackFunction));
             }
         }
@@ -959,7 +959,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(false);
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 Assert.Equal("a value", value);
@@ -974,7 +974,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Returns((Func<Task<string>> primary, CancellationTokenSource cancellationTokenSource) => primary());
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 Assert.Equal("a value", value);
@@ -989,7 +989,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(true);
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
             }
 
@@ -1002,7 +1002,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
 
-                // act
+                // Act
                 var hystrixCommandException = await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 Assert.IsType<HystrixTimeoutException>(hystrixCommandException.InnerExceptions[0]);
@@ -1018,7 +1018,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary, CancellationTokenSource cancellationTokenSource) => primary());
 
-                // act
+                // Act
                 var hystrixCommandException = await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunctionMock.Object));
 
                 Assert.IsType<Exception>(hystrixCommandException.InnerExceptions[0]);
@@ -1033,7 +1033,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.IncrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1048,7 +1048,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadExecution());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1063,7 +1063,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 circuitBreakerMock.Setup(x => x.CloseCircuit());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 circuitBreakerMock.VerifyAll();
@@ -1078,7 +1078,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddCommandExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1093,7 +1093,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.MarkSuccess());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1109,7 +1109,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.MarkTimeout());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -1126,7 +1126,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkFailure());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -1143,7 +1143,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkExceptionThrown());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -1158,7 +1158,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1173,7 +1173,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1189,7 +1189,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -1205,7 +1205,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1222,7 +1222,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -1239,7 +1239,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunctionMock.Object));
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1254,7 +1254,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.MarkShortCircuited());
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -1269,7 +1269,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1285,7 +1285,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -1302,7 +1302,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunctionMock.Object));
 
                 commandMetricsMock.VerifyAll();
@@ -1317,7 +1317,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixCommandException>(() => hystrixCommand.ExecuteAsync(primaryFunction));
 
                 commandMetricsMock.VerifyAll();
@@ -1352,7 +1352,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(false);
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 Assert.Equal("a value", value);
@@ -1368,7 +1368,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Returns((Func<Task<string>> primary, CancellationTokenSource cancellationTokenSource) => primary());
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 Assert.Equal("a value", value);
@@ -1384,7 +1384,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(true);
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 Assert.Equal("an alternative value", value);
@@ -1400,7 +1400,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 Assert.Equal("an alternative value", value);
@@ -1417,7 +1417,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
 
-                // act
+                // Act
                 string value = await hystrixCommand.ExecuteAsync(primaryFunctionMock.Object, fallbackFunction);
 
                 Assert.Equal("an alternative value", value);
@@ -1433,7 +1433,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.IncrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1449,7 +1449,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadExecution());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1465,7 +1465,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 circuitBreakerMock.Setup(x => x.CloseCircuit());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 circuitBreakerMock.VerifyAll();
@@ -1481,7 +1481,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddCommandExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1497,7 +1497,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.MarkSuccess());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1514,7 +1514,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.MarkTimeout());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1532,7 +1532,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkFailure());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1550,7 +1550,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.MarkExceptionThrown());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1566,7 +1566,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1582,7 +1582,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1599,7 +1599,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1616,7 +1616,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1634,7 +1634,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.DecrementConcurrentExecutionCount());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1652,7 +1652,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 threadPoolMetricsMock.Setup(x => x.MarkThreadCompletion());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunctionMock.Object, fallbackFunction);
 
                 threadPoolMetricsMock.VerifyAll();
@@ -1668,7 +1668,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.MarkShortCircuited());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1684,7 +1684,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(true);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1701,7 +1701,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunction, null)).Throws<HystrixTimeoutException>();
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1719,7 +1719,7 @@ namespace Hystrix.Dotnet.UnitTests
                 timeoutWrapperMock.Setup(x => x.ExecuteAsync(primaryFunctionMock.Object, null)).Returns((Func<Task<string>> primary) => primary());
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunctionMock.Object, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1735,7 +1735,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.AddUserThreadExecutionTime(It.Is<double>(y => y >= 0)));
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1751,7 +1751,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 commandMetricsMock.Setup(x => x.MarkFallbackSuccess());
 
-                // act
+                // Act
                 await hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction);
 
                 commandMetricsMock.VerifyAll();
@@ -1771,7 +1771,7 @@ namespace Hystrix.Dotnet.UnitTests
                 // http://stackoverflow.com/questions/537308/how-to-verify-that-method-was-not-called-in-moq
                 commandMetricsMock.Setup(x => x.MarkFallbackSuccess()).Throws(new Exception("Shouldn't be called.")); ;
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<Exception>(() => hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction));
             }
         }

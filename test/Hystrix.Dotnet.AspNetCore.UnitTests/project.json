@@ -1,14 +1,13 @@
 {
   "version": "1.0.0-*",
   "tooling": {
-    "defaultNamespace": "JitterMagic.UnitTests"
+    "defaultNamespace": "Hystrix.Dotnet.AspNetCore.UnitTests"
   },
 
   "testRunner": "xunit",
   
   "buildOptions": {
-    "warningsAsErrors": false,
-    "copyToOutput": "Group-Command.json"
+    "warningsAsErrors": true
   },
 
   "dependencies": {
@@ -16,7 +15,7 @@
     "xunit": "2.1.0",
     "dotnet-test-xunit": "1.0.0-*",
     "moq": "4.6.25-alpha",
-    "Stubbery": "1.2.3"
+    "System.Diagnostics.TraceSource": "4.0.0-rc2-24027"
   },
 
   "frameworks": {

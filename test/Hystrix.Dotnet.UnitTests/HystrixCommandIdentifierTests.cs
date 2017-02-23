@@ -10,28 +10,28 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Throws_ArgumentNullException_If_GroupKey_Is_Null()
             {
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommandIdentifier(null, "CommandX"));
             }
 
             [Fact]
             public void Throws_ArgumenException_If_GroupKey_Is_Empty_String()
             {
-                // act
+                // Act
                 Assert.Throws<ArgumentException>(() => new HystrixCommandIdentifier(string.Empty, "CommandX"));
             }
 
             [Fact]
             public void Throws_ArgumentNullException_If_CommandKey_Is_Null()
             {
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommandIdentifier("GroupA", null));
             }
 
             [Fact]
             public void Throws_ArgumenException_If_CommandKey_Is_Empty_String()
             {
-                // act
+                // Act
                 Assert.Throws<ArgumentException>(() => new HystrixCommandIdentifier("GroupA", string.Empty));
             }
         }
@@ -39,27 +39,42 @@ namespace Hystrix.Dotnet.UnitTests
         public class GetHashCodeMethod
         {
             [Fact]
-            public void Returns_HashCode_Consisting_Of_GroupKey_And_CommandKey()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
-
-                // act
-                var hashCode = commandIdentifier.GetHashCode();
-
-                Assert.Equal(579705872, hashCode);
-            }
-
-            [Fact]
             public void Returns_Same_HashCode_Regardless_Of_Casing()
             {
                 var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
                 var secondCommandIdentifier = new HystrixCommandIdentifier("grOUpA", "comMAndX");
 
-                // act
+                // Act
                 var firstHashCode = firstCommandIdentifier.GetHashCode();
                 var secondHashCode = secondCommandIdentifier.GetHashCode();
 
                 Assert.Equal(firstHashCode, secondHashCode);
+            }
+
+            [Fact]
+            public void Returns_Different_HashCode_For_Different_Groups()
+            {
+                var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
+                var secondCommandIdentifier = new HystrixCommandIdentifier("GroupB", "CommandX");
+
+                // Act
+                var firstHashCode = firstCommandIdentifier.GetHashCode();
+                var secondHashCode = secondCommandIdentifier.GetHashCode();
+
+                Assert.NotEqual(firstHashCode, secondHashCode);
+            }
+
+            [Fact]
+            public void Returns_Different_HashCode_For_Different_Keys()
+            {
+                var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
+                var secondCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandY");
+
+                // Act
+                var firstHashCode = firstCommandIdentifier.GetHashCode();
+                var secondHashCode = secondCommandIdentifier.GetHashCode();
+
+                Assert.NotEqual(firstHashCode, secondHashCode);
             }
         }
 
@@ -71,7 +86,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
                 var secondCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
 
-                // act
+                // Act
                 var result = firstCommandIdentifier.Equals(secondCommandIdentifier);
 
                 Assert.True(result);
@@ -83,7 +98,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
                 var secondCommandIdentifier = new HystrixCommandIdentifier("grOUpA", "comMAndX");
 
-                // act
+                // Act
                 var result = firstCommandIdentifier.Equals(secondCommandIdentifier);
 
                 Assert.True(result);
@@ -95,7 +110,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
                 var secondCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandY");
 
-                // act
+                // Act
                 var result = firstCommandIdentifier.Equals(secondCommandIdentifier);
 
                 Assert.False(result);
@@ -107,7 +122,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
                 var secondCommandIdentifier = new HystrixCommandIdentifier("GroupB", "CommandX");
 
-                // act
+                // Act
                 var result = firstCommandIdentifier.Equals(secondCommandIdentifier);
 
                 Assert.False(result);
@@ -119,7 +134,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var firstCommandIdentifier = new HystrixCommandIdentifier("GroupA", "CommandX");
                 var secondCommandIdentifier = new HystrixCommandIdentifier("GroupB", "CommandY");
 
-                // act
+                // Act
                 var result = firstCommandIdentifier.Equals(secondCommandIdentifier);
 
                 Assert.False(result);
