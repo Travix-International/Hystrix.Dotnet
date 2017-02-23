@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Threading;
+using log4net;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixCircuitBreaker : IHystrixCircuitBreaker
     {
-        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixCircuitBreaker));
+        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixCircuitBreaker));
 
         private readonly DateTimeProvider dateTimeProvider;
         private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixConfigurationService configurationService;
         private readonly IHystrixCommandMetrics commandMetrics;
 
-        private bool circuitIsOpen;
-
-        public bool CircuitIsOpen { get { return circuitIsOpen; } }
+        public bool CircuitIsOpen { get; private set; }
 
         private long circuitOpenedOrLastTestedTime;
 
@@ -23,20 +22,20 @@ namespace Hystrix.Dotnet
         {
         }
 
-        [Obsolete("This constructor is only use for testing in order to inject a DateTimeProvider mock")]
+        [Obsolete("This constructor is only used for testing in order to inject a DateTimeProvider mock")]
         public HystrixCircuitBreaker(DateTimeProvider dateTimeProvider, HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService, IHystrixCommandMetrics commandMetrics)
         {
             if (commandIdentifier == null)
             {
-                throw new ArgumentNullException("commandIdentifier");
+                throw new ArgumentNullException(nameof(commandIdentifier));
             }
             if (configurationService == null)
             {
-                throw new ArgumentNullException("configurationService");
+                throw new ArgumentNullException(nameof(configurationService));
             }
             if (commandMetrics == null)
             {
-                throw new ArgumentNullException("commandMetrics");
+                throw new ArgumentNullException(nameof(commandMetrics));
             }
 
             this.dateTimeProvider = dateTimeProvider;
@@ -63,7 +62,7 @@ namespace Hystrix.Dotnet
         /// <inheritdoc/>
         private bool IsOpen()
         {
-            if (circuitIsOpen)
+            if (CircuitIsOpen)
             {
                 return true;
             }
@@ -97,11 +96,11 @@ namespace Hystrix.Dotnet
             int circuitBreakerSleepWindowInMilliseconds = configurationService.GetCircuitBreakerSleepWindowInMilliseconds();
 
             if (// check if sleep window has passed
-                circuitIsOpen && (dateTimeProvider.GetCurrentTimeInMilliseconds() - circuitOpenedOrLastTestedTime) > circuitBreakerSleepWindowInMilliseconds &&
+                CircuitIsOpen && (dateTimeProvider.GetCurrentTimeInMilliseconds() - circuitOpenedOrLastTestedTime) > circuitBreakerSleepWindowInMilliseconds &&
                 // update circuitOpenedOrLastTestedTime if it hasn't been updated by another request in the meantime
                 Interlocked.CompareExchange(ref circuitOpenedOrLastTestedTime, dateTimeProvider.GetCurrentTimeInMilliseconds(), localCircuitOpenedOrLastTestedTime) == localCircuitOpenedOrLastTestedTime)
             {
-                //Log.InfoFormat("Allowing single test request through circuit breaker for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+                log.InfoFormat("Allowing single test request through circuit breaker for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
                 // this thread is the first one here and can do a canary request
                 return true;
@@ -113,11 +112,11 @@ namespace Hystrix.Dotnet
         /// <inheritdoc/>
         public void OpenCircuit()
         {
-            if (!circuitIsOpen)
+            if (!CircuitIsOpen)
             {
-                //Log.WarnFormat("Circuit breaker for group {0} and key {1} has opened.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+                log.WarnFormat("Circuit breaker for group {0} and key {1} has opened.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
-                circuitIsOpen = true;
+                CircuitIsOpen = true;
                 circuitOpenedOrLastTestedTime = dateTimeProvider.GetCurrentTimeInMilliseconds();                
             }
         }
@@ -125,14 +124,14 @@ namespace Hystrix.Dotnet
         /// <inheritdoc/>
         public void CloseCircuit()
         {
-            if (circuitIsOpen)
+            if (CircuitIsOpen)
             {
-                //Log.InfoFormat("Circuit breaker for group {0} and key {1} has closed.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+                log.InfoFormat("Circuit breaker for group {0} and key {1} has closed.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
                 commandMetrics.ResetCounter();
 
                 // If we have been 'open' and have a success then we want to close the circuit. This handles the 'singleTest' logic
-                circuitIsOpen = false;
+                CircuitIsOpen = false;
             }
         }
     }

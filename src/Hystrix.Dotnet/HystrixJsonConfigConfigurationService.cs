@@ -4,21 +4,24 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using JitterMagic;
+using log4net;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixJsonConfigConfigurationService : IHystrixConfigurationService, IDisposable
     {
-        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
+        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
 
-        private HystrixCommandOptions configurationObject;
+        private readonly HystrixCommandIdentifier commandIdentifier;
 
         private readonly int pollingIntervalInMillisecond;
 
         private readonly Uri configurationFileUrl;
 
         private readonly Uri defaultConfigurationFileUrl;
+
+        private HystrixCommandOptions configurationObject;
 
         private CancellationTokenSource cancellationTokenSource;
 
@@ -34,15 +37,17 @@ namespace Hystrix.Dotnet
                 throw new ArgumentNullException(nameof(options));
             }
 
-            //Log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
-
-            //Log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
-
-            //Log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, baseLocation);
-
-            //Log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, locationPattern);
+            this.commandIdentifier = commandIdentifier;
 
             pollingIntervalInMillisecond = options.PollingIntervalInMilliseconds;
+
+            log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+
+            log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
+
+            log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, options.BaseLocation);
+
+            log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, options.LocationPattern);
 
             Uri baseLocationUrl;
             if (!Uri.TryCreate(EnsureTrailingSlash(options.BaseLocation), UriKind.Absolute, out baseLocationUrl))
@@ -82,7 +87,7 @@ namespace Hystrix.Dotnet
                     {
                         // wait for an interval with jitter
                         var interval = Jitter.Apply(pollingIntervalInMillisecond);
-                        //Log.DebugFormat("Loading configuration from {0} in {1}ms", configurationFileUrl, interval);
+                        log.DebugFormat("Loading configuration from {0} in {1}ms", configurationFileUrl, interval);
                         await Task.Delay(interval, token).ConfigureAwait(false);
 
                         await LoadRemoteConfig().ConfigureAwait(false);
@@ -104,16 +109,16 @@ namespace Hystrix.Dotnet
                 {
                     await LoadRemoteConfigInternal().ConfigureAwait(false);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //Log.Warn(string.Format("Failed loading {0}", configurationFileUrl), exception);
+                    log.Warn(string.Format("Failed loading {0}", configurationFileUrl), ex);
                 }
             }).ConfigureAwait(false);
         }
 
         private async Task LoadRemoteConfigInternal(int timeoutInMilliseconds = 1000)
         {
-            //Log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
+            log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
 
             #if !COREFX
             if (configurationFileUrl.Scheme == Uri.UriSchemeFile)
@@ -142,9 +147,9 @@ namespace Hystrix.Dotnet
                         configurationObject = DeserializeResponse(await httpClient.GetStringAsync(configurationFileUrl).ConfigureAwait(false));
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //Log.WarnFormat(string.Format("Loading config from {0} for group {1} and key {2} has failed. Falling back to {3}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl, defaultConfigurationFileUrl), ex);
+                    log.WarnFormat($"Loading config from {commandIdentifier.GroupKey} for group {commandIdentifier.CommandKey} and key {configurationFileUrl} has failed. Falling back to {defaultConfigurationFileUrl}", ex);
 
                     fallbackToDefault = true;
                 }
@@ -161,7 +166,7 @@ namespace Hystrix.Dotnet
             else
             {
                 var message = string.Format("Schema {0} for base url {1} is not supported", configurationFileUrl.Scheme, configurationFileUrl);
-                //Log.Error(message);
+                log.Error(message);
                 throw new NotSupportedException(message);
             }
         }

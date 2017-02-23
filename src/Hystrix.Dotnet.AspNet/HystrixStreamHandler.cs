@@ -2,13 +2,14 @@
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
+using log4net;
 using Microsoft.Extensions.Options;
 
 namespace Hystrix.Dotnet.AspNet
 {
     public class HystrixStreamHandler : HttpTaskAsyncHandler
     {
-        //private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixStreamHandler));
+        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixStreamHandler));
 
         private readonly IHystrixMetricsStreamEndpoint endpoint;
 
@@ -22,7 +23,7 @@ namespace Hystrix.Dotnet.AspNet
                 pollingInterval = 500;
             }
 
-            //Log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
+            log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
 
             // TODO: Instantiate the options based on the ConfigurationManager
             endpoint = new HystrixMetricsStreamEndpoint(new HystrixCommandFactory(Options.Create(new HystrixOptions())), pollingInterval);
@@ -30,7 +31,7 @@ namespace Hystrix.Dotnet.AspNet
 
         public override async Task ProcessRequestAsync(HttpContext context)
         {
-            //Log.Info("Starting HystrixStreamHandler request");
+            log.Info("Starting HystrixStreamHandler request");
 
             var response = context.Response;
 
@@ -52,7 +53,7 @@ namespace Hystrix.Dotnet.AspNet
 
             await endpoint.PushContentToOutputStream(new HttpResponseWrapper(response)).ConfigureAwait(false);
 
-            //Log.Info("Ending HystrixStreamHandler request");
+            log.Info("Ending HystrixStreamHandler request");
         }
 
         public override bool IsReusable => false;
