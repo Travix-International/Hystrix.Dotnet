@@ -15,9 +15,12 @@ namespace Hystrix.Dotnet.AspNet
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(HystrixMetricsStreamEndpoint));
 
-        private readonly IHystrixCommandFactory commandFactory;
-        private readonly int pollingInterval;
         private static readonly DateTimeProvider dateTimeProvider = new DateTimeProvider();
+
+        private readonly IHystrixCommandFactory commandFactory;
+
+        private readonly int pollingInterval;
+
         private CancellationTokenSource cancellationTokenSource;
 
         public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, int pollingInterval)
@@ -81,16 +84,10 @@ namespace Hystrix.Dotnet.AspNet
             foreach (var commandMetric in commands)
             {
                 // write command metrics
-                string comandJsonString = await GetCommandJson(commandMetric).ConfigureAwait(false);
+                string comandJsonString = GetCommandJson(commandMetric);
                 string wrappedCommandJsonString = string.IsNullOrEmpty(comandJsonString) ? "ping: \n" : "data:" + comandJsonString + "\n\n";
 
                 await WriteStringToOutputStream(response, wrappedCommandJsonString).ConfigureAwait(false);
-
-                // write thread pool metrics
-                //string threadPoolJsonString = await GetThreadPoolJson(commandMetric).ConfigureAwait(false);
-                //string wrappedThreadPoolJsonString = string.IsNullOrEmpty(threadPoolJsonString) ? "ping: \n" : "data:" + threadPoolJsonString + "\n\n";
-
-                //await WriteStringToOutputStream(response, wrappedThreadPoolJsonString).ConfigureAwait(false);
             }
 
             if (!commands.Any())
@@ -103,14 +100,16 @@ namespace Hystrix.Dotnet.AspNet
         {
             Stream outputStream = response.OutputStream;
 
-            byte[] buffer = Encoding.UTF8.GetBytes(wrappedJsonString);
-            await outputStream.WriteAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
-            await outputStream.FlushAsync().ConfigureAwait(false);
+            using (var sw = new StreamWriter(outputStream, Encoding.UTF8, 1024, true))
+            {
+                await sw.WriteAsync(wrappedJsonString).ConfigureAwait(false);
+                await sw.FlushAsync();
+            }
 
             response.Flush();
         }
 
-        public async Task<string> GetCommandJson(IHystrixCommand command)
+        public string GetCommandJson(IHystrixCommand command)
         {
             var commandIdentifier = command.CommandIdentifier;
             var circuitBreaker = command.CircuitBreaker;
@@ -214,41 +213,9 @@ namespace Hystrix.Dotnet.AspNet
                 propertyValue_requestLogEnabled = false, // configurationService.requestLogEnabled().get(),
 
                 reportingHosts = 1, // this will get summed across all instances in a cluster
-                //threadPool = string.Empty, // commandMetrics.getThreadPoolKey().name(),
             });
 
-            return await Task.FromResult(serializeObject).ConfigureAwait(false);
-        }
-
-        public async Task<string> GetThreadPoolJson(IHystrixCommand command)
-        {
-            IHystrixThreadPoolMetrics threadPoolMetrics = command.ThreadPoolMetrics;
-
-            string serializeObject = JsonConvert.SerializeObject(new
-            {
-                type = "HystrixThreadPool",
-                name = command.CommandIdentifier.CommandKey,
-
-                currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds(),
-                currentActiveCount = threadPoolMetrics.GetCurrentActiveCount(),
-                currentCompletedTaskCount = threadPoolMetrics.GetCurrentCompletedTaskCount(),
-                currentCorePoolSize = threadPoolMetrics.GetCurrentCorePoolSize(),
-                currentLargestPoolSize = threadPoolMetrics.GetCurrentLargestPoolSize(),
-                currentMaximumPoolSize = threadPoolMetrics.GetCurrentMaximumPoolSize(),
-                currentPoolSize = threadPoolMetrics.GetCurrentPoolSize(),
-                currentQueueSize = threadPoolMetrics.GetCurrentQueueSize(),
-                currentTaskCount = threadPoolMetrics.GetCurrentTaskCount(),
-                rollingCountThreadsExecuted = threadPoolMetrics.GetRollingCountThreadsExecuted(),
-                rollingMaxActiveThreads = threadPoolMetrics.GetRollingMaxActiveThreads(),
-                rollingCountCommandRejections = threadPoolMetrics.GetRollingCountThreadPoolRejected(),
-
-                propertyValue_queueSizeRejectionThreshold = 0, //threadPoolMetrics.ConfigurationService.queueSizeRejectionThreshold().get(),
-                propertyValue_metricsRollingStatisticalWindowInMilliseconds = threadPoolMetrics.ConfigurationService.GetMetricsRollingStatisticalWindowInMilliseconds(),
-
-                reportingHosts = 1
-            });
-
-            return await Task.FromResult(serializeObject).ConfigureAwait(false);
+            return serializeObject;
         }
 
         public void Dispose()

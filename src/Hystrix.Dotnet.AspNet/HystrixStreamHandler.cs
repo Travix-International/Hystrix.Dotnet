@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
 using log4net;
-using Microsoft.Extensions.Options;
 
 namespace Hystrix.Dotnet.AspNet
 {
@@ -13,20 +12,19 @@ namespace Hystrix.Dotnet.AspNet
 
         private readonly IHystrixMetricsStreamEndpoint endpoint;
 
-        private const string pollingIntervalInMilliseconds = "HystrixStreamHandler-PollingIntervalInMilliseconds";
-
         public HystrixStreamHandler()
         {
-            int pollingInterval;
-            if (!int.TryParse(ConfigurationManager.AppSettings[pollingIntervalInMilliseconds], out pollingInterval))
-            {
-                pollingInterval = 500;
-            }
+            var configSection = ConfigurationManager.GetSection("hystrix.dotnet/hystrix") as HystrixConfigSection;
+
+            int pollingInterval = configSection == null ? 500 : configSection.MetricsStreamPollIntervalInMilliseconds;
 
             log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
 
-            // TODO: Instantiate the options based on the ConfigurationManager
-            endpoint = new HystrixMetricsStreamEndpoint(new HystrixCommandFactory(Options.Create(new HystrixOptions())), pollingInterval);
+            var helper = new AspNetHystrixCommandFactoryHelper();
+
+            endpoint = new HystrixMetricsStreamEndpoint(
+                helper.CreateFactory(),
+                pollingInterval);
         }
 
         public override async Task ProcessRequestAsync(HttpContext context)

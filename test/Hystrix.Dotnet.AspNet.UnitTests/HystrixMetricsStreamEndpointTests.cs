@@ -44,7 +44,7 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
             }
 
             [Fact]
-            public async Task Returns_Json_String_In_Hystrix_Format_For_HystrixCommand()
+            public void Returns_Json_String_In_Hystrix_Format_For_HystrixCommand()
             {
                 HystrixCommandFactory commandFactory = new HystrixCommandFactory(Options.Create(new HystrixOptions()));
                 int pollingInterval = 1000;
@@ -52,7 +52,7 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
                 var hystrixCommand = commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandX"));
 
                 // Act
-                var commandJson = await endpoint.GetCommandJson(hystrixCommand);
+                var commandJson = endpoint.GetCommandJson(hystrixCommand);
 
                 Assert.NotNull(commandJson);
             }
