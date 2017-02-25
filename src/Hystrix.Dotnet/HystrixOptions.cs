@@ -18,7 +18,7 @@
 
         public int MetricsStreamPollIntervalInMilliseconds { get; set; }
 
-        public HystrixJsonConfigurationSourceOptions  JsonConfigurationSourceOptions { get; set; }
+        public HystrixJsonConfigurationSourceOptions JsonConfigurationSourceOptions { get; set; }
 
         public HystrixLocalOptions LocalOptions { get; set; }
     }
