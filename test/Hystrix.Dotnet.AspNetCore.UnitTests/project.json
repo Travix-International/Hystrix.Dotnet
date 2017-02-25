@@ -11,11 +11,10 @@
   },
 
   "dependencies": {
-    "Hystrix.Dotnet": "1.0.0-*",
+    "Hystrix.Dotnet.AspNetCore": "1.0.0-*",
     "xunit": "2.1.0",
     "dotnet-test-xunit": "1.0.0-*",
-    "moq": "4.6.25-alpha",
-    "System.Diagnostics.TraceSource": "4.0.0-rc2-24027"
+    "moq": "4.6.25-alpha"
   },
 
   "frameworks": {

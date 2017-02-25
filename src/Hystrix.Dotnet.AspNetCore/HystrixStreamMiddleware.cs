@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using log4net;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 
 namespace Hystrix.Dotnet.AspNetCore
 {
@@ -15,16 +13,8 @@ namespace Hystrix.Dotnet.AspNetCore
         {
         }
 
-        public async Task Invoke(HttpContext context, IOptions<HystrixOptions> options)
+        public async Task Invoke(HttpContext context, IHystrixMetricsStreamEndpoint streamEndpoint)
         {
-            int pollingInterval = options.Value?.MetricsStreamPollIntervalInMilliseconds ?? 500;
-
-            Console.WriteLine("Options Polling value: {0}", options.Value.MetricsStreamPollIntervalInMilliseconds);
-
-            var endpoint = new HystrixMetricsStreamEndpoint(
-                new HystrixCommandFactory(options), 
-                pollingInterval);
-
             log.Info("Starting HystrixStreamHandler request");
 
             var response = context.Response;
@@ -36,9 +26,9 @@ namespace Hystrix.Dotnet.AspNetCore
 
             response.ContentType = "text/event-stream";
 
-            await endpoint.PushContentToOutputStream(response).ConfigureAwait(false);
+            await streamEndpoint.PushContentToOutputStream(response, context.RequestAborted).ConfigureAwait(false);
 
-            log.Info("Ending HystrixStreamHandler request");
+            log.Info("Ending HystrixStreamMiddleware request");
         }
     }
 }

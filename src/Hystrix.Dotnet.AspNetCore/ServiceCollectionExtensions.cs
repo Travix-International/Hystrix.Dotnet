@@ -8,6 +8,7 @@ namespace Hystrix.Dotnet.AspNetCore
         public static void AddHystrix(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IHystrixCommandFactory, HystrixCommandFactory>();
+            serviceCollection.AddSingleton<IHystrixMetricsStreamEndpoint, HystrixMetricsStreamEndpoint>();
         }
     }
 }

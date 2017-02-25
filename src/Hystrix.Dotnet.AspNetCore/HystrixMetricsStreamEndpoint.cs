@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using log4net;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet.AspNetCore
@@ -21,53 +22,49 @@ namespace Hystrix.Dotnet.AspNetCore
 
         private readonly int pollingInterval;
 
-        private readonly CancellationTokenSource cancellationTokenSource;
-
-        public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, int pollingInterval)
+        public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, IOptions<HystrixOptions> options)
         {
             if (commandFactory == null)
             {
                 throw new ArgumentNullException(nameof(commandFactory));
             }
+
+            pollingInterval = options?.Value?.MetricsStreamPollIntervalInMilliseconds ?? 500;
+
             if (pollingInterval < 100)
             {
                 throw new ArgumentOutOfRangeException(nameof(pollingInterval), "Parameter pollingInterval needs to be greater than or equal to 100");
             }
 
             this.commandFactory = commandFactory;
-            this.pollingInterval = pollingInterval;
-            cancellationTokenSource = new CancellationTokenSource();
         }
 
-        public async Task PushContentToOutputStream(HttpResponse response)
+        public async Task PushContentToOutputStream(HttpResponse response, CancellationToken cancellationToken)
         {
-            var token = cancellationTokenSource.Token;
-
             try
             {
                 log.Info("Start writing to Hystrix outputstream");
 
                 while (true)
                 {
-                    if (token.IsCancellationRequested)
+                    if (cancellationToken.IsCancellationRequested)
                     {
                         break;
                     }
 
                     await WriteAllCommandsJsonToOutputStream(response).ConfigureAwait(false);
 
-                    await Task.Delay(pollingInterval, token).ConfigureAwait(false);
+                    await Task.Delay(pollingInterval, cancellationToken).ConfigureAwait(false);
                 }
+            }
+            catch (TaskCanceledException)
+            {
+                // This just means the connection was closed.
             }
             catch (Exception ex)
             {
                 log.Error("An error occured in Hystrix outputstream", ex);
-            }
-            finally
-            {
-                log.Info("Flushing and closing Hystrix outputstream");
-
-                response.Body.Flush();
+                Console.WriteLine("An error occured in Hystrix outputstream {0}", ex);
             }
         }
 
@@ -92,15 +89,13 @@ namespace Hystrix.Dotnet.AspNetCore
 
         private static async Task WriteStringToOutputStream(HttpResponse response, string wrappedJsonString)
         {
-            Stream outputStream = response.Body;
-
-            using (var sw = new StreamWriter(outputStream, Encoding.UTF8, 1024, true))
+            using (var sw = new StreamWriter(response.Body, Encoding.UTF8, 1024, true))
             {
                 await sw.WriteAsync(wrappedJsonString).ConfigureAwait(false);
                 await sw.FlushAsync();
             }
 
-            outputStream.Flush();
+            response.Body.Flush();
         }
 
         public string GetCommandJson(IHystrixCommand command)
@@ -210,19 +205,6 @@ namespace Hystrix.Dotnet.AspNetCore
             });
 
             return serializeObject;
-        }
-
-        public void Dispose()
-        {
-            if (cancellationTokenSource != null)
-            {
-                if (!cancellationTokenSource.IsCancellationRequested)
-                {
-                    cancellationTokenSource.Cancel();
-                }
-
-                cancellationTokenSource.Dispose();
-            }
         }
     }
 }

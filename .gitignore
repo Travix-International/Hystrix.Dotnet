@@ -100,3 +100,6 @@ artifacts/
 *.lock.json
 *.nuget.props
 *.nuget.targets
+
+# Coverage reports
+/coverage/

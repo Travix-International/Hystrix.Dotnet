@@ -2,11 +2,7 @@
 #      general configuration      #
 #---------------------------------#
 
-version: 1.0.0.{build}-{branch}
-
-branches:
-  only:
-    - master
+version: 2.0.0.{build}-{branch}
 
 skip_tags: true
 
@@ -20,6 +16,10 @@ clone_depth: 1
 
 nuget:  
   disable_publish_on_pr: true
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: 6xkLOjqMWYtgzJs6Uaid0HFWRust/BKvGmx7Hz0l/H5m/vsN1AKrmB52/lveihaT
 
 #---------------------------------#
 #       build configuration       #
@@ -38,7 +38,11 @@ build_script:
 #---------------------------------#
 
 test_script:
-- dotnet test test/Hystrix.Dotnet.UnitTests/project.json --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.UnitTests/project.json --configuration Release --no-buildo
+- dotnet test test/Hystrix.Dotnet.AspNet.UnitTests/project.json --configuration Release --no-buildo
+- dotnet test test/Hystrix.Dotnet.AspNetCore.UnitTests/project.json --configuration Release --no-buildo
+- bash coverage.sh
+- bash coveralls.sh
 
 #---------------------------------#
 #      artifacts configuration    #

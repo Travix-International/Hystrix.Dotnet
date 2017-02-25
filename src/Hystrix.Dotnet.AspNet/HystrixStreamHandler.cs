@@ -16,7 +16,7 @@ namespace Hystrix.Dotnet.AspNet
         {
             var configSection = ConfigurationManager.GetSection("hystrix.dotnet/hystrix") as HystrixConfigSection;
 
-            int pollingInterval = configSection == null ? 500 : configSection.MetricsStreamPollIntervalInMilliseconds;
+            int pollingInterval = configSection?.MetricsStreamPollIntervalInMilliseconds ?? 500;
 
             log.InfoFormat("Creating HystrixStreamHandler with interval {0}", pollingInterval);
 
