@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using log4net;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace Hystrix.Dotnet.AspNet
+namespace Hystrix.Dotnet.AspNetCore
 {
-    internal class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint, IDisposable
+    public class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(HystrixMetricsStreamEndpoint));
 
@@ -21,7 +21,7 @@ namespace Hystrix.Dotnet.AspNet
 
         private readonly int pollingInterval;
 
-        private CancellationTokenSource cancellationTokenSource;
+        private readonly CancellationTokenSource cancellationTokenSource;
 
         public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, int pollingInterval)
         {
@@ -36,11 +36,11 @@ namespace Hystrix.Dotnet.AspNet
 
             this.commandFactory = commandFactory;
             this.pollingInterval = pollingInterval;
+            cancellationTokenSource = new CancellationTokenSource();
         }
 
-        public async Task PushContentToOutputStream(HttpResponseBase response)
+        public async Task PushContentToOutputStream(HttpResponse response)
         {
-            cancellationTokenSource = new CancellationTokenSource();
             var token = cancellationTokenSource.Token;
 
             try
@@ -49,7 +49,7 @@ namespace Hystrix.Dotnet.AspNet
 
                 while (true)
                 {
-                    if (token.IsCancellationRequested || response.IsClientConnected == false)
+                    if (token.IsCancellationRequested)
                     {
                         break;
                     }
@@ -59,7 +59,7 @@ namespace Hystrix.Dotnet.AspNet
                     await Task.Delay(pollingInterval, token).ConfigureAwait(false);
                 }
             }
-            catch (HttpException ex)
+            catch (Exception ex)
             {
                 log.Error("An error occured in Hystrix outputstream", ex);
             }
@@ -67,22 +67,19 @@ namespace Hystrix.Dotnet.AspNet
             {
                 log.Info("Flushing and closing Hystrix outputstream");
 
-                // Close output stream as we are done
-                response.OutputStream.Flush();
-                response.OutputStream.Close();
-                response.Flush();
+                response.Body.Flush();
             }
         }
 
-        public async Task WriteAllCommandsJsonToOutputStream(HttpResponseBase response)
+        public async Task WriteAllCommandsJsonToOutputStream(HttpResponse response)
         {
             var commands = commandFactory.GetAllHystrixCommands();
 
             foreach (var commandMetric in commands)
             {
                 // write command metrics
-                string comandJsonString = GetCommandJson(commandMetric);
-                string wrappedCommandJsonString = string.IsNullOrEmpty(comandJsonString) ? "ping: \n" : "data:" + comandJsonString + "\n\n";
+                var comandJsonString = GetCommandJson(commandMetric);
+                var wrappedCommandJsonString = string.IsNullOrEmpty(comandJsonString) ? "ping: \n" : "data:" + comandJsonString + "\n\n";
 
                 await WriteStringToOutputStream(response, wrappedCommandJsonString).ConfigureAwait(false);
             }
@@ -93,9 +90,9 @@ namespace Hystrix.Dotnet.AspNet
             }
         }
 
-        private static async Task WriteStringToOutputStream(HttpResponseBase response, string wrappedJsonString)
+        private static async Task WriteStringToOutputStream(HttpResponse response, string wrappedJsonString)
         {
-            Stream outputStream = response.OutputStream;
+            Stream outputStream = response.Body;
 
             using (var sw = new StreamWriter(outputStream, Encoding.UTF8, 1024, true))
             {
@@ -103,7 +100,7 @@ namespace Hystrix.Dotnet.AspNet
                 await sw.FlushAsync();
             }
 
-            response.Flush();
+            outputStream.Flush();
         }
 
         public string GetCommandJson(IHystrixCommand command)

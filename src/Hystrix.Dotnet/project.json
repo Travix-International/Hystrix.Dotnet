@@ -33,12 +33,11 @@
   },  
 
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.3": {
       "buildOptions": {
         "define": [ "COREFX" ]
       },
       "dependencies": {
-        "NETStandard.Library": "1.6.1",
         "System.Threading.Thread": "4.3.0",
         "System.Net.Http": "4.3.0",
         "System.Diagnostics.Contracts": "4.3.0",

@@ -15,6 +15,7 @@ namespace Hystrix.Dotnet.AspNet
             return new HystrixOptions
             {
                 ConfigurationServiceImplementation = configSection.ServiceImplementation,
+                MetricsStreamPollIntervalInMilliseconds = configSection.MetricsStreamPollIntervalInMilliseconds,
                 JsonConfigurationSourceOptions = TranslateToJsonConfigurationSourceOptions(configSection.JsonConfigurationSourceOptions),
                 LocalOptions = TranslateToLocalOptions(configSection.LocalOptions)
             };

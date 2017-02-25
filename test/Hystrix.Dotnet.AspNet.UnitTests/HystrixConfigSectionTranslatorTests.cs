@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Hystrix.Dotnet.AspNet.UnitTests
@@ -47,6 +43,7 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
             var options = sut.TranslateToOptions(new HystrixConfigSection
             {
                 ServiceImplementation = "TestConfigurationServiceImplementation",
+                MetricsStreamPollIntervalInMilliseconds = 1000,
                 JsonConfigurationSourceOptions = new HystrixJsonConfigurationSourceOptionsElement
                 {
                     PollingIntervalInMilliseconds = 1001,
@@ -102,6 +99,7 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
             });
 
             Assert.Equal("TestConfigurationServiceImplementation", options.ConfigurationServiceImplementation);
+            Assert.Equal(1000, options.MetricsStreamPollIntervalInMilliseconds);
             Assert.Equal(1001, options.JsonConfigurationSourceOptions.PollingIntervalInMilliseconds);
             Assert.Equal("TestBaseLocation", options.JsonConfigurationSourceOptions.BaseLocation);
             Assert.Equal("TestLocationPattern", options.JsonConfigurationSourceOptions.LocationPattern);
