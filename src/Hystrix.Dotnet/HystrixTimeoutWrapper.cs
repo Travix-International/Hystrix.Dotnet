@@ -66,6 +66,8 @@ namespace Hystrix.Dotnet
         {
             var timeout = configurationService.GetCommandTimeoutInMilliseconds();
 
+            Console.WriteLine("COmmandTimeout value: {0}", timeout);
+
             var timeoutCancellationTokenSource = new CancellationTokenSource();
 
             // wrap in a task so it doesn't wait for any non-awaitable parts of the primaryTask

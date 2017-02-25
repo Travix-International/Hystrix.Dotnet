@@ -37,7 +37,7 @@ namespace Hystrix.Dotnet.AspNet
         {
             return new HystrixLocalOptions
             {
-                CommandOptions = element.CommandGroups
+                CommandGroups = element.CommandGroups
                     .Cast<HystrixCommandGroupElement>()
                     .ToDictionary(
                         commandGroup => commandGroup.Key,

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using log4net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -17,6 +18,8 @@ namespace Hystrix.Dotnet.AspNetCore
         public async Task Invoke(HttpContext context, IOptions<HystrixOptions> options)
         {
             int pollingInterval = options.Value?.MetricsStreamPollIntervalInMilliseconds ?? 500;
+
+            Console.WriteLine("Options Polling value: {0}", options.Value.MetricsStreamPollIntervalInMilliseconds);
 
             var endpoint = new HystrixMetricsStreamEndpoint(
                 new HystrixCommandFactory(options), 

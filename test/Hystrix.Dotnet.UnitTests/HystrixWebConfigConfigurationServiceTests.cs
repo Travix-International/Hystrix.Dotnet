@@ -27,7 +27,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -68,7 +68,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -109,7 +109,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -150,7 +150,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -191,7 +191,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -232,7 +232,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -273,7 +273,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -314,7 +314,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -355,7 +355,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -396,7 +396,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -437,7 +437,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -478,7 +478,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -519,7 +519,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {
@@ -560,7 +560,7 @@ namespace Hystrix.Dotnet.UnitTests
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions
             {
-                CommandOptions = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
                 {
                     ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
                     {

@@ -103,13 +103,13 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
             Assert.Equal(1001, options.JsonConfigurationSourceOptions.PollingIntervalInMilliseconds);
             Assert.Equal("TestBaseLocation", options.JsonConfigurationSourceOptions.BaseLocation);
             Assert.Equal("TestLocationPattern", options.JsonConfigurationSourceOptions.LocationPattern);
-            Assert.Equal(2, options.LocalOptions.CommandOptions.Count);
-            Assert.Equal(2, options.LocalOptions.CommandOptions["GroupA"].Count);
-            Assert.Equal(1, options.LocalOptions.CommandOptions["GroupB"].Count);
+            Assert.Equal(2, options.LocalOptions.CommandGroups.Count);
+            Assert.Equal(2, options.LocalOptions.CommandGroups["GroupA"].Count);
+            Assert.Equal(1, options.LocalOptions.CommandGroups["GroupB"].Count);
 
-            Assert.True(options.LocalOptions.CommandOptions["GroupA"].ContainsKey("CommandA"));
+            Assert.True(options.LocalOptions.CommandGroups["GroupA"].ContainsKey("CommandA"));
 
-            var commandA = options.LocalOptions.CommandOptions["GroupA"]["CommandA"];
+            var commandA = options.LocalOptions.CommandGroups["GroupA"]["CommandA"];
             Assert.Equal(1001, commandA.CommandTimeoutInMilliseconds);
             Assert.Equal(true, commandA.CircuitBreakerForcedOpen);
             Assert.Equal(false, commandA.CircuitBreakerForcedClosed);
@@ -125,8 +125,8 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
             Assert.Equal(1010, commandA.MetricsRollingPercentileBucketSize);
             Assert.Equal(false, commandA.HystrixCommandEnabled);
 
-            Assert.True(options.LocalOptions.CommandOptions["GroupA"].ContainsKey("CommandB"));
-            Assert.True(options.LocalOptions.CommandOptions["GroupB"].ContainsKey("CommandC"));
+            Assert.True(options.LocalOptions.CommandGroups["GroupA"].ContainsKey("CommandB"));
+            Assert.True(options.LocalOptions.CommandGroups["GroupB"].ContainsKey("CommandC"));
         }
     }
 }
