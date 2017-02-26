@@ -2,7 +2,7 @@
 {
     public enum HystrixRollingNumberEvent
     {
-        // NOTE: If the set of enums changes, the numbers in HystrixRollingNumberEventExtensions need to be updated.
+        // NOTE: If the set of enums changes, the logic in HystrixRollingNumberEventExtensions needs to be updated.
         // Counter events
         Success = 0,
         Failure = 1,
@@ -30,15 +30,15 @@
 
     public static class HystrixRollingNumberEventExtensions
     {
-        // NOTE: Hacky, but performant approach. Won't work if we'll have more than two kinds of events.
+        // NOTE: Hacky, but performant approach. Won't scale if we'll have more kinds of events.
         public static bool IsCounter(this HystrixRollingNumberEvent hystrixRollingNumberEvent)
         {
-            return (int)hystrixRollingNumberEvent <= 18;
+            return hystrixRollingNumberEvent != HystrixRollingNumberEvent.CommandMaxActive && hystrixRollingNumberEvent != HystrixRollingNumberEvent.ThreadMaxActive;
         }
 
         public static bool IsMaxUpdater(this HystrixRollingNumberEvent hystrixRollingNumberEvent)
         {
-            return (int)hystrixRollingNumberEvent >= 19;
+            return hystrixRollingNumberEvent == HystrixRollingNumberEvent.CommandMaxActive || hystrixRollingNumberEvent == HystrixRollingNumberEvent.ThreadMaxActive;
         }
     }
 }
