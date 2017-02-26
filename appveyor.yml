@@ -2,7 +2,7 @@
 #      general configuration      #
 #---------------------------------#
 
-version: 2.0.0.{build}-{branch}
+version: 1.0.0.{build}-{branch}
 
 skip_tags: true
 
@@ -49,7 +49,7 @@ test_script:
 #---------------------------------#
 
 artifacts:
-- path: src/**/*.nupkg
+- path: src/Hystrix.Dotnet/**/*.nupkg
 
 #---------------------------------#
 #     deployment configuration    #
