@@ -1,12 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
+using Hystrix.Dotnet.Metrics;
 using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
-namespace Hystrix.Dotnet.AspNet.UnitTests
+namespace Hystrix.Dotnet.UnitTests.Metrics
 {
     public class HystrixMetricsStreamEndpointTests
     {
@@ -51,12 +52,9 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
                 var endpoint = new HystrixMetricsStreamEndpoint(commandFactory, pollingInterval);
                 commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandX"));
                 commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandY"));
-                var httpResponseMock = new Mock<HttpResponseBase>();
-                httpResponseMock.Setup(x => x.OutputStream).Returns(new MemoryStream());
 
                 // Act
-                //await endpoint.WriteAllCommandsJsonToOutputStream(httpResponseMock.Object);
-                await endpoint.WriteAllCommandsJsonToOutputStream(new MemoryStream());
+                await endpoint.WriteAllCommandsJsonToOutputStream(new MemoryStream(), CancellationToken.None);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Hystrix.Dotnet.Metrics;
 using log4net;
 using Microsoft.AspNetCore.Http;
 
@@ -26,7 +27,7 @@ namespace Hystrix.Dotnet.AspNetCore
 
             response.ContentType = "text/event-stream";
 
-            await streamEndpoint.PushContentToOutputStream(response, context.RequestAborted).ConfigureAwait(false);
+            await streamEndpoint.PushContentToOutputStream(response.Body, () => { }, context.RequestAborted).ConfigureAwait(false);
 
             log.Info("Ending HystrixStreamMiddleware request");
         }

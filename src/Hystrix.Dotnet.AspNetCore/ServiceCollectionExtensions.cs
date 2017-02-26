@@ -1,4 +1,5 @@
 ﻿using Hystrix.Dotnet;
+using Hystrix.Dotnet.Metrics;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hystrix.Dotnet.AspNetCore

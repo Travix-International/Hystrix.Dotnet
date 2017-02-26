@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using log4net;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Hystrix.Dotnet.AspNet
+namespace Hystrix.Dotnet.Metrics
 {
-    internal class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint, IDisposable
+    public class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(HystrixMetricsStreamEndpoint));
 
@@ -23,7 +23,10 @@ namespace Hystrix.Dotnet.AspNet
 
         private readonly int pollingInterval;
 
-        private CancellationTokenSource cancellationTokenSource;
+        public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, IOptions<HystrixOptions> options) :
+            this(commandFactory, options?.Value?.MetricsStreamPollIntervalInMilliseconds ?? 500)
+        {
+        }
 
         public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, int pollingInterval)
         {
@@ -31,6 +34,7 @@ namespace Hystrix.Dotnet.AspNet
             {
                 throw new ArgumentNullException(nameof(commandFactory));
             }
+
             if (pollingInterval < 100)
             {
                 throw new ArgumentOutOfRangeException(nameof(pollingInterval), "Parameter pollingInterval needs to be greater than or equal to 100");
@@ -40,74 +44,64 @@ namespace Hystrix.Dotnet.AspNet
             this.pollingInterval = pollingInterval;
         }
 
-        public async Task PushContentToOutputStream(HttpResponseBase response)
+        public async Task PushContentToOutputStream(Stream outputStream, Action flushResponse, CancellationToken cancellationToken)
         {
-            cancellationTokenSource = new CancellationTokenSource();
-            var token = cancellationTokenSource.Token;
-
             try
             {
                 log.Info("Start writing to Hystrix outputstream");
 
                 while (true)
                 {
-                    if (token.IsCancellationRequested || response.IsClientConnected == false)
+                    if (cancellationToken.IsCancellationRequested)
                     {
                         break;
                     }
 
-                    await WriteAllCommandsJsonToOutputStream(response.OutputStream).ConfigureAwait(false);
+                    await WriteAllCommandsJsonToOutputStream(outputStream, cancellationToken).ConfigureAwait(false);
+                    await outputStream.FlushAsync(cancellationToken);
 
-                    response.Flush();
+                    flushResponse();
 
-                    await Task.Delay(pollingInterval, token).ConfigureAwait(false);
+                    await Task.Delay(pollingInterval, cancellationToken).ConfigureAwait(false);
                 }
-            }
-            catch (HttpException ex)
-            {
-                log.Error("An error occured in Hystrix outputstream", ex);
             }
             finally
             {
                 log.Info("Flushing and closing Hystrix outputstream");
 
                 // Close output stream as we are done
-                response.OutputStream.Flush();
-                response.OutputStream.Close();
-                response.Flush();
+                await outputStream.FlushAsync(cancellationToken);
+                flushResponse();
             }
         }
 
-        public async Task WriteAllCommandsJsonToOutputStream(Stream outputStream)
+        public async Task WriteAllCommandsJsonToOutputStream(Stream outputStream, CancellationToken cancellationToken)
         {
             var commands = commandFactory.GetAllHystrixCommands();
 
             foreach (var commandMetric in commands)
             {
-                await WriteStringToOutputStream(outputStream, "data:");
+                await WriteStringToOutputStream(outputStream, "data:", cancellationToken);
                 WriteCommandJson(commandMetric, outputStream);
-                await WriteStringToOutputStream(outputStream, "\n\n");
+                await WriteStringToOutputStream(outputStream, "\n\n", cancellationToken);
             }
 
             if (!commands.Any())
             {
-                await WriteStringToOutputStream(outputStream, "ping: \n").ConfigureAwait(false);
+                await WriteStringToOutputStream(outputStream, "ping: \n", cancellationToken).ConfigureAwait(false);
             }
         }
 
-        private static async Task WriteStringToOutputStream(Stream outputStream, string wrappedJsonString)
+        private static async Task WriteStringToOutputStream(Stream outputStream, string wrappedJsonString, CancellationToken cancellationToken)
         {
+            // NOTE: The false argument to the UTF8Encoding constructor is important, otherwise it would embed BOMs into the stream.
             using (var sw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
             {
                 await sw.WriteAsync(wrappedJsonString).ConfigureAwait(false);
                 await sw.FlushAsync().ConfigureAwait(false);
             }
 
-            await outputStream.FlushAsync().ConfigureAwait(false);
-
-            //byte[] buffer = Encoding.UTF8.GetBytes(wrappedJsonString);
-            //await outputStream.WriteAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
-            //await outputStream.FlushAsync().ConfigureAwait(false);
+            await outputStream.FlushAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public void WriteCommandJson(IHystrixCommand command, Stream outputStream)
@@ -218,19 +212,6 @@ namespace Hystrix.Dotnet.AspNet
 
                     reportingHosts = 1, // this will get summed across all instances in a cluster
                 });
-            }
-        }
-
-        public void Dispose()
-        {
-            if (cancellationTokenSource != null)
-            {
-                if (!cancellationTokenSource.IsCancellationRequested)
-                {
-                    cancellationTokenSource.Cancel();
-                }
-
-                cancellationTokenSource.Dispose();
             }
         }
     }

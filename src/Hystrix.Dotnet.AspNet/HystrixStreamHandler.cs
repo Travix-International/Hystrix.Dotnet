@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
+using Hystrix.Dotnet.Metrics;
 using log4net;
 
 namespace Hystrix.Dotnet.AspNet
@@ -49,7 +50,7 @@ namespace Hystrix.Dotnet.AspNet
             // flush the headers
             response.Flush();
 
-            await endpoint.PushContentToOutputStream(new HttpResponseWrapper(response)).ConfigureAwait(false);
+            await endpoint.PushContentToOutputStream(response.OutputStream, () => response.Flush(), response.ClientDisconnectedToken).ConfigureAwait(false);
 
             log.Info("Ending HystrixStreamHandler request");
         }
