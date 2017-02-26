@@ -17,6 +17,8 @@ namespace Hystrix.Dotnet.AspNet
 
         private static readonly DateTimeProvider dateTimeProvider = new DateTimeProvider();
 
+        private static readonly JsonSerializer jsonSerializer = JsonSerializer.Create();
+
         private readonly IHystrixCommandFactory commandFactory;
 
         private readonly int pollingInterval;
@@ -54,7 +56,9 @@ namespace Hystrix.Dotnet.AspNet
                         break;
                     }
 
-                    await WriteAllCommandsJsonToOutputStream(response).ConfigureAwait(false);
+                    await WriteAllCommandsJsonToOutputStream(response.OutputStream).ConfigureAwait(false);
+
+                    response.Flush();
 
                     await Task.Delay(pollingInterval, token).ConfigureAwait(false);
                 }
@@ -74,37 +78,39 @@ namespace Hystrix.Dotnet.AspNet
             }
         }
 
-        public async Task WriteAllCommandsJsonToOutputStream(HttpResponseBase response)
+        public async Task WriteAllCommandsJsonToOutputStream(Stream outputStream)
         {
             var commands = commandFactory.GetAllHystrixCommands();
 
             foreach (var commandMetric in commands)
             {
-                // write command metrics
-                string comandJsonString = GetCommandJson(commandMetric);
-                string wrappedCommandJsonString = string.IsNullOrEmpty(comandJsonString) ? "ping: \n" : "data:" + comandJsonString + "\n\n";
-
-                await WriteStringToOutputStream(response, wrappedCommandJsonString).ConfigureAwait(false);
+                await WriteStringToOutputStream(outputStream, "data:");
+                WriteCommandJson(commandMetric, outputStream);
+                await WriteStringToOutputStream(outputStream, "\n\n");
             }
 
             if (!commands.Any())
             {
-                await WriteStringToOutputStream(response, "ping: \n").ConfigureAwait(false);
+                await WriteStringToOutputStream(outputStream, "ping: \n").ConfigureAwait(false);
             }
         }
 
-        private static async Task WriteStringToOutputStream(HttpResponseBase response, string wrappedJsonString)
+        private static async Task WriteStringToOutputStream(Stream outputStream, string wrappedJsonString)
         {
-            Stream outputStream = response.OutputStream;
+            using (var sw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
+            {
+                await sw.WriteAsync(wrappedJsonString).ConfigureAwait(false);
+                await sw.FlushAsync().ConfigureAwait(false);
+            }
 
-            byte[] buffer = Encoding.UTF8.GetBytes(wrappedJsonString);
-            await outputStream.WriteAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
             await outputStream.FlushAsync().ConfigureAwait(false);
 
-            response.Flush();
+            //byte[] buffer = Encoding.UTF8.GetBytes(wrappedJsonString);
+            //await outputStream.WriteAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+            //await outputStream.FlushAsync().ConfigureAwait(false);
         }
 
-        public string GetCommandJson(IHystrixCommand command)
+        public void WriteCommandJson(IHystrixCommand command, Stream outputStream)
         {
             var commandIdentifier = command.CommandIdentifier;
             var circuitBreaker = command.CircuitBreaker;
@@ -113,42 +119,45 @@ namespace Hystrix.Dotnet.AspNet
 
             var healthCounts = commandMetrics.GetHealthCounts();
 
-            string serializeObject = JsonConvert.SerializeObject(new
+            // NOTE: The false argument to the UTF8Encoding constructor is important, otherwise it would embed BOMs into the stream.
+            using(var sw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
             {
-                type = "HystrixCommand",
-                name = commandIdentifier.CommandKey,
-                group = commandIdentifier.GroupKey,
-                currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds(),
-                isCircuitBreakerOpen = circuitBreaker != null && circuitBreaker.CircuitIsOpen,
+                jsonSerializer.Serialize(sw, new
+                {
+                    type = "HystrixCommand",
+                    name = commandIdentifier.CommandKey,
+                    group = commandIdentifier.GroupKey,
+                    currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds(),
+                    isCircuitBreakerOpen = circuitBreaker != null && circuitBreaker.CircuitIsOpen,
 
-                errorPercentage = healthCounts.GetErrorPercentage(),
-                errorCount = healthCounts.GetErrorCount(),
-                requestCount = healthCounts.GetTotalRequests(),
+                    errorPercentage = healthCounts.GetErrorPercentage(),
+                    errorCount = healthCounts.GetErrorCount(),
+                    requestCount = healthCounts.GetTotalRequests(),
 
-                // rolling counters
-                rollingCountBadRequests = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.BadRequest),
-                rollingCountCollapsedRequests = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Collapsed),
-                rollingCountEmit = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Emit),
-                rollingCountExceptionsThrown = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ExceptionThrown),
-                rollingCountFailure = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Failure),
-                rollingCountFallbackEmit = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackEmit),
-                rollingCountFallbackFailure = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackFailure),
-                rollingCountFallbackMissing = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackMissing),
-                rollingCountFallbackRejection = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackRejection),
-                rollingCountFallbackSuccess = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackSuccess),
-                rollingCountResponsesFromCache = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ResponseFromCache),
-                rollingCountSemaphoreRejected = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.SemaphoreRejected),
-                rollingCountShortCircuited = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ShortCircuited),
-                rollingCountSuccess = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Success),
-                rollingCountThreadPoolRejected = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ThreadPoolRejected),
-                rollingCountTimeout = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Timeout),
-                currentConcurrentExecutionCount = commandMetrics.GetCurrentConcurrentExecutionCount(),
-                rollingMaxConcurrentExecutionCount = commandMetrics.GetRollingMaxConcurrentExecutions(),
+                    // rolling counters
+                    rollingCountBadRequests = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.BadRequest),
+                    rollingCountCollapsedRequests = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Collapsed),
+                    rollingCountEmit = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Emit),
+                    rollingCountExceptionsThrown = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ExceptionThrown),
+                    rollingCountFailure = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Failure),
+                    rollingCountFallbackEmit = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackEmit),
+                    rollingCountFallbackFailure = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackFailure),
+                    rollingCountFallbackMissing = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackMissing),
+                    rollingCountFallbackRejection = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackRejection),
+                    rollingCountFallbackSuccess = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.FallbackSuccess),
+                    rollingCountResponsesFromCache = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ResponseFromCache),
+                    rollingCountSemaphoreRejected = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.SemaphoreRejected),
+                    rollingCountShortCircuited = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ShortCircuited),
+                    rollingCountSuccess = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Success),
+                    rollingCountThreadPoolRejected = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.ThreadPoolRejected),
+                    rollingCountTimeout = commandMetrics.GetRollingSum(HystrixRollingNumberEvent.Timeout),
+                    currentConcurrentExecutionCount = commandMetrics.GetCurrentConcurrentExecutionCount(),
+                    rollingMaxConcurrentExecutionCount = commandMetrics.GetRollingMaxConcurrentExecutions(),
 
-                // latency percentiles
-                latencyExecute_mean = commandMetrics.GetExecutionTimeMean(),
+                    // latency percentiles
+                    latencyExecute_mean = commandMetrics.GetExecutionTimeMean(),
 
-                latencyExecute = new Dictionary<string, int>
+                    latencyExecute = new Dictionary<string, int>
                     {
                         {"0", commandMetrics.GetExecutionTimePercentile(0)},
                         {"25", commandMetrics.GetExecutionTimePercentile(25)},
@@ -161,9 +170,9 @@ namespace Hystrix.Dotnet.AspNet
                         {"100", commandMetrics.GetExecutionTimePercentile(100)}
                     },
 
-                latencyTotal_mean = commandMetrics.GetTotalTimeMean(),
+                    latencyTotal_mean = commandMetrics.GetTotalTimeMean(),
 
-                latencyTotal = new Dictionary<string, int>
+                    latencyTotal = new Dictionary<string, int>
                     {
                         {"0", commandMetrics.GetTotalTimePercentile(0)},
                         {"25", commandMetrics.GetTotalTimePercentile(25)},
@@ -176,41 +185,40 @@ namespace Hystrix.Dotnet.AspNet
                         {"100", commandMetrics.GetTotalTimePercentile(100)}
                     },
 
-                // property values for reporting what is actually seen by the command rather than what was set somewhere
-                propertyValue_circuitBreakerRequestVolumeThreshold = configurationService.GetCircuitBreakerRequestVolumeThreshold(),
-                propertyValue_circuitBreakerSleepWindowInMilliseconds = configurationService.GetCircuitBreakerSleepWindowInMilliseconds(),
-                propertyValue_circuitBreakerErrorThresholdPercentage = configurationService.GetCircuitBreakerErrorThresholdPercentage(),
-                propertyValue_circuitBreakerForceOpen = configurationService.GetCircuitBreakerForcedOpen(),
-                propertyValue_circuitBreakerForceClosed = configurationService.GetCircuitBreakerForcedClosed(),
-                propertyValue_circuitBreakerEnabled = configurationService.GetHystrixCommandEnabled(),
+                    // property values for reporting what is actually seen by the command rather than what was set somewhere
+                    propertyValue_circuitBreakerRequestVolumeThreshold = configurationService.GetCircuitBreakerRequestVolumeThreshold(),
+                    propertyValue_circuitBreakerSleepWindowInMilliseconds = configurationService.GetCircuitBreakerSleepWindowInMilliseconds(),
+                    propertyValue_circuitBreakerErrorThresholdPercentage = configurationService.GetCircuitBreakerErrorThresholdPercentage(),
+                    propertyValue_circuitBreakerForceOpen = configurationService.GetCircuitBreakerForcedOpen(),
+                    propertyValue_circuitBreakerForceClosed = configurationService.GetCircuitBreakerForcedClosed(),
+                    propertyValue_circuitBreakerEnabled = configurationService.GetHystrixCommandEnabled(),
 
-                propertyValue_executionIsolationStrategy = "THREAD", // configurationService.GetExecutionIsolationStrategy().Name,
-                propertyValue_executionIsolationThreadTimeoutInMilliseconds = 0, //configurationService.GetExecutionTimeoutInMilliseconds(),
-                propertyValue_executionTimeoutInMilliseconds = configurationService.GetCommandTimeoutInMilliseconds(),
-                propertyValue_executionIsolationThreadInterruptOnTimeout = false, //configurationService.GetExecutionIsolationThreadInterruptOnTimeout(),
-                propertyValue_executionIsolationThreadPoolKeyOverride = (string)null, // configurationService.GetExecutionIsolationThreadPoolKeyOverride(),
-                propertyValue_executionIsolationSemaphoreMaxConcurrentRequests = 0, // configurationService.GetExecutionIsolationSemaphoreMaxConcurrentRequests(),
-                propertyValue_fallbackIsolationSemaphoreMaxConcurrentRequests = 0, // configurationService.GetFallbackIsolationSemaphoreMaxConcurrentRequests(),
+                    propertyValue_executionIsolationStrategy = "THREAD", // configurationService.GetExecutionIsolationStrategy().Name,
+                    propertyValue_executionIsolationThreadTimeoutInMilliseconds = 0, //configurationService.GetExecutionTimeoutInMilliseconds(),
+                    propertyValue_executionTimeoutInMilliseconds = configurationService.GetCommandTimeoutInMilliseconds(),
+                    propertyValue_executionIsolationThreadInterruptOnTimeout = false, //configurationService.GetExecutionIsolationThreadInterruptOnTimeout(),
+                    propertyValue_executionIsolationThreadPoolKeyOverride = (string) null, // configurationService.GetExecutionIsolationThreadPoolKeyOverride(),
+                    propertyValue_executionIsolationSemaphoreMaxConcurrentRequests = 0, // configurationService.GetExecutionIsolationSemaphoreMaxConcurrentRequests(),
+                    propertyValue_fallbackIsolationSemaphoreMaxConcurrentRequests = 0, // configurationService.GetFallbackIsolationSemaphoreMaxConcurrentRequests(),
 
-                /*
-                * The following are commented out as these rarely change and are verbose for streaming for something people don't change.
-                * We could perhaps allow a property or request argument to include these.
-                */
+                    /*
+                    * The following are commented out as these rarely change and are verbose for streaming for something people don't change.
+                    * We could perhaps allow a property or request argument to include these.
+                    */
 
-                propertyValue_metricsRollingPercentileEnabled = configurationService.GetMetricsRollingPercentileEnabled(),
-                propertyValue_metricsRollingPercentileBucketSize = configurationService.GetMetricsRollingPercentileBucketSize(),
-                propertyValue_metricsRollingPercentileWindow = configurationService.GetMetricsRollingPercentileWindowInMilliseconds(),
-                propertyValue_metricsRollingPercentileWindowBuckets = configurationService.GetMetricsRollingPercentileWindowBuckets(),
-                propertyValue_metricsRollingStatisticalWindowBuckets = configurationService.GetMetricsRollingStatisticalWindowBuckets(),
-                propertyValue_metricsRollingStatisticalWindowInMilliseconds = configurationService.GetMetricsRollingStatisticalWindowInMilliseconds(),
+                    propertyValue_metricsRollingPercentileEnabled = configurationService.GetMetricsRollingPercentileEnabled(),
+                    propertyValue_metricsRollingPercentileBucketSize = configurationService.GetMetricsRollingPercentileBucketSize(),
+                    propertyValue_metricsRollingPercentileWindow = configurationService.GetMetricsRollingPercentileWindowInMilliseconds(),
+                    propertyValue_metricsRollingPercentileWindowBuckets = configurationService.GetMetricsRollingPercentileWindowBuckets(),
+                    propertyValue_metricsRollingStatisticalWindowBuckets = configurationService.GetMetricsRollingStatisticalWindowBuckets(),
+                    propertyValue_metricsRollingStatisticalWindowInMilliseconds = configurationService.GetMetricsRollingStatisticalWindowInMilliseconds(),
 
-                propertyValue_requestCacheEnabled = false, // configurationService.requestCacheEnabled().get(),
-                propertyValue_requestLogEnabled = false, // configurationService.requestLogEnabled().get(),
+                    propertyValue_requestCacheEnabled = false, // configurationService.requestCacheEnabled().get(),
+                    propertyValue_requestLogEnabled = false, // configurationService.requestLogEnabled().get(),
 
-                reportingHosts = 1, // this will get summed across all instances in a cluster
-            });
-
-            return serializeObject;
+                    reportingHosts = 1, // this will get summed across all instances in a cluster
+                });
+            }
         }
 
         public void Dispose()

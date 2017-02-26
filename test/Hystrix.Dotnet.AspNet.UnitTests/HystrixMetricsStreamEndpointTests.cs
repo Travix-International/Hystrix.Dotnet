@@ -36,28 +36,6 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
             }
         }
 
-        public class GetCommandJson
-        {
-            public GetCommandJson()
-            {
-                HystrixCommandFactory.Clear();
-            }
-
-            [Fact]
-            public void Returns_Json_String_In_Hystrix_Format_For_HystrixCommand()
-            {
-                HystrixCommandFactory commandFactory = new HystrixCommandFactory(Options.Create(new HystrixOptions()));
-                int pollingInterval = 1000;
-                var endpoint = new HystrixMetricsStreamEndpoint(commandFactory, pollingInterval);
-                var hystrixCommand = commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandX"));
-
-                // Act
-                var commandJson = endpoint.GetCommandJson(hystrixCommand);
-
-                Assert.NotNull(commandJson);
-            }
-        }
-
         public class WriteAllCommandsJsonToOutputStream
         {
             public WriteAllCommandsJsonToOutputStream()
@@ -77,7 +55,8 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
                 httpResponseMock.Setup(x => x.OutputStream).Returns(new MemoryStream());
 
                 // Act
-                await endpoint.WriteAllCommandsJsonToOutputStream(httpResponseMock.Object);
+                //await endpoint.WriteAllCommandsJsonToOutputStream(httpResponseMock.Object);
+                await endpoint.WriteAllCommandsJsonToOutputStream(new MemoryStream());
             }
         }
     }
