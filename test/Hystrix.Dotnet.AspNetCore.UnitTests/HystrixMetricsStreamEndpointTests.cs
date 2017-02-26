@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -80,7 +81,7 @@ namespace Hystrix.Dotnet.AspNetCore.UnitTests
                 httpResponseMock.Setup(x => x.Body).Returns(new MemoryStream());
 
                 // Act
-                await endpoint.WriteAllCommandsJsonToOutputStream(httpResponseMock.Object);
+                await endpoint.WriteAllCommandsJsonToOutputStream(httpResponseMock.Object, CancellationToken.None);
             }
         }
     }

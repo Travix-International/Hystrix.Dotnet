@@ -97,11 +97,9 @@ namespace Hystrix.Dotnet.AspNet
         {
             Stream outputStream = response.OutputStream;
 
-            using (var sw = new StreamWriter(outputStream, Encoding.UTF8, 1024, true))
-            {
-                await sw.WriteAsync(wrappedJsonString).ConfigureAwait(false);
-                await sw.FlushAsync();
-            }
+            byte[] buffer = Encoding.UTF8.GetBytes(wrappedJsonString);
+            await outputStream.WriteAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+            await outputStream.FlushAsync().ConfigureAwait(false);
 
             response.Flush();
         }

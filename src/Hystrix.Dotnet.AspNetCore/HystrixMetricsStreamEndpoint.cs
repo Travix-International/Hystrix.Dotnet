@@ -52,7 +52,7 @@ namespace Hystrix.Dotnet.AspNetCore
                         break;
                     }
 
-                    await WriteAllCommandsJsonToOutputStream(response).ConfigureAwait(false);
+                    await WriteAllCommandsJsonToOutputStream(response, cancellationToken).ConfigureAwait(false);
 
                     await Task.Delay(pollingInterval, cancellationToken).ConfigureAwait(false);
                 }
@@ -68,7 +68,7 @@ namespace Hystrix.Dotnet.AspNetCore
             }
         }
 
-        public async Task WriteAllCommandsJsonToOutputStream(HttpResponse response)
+        public async Task WriteAllCommandsJsonToOutputStream(HttpResponse response, CancellationToken token)
         {
             var commands = commandFactory.GetAllHystrixCommands();
 
@@ -78,24 +78,22 @@ namespace Hystrix.Dotnet.AspNetCore
                 var comandJsonString = GetCommandJson(commandMetric);
                 var wrappedCommandJsonString = string.IsNullOrEmpty(comandJsonString) ? "ping: \n" : "data:" + comandJsonString + "\n\n";
 
-                await WriteStringToOutputStream(response, wrappedCommandJsonString).ConfigureAwait(false);
+                await WriteStringToOutputStream(response, wrappedCommandJsonString, token).ConfigureAwait(false);
             }
 
             if (!commands.Any())
             {
-                await WriteStringToOutputStream(response, "ping: \n").ConfigureAwait(false);
+                await WriteStringToOutputStream(response, "ping: \n", token).ConfigureAwait(false);
             }
         }
 
-        private static async Task WriteStringToOutputStream(HttpResponse response, string wrappedJsonString)
+        private static async Task WriteStringToOutputStream(HttpResponse response, string wrappedJsonString, CancellationToken token)
         {
-            using (var sw = new StreamWriter(response.Body, Encoding.UTF8, 1024, true))
-            {
-                await sw.WriteAsync(wrappedJsonString).ConfigureAwait(false);
-                await sw.FlushAsync();
-            }
+            Stream outputStream = response.Body;
 
-            response.Body.Flush();
+            byte[] buffer = Encoding.UTF8.GetBytes(wrappedJsonString);
+            await outputStream.WriteAsync(buffer, 0, buffer.Length, token).ConfigureAwait(false);
+            await outputStream.FlushAsync(token).ConfigureAwait(false);
         }
 
         public string GetCommandJson(IHystrixCommand command)
