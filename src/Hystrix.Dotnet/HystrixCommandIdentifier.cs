@@ -11,7 +11,7 @@ namespace Hystrix.Dotnet
         {
             if (groupKey == null)
             {
-                throw new ArgumentNullException("groupKey");
+                throw new ArgumentNullException(nameof(groupKey));
             }
             if (string.Empty.Equals(groupKey, StringComparison.OrdinalIgnoreCase))
             {
@@ -19,7 +19,7 @@ namespace Hystrix.Dotnet
             }
             if (commandKey == null)
             {
-                throw new ArgumentNullException("commandKey");
+                throw new ArgumentNullException(nameof(commandKey));
             }
             if (string.Empty.Equals(commandKey, StringComparison.OrdinalIgnoreCase))
             {

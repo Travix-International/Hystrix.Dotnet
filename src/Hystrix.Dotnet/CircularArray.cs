@@ -7,9 +7,9 @@ namespace Hystrix.Dotnet
     {
         private readonly int maximumSize;
 
-        public int MaximumSize { get { return maximumSize; } }
+        public int MaximumSize => maximumSize;
 
-        public int Length { get { return internalQueue.Count; } }
+        public int Length => internalQueue.Count;
 
         private readonly ConcurrentQueue<T> internalQueue = new ConcurrentQueue<T>();
 
@@ -17,7 +17,7 @@ namespace Hystrix.Dotnet
         {
             if (maximumSize <= 0)
             {
-                throw new ArgumentOutOfRangeException("maximumSize", "Parameter maximumSize needs to be greater than 0");
+                throw new ArgumentOutOfRangeException(nameof(maximumSize), "Parameter maximumSize needs to be greater than 0");
             }
 
             this.maximumSize = maximumSize;

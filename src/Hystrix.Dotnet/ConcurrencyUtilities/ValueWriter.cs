@@ -1,6 +1,6 @@
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
-    internal interface ValueWriter<in T>
+    internal interface IValueWriter<in T>
     {
         void SetValue(T newValue);
         void LazySetValue(T newValue);

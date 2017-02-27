@@ -1,4 +1,4 @@
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
-    internal interface VolatileValue<T> : ValueReader<T>, ValueWriter<T> { }
+    internal interface IVolatileValue<T> : IValueReader<T>, IValueWriter<T> { }
 }

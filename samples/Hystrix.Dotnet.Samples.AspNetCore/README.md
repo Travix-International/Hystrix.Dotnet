@@ -4,7 +4,7 @@ In order to use Hystrix.Dotnet in ASP.NET Core we need to do the following steps
 
 Add a dependency to the package `Hystrix.Dotnet.AspNetCore` in our project.json.
 
-```json
+```
   "dependencies": {
     "Hystrix.Dotnet.AspNetCore": "1.0.0-beta3",
     ...

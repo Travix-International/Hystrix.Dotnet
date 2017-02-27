@@ -6,11 +6,10 @@ namespace Hystrix.Dotnet
     public class HystrixCommandMetrics : IHystrixCommandMetrics
     {
         private readonly DateTimeProvider dateTimeProvider;
-        private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixConfigurationService configurationService;
         private readonly HystrixRollingNumber counter;
 
-        public IHystrixConfigurationService ConfigurationService { get { return configurationService; } }
+        public IHystrixConfigurationService ConfigurationService => configurationService;
 
         private long lastHealthCountsSnapshot;
 
@@ -30,15 +29,14 @@ namespace Hystrix.Dotnet
         {
             if (commandIdentifier == null)
             {
-                throw new ArgumentNullException("commandIdentifier");
+                throw new ArgumentNullException(nameof(commandIdentifier));
             }
             if (configurationService == null)
             {
-                throw new ArgumentNullException("configurationService");
+                throw new ArgumentNullException(nameof(configurationService));
             }
 
             this.dateTimeProvider = dateTimeProvider;
-            this.commandIdentifier = commandIdentifier;
             this.configurationService = configurationService;
 
             percentileExecution = new HystrixRollingPercentile(configurationService.GetMetricsRollingPercentileWindowInMilliseconds(), configurationService.GetMetricsRollingPercentileWindowBuckets(), configurationService.GetMetricsRollingPercentileBucketSize(), configurationService);

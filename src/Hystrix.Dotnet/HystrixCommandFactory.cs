@@ -60,7 +60,7 @@ namespace Hystrix.Dotnet
             var configurationService =
                 configurationServiceImplementation != null && configurationServiceImplementation.Equals("HystrixJsonConfigConfigurationService", StringComparison.OrdinalIgnoreCase)
                 ? (IHystrixConfigurationService)new HystrixJsonConfigConfigurationService(commandIdentifier, options.JsonConfigurationSourceOptions)
-                : (IHystrixConfigurationService)new HystrixLocalConfigurationService(commandIdentifier, options.LocalOptions);
+                : new HystrixLocalConfigurationService(commandIdentifier, options.LocalOptions);
 
             var commandMetrics = new HystrixCommandMetrics(commandIdentifier, configurationService);
             var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationService);

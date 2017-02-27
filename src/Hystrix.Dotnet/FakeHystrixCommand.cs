@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+// ReSharper disable UnusedAutoPropertyAccessor.Local
 
 namespace Hystrix.Dotnet
 {
@@ -8,7 +9,7 @@ namespace Hystrix.Dotnet
     {
         private readonly bool runFallbackOrThrowException;
 
-        public HystrixCommandIdentifier CommandIdentifier { get; private set; }
+        public HystrixCommandIdentifier CommandIdentifier { get; }
         public IHystrixCircuitBreaker CircuitBreaker { get; private set; }
         public IHystrixCommandMetrics CommandMetrics { get; private set; }
         public IHystrixThreadPoolMetrics ThreadPoolMetrics { get; private set; }

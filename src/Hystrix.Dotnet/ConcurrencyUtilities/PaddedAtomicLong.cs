@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Threading;
+// ReSharper disable ParameterHidesMember
 
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
@@ -8,7 +9,7 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
     /// AtomicLong end up close to each other in memory - when stored in an array for ex. 
     /// </summary>
     [StructLayout(LayoutKind.Explicit, Size = 64 * 2)]
-    public struct PaddedAtomicLong : AtomicValue<long>, ValueAdder<long>
+    public struct PaddedAtomicLong : IAtomicValue<long>, IValueAdder<long>
     {
         public static readonly int SizeInBytes = 128;
 
@@ -199,14 +200,14 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
         }
 
         // RemoveAtPack
-        long ValueAdder<long>.GetAndReset() { return this.GetAndReset(); }
-        void ValueAdder<long>.Add(long value) { this.Add(value); }
-        void ValueAdder<long>.Increment() { this.Increment(); }
-        void ValueAdder<long>.Increment(long value) { this.Increment(value); }
-        void ValueAdder<long>.Decrement() { this.Decrement(); }
-        void ValueAdder<long>.Decrement(long value) { this.Decrement(value); }
-        void ValueAdder<long>.Reset() { this.SetValue(0L); }
-        long ValueReader<long>.GetValue() { return this.GetValue(); }
+        long IValueAdder<long>.GetAndReset() { return this.GetAndReset(); }
+        void IValueAdder<long>.Add(long value) { this.Add(value); }
+        void IValueAdder<long>.Increment() { this.Increment(); }
+        void IValueAdder<long>.Increment(long value) { this.Increment(value); }
+        void IValueAdder<long>.Decrement() { this.Decrement(); }
+        void IValueAdder<long>.Decrement(long value) { this.Decrement(value); }
+        void IValueAdder<long>.Reset() { this.SetValue(0L); }
+        long IValueReader<long>.GetValue() { return this.GetValue(); }
         // EndRemoveAtPack
     }
 }

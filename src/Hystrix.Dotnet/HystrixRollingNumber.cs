@@ -13,20 +13,11 @@ namespace Hystrix.Dotnet
         private readonly CircularArray<RollingNumberBucket> buckets;
         private readonly CumulativeSum cumulativeSum = new CumulativeSum();
 
-        public int TimeInMilliseconds
-        {
-            get { return timeInMilliseconds; }
-        }
+        public int TimeInMilliseconds => timeInMilliseconds;
 
-        public int NumberOfBuckets
-        {
-            get { return numberOfBuckets; }
-        }
+        public int NumberOfBuckets => numberOfBuckets;
 
-        public int BucketSizeInMillseconds
-        {
-            get { return bucketSizeInMillseconds; }
-        }
+        public int BucketSizeInMillseconds => bucketSizeInMillseconds;
 
         public HystrixRollingNumber(int timeInMilliseconds, int numberOfBuckets)
             :this(new DateTimeProvider(), timeInMilliseconds, numberOfBuckets)
@@ -38,15 +29,15 @@ namespace Hystrix.Dotnet
         {
             if (timeInMilliseconds <= 0)
             {
-                throw new ArgumentOutOfRangeException("timeInMilliseconds", "Parameter timeInMilliseconds needs to be greater than 0");
+                throw new ArgumentOutOfRangeException(nameof(timeInMilliseconds), "Parameter timeInMilliseconds needs to be greater than 0");
             }
             if (numberOfBuckets <= 0)
             {
-                throw new ArgumentOutOfRangeException("numberOfBuckets", "Parameter numberOfBuckets needs to be greater than 0");
+                throw new ArgumentOutOfRangeException(nameof(numberOfBuckets), "Parameter numberOfBuckets needs to be greater than 0");
             }
             if (timeInMilliseconds % numberOfBuckets != 0)
             {
-                throw new ArgumentOutOfRangeException("timeInMilliseconds", "Parameter timeInMilliseconds needs to be an exact multiple of numberOfBuckets");
+                throw new ArgumentOutOfRangeException(nameof(timeInMilliseconds), "Parameter timeInMilliseconds needs to be an exact multiple of numberOfBuckets");
             }
 
             this.dateTimeProvider = dateTimeProvider;

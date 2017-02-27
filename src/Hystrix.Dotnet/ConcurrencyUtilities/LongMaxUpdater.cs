@@ -1,4 +1,5 @@
-﻿namespace Hystrix.Dotnet.ConcurrencyUtilities
+﻿// ReSharper disable All
+namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
     public class LongMaxUpdater : Striped64
     {

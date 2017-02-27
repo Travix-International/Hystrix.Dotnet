@@ -1,5 +1,5 @@
-using System.Runtime.InteropServices;
 using System.Threading;
+// ReSharper disable ParameterHidesMember
 
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
@@ -10,7 +10,7 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
     /// <remarks>
     /// The AtomicInteger is a struct not a class and members of this type should *not* be declared readonly or changes will not be reflected in the member instance. 
     /// </remarks>
-    public struct AtomicInteger : AtomicValue<int>, ValueAdder<int>
+    public struct AtomicInteger : IAtomicValue<int>, IValueAdder<int>
     {
         /// <summary>
         /// The size in bytes occupied by an instance of this type
@@ -49,10 +49,10 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
         /// <summary>
         /// Write a new value to this instance. The value is immediately seen by all processors.
         /// </summary>
-        /// <param name="value">The new value for this instance.</param>
-        public void SetValue(int value)
+        /// <param name="newValue">The new value for this instance.</param>
+        public void SetValue(int newValue)
         {
-            Volatile.Write(ref this.value, value);
+            Volatile.Write(ref value, newValue);
         }
 
         /// <summary>
@@ -203,14 +203,14 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
         }
 
         // RemoveAtPack
-        int ValueAdder<int>.GetAndReset() { return this.GetAndReset(); }
-        void ValueAdder<int>.Add(int value) { this.Add(value); }
-        void ValueAdder<int>.Increment() { this.Increment(); }
-        void ValueAdder<int>.Increment(int value) { this.Increment(value); }
-        void ValueAdder<int>.Decrement() { this.Decrement(); }
-        void ValueAdder<int>.Decrement(int value) { this.Decrement(value); }
-        void ValueAdder<int>.Reset() { this.SetValue(0); }
-        int ValueReader<int>.GetValue() { return this.GetValue(); }
+        int IValueAdder<int>.GetAndReset() { return this.GetAndReset(); }
+        void IValueAdder<int>.Add(int value) { this.Add(value); }
+        void IValueAdder<int>.Increment() { this.Increment(); }
+        void IValueAdder<int>.Increment(int value) { this.Increment(value); }
+        void IValueAdder<int>.Decrement() { this.Decrement(); }
+        void IValueAdder<int>.Decrement(int value) { this.Decrement(value); }
+        void IValueAdder<int>.Reset() { this.SetValue(0); }
+        int IValueReader<int>.GetValue() { return this.GetValue(); }
         // EndRemoveAtPack
     }
 }

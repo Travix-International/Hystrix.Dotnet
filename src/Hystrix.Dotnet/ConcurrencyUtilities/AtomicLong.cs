@@ -1,4 +1,5 @@
 using System.Threading;
+// ReSharper disable ParameterHidesMember
 
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
@@ -9,7 +10,7 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
     /// <remarks>
     /// The AtomicLong is a struct not a class and members of this type should *not* be declared readonly or changes will not be reflected in the member instance. 
     /// </remarks>
-    public struct AtomicLong : AtomicValue<long>, ValueAdder<long>
+    public struct AtomicLong : IAtomicValue<long>, IValueAdder<long>
     {
         /// <summary>
         /// The size in bytes occupied by an instance of this type
@@ -48,10 +49,10 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
         /// <summary>
         /// Write a new value to this instance. The value is immediately seen by all processors.
         /// </summary>
-        /// <param name="value">The new value for this instance.</param>
-        public void SetValue(long value)
+        /// <param name="newValue">The new value for this instance.</param>
+        public void SetValue(long newValue)
         {
-            Volatile.Write(ref this.value, value);
+            Volatile.Write(ref value, newValue);
         }
 
         /// <summary>
@@ -202,14 +203,14 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
         }
 
         // RemoveAtPack
-        long ValueAdder<long>.GetAndReset() { return this.GetAndReset(); }
-        void ValueAdder<long>.Add(long value) { this.Add(value); }
-        void ValueAdder<long>.Increment() { this.Increment(); }
-        void ValueAdder<long>.Increment(long value) { this.Increment(value); }
-        void ValueAdder<long>.Decrement() { this.Decrement(); }
-        void ValueAdder<long>.Decrement(long value) { this.Decrement(value); }
-        void ValueAdder<long>.Reset() { this.SetValue(0L); }
-        long ValueReader<long>.GetValue() { return this.GetValue(); }
+        long IValueAdder<long>.GetAndReset() { return this.GetAndReset(); }
+        void IValueAdder<long>.Add(long value) { this.Add(value); }
+        void IValueAdder<long>.Increment() { this.Increment(); }
+        void IValueAdder<long>.Increment(long value) { this.Increment(value); }
+        void IValueAdder<long>.Decrement() { this.Decrement(); }
+        void IValueAdder<long>.Decrement(long value) { this.Decrement(value); }
+        void IValueAdder<long>.Reset() { this.SetValue(0L); }
+        long IValueReader<long>.GetValue() { return this.GetValue(); }
         // EndRemoveAtPack
     }
 }

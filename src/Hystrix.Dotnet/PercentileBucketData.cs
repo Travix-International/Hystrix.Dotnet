@@ -8,7 +8,7 @@ namespace Hystrix.Dotnet
         private readonly int[] list; // should be AtomicIntegerArray
         private AtomicInteger index = new AtomicInteger();
 
-        public int[] List { get { return list; } }
+        public int[] List => list;
 
         public PercentileBucketData(int dataLength) 
         {

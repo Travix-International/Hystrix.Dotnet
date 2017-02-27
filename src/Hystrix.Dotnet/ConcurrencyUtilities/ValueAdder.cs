@@ -1,6 +1,6 @@
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
-    internal interface ValueAdder<T> : ValueReader<T>
+    internal interface IValueAdder<T> : IValueReader<T>
     {
         T GetAndReset();
         void Add(T value);

@@ -1,6 +1,6 @@
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
-    internal interface AtomicValue<T> : VolatileValue<T>
+    internal interface IAtomicValue<T> : IVolatileValue<T>
     {
         T Add(T value);
 

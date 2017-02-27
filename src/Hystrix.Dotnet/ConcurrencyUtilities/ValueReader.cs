@@ -1,6 +1,6 @@
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
-    internal interface ValueReader<out T>
+    internal interface IValueReader<out T>
     {
         T GetValue();
         T NonVolatileGetValue();

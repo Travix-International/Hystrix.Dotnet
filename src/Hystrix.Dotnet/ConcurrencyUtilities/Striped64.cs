@@ -1,11 +1,12 @@
 using System;
 using System.Threading;
+// ReSharper disable TooWideLocalVariableScope
 
 namespace Hystrix.Dotnet.ConcurrencyUtilities
 {
     public abstract class Striped64
     {
-        private static readonly int ProcessorCount = Environment.ProcessorCount;
+        private static readonly int processorCount = Environment.ProcessorCount;
 
         protected sealed class Cell
         {
@@ -73,7 +74,7 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
                         wasUncontended = true;      // Continue after rehash
                     else if (a.Value.CompareAndSwap(v = a.Value.GetValue(), v + x))
                         break;
-                    else if (n >= ProcessorCount || this.Cells != @as)
+                    else if (n >= processorCount || this.Cells != @as)
                         collide = false;            // At max size or stale
                     else if (!collide)
                         collide = true;
@@ -125,7 +126,7 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
 
         protected static int GetProbe()
         {
-            return HashCode.Value.Code;
+            return hashCode.Value.Code;
         }
 
         private static int AdvanceProbe(int probe)
@@ -133,11 +134,11 @@ namespace Hystrix.Dotnet.ConcurrencyUtilities
             probe ^= probe << 13;   // xorshift
             probe ^= (int)((uint)probe >> 17);
             probe ^= probe << 5;
-            HashCode.Value.Code = probe;
+            hashCode.Value.Code = probe;
             return probe;
         }
 
-        private static readonly ThreadLocal<ThreadHashCode> HashCode = new ThreadLocal<ThreadHashCode>(() => new ThreadHashCode());
+        private static readonly ThreadLocal<ThreadHashCode> hashCode = new ThreadLocal<ThreadHashCode>(() => new ThreadHashCode());
 
         private class ThreadHashCode
         {

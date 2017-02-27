@@ -16,7 +16,7 @@ namespace Hystrix.Dotnet
         private readonly IHystrixConfigurationService configurationService;
         private readonly int bucketSizeInMilliseconds;
 
-        internal CircularArray<RollingPercentileBucket> Buckets { get { return buckets; } }
+        internal CircularArray<RollingPercentileBucket> Buckets => buckets;
 
         private volatile PercentileSnapshot currentPercentileSnapshot = new PercentileSnapshot(0);
 
@@ -30,23 +30,23 @@ namespace Hystrix.Dotnet
         {
             if (timeInMilliseconds <= 0)
             {
-                throw new ArgumentOutOfRangeException("timeInMilliseconds", "Parameter timeInMilliseconds needs to be greater than 0");
+                throw new ArgumentOutOfRangeException(nameof(timeInMilliseconds), "Parameter timeInMilliseconds needs to be greater than 0");
             }
             if (numberOfBuckets <= 0)
             {
-                throw new ArgumentOutOfRangeException("numberOfBuckets", "Parameter numberOfBuckets needs to be greater than 0");
+                throw new ArgumentOutOfRangeException(nameof(numberOfBuckets), "Parameter numberOfBuckets needs to be greater than 0");
             }
             if (timeInMilliseconds % numberOfBuckets != 0)
             {
-                throw new ArgumentOutOfRangeException("timeInMilliseconds", "Parameter timeInMilliseconds needs to be an exact multiple of numberOfBuckets");
+                throw new ArgumentOutOfRangeException(nameof(timeInMilliseconds), "Parameter timeInMilliseconds needs to be an exact multiple of numberOfBuckets");
             }
             if (bucketDataLength < 100)
             {
-                throw new ArgumentOutOfRangeException("bucketDataLength", "Parameter bucketDataLength needs to be greater than or equal to 100");
+                throw new ArgumentOutOfRangeException(nameof(bucketDataLength), "Parameter bucketDataLength needs to be greater than or equal to 100");
             }
             if (configurationService == null)
             {
-                throw new ArgumentNullException("configurationService");
+                throw new ArgumentNullException(nameof(configurationService));
             }
 
             this.dateTimeProvider = dateTimeProvider;
