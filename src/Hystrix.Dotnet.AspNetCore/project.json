@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-beta1",
+  "version": "1.0.0-beta2",
   "description": "A combination of circuit breaker and timeout. The .net version of the open source Hystrix library built by Netflix.",
 
   "packOptions": {
@@ -26,7 +26,7 @@
 
   "dependencies": {
     "Hystrix.Dotnet": {
-      "version": "1.0.0-beta1",
+      "version": "1.0.0-beta2",
       "target":  "package" 
     },
     "Microsoft.AspNetCore.Http": "1.1.0",
