@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using log4net;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet.Metrics
@@ -23,8 +22,8 @@ namespace Hystrix.Dotnet.Metrics
 
         private readonly int pollingInterval;
 
-        public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, IOptions<HystrixOptions> options) :
-            this(commandFactory, options?.Value?.MetricsStreamPollIntervalInMilliseconds ?? 500)
+        public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, HystrixOptions options) :
+            this(commandFactory, options?.MetricsStreamPollIntervalInMilliseconds ?? 500)
         {
         }
 

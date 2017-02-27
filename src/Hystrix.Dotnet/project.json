@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-beta3",
   "description": "A combination of circuit breaker and timeout. The .net version of the open source Hystrix library built by Netflix.",
 
   "packOptions": {
@@ -27,9 +27,7 @@
   "dependencies": {
     "JitterMagic": "1.1.3",
     "Newtonsoft.Json": "9.0.1",
-    "log4net": "2.0.7",
-    "Microsoft.Extensions.Configuration": "1.1.0",
-    "Microsoft.Extensions.Options": "1.1.0"
+    "log4net": "2.0.7"
   },  
 
   "frameworks": {
@@ -38,10 +36,10 @@
         "define": [ "COREFX" ]
       },
       "dependencies": {
-        "System.Threading.Thread": "4.3.0",
+        "System.Collections.Concurrent": "4.3.0",         "System.Diagnostics.Contracts": "4.3.0",
         "System.Net.Http": "4.3.0",
-        "System.Diagnostics.Contracts": "4.3.0",
-        "System.Reflection": "4.3.0"
+        "System.Reflection": "4.3.0",
+        "System.Threading.Thread": "4.3.0"
       }
     },
     "net45": {

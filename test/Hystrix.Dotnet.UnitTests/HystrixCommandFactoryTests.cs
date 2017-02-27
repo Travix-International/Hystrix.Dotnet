@@ -10,7 +10,7 @@ namespace Hystrix.Dotnet.UnitTests
     {
         public class GetHystrixCommand
         {
-            private readonly IOptions<HystrixOptions> defaultOptions = Options.Create(HystrixOptions.CreateDefault());
+            private readonly HystrixOptions defaultOptions = HystrixOptions.CreateDefault();
 
             public GetHystrixCommand()
             {
@@ -85,7 +85,7 @@ namespace Hystrix.Dotnet.UnitTests
 
         public class GetHystrixCommand_With_GroupKey_And_CommandKey
         {
-            private readonly IOptions<HystrixOptions> defaultOptions = Options.Create(HystrixOptions.CreateDefault());
+            private readonly HystrixOptions defaultOptions = HystrixOptions.CreateDefault();
 
             public GetHystrixCommand_With_GroupKey_And_CommandKey()
             {
@@ -159,7 +159,7 @@ namespace Hystrix.Dotnet.UnitTests
 
         public class GetAllHystrixCommands
         {
-            private readonly IOptions<HystrixOptions> defaultOptions = Options.Create(HystrixOptions.CreateDefault());
+            private readonly HystrixOptions defaultOptions = HystrixOptions.CreateDefault();
 
             public GetAllHystrixCommands()
             {

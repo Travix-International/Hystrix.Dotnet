@@ -3,7 +3,6 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Hystrix.Dotnet.Metrics;
-using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
@@ -47,7 +46,7 @@ namespace Hystrix.Dotnet.UnitTests.Metrics
             [Fact]
             public async Task Writes_Command_Json_For_All_HystrixCommands_To_OutputStream()
             {
-                HystrixCommandFactory commandFactory = new HystrixCommandFactory(Options.Create(new HystrixOptions()));
+                HystrixCommandFactory commandFactory = new HystrixCommandFactory(new HystrixOptions());
                 int pollingInterval = 1000;
                 var endpoint = new HystrixMetricsStreamEndpoint(commandFactory, pollingInterval);
                 commandFactory.GetHystrixCommand(new HystrixCommandIdentifier("groupA", "commandX"));

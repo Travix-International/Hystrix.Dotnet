@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using log4net;
-using Microsoft.Extensions.Options;
 
 namespace Hystrix.Dotnet
 {
@@ -12,11 +11,11 @@ namespace Hystrix.Dotnet
         private static readonly ILog log = LogManager.GetLogger(typeof(HystrixCommandFactory));
         private static readonly ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand> commandsDictionary = new ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand>();
 
-        private readonly IOptions<HystrixOptions> options;
+        private readonly HystrixOptions options;
 
-        public HystrixCommandFactory(IOptions<HystrixOptions> options)
+        public HystrixCommandFactory(HystrixOptions options)
         {
-            if (options.Value == null)
+            if (options == null)
             {
                 throw new ArgumentException("The HystrixOptions must be specified in order to use Hystrix.Dotnet", nameof(options));
             }
@@ -38,7 +37,7 @@ namespace Hystrix.Dotnet
                 ci =>
                 {
                     log.DebugFormat("Added a new command with group {0} and key {1}.", ci.GroupKey, ci.CommandKey);
-                    return CreateHystrixCommand(ci, options.Value);
+                    return CreateHystrixCommand(ci, options);
                 },
                 (ci, command) =>
                 {
