@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0-beta2",
-  "description": "A combination of circuit breaker and timeout. The .net version of the open source Hystrix library built by Netflix.",
+  "version": "1.0.0-beta3",
+  "description": "ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.",
 
   "packOptions": {
     "projectUrl": "https://github.com/Travix-International/Hystrix.Dotnet",
@@ -26,7 +26,7 @@
 
   "dependencies": {
     "Hystrix.Dotnet": {
-      "version": "1.0.0-beta2",
+      "version": "1.0.0-beta3",
       "target":  "package" 
     }
   },  

@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using Microsoft.Extensions.Options;
 
 namespace Hystrix.Dotnet.AspNet
 {
@@ -17,7 +16,7 @@ namespace Hystrix.Dotnet.AspNet
             var translator = new HystrixConfigSectionTranslator();
 
             return new HystrixCommandFactory(
-                Options.Create(configSection == null ? HystrixOptions.CreateDefault() : translator.TranslateToOptions(configSection)));
+                configSection == null ? HystrixOptions.CreateDefault() : translator.TranslateToOptions(configSection));
         }
     }
 }

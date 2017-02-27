@@ -64,6 +64,10 @@ namespace Hystrix.Dotnet.Metrics
                     await Task.Delay(pollingInterval, cancellationToken).ConfigureAwait(false);
                 }
             }
+            catch (TaskCanceledException)
+            {
+                // This just means that the connection was closed.
+            }
             finally
             {
                 log.Info("Flushing and closing Hystrix outputstream");
