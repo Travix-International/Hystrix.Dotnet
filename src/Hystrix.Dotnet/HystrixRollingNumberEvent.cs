@@ -1,4 +1,9 @@
-﻿namespace Hystrix.Dotnet
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace Hystrix.Dotnet
 {
     public enum HystrixRollingNumberEvent
     {
@@ -28,17 +33,58 @@
         ThreadMaxActive = 20
     }
 
+    public enum EventKind
+    {
+        Counter,
+        MaxUpdater
+    }
+
     public static class HystrixRollingNumberEventExtensions
     {
-        // NOTE: Hacky, but performant approach. Won't scale if we'll have more kinds of events.
+        private static readonly IDictionary<HystrixRollingNumberEvent, EventKind> eventKinds = new Dictionary<HystrixRollingNumberEvent, EventKind>
+        {
+            [HystrixRollingNumberEvent.Success] = EventKind.Counter,
+            [HystrixRollingNumberEvent.Failure] = EventKind.Counter,
+            [HystrixRollingNumberEvent.Timeout] = EventKind.Counter,
+            [HystrixRollingNumberEvent.ShortCircuited] = EventKind.Counter,
+            [HystrixRollingNumberEvent.ThreadPoolRejected] = EventKind.Counter,
+            [HystrixRollingNumberEvent.SemaphoreRejected] = EventKind.Counter,
+            [HystrixRollingNumberEvent.BadRequest] = EventKind.Counter,
+            [HystrixRollingNumberEvent.FallbackSuccess] = EventKind.Counter,
+            [HystrixRollingNumberEvent.FallbackFailure] = EventKind.Counter,
+            [HystrixRollingNumberEvent.FallbackRejection] = EventKind.Counter,
+            [HystrixRollingNumberEvent.FallbackMissing] = EventKind.Counter,
+            [HystrixRollingNumberEvent.ExceptionThrown] = EventKind.Counter,
+            [HystrixRollingNumberEvent.Emit] = EventKind.Counter,
+            [HystrixRollingNumberEvent.FallbackEmit] = EventKind.Counter,
+            [HystrixRollingNumberEvent.ThreadExecution] = EventKind.Counter,
+            [HystrixRollingNumberEvent.Collapsed] = EventKind.Counter,
+            [HystrixRollingNumberEvent.ResponseFromCache] = EventKind.Counter,
+            [HystrixRollingNumberEvent.CollapserRequestBatched] = EventKind.Counter,
+            [HystrixRollingNumberEvent.CollapserBatch] = EventKind.Counter,
+            [HystrixRollingNumberEvent.CommandMaxActive] = EventKind.MaxUpdater,
+            [HystrixRollingNumberEvent.ThreadMaxActive] = EventKind.MaxUpdater
+        };
+
+        static HystrixRollingNumberEventExtensions()
+        {
+            // Check if we didn't forget to set up the EventKind for any of the enum values.
+            if (Enum.GetValues(typeof(HystrixRollingNumberEvent))
+                .Cast<HystrixRollingNumberEvent>()
+                .Any(e => !eventKinds.ContainsKey(e)))
+            {
+                throw new InvalidOperationException("The EventKind has to be set up for all the HystrixRollingNumberEvent values.");
+            }
+        }
+
         public static bool IsCounter(this HystrixRollingNumberEvent hystrixRollingNumberEvent)
         {
-            return hystrixRollingNumberEvent != HystrixRollingNumberEvent.CommandMaxActive && hystrixRollingNumberEvent != HystrixRollingNumberEvent.ThreadMaxActive;
+            return eventKinds[hystrixRollingNumberEvent] == EventKind.Counter;
         }
 
         public static bool IsMaxUpdater(this HystrixRollingNumberEvent hystrixRollingNumberEvent)
         {
-            return hystrixRollingNumberEvent == HystrixRollingNumberEvent.CommandMaxActive || hystrixRollingNumberEvent == HystrixRollingNumberEvent.ThreadMaxActive;
+            return eventKinds[hystrixRollingNumberEvent] == EventKind.MaxUpdater;
         }
     }
 }

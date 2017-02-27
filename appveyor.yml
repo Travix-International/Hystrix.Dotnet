@@ -49,7 +49,7 @@ test_script:
 #---------------------------------#
 
 artifacts:
-- path: src/Hystrix.Dotnet/**/*.nupkg
+- path: src/**/*.nupkg
 
 #---------------------------------#
 #     deployment configuration    #
