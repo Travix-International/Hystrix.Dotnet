@@ -2,24 +2,17 @@
 {
     public class HystrixOptions
     {
-        public HystrixOptions()
-        {
-            ConfigurationServiceImplementation = "HystrixLocalConfigurationService";
-            MetricsStreamPollIntervalInMilliseconds = 500;
-            LocalOptions = HystrixLocalOptions.CreateDefault();
-        }
-
         public static HystrixOptions CreateDefault()
         {
             return new HystrixOptions();
         }
 
-        public string ConfigurationServiceImplementation { get; set; }
+        public string ConfigurationServiceImplementation { get; set; } = "HystrixLocalConfigurationService";
 
-        public int MetricsStreamPollIntervalInMilliseconds { get; set; }
+        public int MetricsStreamPollIntervalInMilliseconds { get; set; } = 500;
+
+        public HystrixLocalOptions LocalOptions { get; set; } = HystrixLocalOptions.CreateDefault();
 
         public HystrixJsonConfigurationSourceOptions JsonConfigurationSourceOptions { get; set; }
-
-        public HystrixLocalOptions LocalOptions { get; set; }
     }
 }

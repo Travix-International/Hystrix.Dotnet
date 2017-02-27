@@ -259,37 +259,6 @@ namespace Hystrix.Dotnet
             return configurationObject == null || configurationObject.HystrixCommandEnabled;
         }
 
-        //internal class ConfigurationObject
-        //{
-        //    public bool HystrixCommandEnabled { get; set; }
-
-        //    public int CommandTimeoutInMilliseconds { get; set; }
-
-        //    public bool CircuitBreakerForcedOpen { get; set; }
-
-        //    public bool CircuitBreakerForcedClosed { get; set; }
-
-        //    public int CircuitBreakerErrorThresholdPercentage { get; set; }
-
-        //    public int CircuitBreakerSleepWindowInMilliseconds { get; set; }
-
-        //    public int CircuitBreakerRequestVolumeThreshold { get; set; }
-
-        //    public int MetricsHealthSnapshotIntervalInMilliseconds { get; set; }
-
-        //    public int MetricsRollingStatisticalWindowInMilliseconds { get; set; }
-
-        //    public int MetricsRollingStatisticalWindowBuckets { get; set; }
-
-        //    public bool MetricsRollingPercentileEnabled { get; set; }
-
-        //    public int MetricsRollingPercentileWindowInMilliseconds { get; set; }
-
-        //    public int MetricsRollingPercentileWindowBuckets { get; set; }
-
-        //    public int MetricsRollingPercentileBucketSize { get; set; }
-        //}
-
         internal class SingleSetting 
         {
             public string Name { get; set; }

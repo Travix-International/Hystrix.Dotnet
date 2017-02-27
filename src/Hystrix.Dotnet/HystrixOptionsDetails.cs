@@ -2,55 +2,37 @@
 {
     public class HystrixCommandOptions
     {
-        public HystrixCommandOptions()
-        {
-            CommandTimeoutInMilliseconds = 1000;
-            CircuitBreakerForcedOpen = false;
-            CircuitBreakerForcedClosed = false;
-            CircuitBreakerErrorThresholdPercentage = 50;
-            CircuitBreakerSleepWindowInMilliseconds = 5000;
-            CircuitBreakerRequestVolumeThreshold = 20;
-            MetricsHealthSnapshotIntervalInMilliseconds = 500;
-            MetricsRollingStatisticalWindowInMilliseconds = 10000;
-            MetricsRollingStatisticalWindowBuckets = 10;
-            MetricsRollingPercentileEnabled = true;
-            MetricsRollingPercentileWindowInMilliseconds = 60000;
-            MetricsRollingPercentileWindowBuckets = 6;
-            MetricsRollingPercentileBucketSize = 100;
-            HystrixCommandEnabled = true;
-        }
-
         public static HystrixCommandOptions CreateDefault()
         {
             return new HystrixCommandOptions();
         }
 
-        public int CommandTimeoutInMilliseconds { get; set; }
+        public int CommandTimeoutInMilliseconds { get; set; } = 1000;
 
-        public bool CircuitBreakerForcedOpen { get; set; }
+        public bool CircuitBreakerForcedOpen { get; set; } = false;
 
-        public bool CircuitBreakerForcedClosed { get; set; }
+        public bool CircuitBreakerForcedClosed { get; set; } = false;
 
-        public int CircuitBreakerErrorThresholdPercentage { get; set; }
+        public int CircuitBreakerErrorThresholdPercentage { get; set; } = 50;
 
-        public int CircuitBreakerSleepWindowInMilliseconds { get; set; }
+        public int CircuitBreakerSleepWindowInMilliseconds { get; set; } = 5000;
 
-        public int CircuitBreakerRequestVolumeThreshold { get; set; }
+        public int CircuitBreakerRequestVolumeThreshold { get; set; } = 20;
 
-        public int MetricsHealthSnapshotIntervalInMilliseconds { get; set; }
+        public int MetricsHealthSnapshotIntervalInMilliseconds { get; set; } = 500;
 
-        public int MetricsRollingStatisticalWindowInMilliseconds { get; set; }
+        public int MetricsRollingStatisticalWindowInMilliseconds { get; set; } = 10000;
 
-        public int MetricsRollingStatisticalWindowBuckets { get; set; }
+        public int MetricsRollingStatisticalWindowBuckets { get; set; } = 10;
 
-        public bool MetricsRollingPercentileEnabled { get; set; }
+        public bool MetricsRollingPercentileEnabled { get; set; } = true;
 
-        public int MetricsRollingPercentileWindowInMilliseconds { get; set; }
+        public int MetricsRollingPercentileWindowInMilliseconds { get; set; } = 60000;
 
-        public int MetricsRollingPercentileWindowBuckets { get; set; }
+        public int MetricsRollingPercentileWindowBuckets { get; set; } = 6;
 
-        public int MetricsRollingPercentileBucketSize { get; set; }
+        public int MetricsRollingPercentileBucketSize { get; set; } = 100;
 
-        public bool HystrixCommandEnabled { get; set; }
+        public bool HystrixCommandEnabled { get; set; } = true;
     }
 }
