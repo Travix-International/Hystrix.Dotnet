@@ -19,7 +19,7 @@ nuget:
 
 environment:
   COVERALLS_REPO_TOKEN:
-    secure: 6xkLOjqMWYtgzJs6Uaid0HFWRust/BKvGmx7Hz0l/H5m/vsN1AKrmB52/lveihaT
+    secure: R8Ntdx47utdSttS13LQ+doLEkvHa1/8o0YcsX3qSzuyo4YdP76MN/OIfUOiW/u2G
 
 #---------------------------------#
 #       build configuration       #
@@ -32,6 +32,8 @@ build_script:
 - dotnet restore --no-cache
 - dotnet build **/project.json --configuration Release --version-suffix %APPVEYOR_BUILD_NUMBER%
 - dotnet pack src/Hystrix.Dotnet/project.json --configuration Release --no-build
+- dotnet pack src/Hystrix.Dotnet.AspNet/project.json --configuration Release --no-build
+- dotnet pack src/Hystrix.Dotnet.AspNetCore/project.json --configuration Release --no-build
 
 #---------------------------------#
 #       tests configuration       #

@@ -25,7 +25,10 @@
   },
 
   "dependencies": {
-    "Hystrix.Dotnet": "1.0.0-beta1"
+    "Hystrix.Dotnet": {
+      "version": "1.0.0-beta1",
+      "target":  "package" 
+    }
   },  
 
   "frameworks": {
