@@ -298,7 +298,7 @@ When requesting urls for your local application that hit your Hystrix command it
 
 ## Sample projects
 
-In the samples directory you can find an example project illustrating the configuration of Hystrix for ASP.NET and ASP.NET Core.
+In the [samples](/samples) directory you can find an example project illustrating the configuration of Hystrix for [ASP.NET](/samples/Hystrix.Dotnet.Samples.AspNet) and [ASP.NET Core](/samples/Hystrix.Dotnet.Samples.AspNetCore).
 
 ## Known issues
 
