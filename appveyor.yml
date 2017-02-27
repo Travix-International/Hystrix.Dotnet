@@ -38,9 +38,9 @@ build_script:
 #---------------------------------#
 
 test_script:
-- dotnet test test/Hystrix.Dotnet.UnitTests/project.json --configuration Release --no-buildo
-- dotnet test test/Hystrix.Dotnet.AspNet.UnitTests/project.json --configuration Release --no-buildo
-- dotnet test test/Hystrix.Dotnet.AspNetCore.UnitTests/project.json --configuration Release --no-buildo
+- dotnet test test/Hystrix.Dotnet.UnitTests/project.json --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.AspNet.UnitTests/project.json --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.AspNetCore.UnitTests/project.json --configuration Release --no-build
 - bash coverage.sh
 - bash coveralls.sh
 
