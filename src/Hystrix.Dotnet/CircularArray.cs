@@ -5,9 +5,7 @@ namespace Hystrix.Dotnet
 {
     internal class CircularArray<T>
     {
-        private readonly int maximumSize;
-
-        public int MaximumSize => maximumSize;
+        public int MaximumSize { get; }
 
         public int Length => internalQueue.Count;
 
@@ -20,7 +18,7 @@ namespace Hystrix.Dotnet
                 throw new ArgumentOutOfRangeException(nameof(maximumSize), "Parameter maximumSize needs to be greater than 0");
             }
 
-            this.maximumSize = maximumSize;
+            this.MaximumSize = maximumSize;
         }
 
         public T GetTail()
@@ -38,7 +36,7 @@ namespace Hystrix.Dotnet
         public T[] GetArray()
         {
             // try to remove old items if length is still beyond maximumSize
-            while (internalQueue.Count > maximumSize)
+            while (internalQueue.Count > MaximumSize)
             {
                 T result;
                 internalQueue.TryDequeue(out result);
@@ -52,7 +50,7 @@ namespace Hystrix.Dotnet
             internalQueue.Enqueue(value);
 
             // try to remove old items if length goes beyond maximumSize
-            while (internalQueue.Count > maximumSize)
+            while (internalQueue.Count > MaximumSize)
             {
                 T result;
                 internalQueue.TryDequeue(out result);

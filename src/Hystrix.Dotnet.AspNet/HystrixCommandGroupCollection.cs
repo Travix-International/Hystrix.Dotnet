@@ -12,13 +12,7 @@ namespace Hystrix.Dotnet.AspNet
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            var commandGroup = element as HystrixCommandGroupElement;
-            if (commandGroup == null)
-            {
-                throw new InvalidCastException("element");
-            }
-
-            return commandGroup.Key;
+            return ((HystrixCommandGroupElement) element).Key;
         }
     }
 }

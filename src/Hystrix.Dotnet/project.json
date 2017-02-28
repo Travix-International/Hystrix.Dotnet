@@ -36,7 +36,8 @@
         "define": [ "COREFX" ]
       },
       "dependencies": {
-        "System.Collections.Concurrent": "4.3.0",         "System.Diagnostics.Contracts": "4.3.0",
+        "System.Collections.Concurrent": "4.3.0", 
+        "System.Diagnostics.Contracts": "4.3.0",
         "System.Net.Http": "4.3.0",
         "System.Reflection": "4.3.0",
         "System.Threading.Thread": "4.3.0"
