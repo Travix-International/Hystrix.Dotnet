@@ -1,4 +1,4 @@
-# Hystrix.Dotnetyour application using Hystrix.
+# Hystrix.Dotnet
 
 A combination of circuit breaker and timeout. The .net version of the open source [Hystrix library](https://github.com/Netflix/Hystrix library) built by Netflix.
 
