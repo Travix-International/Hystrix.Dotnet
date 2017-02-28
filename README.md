@@ -19,7 +19,7 @@ The circuit breakers are identifyable by group and command key. To make sure you
 
 ```csharp
 var options = HystrixOptions.CreateDefault();
-var hystrixCommandFactory = new HystrixCommandFactory(Options.Create(options));
+var hystrixCommandFactory = new HystrixCommandFactory(options);
 var hystrixCommand = hystrixCommandFactory.GetHystrixCommand("groupKey", "commandKey");
 ```
 
