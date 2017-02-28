@@ -69,6 +69,7 @@ namespace Hystrix.Dotnet
             var timeoutCancellationTokenSource = new CancellationTokenSource();
 
             // wrap in a task so it doesn't wait for any non-awaitable parts of the primaryTask
+            // ReSharper disable once MethodSupportsCancellation
             var outerTask = Task.Run(primaryTask.Invoke);
 
             if (await Task.WhenAny(outerTask, Task.Delay(timeout, timeoutCancellationTokenSource.Token)).ConfigureAwait(false) == outerTask)

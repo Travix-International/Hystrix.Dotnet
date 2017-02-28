@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-beta3",
+  "version": "1.0.0-beta4",
   "description": "ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.",
 
   "packOptions": {
@@ -25,10 +25,7 @@
   },
 
   "dependencies": {
-    "Hystrix.Dotnet": {
-      "version": "1.0.0-beta3",
-      "target":  "package" 
-    }
+    "Hystrix.Dotnet": "1.0.0-beta4"
   },  
 
   "frameworks": {
