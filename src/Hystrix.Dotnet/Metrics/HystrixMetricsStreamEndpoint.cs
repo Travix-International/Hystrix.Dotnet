@@ -47,34 +47,37 @@ namespace Hystrix.Dotnet.Metrics
         {
             try
             {
-                log.Info("Start writing to Hystrix outputstream");
-
-                while (true)
+                try
                 {
-                    if (cancellationToken.IsCancellationRequested)
+                    log.Info("Start writing to Hystrix outputstream");
+
+                    while (true)
                     {
-                        break;
+                        if (cancellationToken.IsCancellationRequested)
+                        {
+                            break;
+                        }
+
+                        await WriteAllCommandsJsonToOutputStream(outputStream, cancellationToken).ConfigureAwait(false);
+                        await outputStream.FlushAsync(cancellationToken);
+
+                        flushResponse();
+
+                        await Task.Delay(pollingInterval, cancellationToken).ConfigureAwait(false);
                     }
+                }
+                finally
+                {
+                    log.Info("Flushing and closing Hystrix outputstream");
 
-                    await WriteAllCommandsJsonToOutputStream(outputStream, cancellationToken).ConfigureAwait(false);
+                    // Close output stream as we are done
                     await outputStream.FlushAsync(cancellationToken);
-
                     flushResponse();
-
-                    await Task.Delay(pollingInterval, cancellationToken).ConfigureAwait(false);
                 }
             }
             catch (TaskCanceledException)
             {
                 // This just means that the connection was closed.
-            }
-            finally
-            {
-                log.Info("Flushing and closing Hystrix outputstream");
-
-                // Close output stream as we are done
-                await outputStream.FlushAsync(cancellationToken);
-                flushResponse();
             }
         }
 
@@ -117,7 +120,7 @@ namespace Hystrix.Dotnet.Metrics
             var healthCounts = commandMetrics.GetHealthCounts();
 
             // NOTE: The false argument to the UTF8Encoding constructor is important, otherwise it would embed BOMs into the stream.
-            using(var sw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
+            using (var sw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
             {
                 jsonSerializer.Serialize(sw, new
                 {
@@ -194,7 +197,7 @@ namespace Hystrix.Dotnet.Metrics
                     propertyValue_executionIsolationThreadTimeoutInMilliseconds = 0, //configurationService.GetExecutionTimeoutInMilliseconds(),
                     propertyValue_executionTimeoutInMilliseconds = configurationService.GetCommandTimeoutInMilliseconds(),
                     propertyValue_executionIsolationThreadInterruptOnTimeout = false, //configurationService.GetExecutionIsolationThreadInterruptOnTimeout(),
-                    propertyValue_executionIsolationThreadPoolKeyOverride = (string) null, // configurationService.GetExecutionIsolationThreadPoolKeyOverride(),
+                    propertyValue_executionIsolationThreadPoolKeyOverride = (string)null, // configurationService.GetExecutionIsolationThreadPoolKeyOverride(),
                     propertyValue_executionIsolationSemaphoreMaxConcurrentRequests = 0, // configurationService.GetExecutionIsolationSemaphoreMaxConcurrentRequests(),
                     propertyValue_fallbackIsolationSemaphoreMaxConcurrentRequests = 0, // configurationService.GetFallbackIsolationSemaphoreMaxConcurrentRequests(),
 
