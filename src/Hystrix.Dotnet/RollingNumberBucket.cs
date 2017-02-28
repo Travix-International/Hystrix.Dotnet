@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Linq;
-using ConcurrencyUtilities;
+using Hystrix.Dotnet.ConcurrencyUtilities;
 
 namespace Hystrix.Dotnet
 {
     internal class RollingNumberBucket
     {
-        private readonly long windowStart;
-
-        public long WindowStart { get { return windowStart; } }
+        public long WindowStart { get; }
 
         private readonly StripedLongAdder[] adderForCounterType;
         private readonly LongMaxUpdater[] updaterForCounterType;
 
         public RollingNumberBucket(long startTime)
         {
-            windowStart = startTime;
+            WindowStart = startTime;
 
             /*
              * We support both LongAdder and LongMaxUpdater in a bucket but don't want the memory allocation
@@ -24,9 +22,9 @@ namespace Hystrix.Dotnet
              * as we want to keep using the type.ordinal() value for fast random access.
              */
 
-            var values = Enum.GetValues(typeof(HystrixRollingNumberEvent)).Cast<HystrixRollingNumberEvent>();
+            var values = Enum.GetValues(typeof(HystrixRollingNumberEvent)).Cast<HystrixRollingNumberEvent>().ToArray();
 
-            adderForCounterType = new StripedLongAdder[values.Count()];
+            adderForCounterType = new StripedLongAdder[values.Length];
             foreach (var value in values)
             {
                 if (value.IsCounter())
@@ -35,7 +33,7 @@ namespace Hystrix.Dotnet
                 }
             }
 
-            updaterForCounterType = new LongMaxUpdater[values.Count()];
+            updaterForCounterType = new LongMaxUpdater[values.Length];
             foreach (var value in values)
             {
                 if (value.IsMaxUpdater())

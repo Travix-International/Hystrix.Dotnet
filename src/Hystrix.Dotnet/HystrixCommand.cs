@@ -8,56 +8,56 @@ namespace Hystrix.Dotnet
 {
     public class HystrixCommand : IHystrixCommand
     {
-        private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixTimeoutWrapper timeoutWrapper;
-        private readonly IHystrixCircuitBreaker circuitBreaker;
-        private readonly IHystrixCommandMetrics commandMetrics;
-        private readonly IHystrixThreadPoolMetrics threadPoolMetrics;
-        private readonly IHystrixConfigurationService configurationService;
 
-        public HystrixCommandIdentifier CommandIdentifier { get { return commandIdentifier; } }
+        public HystrixCommandIdentifier CommandIdentifier { get; }
 
-        public IHystrixCircuitBreaker CircuitBreaker { get { return circuitBreaker; } }
+        public IHystrixCircuitBreaker CircuitBreaker { get; }
 
-        public IHystrixCommandMetrics CommandMetrics { get { return commandMetrics; } }
+        public IHystrixCommandMetrics CommandMetrics { get; }
 
-        public IHystrixThreadPoolMetrics ThreadPoolMetrics { get { return threadPoolMetrics; } }
+        public IHystrixThreadPoolMetrics ThreadPoolMetrics { get; }
 
-        public IHystrixConfigurationService ConfigurationService { get { return configurationService; } }
+        public IHystrixConfigurationService ConfigurationService { get; }
 
         public HystrixCommand(HystrixCommandIdentifier commandIdentifier, IHystrixTimeoutWrapper timeoutWrapper, IHystrixCircuitBreaker circuitBreaker, IHystrixCommandMetrics commandMetrics, IHystrixThreadPoolMetrics threadPoolMetrics, IHystrixConfigurationService configurationService)
         {
             if (commandIdentifier == null)
             {
-                throw new ArgumentNullException("commandIdentifier");
-            }
-            if (timeoutWrapper == null)
-            {
-                throw new ArgumentNullException("timeoutWrapper");
-            }
-            if (circuitBreaker == null)
-            {
-                throw new ArgumentNullException("circuitBreaker");
-            }
-            if (commandMetrics == null)
-            {
-                throw new ArgumentNullException("commandMetrics");
-            }
-            if (threadPoolMetrics == null)
-            {
-                throw new ArgumentNullException("threadPoolMetrics");
-            }
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException("configurationService");
+                throw new ArgumentNullException(nameof(commandIdentifier));
             }
 
-            this.commandIdentifier = commandIdentifier;
+            if (timeoutWrapper == null)
+            {
+                throw new ArgumentNullException(nameof(timeoutWrapper));
+            }
+
+            if (circuitBreaker == null)
+            {
+                throw new ArgumentNullException(nameof(circuitBreaker));
+            }
+
+            if (commandMetrics == null)
+            {
+                throw new ArgumentNullException(nameof(commandMetrics));
+            }
+
+            if (threadPoolMetrics == null)
+            {
+                throw new ArgumentNullException(nameof(threadPoolMetrics));
+            }
+
+            if (configurationService == null)
+            {
+                throw new ArgumentNullException(nameof(configurationService));
+            }
+
+            CommandIdentifier = commandIdentifier;
             this.timeoutWrapper = timeoutWrapper;
-            this.circuitBreaker = circuitBreaker;
-            this.commandMetrics = commandMetrics;
-            this.threadPoolMetrics = threadPoolMetrics;
-            this.configurationService = configurationService;
+            CircuitBreaker = circuitBreaker;
+            CommandMetrics = commandMetrics;
+            ThreadPoolMetrics = threadPoolMetrics;
+            ConfigurationService = configurationService;
         }
 
         /// <inheritdoc/>
@@ -80,7 +80,7 @@ namespace Hystrix.Dotnet
 
         private T InnerExecute<T>(Func<T> primaryFunction, Func<IEnumerable<Exception>, T> fallbackFunction, CancellationTokenSource cancellationTokenSource)
         {
-            if (!configurationService.GetHystrixCommandEnabled())
+            if (!ConfigurationService.GetHystrixCommandEnabled())
             {
                 return primaryFunction.Invoke();
             }
@@ -89,10 +89,10 @@ namespace Hystrix.Dotnet
 
             Stopwatch userThreadStopWatch = Stopwatch.StartNew();
 
-            if (circuitBreaker.AllowRequest())
+            if (CircuitBreaker.AllowRequest())
             {
-                commandMetrics.IncrementConcurrentExecutionCount();
-                threadPoolMetrics.MarkThreadExecution();
+                CommandMetrics.IncrementConcurrentExecutionCount();
+                ThreadPoolMetrics.MarkThreadExecution();
 
                 Stopwatch commandStopWatch = Stopwatch.StartNew();
 
@@ -102,50 +102,50 @@ namespace Hystrix.Dotnet
                     
                     commandStopWatch.Stop();
 
-                    circuitBreaker.CloseCircuit();
+                    CircuitBreaker.CloseCircuit();
 
-                    commandMetrics.MarkSuccess();
+                    CommandMetrics.MarkSuccess();
 
                     return result;
                 }
                 catch (HystrixTimeoutException hte)
                 {
                     commandStopWatch.Stop();
-                    commandMetrics.MarkTimeout();
+                    CommandMetrics.MarkTimeout();
                     innerExceptions.Add(hte);
                 }
                 catch (Exception ex)
                 {
                     commandStopWatch.Stop();
-                    commandMetrics.MarkFailure();
-                    commandMetrics.MarkExceptionThrown();
+                    CommandMetrics.MarkFailure();
+                    CommandMetrics.MarkExceptionThrown();
                     innerExceptions.Add(ex);
                 }
                 finally
                 {
                     // track command execution time
                     commandStopWatch.Stop();
-                    commandMetrics.AddCommandExecutionTime(commandStopWatch.Elapsed.TotalMilliseconds);
+                    CommandMetrics.AddCommandExecutionTime(commandStopWatch.Elapsed.TotalMilliseconds);
 
-                    commandMetrics.DecrementConcurrentExecutionCount();
-                    threadPoolMetrics.MarkThreadCompletion();
+                    CommandMetrics.DecrementConcurrentExecutionCount();
+                    ThreadPoolMetrics.MarkThreadCompletion();
 
                     // track execution time including threading overhead
                     userThreadStopWatch.Stop();
-                    commandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
+                    CommandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
                 }
             }
             else
             {
-                commandMetrics.MarkShortCircuited();
+                CommandMetrics.MarkShortCircuited();
 
                 // track execution time including threading overhead
                 userThreadStopWatch.Stop();
-                commandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
+                CommandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
             }
 
             T fallbackResult = fallbackFunction.Invoke(innerExceptions);
-            commandMetrics.MarkFallbackSuccess();
+            CommandMetrics.MarkFallbackSuccess();
 
             return fallbackResult;
         }
@@ -170,7 +170,7 @@ namespace Hystrix.Dotnet
 
         private async Task<T> InnerExecuteAsync<T>(Func<Task<T>> primaryFunction, Func<IEnumerable<Exception>, Func<Task<T>>> fallbackFunction, CancellationTokenSource cancellationTokenSource)
         {
-            if (!configurationService.GetHystrixCommandEnabled())
+            if (!ConfigurationService.GetHystrixCommandEnabled())
             {
                 return await primaryFunction.Invoke().ConfigureAwait(false);
             }
@@ -179,10 +179,10 @@ namespace Hystrix.Dotnet
 
             Stopwatch userThreadStopWatch = Stopwatch.StartNew();
 
-            if (circuitBreaker.AllowRequest())
+            if (CircuitBreaker.AllowRequest())
             {
-                commandMetrics.IncrementConcurrentExecutionCount();
-                threadPoolMetrics.MarkThreadExecution();
+                CommandMetrics.IncrementConcurrentExecutionCount();
+                ThreadPoolMetrics.MarkThreadExecution();
 
                 Stopwatch commandStopWatch = Stopwatch.StartNew();
 
@@ -192,50 +192,50 @@ namespace Hystrix.Dotnet
                     
                     commandStopWatch.Stop();
 
-                    circuitBreaker.CloseCircuit();
+                    CircuitBreaker.CloseCircuit();
 
-                    commandMetrics.MarkSuccess();
+                    CommandMetrics.MarkSuccess();
 
                     return result;
                 }
                 catch (HystrixTimeoutException hte)
                 {
                     commandStopWatch.Stop();
-                    commandMetrics.MarkTimeout();
+                    CommandMetrics.MarkTimeout();
                     innerExceptions.Add(hte);
                 }
                 catch (Exception ex)
                 {
                     commandStopWatch.Stop();
-                    commandMetrics.MarkFailure();
-                    commandMetrics.MarkExceptionThrown();
+                    CommandMetrics.MarkFailure();
+                    CommandMetrics.MarkExceptionThrown();
                     innerExceptions.Add(ex);
                 }
                 finally
                 {
                     // track command execution time
                     commandStopWatch.Stop();
-                    commandMetrics.AddCommandExecutionTime(commandStopWatch.Elapsed.TotalMilliseconds);
+                    CommandMetrics.AddCommandExecutionTime(commandStopWatch.Elapsed.TotalMilliseconds);
 
-                    commandMetrics.DecrementConcurrentExecutionCount();
-                    threadPoolMetrics.MarkThreadCompletion();
+                    CommandMetrics.DecrementConcurrentExecutionCount();
+                    ThreadPoolMetrics.MarkThreadCompletion();
 
                     // track execution time including threading overhead
                     userThreadStopWatch.Stop();
-                    commandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
+                    CommandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
                 }
             }
             else
             {
-                commandMetrics.MarkShortCircuited();
+                CommandMetrics.MarkShortCircuited();
 
                 // track execution time including threading overhead
                 userThreadStopWatch.Stop();
-                commandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
+                CommandMetrics.AddUserThreadExecutionTime(userThreadStopWatch.Elapsed.TotalMilliseconds);
             }
 
             T fallbackResult = await fallbackFunction.Invoke(innerExceptions).Invoke().ConfigureAwait(false);
-            commandMetrics.MarkFallbackSuccess();
+            CommandMetrics.MarkFallbackSuccess();
 
             return fallbackResult;
         }

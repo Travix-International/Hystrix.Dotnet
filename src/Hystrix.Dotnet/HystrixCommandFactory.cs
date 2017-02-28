@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using log4net;
 
@@ -9,30 +8,40 @@ namespace Hystrix.Dotnet
 {
     public class HystrixCommandFactory : IHystrixCommandFactory
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixCommandFactory));
-        private static readonly ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand> CommandsDictionary = new ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand>();
+        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixCommandFactory));
+        private static readonly ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand> commandsDictionary = new ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand>();
 
-        private const string ConfigurationserviceimplementationAppsettingName = "HystrixCommandFactory-ConfigurationServiceImplementation";
+        private readonly HystrixOptions options;
+
+        public HystrixCommandFactory(HystrixOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentException("The HystrixOptions must be specified in order to use Hystrix.Dotnet", nameof(options));
+            }
+
+            this.options = options;
+        }
 
         public IHystrixCommand GetHystrixCommand(HystrixCommandIdentifier commandIdentifier)
         {
             IHystrixCommand hystrixCommand;
-            if (CommandsDictionary.TryGetValue(commandIdentifier, out hystrixCommand))
+            if (commandsDictionary.TryGetValue(commandIdentifier, out hystrixCommand))
             {
                 return hystrixCommand;
             }
 
             // add value in a thread-safe way
-            hystrixCommand = CommandsDictionary.AddOrUpdate(
+            hystrixCommand = commandsDictionary.AddOrUpdate(
                 commandIdentifier,
                 ci =>
                 {
-                    Log.DebugFormat("Added a new command with group {0} and key {1}.", ci.GroupKey, ci.CommandKey);
-                    return CreateHystrixCommand(ci);
+                    log.DebugFormat("Added a new command with group {0} and key {1}.", ci.GroupKey, ci.CommandKey);
+                    return CreateHystrixCommand(ci, options);
                 },
                 (ci, command) =>
                 {
-                    Log.DebugFormat("Command with group {0} and key {1} already exists, not creating it again.", ci.GroupKey, ci.CommandKey);
+                    log.DebugFormat("Command with group {0} and key {1} already exists, not creating it again.", ci.GroupKey, ci.CommandKey);
                     return command;
                 });
 
@@ -44,11 +53,14 @@ namespace Hystrix.Dotnet
             return GetHystrixCommand(new HystrixCommandIdentifier(groupKey, commandKey));
         }
 
-        private static IHystrixCommand CreateHystrixCommand(HystrixCommandIdentifier commandIdentifier)
+        private static IHystrixCommand CreateHystrixCommand(HystrixCommandIdentifier commandIdentifier, HystrixOptions options)
         {
-            var configurationServiceImplementation = ConfigurationManager.AppSettings[ConfigurationserviceimplementationAppsettingName];
+            var configurationServiceImplementation = options.ConfigurationServiceImplementation;
 
-            var configurationService = configurationServiceImplementation != null && configurationServiceImplementation.Equals("HystrixJsonConfigConfigurationService", StringComparison.InvariantCultureIgnoreCase) ? (IHystrixConfigurationService)new HystrixJsonConfigConfigurationService(commandIdentifier) : (IHystrixConfigurationService)new HystrixWebConfigConfigurationService(commandIdentifier);
+            var configurationService =
+                configurationServiceImplementation != null && configurationServiceImplementation.Equals("HystrixJsonConfigConfigurationService", StringComparison.OrdinalIgnoreCase)
+                ? (IHystrixConfigurationService)new HystrixJsonConfigConfigurationService(commandIdentifier, options.JsonConfigurationSourceOptions)
+                : new HystrixLocalConfigurationService(commandIdentifier, options.LocalOptions);
 
             var commandMetrics = new HystrixCommandMetrics(commandIdentifier, configurationService);
             var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationService);
@@ -60,7 +72,7 @@ namespace Hystrix.Dotnet
    
         public ICollection<IHystrixCommand> GetAllHystrixCommands()
         {
-            return CommandsDictionary.Values.Where(x => x.ConfigurationService.GetHystrixCommandEnabled()).ToList();
+            return commandsDictionary.Values.Where(x => x.ConfigurationService.GetHystrixCommandEnabled()).ToList();
         }
 
         /// <summary>
@@ -68,7 +80,7 @@ namespace Hystrix.Dotnet
         /// </summary>
         public static void Clear()
         {
-            CommandsDictionary.Clear();
+            commandsDictionary.Clear();
         }
     }
 }

@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0-*",
+  "tooling": {
+    "defaultNamespace": "Hystrix.Dotnet.UnitTests"
+  },
+
+  "testRunner": "xunit",
+  
+  "buildOptions": {
+    "warningsAsErrors": false,
+    "copyToOutput": "Group-Command.json"
+  },
+
+  "dependencies": {
+    "Hystrix.Dotnet": "1.0.0-*",
+    "xunit": "2.1.0",
+    "dotnet-test-xunit": "1.0.0-*",
+    "moq": "4.6.25-alpha",
+    "Stubbery": "1.2.3"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [ "dnxcore50", "portable-net45+win8", "net45" ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0",
+          "type": "platform"
+        }
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var commandMetricsMock = new Mock<IHystrixCommandMetrics>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCircuitBreaker(null, configurationServiceMock.Object, commandMetricsMock.Object));
             }
 
@@ -24,7 +24,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var commandIdentifier = new HystrixCommandIdentifier("group", "key");
                 var commandMetricsMock = new Mock<IHystrixCommandMetrics>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCircuitBreaker(commandIdentifier, null, commandMetricsMock.Object));
             }
 
@@ -34,7 +34,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var commandIdentifier = new HystrixCommandIdentifier("group", "key");
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCircuitBreaker(commandIdentifier, configurationServiceMock.Object, null));
             }
         }
@@ -51,7 +51,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCircuitBreakerForcedOpen()).Returns(true);
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.False(allowRequest);
@@ -67,7 +67,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCircuitBreakerForcedClosed()).Returns(true);
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.True(allowRequest);
@@ -84,7 +84,7 @@ namespace Hystrix.Dotnet.UnitTests
                 commandMetricsMock.Setup(collector => collector.GetHealthCounts()).Returns(new HystrixHealthCounts(99, 16, 16));
                 configurationServiceMock.Setup(service => service.GetCircuitBreakerRequestVolumeThreshold()).Returns(100);
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.True(allowRequest);
@@ -101,7 +101,7 @@ namespace Hystrix.Dotnet.UnitTests
                 commandMetricsMock.Setup(collector => collector.GetHealthCounts()).Returns(new HystrixHealthCounts(100, 16, 16));
                 configurationServiceMock.Setup(service => service.GetCircuitBreakerErrorThresholdPercentage()).Returns(17);
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.True(allowRequest);
@@ -120,7 +120,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 Assert.False(circuitBreaker.CircuitIsOpen);
 
-                // act
+                // Act
                 circuitBreaker.AllowRequest();
 
                 Assert.True(circuitBreaker.CircuitIsOpen);
@@ -139,7 +139,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(service => service.GetCircuitBreakerErrorThresholdPercentage()).Returns(16);
                 dateTimeProviderMock.Setup(time => time.GetCurrentTimeInMilliseconds()).Returns(0);
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.False(allowRequest);
@@ -157,7 +157,7 @@ namespace Hystrix.Dotnet.UnitTests
                 dateTimeProviderMock.Setup(time => time.GetCurrentTimeInMilliseconds()).Returns(0);
                 circuitBreaker.OpenCircuit();
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.False(allowRequest);
@@ -178,7 +178,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(service => service.GetCircuitBreakerSleepWindowInMilliseconds()).Returns(5000);
                 dateTimeProviderMock.Setup(time => time.GetCurrentTimeInMilliseconds()).Returns(6000);
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.True(allowRequest);
@@ -202,7 +202,7 @@ namespace Hystrix.Dotnet.UnitTests
                 // first request
                 circuitBreaker.AllowRequest();
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.False(allowRequest);
@@ -222,7 +222,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreaker.OpenCircuit();
                 circuitBreaker.CloseCircuit();
 
-                // act
+                // Act
                 bool allowRequest = circuitBreaker.AllowRequest();
 
                 Assert.True(allowRequest);
@@ -241,7 +241,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 Assert.False(circuitBreaker.CircuitIsOpen);
 
-                // act
+                // Act
                 circuitBreaker.OpenCircuit();
 
                 Assert.True(circuitBreaker.CircuitIsOpen);
@@ -258,7 +258,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreaker.OpenCircuit();
                 Assert.True(circuitBreaker.CircuitIsOpen);
 
-                // act
+                // Act
                 circuitBreaker.OpenCircuit();
 
                 Assert.True(circuitBreaker.CircuitIsOpen);
@@ -279,7 +279,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreaker.OpenCircuit();
                 Assert.True(circuitBreaker.CircuitIsOpen);
 
-                // act
+                // Act
                 circuitBreaker.CloseCircuit();
 
                 Assert.False(circuitBreaker.CircuitIsOpen);
@@ -298,7 +298,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circuitBreaker.CloseCircuit();
                 Assert.False(circuitBreaker.CircuitIsOpen);
 
-                // act
+                // Act
                 circuitBreaker.CloseCircuit();
 
                 Assert.False(circuitBreaker.CircuitIsOpen);

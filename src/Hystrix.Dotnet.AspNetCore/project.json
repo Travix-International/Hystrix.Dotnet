@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0-beta4",
+  "description": "ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.",
+
+  "packOptions": {
+    "projectUrl": "https://github.com/Travix-International/Hystrix.Dotnet",
+    "licenseUrl": "https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE",
+    "summary": "ASP.NET Core extensions for the .NET version of Netflix's Hystrix library.",
+    "requireLicenseAcceptance": false,
+    "owners": [ "Travix International" ],
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/Travix-International/Hystrix.Dotnet.git"
+    }
+  },
+
+  "authors": [ "Travix International" ],
+  "tooling": {
+    "defaultNamespace": "Hystrix.Dotnet.AspNetCore"
+  },
+  
+  "buildOptions": {
+	  "warningsAsErrors": true,
+    "nowarn": [ "0618" ]
+  },
+
+  "dependencies": {
+    "Hystrix.Dotnet": "1.0.0-beta4",
+    "Microsoft.AspNetCore.Http": "1.1.0",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0"
+  },  
+
+  "frameworks": {
+    "netstandard1.3": { },
+    "net451": { } 
+  }
+}

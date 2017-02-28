@@ -10,14 +10,14 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Throws_ArgumentOutOfRangeException_When_MaximumSize_Is_Zero()
             {
-                // act
+                // Act
                 Assert.Throws<ArgumentOutOfRangeException>(() => new CircularArray<string>(0));
             }
 
             [Fact]
             public void Sets_MaximumSize_To_Provided_Value_And_Start_With_Length_Zero()
             {
-                // act
+                // Act
                 var circularArray = new CircularArray<string>(10);
 
                 Assert.Equal(10, circularArray.MaximumSize);
@@ -32,7 +32,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var circularArray = new CircularArray<string>(10);
 
-                // act
+                // Act
                 circularArray.Add("1");
 
                 Assert.Equal(1, circularArray.Length);
@@ -52,7 +52,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("8");
                 circularArray.Add("9");
 
-                // act
+                // Act
                 circularArray.Add("10");
 
                 Assert.Equal(10, circularArray.Length);
@@ -73,7 +73,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("9");
                 circularArray.Add("10");
 
-                // act
+                // Act
                 circularArray.Add("11");
 
                 Assert.Equal(10, circularArray.Length);
@@ -87,7 +87,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var circularArray = new CircularArray<string>(10);
 
-                // act
+                // Act
                 string tail = circularArray.GetTail();
 
                 Assert.Null(tail);
@@ -98,7 +98,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var circularArray = new CircularArray<int>(10);
 
-                // act
+                // Act
                 int tail = circularArray.GetTail();
 
                 Assert.Equal(0, tail);
@@ -109,7 +109,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var circularArray = new CircularArray<bool>(10);
 
-                // act
+                // Act
                 bool tail = circularArray.GetTail();
 
                 Assert.False(tail);
@@ -121,7 +121,7 @@ namespace Hystrix.Dotnet.UnitTests
                 var circularArray = new CircularArray<string>(10);
                 circularArray.Add("1");
 
-                // act
+                // Act
                 string tail = circularArray.GetTail();
 
                 Assert.Equal("1", tail);
@@ -142,7 +142,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("9");
                 circularArray.Add("10");
 
-                // act
+                // Act
                 string tail = circularArray.GetTail();
 
                 Assert.Equal("10", tail);
@@ -164,7 +164,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("10");
                 circularArray.Add("11");
 
-                // act
+                // Act
                 string tail = circularArray.GetTail();
 
                 Assert.Equal("11", tail);
@@ -186,7 +186,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("7");
                 circularArray.Add("8");
 
-                // act
+                // Act
                 var array = circularArray.GetArray();
 
                 Assert.Equal(8, array.Length);
@@ -207,7 +207,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("9");
                 circularArray.Add("10");
 
-                // act
+                // Act
                 var array = circularArray.GetArray();
 
                 Assert.Equal("1", array[0]);
@@ -228,7 +228,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("9");
                 circularArray.Add("10");
 
-                // act
+                // Act
                 var array = circularArray.GetArray();
 
                 Assert.Equal("10", array[9]);
@@ -250,7 +250,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("10");
                 circularArray.Add("11");
 
-                // act
+                // Act
                 var array = circularArray.GetArray();
 
                 Assert.Equal(10, array.Length);
@@ -272,7 +272,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("10");
                 circularArray.Add("11");
 
-                // act
+                // Act
                 var array = circularArray.GetArray();
 
                 Assert.Equal("2", array[0]);
@@ -294,7 +294,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("10");
                 circularArray.Add("11");
 
-                // act
+                // Act
                 var array = circularArray.GetArray();
 
                 Assert.Equal("11", array[9]);
@@ -319,7 +319,7 @@ namespace Hystrix.Dotnet.UnitTests
                 circularArray.Add("10");
                 circularArray.Add("11");
 
-                // act
+                // Act
                 circularArray.Clear();
 
                 Assert.Equal(0, circularArray.Length);

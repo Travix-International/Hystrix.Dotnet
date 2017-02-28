@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -12,36 +11,59 @@ namespace Hystrix.Dotnet
 {
     public class HystrixJsonConfigConfigurationService : IHystrixConfigurationService, IDisposable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
-
-        private const string BaseLocationAppsettingName = "HystrixJsonConfigConfigurationService-BaseLocation";
-
-        private const string LocationPatternAppsettingName = "HystrixJsonConfigConfigurationService-LocationPattern";
-
-        private const string PollingIntervalInMillisecondsAppsettingName = "HystrixJsonConfigConfigurationService-PollingIntervalInMilliseconds";
+        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
 
         private readonly HystrixCommandIdentifier commandIdentifier;
 
-        private ConfigurationObject configurationObject;
+        private readonly int pollingIntervalInMillisecond;
 
-        private int pollingIntervalInMillisecond;
+        private readonly Uri configurationFileUrl;
 
-        private Uri configurationFileUrl;
+        private readonly Uri defaultConfigurationFileUrl;
 
-        private Uri defaultConfigurationFileUrl;
+        private HystrixCommandOptions configurationObject;
 
         private CancellationTokenSource cancellationTokenSource;
 
-        public HystrixJsonConfigConfigurationService(HystrixCommandIdentifier commandIdentifier)
+        public HystrixJsonConfigConfigurationService(HystrixCommandIdentifier commandIdentifier, HystrixJsonConfigurationSourceOptions options)
         {
             if (commandIdentifier == null)
             {
-                throw new ArgumentNullException("commandIdentifier");
+                throw new ArgumentNullException(nameof(commandIdentifier));
+            }
+
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
             }
 
             this.commandIdentifier = commandIdentifier;
 
-            LoadWebConfigValues();
+            pollingIntervalInMillisecond = options.PollingIntervalInMilliseconds;
+
+            log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+
+            log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
+
+            log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, options.BaseLocation);
+
+            log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, options.LocationPattern);
+
+            Uri baseLocationUrl;
+            if (!Uri.TryCreate(EnsureTrailingSlash(options.BaseLocation), UriKind.Absolute, out baseLocationUrl))
+            {
+                throw new ConfigurationException("Options.BaseLocation has to contain a valid url.");
+            }
+
+            if (!Uri.TryCreate(baseLocationUrl, string.Format(options.LocationPattern, commandIdentifier.GroupKey, commandIdentifier.CommandKey), out configurationFileUrl))
+            {
+                throw new ConfigurationException("Options.BaseLocation has to contain a valid url.");
+            }
+
+            if (!Uri.TryCreate(baseLocationUrl, "Default.json", out defaultConfigurationFileUrl))
+            {
+                throw new ConfigurationException("Options.BaseLocation has to contain a valid url.");
+            }
 
             // load remote config synchronous first time (might throw an aggregate exception)
             LoadRemoteConfigInternal(60000).Wait();
@@ -49,66 +71,7 @@ namespace Hystrix.Dotnet
             LoadRemoteConfigAfterInterval();
         }
 
-        /// <summary>
-        /// Load the web config values necessary for this class to fetch config remotely
-        /// </summary>
-        private void LoadWebConfigValues()
-        {
-            Log.InfoFormat("Loading web config values for group {0} and key {1}", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
-
-            pollingIntervalInMillisecond = GetConfigurationValueAsInteger(PollingIntervalInMillisecondsAppsettingName, 5000);
-
-            Log.InfoFormat("PollingIntervalInMillisecond for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, pollingIntervalInMillisecond);
-
-            var baseLocation = GetConfigurationValue(BaseLocationAppsettingName);
-            Log.InfoFormat("BaseLocation for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, baseLocation);
-
-            var locationPattern = GetConfigurationValue(LocationPatternAppsettingName);
-            Log.InfoFormat("LocationPattern for group {0} and key {1} is {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, locationPattern);
-
-            Uri baseLocationUrl;
-            if (!Uri.TryCreate(baseLocation, UriKind.Absolute, out baseLocationUrl))
-            {
-                throw new ConfigurationErrorsException(BaseLocationAppsettingName + " has to contain a valid url.");
-            }
-
-            if (!Uri.TryCreate(baseLocationUrl, string.Format(locationPattern, commandIdentifier.GroupKey, commandIdentifier.CommandKey), out configurationFileUrl))
-            {
-                throw new ConfigurationErrorsException(BaseLocationAppsettingName + " has to contain a valid url.");
-            }
-
-            if (!Uri.TryCreate(baseLocationUrl, "Default.json", out defaultConfigurationFileUrl))
-            {
-                throw new ConfigurationErrorsException(BaseLocationAppsettingName + " has to contain a valid url.");
-            }
-        }
-
-        /// <summary>
-        /// Parse config value as integer
-        /// </summary>
-        /// <param name="configKey"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        private int GetConfigurationValueAsInteger(string configKey, int defaultValue)
-        {
-            int value;
-            if (int.TryParse(GetConfigurationValue(configKey), out value))
-            {
-                return value;
-            }
-
-            return defaultValue;
-        }
-
-        /// <summary>
-        /// Load config value as string
-        /// </summary>
-        /// <param name="configKey"></param>
-        /// <returns></returns>
-        private string GetConfigurationValue(string configKey)
-        {
-            return ConfigurationManager.AppSettings[configKey];
-        }
+        private static string EnsureTrailingSlash(string str) => str.EndsWith("/") || str.EndsWith(@"\") ? str : str + "/";
 
         /// <summary>
         /// Run background polling for remote config changes
@@ -124,7 +87,7 @@ namespace Hystrix.Dotnet
                     {
                         // wait for an interval with jitter
                         var interval = Jitter.Apply(pollingIntervalInMillisecond);
-                        Log.DebugFormat("Loading configuration from {0} in {1}ms", configurationFileUrl, interval);
+                        log.DebugFormat("Loading configuration from {0} in {1}ms", configurationFileUrl, interval);
                         await Task.Delay(interval, token).ConfigureAwait(false);
 
                         await LoadRemoteConfig().ConfigureAwait(false);
@@ -146,25 +109,33 @@ namespace Hystrix.Dotnet
                 {
                     await LoadRemoteConfigInternal().ConfigureAwait(false);
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
-                    Log.Warn(string.Format("Failed loading {0}", configurationFileUrl), exception);
+                    log.Warn(string.Format("Failed loading {0}", configurationFileUrl), ex);
                 }
             }).ConfigureAwait(false);
         }
 
         private async Task LoadRemoteConfigInternal(int timeoutInMilliseconds = 1000)
         {
-            Log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
+            log.InfoFormat("Loading remote config for group {0} and key {1} from {2}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl);
 
+            #if !COREFX
             if (configurationFileUrl.Scheme == Uri.UriSchemeFile)
+            #else
+            if (configurationFileUrl.Scheme == "file")
+            #endif
             {
                 using (var reader = File.OpenText(configurationFileUrl.LocalPath))
                 {
                     configurationObject = DeserializeResponse(await reader.ReadToEndAsync().ConfigureAwait(false));
                 }
             }
+            #if !COREFX
             else if (configurationFileUrl.Scheme == Uri.UriSchemeHttp || configurationFileUrl.Scheme == Uri.UriSchemeHttps)
+            #else
+            else if (configurationFileUrl.Scheme == "http" || configurationFileUrl.Scheme == "https")
+            #endif
             {
                 bool fallbackToDefault = false;
 
@@ -178,7 +149,7 @@ namespace Hystrix.Dotnet
                 }
                 catch (Exception ex)
                 {
-                    Log.WarnFormat(string.Format("Loading config from {0} for group {1} and key {2} has failed. Falling back to {3}", commandIdentifier.GroupKey, commandIdentifier.CommandKey, configurationFileUrl, defaultConfigurationFileUrl), ex);
+                    log.WarnFormat($"Loading config from {commandIdentifier.GroupKey} for group {commandIdentifier.CommandKey} and key {configurationFileUrl} has failed. Falling back to {defaultConfigurationFileUrl}", ex);
 
                     fallbackToDefault = true;
                 }
@@ -195,14 +166,14 @@ namespace Hystrix.Dotnet
             else
             {
                 var message = string.Format("Schema {0} for base url {1} is not supported", configurationFileUrl.Scheme, configurationFileUrl);
-                Log.Error(message);
+                log.Error(message);
                 throw new NotSupportedException(message);
             }
         }
 
-        private ConfigurationObject DeserializeResponse(string json)
+        private HystrixCommandOptions DeserializeResponse(string json)
         {            
-            return JsonConvert.DeserializeObject<ConfigurationObject>(json);
+            return JsonConvert.DeserializeObject<HystrixCommandOptions>(json);
         }
 
         /// <inheritdoc/>
@@ -286,37 +257,6 @@ namespace Hystrix.Dotnet
         public bool GetHystrixCommandEnabled()
         {
             return configurationObject == null || configurationObject.HystrixCommandEnabled;
-        }
-
-        internal class ConfigurationObject
-        {
-            public bool HystrixCommandEnabled { get; set; }
-
-            public int CommandTimeoutInMilliseconds { get; set; }
-
-            public bool CircuitBreakerForcedOpen { get; set; }
-
-            public bool CircuitBreakerForcedClosed { get; set; }
-
-            public int CircuitBreakerErrorThresholdPercentage { get; set; }
-
-            public int CircuitBreakerSleepWindowInMilliseconds { get; set; }
-
-            public int CircuitBreakerRequestVolumeThreshold { get; set; }
-
-            public int MetricsHealthSnapshotIntervalInMilliseconds { get; set; }
-
-            public int MetricsRollingStatisticalWindowInMilliseconds { get; set; }
-
-            public int MetricsRollingStatisticalWindowBuckets { get; set; }
-
-            public bool MetricsRollingPercentileEnabled { get; set; }
-
-            public int MetricsRollingPercentileWindowInMilliseconds { get; set; }
-
-            public int MetricsRollingPercentileWindowBuckets { get; set; }
-
-            public int MetricsRollingPercentileBucketSize { get; set; }
         }
 
         internal class SingleSetting 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using ConcurrencyUtilities;
+using Hystrix.Dotnet.ConcurrencyUtilities;
 
 namespace Hystrix.Dotnet
 {
@@ -19,9 +19,9 @@ namespace Hystrix.Dotnet
              */
 
             // initialize the array of LongAdders
-            var values = Enum.GetValues(typeof(HystrixRollingNumberEvent)).Cast<HystrixRollingNumberEvent>();
+            var values = Enum.GetValues(typeof(HystrixRollingNumberEvent)).Cast<HystrixRollingNumberEvent>().ToArray();
 
-            adderForCounterType = new StripedLongAdder[values.Count()];
+            adderForCounterType = new StripedLongAdder[values.Length];
             foreach (var value in values)
             {
                 if (value.IsCounter())
@@ -30,7 +30,7 @@ namespace Hystrix.Dotnet
                 }
             }
 
-            updaterForCounterType = new LongMaxUpdater[values.Count()];
+            updaterForCounterType = new LongMaxUpdater[values.Length];
             foreach (var value in values)
             {
                 if (value.IsMaxUpdater())

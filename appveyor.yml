@@ -1,0 +1,63 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+version: 1.0.0.{build}-{branch}
+
+skip_tags: true
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+image: Visual Studio 2015
+
+clone_depth: 1
+
+# Do not build feature branch with open Pull Requests. Otherwise every commit on a PR triggers two AppVeyor builds.
+skip_branch_with_pr: true
+
+nuget:  
+  disable_publish_on_pr: true
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: R8Ntdx47utdSttS13LQ+doLEkvHa1/8o0YcsX3qSzuyo4YdP76MN/OIfUOiW/u2G
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+configuration: Release
+
+build_script:
+- dotnet --info
+- dotnet restore --no-cache
+- dotnet build **/project.json --configuration Release --version-suffix %APPVEYOR_BUILD_NUMBER%
+- dotnet pack src/Hystrix.Dotnet/project.json --configuration Release --no-build
+- dotnet pack src/Hystrix.Dotnet.AspNet/project.json --configuration Release --no-build
+- dotnet pack src/Hystrix.Dotnet.AspNetCore/project.json --configuration Release --no-build
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test_script:
+- dotnet test test/Hystrix.Dotnet.UnitTests/project.json --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.AspNet.UnitTests/project.json --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.AspNetCore.UnitTests/project.json --configuration Release --no-build
+- bash coverage.sh
+- bash coveralls.sh
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+- path: src/**/*.nupkg
+
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+deploy: off  

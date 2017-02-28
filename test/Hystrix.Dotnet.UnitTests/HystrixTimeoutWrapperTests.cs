@@ -15,7 +15,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixTimeoutWrapper(null, configurationServiceMock.Object));
             }
 
@@ -24,7 +24,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var commandIdentifier = new HystrixCommandIdentifier("group", "key");
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixTimeoutWrapper(commandIdentifier, null));
             }
         }
@@ -41,7 +41,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(5000);
 
-                // act
+                // Act
                 string value = timeoutWrapper.Execute(primaryFunction);
 
                 Assert.Equal("a value", value);
@@ -62,7 +62,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(5);
 
-                // act
+                // Act
                 Assert.Throws<HystrixTimeoutException>(() => timeoutWrapper.Execute(primaryFunctionMock.Object));
             }
 
@@ -77,109 +77,8 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(5000);
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => timeoutWrapper.Execute(primaryFunctionMock.Object));
-            }
-
-            [Fact(Skip = "Does not work properly when tests are running concurrently")]
-            public void Costs_1_Thread_When_Executing_Within_Timeout()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
-                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
-                var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
-                var primaryFunctionMock = new Mock<Func<string>>();
-                primaryFunctionMock.Setup(func => func()).Returns(() =>
-                {
-                    Thread.Sleep(1000);
-                    return "a value";
-                });
-
-                configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(2000);
-
-                int availableThreadsBefore = GetAvailableThreads();
-
-                // act
-                Task<string> task = Task.Run(() => timeoutWrapper.Execute(primaryFunctionMock.Object));
-                int availableThreadsDuring = GetAvailableThreads();
-
-                task.Wait();
-
-                Assert.Equal(1, availableThreadsBefore-availableThreadsDuring);
-            }
-
-            [Fact(Skip = "Does not work properly when tests are running concurrently")]
-            public void Costs_1_Thread_When_Fuction_Has_Timed_Out_But_Isnt_Finished()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
-                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
-                var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
-                var primaryFunctionMock = new Mock<Func<string>>();
-                primaryFunctionMock.Setup(func => func()).Returns(() =>
-                {
-                    Thread.Sleep(2000);
-                    return "a value";
-                });
-
-                configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(1000);
-
-                int availableThreadsBefore = GetAvailableThreads();
-
-                // act
-                Assert.Throws<HystrixTimeoutException>(() => timeoutWrapper.Execute(primaryFunctionMock.Object));
-
-                int availableThreadsAfter = GetAvailableThreads();
-
-                Assert.Equal(1, availableThreadsBefore - availableThreadsAfter);
-
-                Thread.Sleep(2000);
-
-                availableThreadsAfter = GetAvailableThreads();
-
-                Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
-            }
-
-            [Fact(Skip = "Does not work properly when tests are running concurrently")]
-            public void Costs_0_Threads_When_Fuction_Has_Timed_Out_And_CancellationToken_Is_Used()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
-                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
-                var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
-                var primaryFunctionMock = new Mock<Func<string>>();
-
-                CancellationTokenSource tokenSource = new CancellationTokenSource();
-
-                primaryFunctionMock.Setup(func => func()).Returns(() =>
-                {
-                    tokenSource.Token.WaitHandle.WaitOne(2000);
-                    return "a value";
-                });
-
-                configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(1000);
-
-                int availableThreadsBefore = GetAvailableThreads();
-
-                // act
-                Assert.Throws<HystrixTimeoutException>(() => timeoutWrapper.Execute(primaryFunctionMock.Object, tokenSource));
-
-                int availableThreadsAfter = GetAvailableThreads();
-
-                Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
-
-                Thread.Sleep(2000);
-
-                availableThreadsAfter = GetAvailableThreads();
-
-                Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
-            }
-
-            private int GetAvailableThreads()
-            {
-                int availableWorkerThreads;
-                int availableCompletionPortThreads;
-
-                ThreadPool.GetAvailableThreads(out availableWorkerThreads, out availableCompletionPortThreads);
-
-                return availableWorkerThreads + availableCompletionPortThreads;
             }
         }
 
@@ -195,7 +94,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(5000);
 
-                // act
+                // Act
                 string value = await timeoutWrapper.ExecuteAsync(primaryTask);
 
                 Assert.Equal("a value", value);
@@ -216,7 +115,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(50);
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<HystrixTimeoutException>(() => timeoutWrapper.ExecuteAsync(primaryTask));
             }
 
@@ -231,111 +130,111 @@ namespace Hystrix.Dotnet.UnitTests
 
                 configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(5000);
 
-                // act
+                // Act
                 await Assert.ThrowsAsync<ArgumentNullException>(() => timeoutWrapper.ExecuteAsync(primaryFunctionMock.Object));
             }
 
-            [Fact(Skip = "Does not work properly when tests are running concurrently")]
-            public async Task Costs_1_Thread_When_Executing_Within_Timeout()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
-                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
-                var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
-                var primaryTask = new Func<Task<string>>(() => Task.Run(async () =>
-                {
-                    Thread.Sleep(1000);
-                    await Task.Delay(10);
-                    return "a value";
-                }));
+            //[Fact(Skip = "Does not work properly when tests are running concurrently")]
+            //public async Task Costs_1_Thread_When_Executing_Within_Timeout()
+            //{
+            //    var commandIdentifier = new HystrixCommandIdentifier("group", "key");
+            //    var configurationServiceMock = new Mock<IHystrixConfigurationService>();
+            //    var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
+            //    var primaryTask = new Func<Task<string>>(() => Task.Run(async () =>
+            //    {
+            //        Thread.Sleep(1000);
+            //        await Task.Delay(10);
+            //        return "a value";
+            //    }));
 
-                configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(2000);
+            //    configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(2000);
 
-                int availableThreadsBefore = GetAvailableThreads();
+            //    int availableThreadsBefore = GetAvailableThreads();
 
-                // act
-                Task<string> task = timeoutWrapper.ExecuteAsync(primaryTask);
-                int availableThreadsDuring = GetAvailableThreads();
+            //    // Act
+            //    Task<string> task = timeoutWrapper.ExecuteAsync(primaryTask);
+            //    int availableThreadsDuring = GetAvailableThreads();
 
-                await task;
+            //    await task;
 
-                Assert.Equal(1, availableThreadsBefore - availableThreadsDuring);
-            }
+            //    Assert.Equal(1, availableThreadsBefore - availableThreadsDuring);
+            //}
 
-            [Fact(Skip = "Does not work properly when tests are running concurrently")]
-            public async Task Costs_1_Thread_When_Fuction_Has_Timed_Out_But_Isnt_Finished()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
-                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
-                var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
-                var primaryTask = new Func<Task<string>>(() => Task.Run(async () =>
-                {
-                    Thread.Sleep(2000);
-                    await Task.Delay(10);
-                    return "a value";
-                }));
+            //[Fact(Skip = "Does not work properly when tests are running concurrently")]
+            //public async Task Costs_1_Thread_When_Fuction_Has_Timed_Out_But_Isnt_Finished()
+            //{
+            //    var commandIdentifier = new HystrixCommandIdentifier("group", "key");
+            //    var configurationServiceMock = new Mock<IHystrixConfigurationService>();
+            //    var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
+            //    var primaryTask = new Func<Task<string>>(() => Task.Run(async () =>
+            //    {
+            //        Thread.Sleep(2000);
+            //        await Task.Delay(10);
+            //        return "a value";
+            //    }));
 
 
-                configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(1000);
+            //    configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(1000);
 
-                int availableThreadsBefore = GetAvailableThreads();
+            //    int availableThreadsBefore = GetAvailableThreads();
 
-                // act
-                await Assert.ThrowsAsync<HystrixTimeoutException>(() => timeoutWrapper.ExecuteAsync(primaryTask));
+            //    // Act
+            //    await Assert.ThrowsAsync<HystrixTimeoutException>(() => timeoutWrapper.ExecuteAsync(primaryTask));
 
-                int availableThreadsAfter = GetAvailableThreads();
+            //    int availableThreadsAfter = GetAvailableThreads();
 
-                Assert.Equal(1, availableThreadsBefore - availableThreadsAfter);
+            //    Assert.Equal(1, availableThreadsBefore - availableThreadsAfter);
 
-                await Task.Delay(2000);
+            //    await Task.Delay(2000);
 
-                availableThreadsAfter = GetAvailableThreads();
+            //    availableThreadsAfter = GetAvailableThreads();
 
-                Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
-            }
+            //    Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
+            //}
 
-            [Fact(Skip = "Does not work properly when tests are running concurrently")]
-            public async Task Costs_0_Threads_When_Fuction_Has_Timed_Out_And_CancellationToken_Is_Used()
-            {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
-                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
-                var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
+            //[Fact(Skip = "Does not work properly when tests are running concurrently")]
+            //public async Task Costs_0_Threads_When_Fuction_Has_Timed_Out_And_CancellationToken_Is_Used()
+            //{
+            //    var commandIdentifier = new HystrixCommandIdentifier("group", "key");
+            //    var configurationServiceMock = new Mock<IHystrixConfigurationService>();
+            //    var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationServiceMock.Object);
 
-                CancellationTokenSource tokenSource = new CancellationTokenSource();
+            //    CancellationTokenSource tokenSource = new CancellationTokenSource();
 
-                var primaryTask = new Func<Task<string>>(() => Task.Run(async () =>
-                {
-                    tokenSource.Token.WaitHandle.WaitOne(2000);
-                    await Task.Delay(10, tokenSource.Token);
-                    return "a value";
-                }));
+            //    var primaryTask = new Func<Task<string>>(() => Task.Run(async () =>
+            //    {
+            //        tokenSource.Token.WaitHandle.WaitOne(2000);
+            //        await Task.Delay(10, tokenSource.Token);
+            //        return "a value";
+            //    }));
 
-                configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(1000);
+            //    configurationServiceMock.Setup(service => service.GetCommandTimeoutInMilliseconds()).Returns(1000);
 
-                int availableThreadsBefore = GetAvailableThreads();
+            //    int availableThreadsBefore = GetAvailableThreads();
 
-                // act
-                await Assert.ThrowsAsync<HystrixTimeoutException>(() => timeoutWrapper.ExecuteAsync(primaryTask, tokenSource));
+            //    // Act
+            //    await Assert.ThrowsAsync<HystrixTimeoutException>(() => timeoutWrapper.ExecuteAsync(primaryTask, tokenSource));
 
-                int availableThreadsAfter = GetAvailableThreads();
+            //    int availableThreadsAfter = GetAvailableThreads();
 
-                Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
+            //    Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
 
-                await Task.Delay(2000);
+            //    await Task.Delay(2000);
 
-                availableThreadsAfter = GetAvailableThreads();
+            //    availableThreadsAfter = GetAvailableThreads();
 
-                Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
-            }
+            //    Assert.Equal(0, availableThreadsBefore - availableThreadsAfter);
+            //}
 
-            private int GetAvailableThreads()
-            {
-                int availableWorkerThreads;
-                int availableCompletionPortThreads;
+            //private int GetAvailableThreads()
+            //{
+            //    int availableWorkerThreads;
+            //    int availableCompletionPortThreads;
 
-                ThreadPool.GetAvailableThreads(out availableWorkerThreads, out availableCompletionPortThreads);
+            //    ThreadPool.GetAvailableThreads(out availableWorkerThreads, out availableCompletionPortThreads);
 
-                return availableWorkerThreads + availableCompletionPortThreads;
-            }
+            //    return availableWorkerThreads + availableCompletionPortThreads;
+            //}
         }
     }
 }

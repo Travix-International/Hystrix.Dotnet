@@ -93,3 +93,13 @@ NDependOut1/
 MOAP.ndproj
 QueryResult.xls
 pingme.txt
+
+# .NET core files
+artifacts/
+.vs/
+*.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Coverage reports
+/coverage/

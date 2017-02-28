@@ -13,7 +13,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommandMetrics(null, configurationServiceMock.Object));
             }
 
@@ -22,7 +22,7 @@ namespace Hystrix.Dotnet.UnitTests
             {
                 var commandIdentifier = new HystrixCommandIdentifier("group", "key");
 
-                // act
+                // Act
                 Assert.Throws<ArgumentNullException>(() => new HystrixCommandMetrics(commandIdentifier, null));
             }
         }
@@ -41,7 +41,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(service => service.GetMetricsRollingPercentileBucketSize()).Returns(1000);
                 var metricsCollector = new HystrixCommandMetrics(commandIdentifier, configurationServiceMock.Object);
 
-                // act
+                // Act
                 var healthCounts = metricsCollector.GetHealthCounts();
 
                 Assert.NotNull(healthCounts);

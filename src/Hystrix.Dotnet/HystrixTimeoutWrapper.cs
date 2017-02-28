@@ -7,7 +7,7 @@ namespace Hystrix.Dotnet
 {
     public class HystrixTimeoutWrapper : IHystrixTimeoutWrapper
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(HystrixTimeoutWrapper));
+        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixTimeoutWrapper));
 
         private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixConfigurationService configurationService;
@@ -16,11 +16,11 @@ namespace Hystrix.Dotnet
         {
             if (commandIdentifier == null)
             {
-                throw new ArgumentNullException("commandIdentifier");
+                throw new ArgumentNullException(nameof(commandIdentifier));
             }
             if (configurationService == null)
             {
-                throw new ArgumentNullException("configurationService");
+                throw new ArgumentNullException(nameof(configurationService));
             }
 
             this.commandIdentifier = commandIdentifier;
@@ -56,7 +56,7 @@ namespace Hystrix.Dotnet
             }
 
             // timeout, no fallback
-            Log.WarnFormat("Executing sync function has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+            log.WarnFormat("Executing sync function has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
             throw new HystrixTimeoutException();
         }
@@ -69,7 +69,8 @@ namespace Hystrix.Dotnet
             var timeoutCancellationTokenSource = new CancellationTokenSource();
 
             // wrap in a task so it doesn't wait for any non-awaitable parts of the primaryTask
-            var outerTask = Task.Run(() => primaryTask.Invoke());
+            // ReSharper disable once MethodSupportsCancellation
+            var outerTask = Task.Run(primaryTask.Invoke);
 
             if (await Task.WhenAny(outerTask, Task.Delay(timeout, timeoutCancellationTokenSource.Token)).ConfigureAwait(false) == outerTask)
             {
@@ -88,7 +89,7 @@ namespace Hystrix.Dotnet
             }
 
             // timeout, no fallback
-            Log.WarnFormat("Executing async task has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
+            log.WarnFormat("Executing async task has timed out for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
             throw new HystrixTimeoutException();
         }

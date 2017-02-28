@@ -4,24 +4,24 @@ namespace Hystrix.Dotnet
 {
     public class HystrixCommandIdentifier
     {
-        public string GroupKey { get; private set; }
-        public string CommandKey { get; private set; }
+        public string GroupKey { get; }
+        public string CommandKey { get; }
 
         public HystrixCommandIdentifier(string groupKey, string commandKey)
         {
             if (groupKey == null)
             {
-                throw new ArgumentNullException("groupKey");
+                throw new ArgumentNullException(nameof(groupKey));
             }
-            if (string.Empty.Equals(groupKey, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Empty.Equals(groupKey, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException("groupKey");
             }
             if (commandKey == null)
             {
-                throw new ArgumentNullException("commandKey");
+                throw new ArgumentNullException(nameof(commandKey));
             }
-            if (string.Empty.Equals(commandKey, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Empty.Equals(commandKey, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException("commandKey");
             }
@@ -52,7 +52,7 @@ namespace Hystrix.Dotnet
 
         public bool Equals(HystrixCommandIdentifier obj)
         {
-            return obj != null && obj.GroupKey.Equals(GroupKey, StringComparison.InvariantCultureIgnoreCase) && obj.CommandKey.Equals(CommandKey, StringComparison.InvariantCultureIgnoreCase);
+            return obj != null && obj.GroupKey.Equals(GroupKey, StringComparison.OrdinalIgnoreCase) && obj.CommandKey.Equals(CommandKey, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
