@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{148A131E-9B31-42A7-9043-004954218C0A}"
 EndProject
@@ -12,21 +12,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		coverage.sh = coverage.sh
 		coveralls.sh = coveralls.sh
+		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet", "src\Hystrix.Dotnet\Hystrix.Dotnet.csproj", "{558EF94D-0BB1-4284-91CF-7D96576A42D1}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hystrix.Dotnet", "src\Hystrix.Dotnet\Hystrix.Dotnet.xproj", "{558EF94D-0BB1-4284-91CF-7D96576A42D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.UnitTests", "test\Hystrix.Dotnet.UnitTests\Hystrix.Dotnet.UnitTests.csproj", "{18E713D1-AD8D-4ACA-AC55-62F677323C08}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hystrix.Dotnet.UnitTests", "test\Hystrix.Dotnet.UnitTests\Hystrix.Dotnet.UnitTests.xproj", "{18E713D1-AD8D-4ACA-AC55-62F677323C08}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.AspNet", "src\Hystrix.Dotnet.AspNet\Hystrix.Dotnet.AspNet.csproj", "{E0E8F4F2-1930-4C66-9509-8444B352FAC1}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hystrix.Dotnet.AspNet", "src\Hystrix.Dotnet.AspNet\Hystrix.Dotnet.AspNet.xproj", "{E0E8F4F2-1930-4C66-9509-8444B352FAC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.AspNetCore", "src\Hystrix.Dotnet.AspNetCore\Hystrix.Dotnet.AspNetCore.csproj", "{96FC26C5-4215-481F-9A1E-C1D454E64E0A}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hystrix.Dotnet.AspNetCore", "src\Hystrix.Dotnet.AspNetCore\Hystrix.Dotnet.AspNetCore.xproj", "{96FC26C5-4215-481F-9A1E-C1D454E64E0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.AspNet.UnitTests", "test\Hystrix.Dotnet.AspNet.UnitTests\Hystrix.Dotnet.AspNet.UnitTests.csproj", "{5C173CA4-1EFE-4658-96DE-E10FB6802E0A}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hystrix.Dotnet.AspNet.UnitTests", "test\Hystrix.Dotnet.AspNet.UnitTests\Hystrix.Dotnet.AspNet.UnitTests.xproj", "{5C173CA4-1EFE-4658-96DE-E10FB6802E0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.AspNetCore.UnitTests", "test\Hystrix.Dotnet.AspNetCore.UnitTests\Hystrix.Dotnet.AspNetCore.UnitTests.csproj", "{204D1A1D-B09C-494E-999D-6BBCB6A69DC0}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Hystrix.Dotnet.AspNetCore.UnitTests", "test\Hystrix.Dotnet.AspNetCore.UnitTests\Hystrix.Dotnet.AspNetCore.UnitTests.xproj", "{204D1A1D-B09C-494E-999D-6BBCB6A69DC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
