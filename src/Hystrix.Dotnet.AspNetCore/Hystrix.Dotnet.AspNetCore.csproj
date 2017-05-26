@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.</Description>
+    <Authors>Travix International</Authors>
+    <VersionPrefix>1.0.1</VersionPrefix>
+    <DebugType>full</DebugType>
+    <TargetFrameworks>netstandard1.3;net451</TargetFrameworks>
+    <NoWarn>$(NoWarn);0618</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>Hystrix.Dotnet.AspNetCore</AssemblyName>
+    <PackageId>Hystrix.Dotnet.AspNetCore</PackageId>
+    <PackageProjectUrl>https://github.com/Travix-International/Hystrix.Dotnet</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/Travix-International/Hystrix.Dotnet.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hystrix.Dotnet\Hystrix.Dotnet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

@@ -10,7 +10,7 @@ skip_tags: true
 #    environment configuration    #
 #---------------------------------#
 
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 clone_depth: 1
 
@@ -33,19 +33,19 @@ configuration: Release
 build_script:
 - dotnet --info
 - dotnet restore --no-cache
-- dotnet build **/project.json --configuration Release --version-suffix %APPVEYOR_BUILD_NUMBER%
-- dotnet pack src/Hystrix.Dotnet/project.json --configuration Release --no-build
-- dotnet pack src/Hystrix.Dotnet.AspNet/project.json --configuration Release --no-build
-- dotnet pack src/Hystrix.Dotnet.AspNetCore/project.json --configuration Release --no-build
+- dotnet build --configuration Release --version-suffix %APPVEYOR_BUILD_NUMBER%
+- dotnet pack src/Hystrix.Dotnet/Hystrix.Dotnet.csproj --configuration Release --no-build
+- dotnet pack src/Hystrix.Dotnet.AspNet/Hystrix.Dotnet.AspNet.csproj --configuration Release --no-build
+- dotnet pack src/Hystrix.Dotnet.AspNetCore/Hystrix.Dotnet.AspNetCore.csproj --configuration Release --no-build
 
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
 
 test_script:
-- dotnet test test/Hystrix.Dotnet.UnitTests/project.json --configuration Release --no-build
-- dotnet test test/Hystrix.Dotnet.AspNet.UnitTests/project.json --configuration Release --no-build
-- dotnet test test/Hystrix.Dotnet.AspNetCore.UnitTests/project.json --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.UnitTests/Hystrix.Dotnet.UnitTests.csproj --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.AspNet.UnitTests/Hystrix.Dotnet.AspNet.UnitTests.csproj --configuration Release --no-build
+- dotnet test test/Hystrix.Dotnet.AspNetCore.UnitTests/Hystrix.Dotnet.AspNetCore.UnitTests.csproj --configuration Release --no-build
 - bash coverage.sh
 - bash coveralls.sh
 
