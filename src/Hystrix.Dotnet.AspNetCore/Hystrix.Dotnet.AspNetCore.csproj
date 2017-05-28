@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.</Description>
     <Authors>Travix International</Authors>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.2</VersionPrefix>
     <DebugType>full</DebugType>
     <TargetFrameworks>netstandard1.3;net451</TargetFrameworks>
     <NoWarn>$(NoWarn);0618</NoWarn>

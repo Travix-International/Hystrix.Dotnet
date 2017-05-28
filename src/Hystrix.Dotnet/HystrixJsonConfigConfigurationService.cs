@@ -4,14 +4,14 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using JitterMagic;
-using log4net;
+using Hystrix.Dotnet.Logging;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixJsonConfigConfigurationService : IHystrixConfigurationService, IDisposable
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixJsonConfigConfigurationService));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixJsonConfigConfigurationService));
 
         private readonly HystrixCommandIdentifier commandIdentifier;
 

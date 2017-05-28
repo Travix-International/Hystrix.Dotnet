@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>A combination of circuit breaker and timeout. The .net version of the open source Hystrix library built by Netflix.</Description>
     <Authors>Travix International</Authors>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.2</VersionPrefix>
     <DebugType>full</DebugType>
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
     <NoWarn>$(NoWarn);0618</NoWarn>
@@ -14,6 +14,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/Travix-International/Hystrix.Dotnet.git</RepositoryUrl>
+    <DefineConstants>LIBLOG_PORTABLE;LIBLOG_PUBLIC</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +24,6 @@
   <ItemGroup>
     <PackageReference Include="JitterMagic" Version="1.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using log4net;
+using Hystrix.Dotnet.Logging;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixTimeoutWrapper : IHystrixTimeoutWrapper
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixTimeoutWrapper));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixTimeoutWrapper));
 
         private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixConfigurationService configurationService;

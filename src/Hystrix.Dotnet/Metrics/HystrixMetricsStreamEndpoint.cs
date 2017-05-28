@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using log4net;
+using Hystrix.Dotnet.Logging;
 using Newtonsoft.Json;
 
 namespace Hystrix.Dotnet.Metrics
 {
     public class HystrixMetricsStreamEndpoint : IHystrixMetricsStreamEndpoint
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixMetricsStreamEndpoint));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixMetricsStreamEndpoint));
 
         private static readonly DateTimeProvider dateTimeProvider = new DateTimeProvider();
 

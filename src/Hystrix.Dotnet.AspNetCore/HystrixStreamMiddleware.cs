@@ -1,13 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Hystrix.Dotnet.Metrics;
-using log4net;
+using Hystrix.Dotnet.Logging;
 using Microsoft.AspNetCore.Http;
 
 namespace Hystrix.Dotnet.AspNetCore
 {
     public class HystrixStreamMiddleware
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixStreamMiddleware));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixStreamMiddleware));
 
         // ReSharper disable once UnusedParameter.Local, needed by the ASP.NET Core framework.
         public HystrixStreamMiddleware(RequestDelegate next)

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading;
-using log4net;
+using Hystrix.Dotnet.Logging;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixRollingPercentile
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixRollingPercentile));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixRollingPercentile));
 
         private readonly CircularArray<RollingPercentileBucket> buckets;
         private readonly DateTimeProvider dateTimeProvider;

@@ -2,13 +2,13 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using log4net;
+using Hystrix.Dotnet.Logging;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixCommandFactory : IHystrixCommandFactory
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixCommandFactory));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixCommandFactory));
         private static readonly ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand> commandsDictionary = new ConcurrentDictionary<HystrixCommandIdentifier, IHystrixCommand>();
 
         private readonly HystrixOptions options;
