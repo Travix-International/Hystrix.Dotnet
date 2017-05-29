@@ -17,7 +17,7 @@ namespace Hystrix.Dotnet.Samples.AspNetCore
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; set; }
+        public IConfigurationRoot Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
