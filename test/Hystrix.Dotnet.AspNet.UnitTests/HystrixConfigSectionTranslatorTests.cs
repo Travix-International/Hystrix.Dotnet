@@ -63,6 +63,7 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
                                 {
                                     Key = "CommandA",
                                     CommandTimeoutInMilliseconds = 1001,
+                                    CommandRetryCount = 2,
                                     CircuitBreakerForcedOpen = true,
                                     CircuitBreakerForcedClosed = false,
                                     CircuitBreakerErrorThresholdPercentage = 1002,
@@ -111,6 +112,7 @@ namespace Hystrix.Dotnet.AspNet.UnitTests
 
             var commandA = options.LocalOptions.CommandGroups["GroupA"]["CommandA"];
             Assert.Equal(1001, commandA.CommandTimeoutInMilliseconds);
+            Assert.Equal(2, commandA.CommandRetryCount);
             Assert.Equal(true, commandA.CircuitBreakerForcedOpen);
             Assert.Equal(false, commandA.CircuitBreakerForcedClosed);
             Assert.Equal(1002, commandA.CircuitBreakerErrorThresholdPercentage);

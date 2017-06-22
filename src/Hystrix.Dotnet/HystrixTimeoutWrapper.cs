@@ -14,17 +14,8 @@ namespace Hystrix.Dotnet
 
         public HystrixTimeoutWrapper(HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService)
         {
-            if (commandIdentifier == null)
-            {
-                throw new ArgumentNullException(nameof(commandIdentifier));
-            }
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException(nameof(configurationService));
-            }
-
-            this.commandIdentifier = commandIdentifier;
-            this.configurationService = configurationService;
+            this.commandIdentifier = commandIdentifier ?? throw new ArgumentNullException(nameof(commandIdentifier));
+            this.configurationService = configurationService ?? throw new ArgumentNullException(nameof(configurationService));
         }
 
         /// <inheritdoc/>

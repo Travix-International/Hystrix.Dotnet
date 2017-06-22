@@ -23,6 +23,7 @@ Add a dependency to the package `Hystrix.Dotnet.AspNetCore` in our project.json.
                 "TestGroup": {
                     "TestCommand": {
                         "CommandTimeoutInMilliseconds": 1250,
+                        "CommandRetryCount": 1,
                         "CircuitBreakerErrorThresholdPercentage": 60
                     }
                 }

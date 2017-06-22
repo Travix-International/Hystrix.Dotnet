@@ -42,8 +42,8 @@ In our `Startup` class we have to call the `AddHystrix()` method on our service 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	...
-	services.AddHystrix();
+    ...
+    services.AddHystrix();
 }
 ```
 
@@ -52,19 +52,19 @@ And then inject the `IHystrixCommandFactory` into our controller.
 ```csharp
 public class ExampleController : Controller
 {
-	private readonly IHystrixCommandFactory hystrixCommandFactory;
-	
-	public ExampleController(IHystrixCommandFactory hystrixCommandFactory)
-	{
-		this.hystrixCommandFactory = hystrixCommandFactory;
-	}
+    private readonly IHystrixCommandFactory hystrixCommandFactory;
+    
+    public ExampleController(IHystrixCommandFactory hystrixCommandFactory)
+    {
+        this.hystrixCommandFactory = hystrixCommandFactory;
+    }
 
-	public IActionResult Get()
-	{
-		...
-		var hystrixCommand = hystrixCommandFactory.GetHystrixCommand("groupKey", "commandKey");
-		...
-	}
+    public IActionResult Get()
+    {
+        ...
+        var hystrixCommand = hystrixCommandFactory.GetHystrixCommand("groupKey", "commandKey");
+        ...
+    }
 ```
 
 The command is a combination of circuit breaker and timeout pattern. To wrap your function with it use either the sync version:
@@ -107,20 +107,21 @@ There are two main modes of configuring our individual commands, based on the va
           <add key="GroupKey">
             <commands>
               <add key="CommandKey"
-				hystrixCommandEnabled="true"
+                hystrixCommandEnabled="true"
                 commandTimeoutInMilliseconds="1250"
-				circuitBreakerForcedOpen="false"
-				circuitBreakerForcedClosed="false"
-				circuitBreakerErrorThresholdPercentage="50"
-				circuitBreakerSleepWindowInMilliseconds="5000"
-				circuitBreakerRequestVolumeThreshold="20"
-				metricsHealthSnapshotIntervalInMilliseconds="500"
-				metricsRollingStatisticalWindowInMilliseconds="10000"
-				metricsRollingStatisticalWindowBuckets="10"
-				metricsRollingPercentileEnabled="true"
-				metricsRollingPercentileWindowInMilliseconds="60000"
-				metricsRollingPercentileWindowBuckets="6"
-				metricsRollingPercentileBucketSize="100" />
+                commandRetryCount="2"
+                circuitBreakerForcedOpen="false"
+                circuitBreakerForcedClosed="false"
+                circuitBreakerErrorThresholdPercentage="50"
+                circuitBreakerSleepWindowInMilliseconds="5000"
+                circuitBreakerRequestVolumeThreshold="20"
+                metricsHealthSnapshotIntervalInMilliseconds="500"
+                metricsRollingStatisticalWindowInMilliseconds="10000"
+                metricsRollingStatisticalWindowBuckets="10"
+                metricsRollingPercentileEnabled="true"
+                metricsRollingPercentileWindowInMilliseconds="60000"
+                metricsRollingPercentileWindowBuckets="6"
+                metricsRollingPercentileBucketSize="100" />
             </commands>
           </add>
         </commandGroups>
@@ -146,20 +147,21 @@ First add an **appsettings.json** to our project, with the following content.
             "CommandGroups": {
                 "GroupKey": {
                     "CommandKey": {
-						"HystrixCommandEnabled": true,
+                        "HystrixCommandEnabled": true,
                         "CommandTimeoutInMilliseconds": 1250,
-						"CircuitBreakerForcedOpen": false,
-						"CircuitBreakerForcedClosed": false,
+                        "CommandRetryCount": 2,
+                        "CircuitBreakerForcedOpen": false,
+                        "CircuitBreakerForcedClosed": false,
                         "CircuitBreakerErrorThresholdPercentage": 60,
-						"CircuitBreakerSleepWindowInMilliseconds": 5000,
-						"CircuitBreakerRequestVolumeThreshold": 20,
-						"MetricsHealthSnapshotIntervalInMilliseconds": 500,
-						"MetricsRollingStatisticalWindowInMilliseconds": 10000,
-						"MetricsRollingStatisticalWindowBuckets": 10,
-						"MetricsRollingPercentileEnabled": true,
-						"MetricsRollingPercentileWindowInMilliseconds": 60000,
-						"MetricsRollingPercentileWindowBuckets": 6,
-						"MetricsRollingPercentileBucketSize": 100
+                        "CircuitBreakerSleepWindowInMilliseconds": 5000,
+                        "CircuitBreakerRequestVolumeThreshold": 20,
+                        "MetricsHealthSnapshotIntervalInMilliseconds": 500,
+                        "MetricsRollingStatisticalWindowInMilliseconds": 10000,
+                        "MetricsRollingStatisticalWindowBuckets": 10,
+                        "MetricsRollingPercentileEnabled": true,
+                        "MetricsRollingPercentileWindowInMilliseconds": 60000,
+                        "MetricsRollingPercentileWindowBuckets": 6,
+                        "MetricsRollingPercentileBucketSize": 100
                     }
                 }
             }
@@ -173,8 +175,8 @@ Then set up the options object in our DI configuration, in the `ConfigureService
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	...
-	services.Configure<HystrixOptions>(options => Configuration.GetSection("Hystrix").Bind(options));
+    ...
+    services.Configure<HystrixOptions>(options => Configuration.GetSection("Hystrix").Bind(options));
 }
 ```
 
@@ -186,20 +188,21 @@ We have to publish the configuration to a URL (http://hystrix-config.mydomain.co
 
 ```json
 {
-	"HystrixCommandEnabled": true,
-	"CommandTimeoutInMilliseconds":1000,
-	"CircuitBreakerForcedOpen":false,
-	"CircuitBreakerForcedClosed":false,
-	"CircuitBreakerErrorThresholdPercentage":50,
-	"CircuitBreakerSleepWindowInMilliseconds":5000,
-	"CircuitBreakerRequestVolumeThreshold":20,
-	"MetricsHealthSnapshotIntervalInMilliseconds":500,
-	"MetricsRollingStatisticalWindowInMilliseconds":10000,
-	"MetricsRollingStatisticalWindowBuckets":10,
-	"MetricsRollingPercentileEnabled":true,
-	"MetricsRollingPercentileWindowInMilliseconds":60000,
-	"MetricsRollingPercentileWindowBuckets":6,
-	"MetricsRollingPercentileBucketSize":100
+    "HystrixCommandEnabled": true,
+    "CommandTimeoutInMilliseconds":1000,
+    "CommandRetryCount":2,
+    "CircuitBreakerForcedOpen":false,
+    "CircuitBreakerForcedClosed":false,
+    "CircuitBreakerErrorThresholdPercentage":50,
+    "CircuitBreakerSleepWindowInMilliseconds":5000,
+    "CircuitBreakerRequestVolumeThreshold":20,
+    "MetricsHealthSnapshotIntervalInMilliseconds":500,
+    "MetricsRollingStatisticalWindowInMilliseconds":10000,
+    "MetricsRollingStatisticalWindowBuckets":10,
+    "MetricsRollingPercentileEnabled":true,
+    "MetricsRollingPercentileWindowInMilliseconds":60000,
+    "MetricsRollingPercentileWindowBuckets":6,
+    "MetricsRollingPercentileBucketSize":100
 }
 ```
 
@@ -210,9 +213,9 @@ In ASP.NET web.config.
 <hystrix.dotnet>
 <hystrix serviceImplementation="HystrixJsonConfigConfigurationService" metricsStreamPollIntervalInMilliseconds="2000">
   <jsonConfigurationSourceOptions
-	pollingIntervalInMilliseconds="5000" 
-	locationPattern="Hystrix-{0}-{1}.json"
-	baseLocation="http://hystrix-config.mydomain.com/" />
+    pollingIntervalInMilliseconds="5000" 
+    locationPattern="Hystrix-{0}-{1}.json"
+    baseLocation="http://hystrix-config.mydomain.com/" />
 </hystrix>
 </hystrix.dotnet>
 ```
@@ -223,11 +226,11 @@ Or in the appsettings.json in ASP.NET Core.
 {
     "Hystrix": {
         "ConfigurationServiceImplementation": "HystrixJsonConfigConfigurationService",
-		"JsonConfigurationSourceOptions": {
-			"PollingIntervalInMilliseconds": 5000,
-			"LocationPattern": "Hystrix-{0}-{1}.json",
-			"BaseLocation":"http://hystrix-config.mydomain.com/"
-		}
+        "JsonConfigurationSourceOptions": {
+            "PollingIntervalInMilliseconds": 5000,
+            "LocationPattern": "Hystrix-{0}-{1}.json",
+            "BaseLocation":"http://hystrix-config.mydomain.com/"
+        }
     }
 }
 ```
@@ -273,8 +276,8 @@ In ASP.NET Core we have to add a middleware to our pipeline to publish the metri
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 {
-	...
-	app.UseHystrixMetricsEndpoint("hystrix.stream");
+    ...
+    app.UseHystrixMetricsEndpoint("hystrix.stream");
 }
 ```
 

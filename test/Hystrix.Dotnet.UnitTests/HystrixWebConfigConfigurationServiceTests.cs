@@ -64,6 +64,47 @@ namespace Hystrix.Dotnet.UnitTests
             }
         }
 
+        public class GetCommandRetryCount
+        {
+            private readonly HystrixLocalOptions options = new HystrixLocalOptions
+            {
+                CommandGroups = new Dictionary<string, Dictionary<string, HystrixCommandOptions>>
+                {
+                    ["GroupA"] = new Dictionary<string, HystrixCommandOptions>
+                    {
+                        ["DependencyX"] = new HystrixCommandOptions
+                        {
+                            CommandRetryCount = 2
+                        }
+                    }
+                }
+            };
+
+            [Fact]
+            public void Returns_CommandRetryCount_AppSetting_As_Integer_For_GroupA_And_DependencyX()
+            {
+                var hystrixCommandIdentifier = new HystrixCommandIdentifier("GroupA", "DependencyX");
+                var sut = new HystrixLocalConfigurationService(hystrixCommandIdentifier, options);
+
+                // Act
+                int result = sut.GetCommandRetryCount();
+
+                Assert.Equal(2, result);
+            }
+
+            [Fact]
+            public void Returns_0_If_AppSetting_Does_Not_Exist()
+            {
+                var hystrixCommandIdentifier = new HystrixCommandIdentifier("NonExistingGroup", "NonExistingCommand");
+                var hystrixConfigurationService = new HystrixLocalConfigurationService(hystrixCommandIdentifier, options);
+
+                // Act
+                int value = hystrixConfigurationService.GetCommandRetryCount();
+
+                Assert.Equal(0, value);
+            }
+        }
+
         public class GetCircuitBreakerForcedOpen
         {
             private readonly HystrixLocalOptions options = new HystrixLocalOptions

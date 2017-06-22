@@ -177,87 +177,62 @@ namespace Hystrix.Dotnet
         }
 
         /// <inheritdoc/>
-        public int GetCommandTimeoutInMilliseconds()
-        {
-            return configurationObject != null ? configurationObject.CommandTimeoutInMilliseconds : 1000;
-        }
+        public int GetCommandTimeoutInMilliseconds() =>
+            configurationObject != null ? configurationObject.CommandTimeoutInMilliseconds : 1000;
+
+        public int GetCommandRetryCount() =>
+            configurationObject != null ? configurationObject.CommandRetryCount : 0;
 
         /// <inheritdoc/>
-        public bool GetCircuitBreakerForcedOpen()
-        {
-            return configurationObject != null && configurationObject.CircuitBreakerForcedOpen;
-        }
+        public bool GetCircuitBreakerForcedOpen() =>
+            configurationObject != null && configurationObject.CircuitBreakerForcedOpen;
 
         /// <inheritdoc/>
-        public bool GetCircuitBreakerForcedClosed()
-        {
-            return configurationObject != null && configurationObject.CircuitBreakerForcedClosed;
-        }
+        public bool GetCircuitBreakerForcedClosed() =>
+            configurationObject != null && configurationObject.CircuitBreakerForcedClosed;
 
         /// <inheritdoc/>
-        public int GetCircuitBreakerErrorThresholdPercentage()
-        {
-            return configurationObject != null ? configurationObject.CircuitBreakerErrorThresholdPercentage : 50;
-        }
+        public int GetCircuitBreakerErrorThresholdPercentage() =>
+            configurationObject != null ? configurationObject.CircuitBreakerErrorThresholdPercentage : 50;
 
         /// <inheritdoc/>
-        public int GetCircuitBreakerSleepWindowInMilliseconds()
-        {
-            return configurationObject != null ? configurationObject.CircuitBreakerSleepWindowInMilliseconds : 5000;
-        }
+        public int GetCircuitBreakerSleepWindowInMilliseconds() =>
+            configurationObject != null ? configurationObject.CircuitBreakerSleepWindowInMilliseconds : 5000;
 
         /// <inheritdoc/>
-        public int GetCircuitBreakerRequestVolumeThreshold()
-        {
-            return configurationObject != null ? configurationObject.CircuitBreakerRequestVolumeThreshold : 20;
-        }
+        public int GetCircuitBreakerRequestVolumeThreshold() =>
+            configurationObject != null ? configurationObject.CircuitBreakerRequestVolumeThreshold : 20;
 
         /// <inheritdoc/>
-        public int GetMetricsHealthSnapshotIntervalInMilliseconds()
-        {
-            return configurationObject != null ? configurationObject.MetricsHealthSnapshotIntervalInMilliseconds : 500;
-        }
+        public int GetMetricsHealthSnapshotIntervalInMilliseconds() =>
+            configurationObject != null ? configurationObject.MetricsHealthSnapshotIntervalInMilliseconds : 500;
 
         /// <inheritdoc/>
-        public int GetMetricsRollingStatisticalWindowInMilliseconds()
-        {
-            return configurationObject != null ? configurationObject.MetricsRollingStatisticalWindowInMilliseconds : 10000;
-        }
+        public int GetMetricsRollingStatisticalWindowInMilliseconds() =>
+            configurationObject != null ? configurationObject.MetricsRollingStatisticalWindowInMilliseconds : 10000;
 
         /// <inheritdoc/>
-        public int GetMetricsRollingStatisticalWindowBuckets()
-        {
-            return configurationObject != null ? configurationObject.MetricsRollingStatisticalWindowBuckets : 10;
-        }
+        public int GetMetricsRollingStatisticalWindowBuckets() =>
+            configurationObject != null ? configurationObject.MetricsRollingStatisticalWindowBuckets : 10;
 
         /// <inheritdoc/>
-        public bool GetMetricsRollingPercentileEnabled()
-        {
-            return configurationObject == null || configurationObject.MetricsRollingPercentileEnabled;
-        }
+        public bool GetMetricsRollingPercentileEnabled() =>
+            configurationObject == null || configurationObject.MetricsRollingPercentileEnabled;
 
         /// <inheritdoc/>
-        public int GetMetricsRollingPercentileWindowInMilliseconds()
-        {
-            return configurationObject != null ? configurationObject.MetricsRollingPercentileWindowInMilliseconds : 60000;
-        }
+        public int GetMetricsRollingPercentileWindowInMilliseconds() =>
+            configurationObject != null ? configurationObject.MetricsRollingPercentileWindowInMilliseconds : 60000;
 
         /// <inheritdoc/>
-        public int GetMetricsRollingPercentileWindowBuckets()
-        {
-            return configurationObject != null ? configurationObject.MetricsRollingPercentileWindowBuckets : 6;
-        }
+        public int GetMetricsRollingPercentileWindowBuckets() =>
+            configurationObject != null ? configurationObject.MetricsRollingPercentileWindowBuckets : 6;
 
         /// <inheritdoc/>
-        public int GetMetricsRollingPercentileBucketSize()
-        {
-            return configurationObject != null ? configurationObject.MetricsRollingPercentileBucketSize : 100;
-        }
+        public int GetMetricsRollingPercentileBucketSize() =>
+            configurationObject != null ? configurationObject.MetricsRollingPercentileBucketSize : 100;
 
-        public bool GetHystrixCommandEnabled()
-        {
-            return configurationObject == null || configurationObject.HystrixCommandEnabled;
-        }
+        public bool GetHystrixCommandEnabled() =>
+            configurationObject == null || configurationObject.HystrixCommandEnabled;
 
         internal class SingleSetting 
         {
