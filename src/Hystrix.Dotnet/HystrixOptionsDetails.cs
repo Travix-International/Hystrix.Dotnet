@@ -9,6 +9,8 @@
 
         public int CommandTimeoutInMilliseconds { get; set; } = 1000;
 
+        public int CommandRetryCount { get; set; } = 0;
+
         public bool CircuitBreakerForcedOpen { get; set; } = false;
 
         public bool CircuitBreakerForcedClosed { get; set; } = false;

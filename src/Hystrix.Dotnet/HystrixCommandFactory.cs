@@ -64,10 +64,11 @@ namespace Hystrix.Dotnet
 
             var commandMetrics = new HystrixCommandMetrics(commandIdentifier, configurationService);
             var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationService);
+            var retryWrapper = new HystrixRetryWrapper(commandIdentifier, configurationService);
             var circuitBreaker = new HystrixCircuitBreaker(commandIdentifier, configurationService, commandMetrics);
             var threadPoolMetrics = new HystrixThreadPoolMetrics(commandIdentifier, configurationService);
 
-            return new HystrixCommand(commandIdentifier, timeoutWrapper, circuitBreaker, commandMetrics, threadPoolMetrics, configurationService);
+            return new HystrixCommand(commandIdentifier, timeoutWrapper, retryWrapper, circuitBreaker, commandMetrics, threadPoolMetrics, configurationService);
         }
    
         public ICollection<IHystrixCommand> GetAllHystrixCommands()

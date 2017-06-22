@@ -54,6 +54,7 @@ namespace Hystrix.Dotnet.AspNet
             return new HystrixCommandOptions
             {
                 CommandTimeoutInMilliseconds = command.CommandTimeoutInMilliseconds,
+                CommandRetryCount = command.CommandRetryCount,
                 CircuitBreakerForcedOpen = command.CircuitBreakerForcedOpen,
                 CircuitBreakerForcedClosed = command.CircuitBreakerForcedClosed,
                 CircuitBreakerErrorThresholdPercentage = command.CircuitBreakerErrorThresholdPercentage,

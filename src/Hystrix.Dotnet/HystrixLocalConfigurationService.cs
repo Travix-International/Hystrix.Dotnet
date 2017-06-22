@@ -24,6 +24,8 @@ namespace Hystrix.Dotnet
         /// <inheritdoc/>
         public int GetCommandTimeoutInMilliseconds() => options.CommandTimeoutInMilliseconds;
 
+        public int GetCommandRetryCount() => options.CommandRetryCount;
+
         /// <inheritdoc/>
         public bool GetCircuitBreakerForcedOpen() => options.CircuitBreakerForcedOpen;
 

@@ -9,6 +9,7 @@ namespace Hystrix.Dotnet
     public class HystrixCommand : IHystrixCommand
     {
         private readonly IHystrixTimeoutWrapper timeoutWrapper;
+        private readonly IHystrixRetryWrapper retryWrapper;
 
         public HystrixCommandIdentifier CommandIdentifier { get; }
 
@@ -20,44 +21,22 @@ namespace Hystrix.Dotnet
 
         public IHystrixConfigurationService ConfigurationService { get; }
 
-        public HystrixCommand(HystrixCommandIdentifier commandIdentifier, IHystrixTimeoutWrapper timeoutWrapper, IHystrixCircuitBreaker circuitBreaker, IHystrixCommandMetrics commandMetrics, IHystrixThreadPoolMetrics threadPoolMetrics, IHystrixConfigurationService configurationService)
+        public HystrixCommand(
+            HystrixCommandIdentifier commandIdentifier,
+            IHystrixTimeoutWrapper timeoutWrapper,
+            IHystrixRetryWrapper retryWrapper,
+            IHystrixCircuitBreaker circuitBreaker,
+            IHystrixCommandMetrics commandMetrics,
+            IHystrixThreadPoolMetrics threadPoolMetrics,
+            IHystrixConfigurationService configurationService)
         {
-            if (commandIdentifier == null)
-            {
-                throw new ArgumentNullException(nameof(commandIdentifier));
-            }
-
-            if (timeoutWrapper == null)
-            {
-                throw new ArgumentNullException(nameof(timeoutWrapper));
-            }
-
-            if (circuitBreaker == null)
-            {
-                throw new ArgumentNullException(nameof(circuitBreaker));
-            }
-
-            if (commandMetrics == null)
-            {
-                throw new ArgumentNullException(nameof(commandMetrics));
-            }
-
-            if (threadPoolMetrics == null)
-            {
-                throw new ArgumentNullException(nameof(threadPoolMetrics));
-            }
-
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException(nameof(configurationService));
-            }
-
-            CommandIdentifier = commandIdentifier;
-            this.timeoutWrapper = timeoutWrapper;
-            CircuitBreaker = circuitBreaker;
-            CommandMetrics = commandMetrics;
-            ThreadPoolMetrics = threadPoolMetrics;
-            ConfigurationService = configurationService;
+            this.timeoutWrapper = timeoutWrapper ?? throw new ArgumentNullException(nameof(timeoutWrapper));
+            this.retryWrapper = retryWrapper ?? throw new ArgumentNullException(nameof(retryWrapper));
+            CommandIdentifier = commandIdentifier ?? throw new ArgumentNullException(nameof(commandIdentifier));
+            CircuitBreaker = circuitBreaker ?? throw new ArgumentNullException(nameof(circuitBreaker));
+            CommandMetrics = commandMetrics ?? throw new ArgumentNullException(nameof(commandMetrics));
+            ThreadPoolMetrics = threadPoolMetrics ?? throw new ArgumentNullException(nameof(threadPoolMetrics));
+            ConfigurationService = configurationService ?? throw new ArgumentNullException(nameof(configurationService));
         }
 
         /// <inheritdoc/>
@@ -98,7 +77,9 @@ namespace Hystrix.Dotnet
 
                 try
                 {
-                    var result = timeoutWrapper.Execute(primaryFunction, cancellationTokenSource);
+                    var result = retryWrapper.Execute(
+                        () => timeoutWrapper.Execute(primaryFunction, cancellationTokenSource),
+                        cancellationTokenSource);
                     
                     commandStopWatch.Stop();
 
@@ -188,7 +169,9 @@ namespace Hystrix.Dotnet
 
                 try
                 {
-                    var result = await timeoutWrapper.ExecuteAsync(primaryFunction, cancellationTokenSource).ConfigureAwait(false);
+                    var result = await retryWrapper.ExecuteAsync(
+                        () => timeoutWrapper.ExecuteAsync(primaryFunction, cancellationTokenSource),
+                        cancellationTokenSource);
                     
                     commandStopWatch.Stop();
 

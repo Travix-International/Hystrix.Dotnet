@@ -9,6 +9,12 @@ namespace Hystrix.Dotnet
         int GetCommandTimeoutInMilliseconds();
 
         /// <summary>
+        /// Returns the number of times the command is retried in case of a failure.
+        /// </summary>
+        /// <returns></returns>
+        int GetCommandRetryCount();
+
+        /// <summary>
         /// Returns whether the circuit breaker is forced open for the command the instances is tied to
         /// </summary>
         /// <returns></returns>

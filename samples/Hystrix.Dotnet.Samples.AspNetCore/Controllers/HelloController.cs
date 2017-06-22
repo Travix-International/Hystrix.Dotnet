@@ -19,10 +19,19 @@ namespace Travix.Core.ShoppingContext.WebService.Controllers
         
         [HttpGet]
         public async Task<IActionResult> Get()
-        { 
+        {
+            var firstCall = true;
+
             var result = await hystrixCommand.ExecuteAsync(
                 async () =>
                 {
+                    if(firstCall)
+                    {
+                        // On the first call we throw an exception to be able to illustrate Retry.
+                        firstCall = false;
+                        throw new InvalidOperationException();
+                    }
+
                     // Here we could do a potentially failing operation, like calling an external service.
                     var rnd = new Random();
                     await Task.Delay(rnd.Next(500, 1000));

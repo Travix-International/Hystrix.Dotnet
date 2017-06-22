@@ -18,6 +18,13 @@ namespace Hystrix.Dotnet.AspNet
             set { this["commandTimeoutInMilliseconds"] = value; }
         }
 
+        [ConfigurationProperty("commandRetryCount", IsRequired = false, DefaultValue = 1000)]
+        public int CommandRetryCount
+        {
+            get { return (int)this["commandRetryCount"]; }
+            set { this["commandRetryCount"] = value; }
+        }
+
         [ConfigurationProperty("circuitBreakerForcedOpen", IsRequired = false, DefaultValue = false)]
         public bool CircuitBreakerForcedOpen
         {
