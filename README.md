@@ -296,6 +296,12 @@ http://<mylocalip>/hystrix.stream
 
 When requesting urls for your local application that hit your Hystrix command it should show up in the dashboard. For more info on how to read the dashboard, see https://github.com/Netflix/Hystrix/wiki/Dashboard
 
+### Logging
+
+Hystrix.Dotnet logs some diagnostic information using LibLog. You can hook these log messages into logging libraries like log4net, NLog or Serilog, or you can provide your own logging provider implementation.
+
+You can find an example of setting the logging up for Serilog in the [ASP.NET Core sample](/samples/Hystrix.Dotnet.Samples.AspNetCore), and you can find examples for other logging libraries in the [LibLog project](https://github.com/damianh/LibLog).
+
 ## Sample projects
 
 In the [samples](/samples) directory you can find an example project illustrating the configuration of Hystrix for [ASP.NET](/samples/Hystrix.Dotnet.Samples.AspNet) and [ASP.NET Core](/samples/Hystrix.Dotnet.Samples.AspNetCore).

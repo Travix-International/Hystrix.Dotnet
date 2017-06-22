@@ -3,13 +3,13 @@ using System.Configuration;
 using System.Threading.Tasks;
 using System.Web;
 using Hystrix.Dotnet.Metrics;
-using log4net;
+using Hystrix.Dotnet.Logging;
 
 namespace Hystrix.Dotnet.AspNet
 {
     public class HystrixStreamHandler : HttpTaskAsyncHandler
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixStreamHandler));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixStreamHandler));
 
         private readonly IHystrixMetricsStreamEndpoint endpoint;
 

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading;
-using log4net;
+using Hystrix.Dotnet.Logging;
 
 namespace Hystrix.Dotnet
 {
     public class HystrixCircuitBreaker : IHystrixCircuitBreaker
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(HystrixCircuitBreaker));
+        private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixCircuitBreaker));
 
         private readonly DateTimeProvider dateTimeProvider;
         private readonly HystrixCommandIdentifier commandIdentifier;
