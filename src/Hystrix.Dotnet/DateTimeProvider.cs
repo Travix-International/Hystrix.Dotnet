@@ -2,11 +2,9 @@
 
 namespace Hystrix.Dotnet
 {
-    public class DateTimeProvider
+    public class DateTimeProvider : IDateTimeProvider
     {
-        public virtual long GetCurrentTimeInMilliseconds()
-        {
-            return DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
-        }
+        public long CurrentTimeInMilliseconds =>
+            DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
     }
 }

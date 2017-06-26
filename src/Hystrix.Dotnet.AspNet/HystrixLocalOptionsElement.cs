@@ -8,8 +8,8 @@ namespace Hystrix.Dotnet.AspNet
         [ConfigurationCollection(typeof(HystrixCommandGroupElement), AddItemName = "add", ClearItemsName = "clear", RemoveItemName = "remove")]
         public HystrixCommandGroupCollection CommandGroups
         {
-            get { return (HystrixCommandGroupCollection)this["commandGroups"]; }
-            set { this["commandGroups"] = value; }
+            get => (HystrixCommandGroupCollection)this["commandGroups"];
+            set => this["commandGroups"] = value;
         }
     }
 }

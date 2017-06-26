@@ -8,19 +8,11 @@ namespace Hystrix.Dotnet
 
         public IHystrixConfigurationService ConfigurationService { get; }
 
-        public HystrixThreadPoolMetrics(HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService)
+        public HystrixThreadPoolMetrics(IDateTimeProvider dateTimeProvider, IHystrixConfigurationService configurationService)
         {
-            if (commandIdentifier == null)
-            {
-                throw new ArgumentNullException(nameof(commandIdentifier));
-            }
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException(nameof(configurationService));
-            }
-            ConfigurationService = configurationService;
+            ConfigurationService = configurationService ?? throw new ArgumentNullException(nameof(configurationService));
 
-            counter = new HystrixRollingNumber(configurationService.GetMetricsRollingStatisticalWindowInMilliseconds(), configurationService.GetMetricsRollingStatisticalWindowBuckets());
+            counter = new HystrixRollingNumber(dateTimeProvider, configurationService.GetMetricsRollingStatisticalWindowInMilliseconds(), configurationService.GetMetricsRollingStatisticalWindowBuckets());
         }
 
         public int GetCurrentActiveCount()

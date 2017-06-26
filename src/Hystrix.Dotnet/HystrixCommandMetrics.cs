@@ -5,7 +5,7 @@ namespace Hystrix.Dotnet
 {
     public class HystrixCommandMetrics : IHystrixCommandMetrics
     {
-        private readonly DateTimeProvider dateTimeProvider;
+        private readonly IDateTimeProvider dateTimeProvider;
         private readonly IHystrixConfigurationService configurationService;
         private readonly HystrixRollingNumber counter;
 
@@ -19,30 +19,15 @@ namespace Hystrix.Dotnet
         private readonly HystrixRollingPercentile percentileTotal;
         private int concurrentExecutionCount;
 
-        public HystrixCommandMetrics(HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService)
-            : this(new DateTimeProvider(), commandIdentifier, configurationService)
+        public HystrixCommandMetrics(IDateTimeProvider dateTimeProvider, IHystrixConfigurationService configurationService)
         {
-        }
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
+            this.configurationService = configurationService ?? throw new ArgumentNullException(nameof(configurationService));
 
-        [Obsolete("This constructor is only use for testing in order to inject a DateTimeProvider mock")]
-        public HystrixCommandMetrics(DateTimeProvider dateTimeProvider, HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService)
-        {
-            if (commandIdentifier == null)
-            {
-                throw new ArgumentNullException(nameof(commandIdentifier));
-            }
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException(nameof(configurationService));
-            }
+            percentileExecution = new HystrixRollingPercentile(dateTimeProvider, configurationService.GetMetricsRollingPercentileWindowInMilliseconds(), configurationService.GetMetricsRollingPercentileWindowBuckets(), configurationService.GetMetricsRollingPercentileBucketSize(), configurationService);
+            percentileTotal = new HystrixRollingPercentile(dateTimeProvider, configurationService.GetMetricsRollingPercentileWindowInMilliseconds(), configurationService.GetMetricsRollingPercentileWindowBuckets(), configurationService.GetMetricsRollingPercentileBucketSize(), configurationService);
 
-            this.dateTimeProvider = dateTimeProvider;
-            this.configurationService = configurationService;
-
-            percentileExecution = new HystrixRollingPercentile(configurationService.GetMetricsRollingPercentileWindowInMilliseconds(), configurationService.GetMetricsRollingPercentileWindowBuckets(), configurationService.GetMetricsRollingPercentileBucketSize(), configurationService);
-            percentileTotal = new HystrixRollingPercentile(configurationService.GetMetricsRollingPercentileWindowInMilliseconds(), configurationService.GetMetricsRollingPercentileWindowBuckets(), configurationService.GetMetricsRollingPercentileBucketSize(), configurationService);
-
-            counter = new HystrixRollingNumber(configurationService.GetMetricsRollingStatisticalWindowInMilliseconds(), configurationService.GetMetricsRollingStatisticalWindowBuckets());
+            counter = new HystrixRollingNumber(dateTimeProvider, configurationService.GetMetricsRollingStatisticalWindowInMilliseconds(), configurationService.GetMetricsRollingStatisticalWindowBuckets());
         }
 
         /// <inheritdoc/>
@@ -51,9 +36,9 @@ namespace Hystrix.Dotnet
             // we put an interval between snapshots so high-volume commands don't 
             // spend too much unnecessary time calculating metrics in very small time periods
             long lastTime = lastHealthCountsSnapshot;
-            long currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds();
+            long currentTime = dateTimeProvider.CurrentTimeInMilliseconds;
             if (((currentTime - lastTime) >= configurationService.GetMetricsHealthSnapshotIntervalInMilliseconds() || healthCountsSnapshot == null) &&
-                Interlocked.CompareExchange(ref lastHealthCountsSnapshot, dateTimeProvider.GetCurrentTimeInMilliseconds(), lastTime) == lastTime)
+                Interlocked.CompareExchange(ref lastHealthCountsSnapshot, dateTimeProvider.CurrentTimeInMilliseconds, lastTime) == lastTime)
             {
                 // our thread won setting the snapshot time so we will proceed with generating a new snapshot
                 // losing threads will continue using the old snapshot
@@ -194,7 +179,7 @@ namespace Hystrix.Dotnet
         public void ResetCounter()
         {
             counter.Reset();
-            lastHealthCountsSnapshot = dateTimeProvider.GetCurrentTimeInMilliseconds();
+            lastHealthCountsSnapshot = dateTimeProvider.CurrentTimeInMilliseconds;
             healthCountsSnapshot = new HystrixHealthCounts(0, 0, 0);
         }
     }

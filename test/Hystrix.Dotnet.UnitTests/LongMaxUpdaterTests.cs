@@ -5,7 +5,7 @@ namespace Hystrix.Dotnet.UnitTests
 {
     public class LongMaxUpdaterTests
     {
-        private LongMaxUpdater num = new LongMaxUpdater();
+        private readonly LongMaxUpdater num = new LongMaxUpdater();
 
         [Fact]
         public void LongMaxUpdater_DefaultsToLongMinValue()

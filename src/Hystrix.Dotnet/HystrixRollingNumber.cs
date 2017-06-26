@@ -5,27 +5,17 @@ namespace Hystrix.Dotnet
 {
     public class HystrixRollingNumber
     {
-        private readonly DateTimeProvider dateTimeProvider;
-        private readonly int timeInMilliseconds;
-        private readonly int numberOfBuckets;
-        private readonly int bucketSizeInMillseconds;
-
+        private readonly IDateTimeProvider dateTimeProvider;
         private readonly CircularArray<RollingNumberBucket> buckets;
         private readonly CumulativeSum cumulativeSum = new CumulativeSum();
 
-        public int TimeInMilliseconds => timeInMilliseconds;
+        public int TimeInMilliseconds { get; }
 
-        public int NumberOfBuckets => numberOfBuckets;
+        public int NumberOfBuckets { get; }
 
-        public int BucketSizeInMillseconds => bucketSizeInMillseconds;
+        public int BucketSizeInMillseconds { get; }
 
-        public HystrixRollingNumber(int timeInMilliseconds, int numberOfBuckets)
-            :this(new DateTimeProvider(), timeInMilliseconds, numberOfBuckets)
-        {
-        }
-
-        [Obsolete("This constructor is only use for testing in order to inject a DateTimeProvider mock")]
-        public HystrixRollingNumber(DateTimeProvider dateTimeProvider, int timeInMilliseconds, int numberOfBuckets)
+        public HystrixRollingNumber(IDateTimeProvider dateTimeProvider, int timeInMilliseconds, int numberOfBuckets)
         {
             if (timeInMilliseconds <= 0)
             {
@@ -40,11 +30,11 @@ namespace Hystrix.Dotnet
                 throw new ArgumentOutOfRangeException(nameof(timeInMilliseconds), "Parameter timeInMilliseconds needs to be an exact multiple of numberOfBuckets");
             }
 
-            this.dateTimeProvider = dateTimeProvider;
-            this.timeInMilliseconds = timeInMilliseconds;
-            this.numberOfBuckets = numberOfBuckets;
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
 
-            bucketSizeInMillseconds = timeInMilliseconds / numberOfBuckets;
+            TimeInMilliseconds = timeInMilliseconds;
+            NumberOfBuckets = numberOfBuckets;
+            BucketSizeInMillseconds = timeInMilliseconds / numberOfBuckets;
 
             buckets = new CircularArray<RollingNumberBucket>(numberOfBuckets);
         }
@@ -153,7 +143,7 @@ namespace Hystrix.Dotnet
 
         private RollingNumberBucket GetCurrentBucket()
         {
-            long currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds();
+            long currentTime = dateTimeProvider.CurrentTimeInMilliseconds;
 
             /* a shortcut to try and get the most common result of immediately finding the current bucket */
 
@@ -163,7 +153,7 @@ namespace Hystrix.Dotnet
              * NOTE: This is thread-safe because it's accessing 'buckets' which is a LinkedBlockingDeque
              */
             RollingNumberBucket currentBucket = buckets.GetTail();
-            if (currentBucket != null && currentTime < currentBucket.WindowStart + bucketSizeInMillseconds)
+            if (currentBucket != null && currentTime < currentBucket.WindowStart + BucketSizeInMillseconds)
             {
                 // if we're within the bucket 'window of time' return the current one
                 // NOTE: We do not worry if we are BEFORE the window in a weird case of where thread scheduling causes that to occur,
@@ -211,18 +201,18 @@ namespace Hystrix.Dotnet
                     {
                         // We go into a loop so that it will create as many buckets as needed to catch up to the current time
                         // as we want the buckets complete even if we don't have transactions during a period of time.
-                        for (int i = 0; i < numberOfBuckets; i++)
+                        for (int i = 0; i < NumberOfBuckets; i++)
                         {
                             // we have at least 1 bucket so retrieve it
                             RollingNumberBucket lastBucket = buckets.GetTail();
-                            if (currentTime < lastBucket.WindowStart + bucketSizeInMillseconds)
+                            if (currentTime < lastBucket.WindowStart + BucketSizeInMillseconds)
                             {
                                 // if we're within the bucket 'window of time' return the current one
                                 // NOTE: We do not worry if we are BEFORE the window in a weird case of where thread scheduling causes that to occur,
                                 // we'll just use the latest as long as we're not AFTER the window
                                 return lastBucket;
                             }
-                            else if (currentTime - (lastBucket.WindowStart + bucketSizeInMillseconds) > timeInMilliseconds)
+                            else if (currentTime - (lastBucket.WindowStart + BucketSizeInMillseconds) > TimeInMilliseconds)
                             {
                                 // the time passed is greater than the entire rolling counter so we want to clear it all and start from scratch
                                 Reset();
@@ -232,7 +222,7 @@ namespace Hystrix.Dotnet
                             else
                             { // we're past the window so we need to create a new bucket
                                 // create a new bucket and add it as the new 'last'
-                                buckets.Add(new RollingNumberBucket(lastBucket.WindowStart + bucketSizeInMillseconds));
+                                buckets.Add(new RollingNumberBucket(lastBucket.WindowStart + BucketSizeInMillseconds));
                                 // add the lastBucket values to the cumulativeSum
                                 cumulativeSum.AddBucket(lastBucket);
                             }

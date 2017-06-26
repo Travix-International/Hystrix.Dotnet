@@ -9,7 +9,7 @@ namespace Hystrix.Dotnet
         private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixRollingPercentile));
 
         private readonly CircularArray<RollingPercentileBucket> buckets;
-        private readonly DateTimeProvider dateTimeProvider;
+        private readonly IDateTimeProvider dateTimeProvider;
         private readonly int timeInMilliseconds;
         private readonly int numberOfBuckets;
         private readonly int bucketDataLength;
@@ -20,13 +20,7 @@ namespace Hystrix.Dotnet
 
         private volatile PercentileSnapshot currentPercentileSnapshot = new PercentileSnapshot(0);
 
-        public HystrixRollingPercentile(int timeInMilliseconds, int numberOfBuckets, int bucketDataLength, IHystrixConfigurationService configurationService)
-            :this(new DateTimeProvider(), timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationService)
-        {
-        }
-
-        [Obsolete("This constructor is only use for testing in order to inject a DateTimeProvider mock")]
-        public HystrixRollingPercentile(DateTimeProvider dateTimeProvider, int timeInMilliseconds, int numberOfBuckets, int bucketDataLength, IHystrixConfigurationService configurationService)
+        public HystrixRollingPercentile(IDateTimeProvider dateTimeProvider, int timeInMilliseconds, int numberOfBuckets, int bucketDataLength, IHystrixConfigurationService configurationService)
         {
             if (timeInMilliseconds <= 0)
             {
@@ -44,16 +38,12 @@ namespace Hystrix.Dotnet
             {
                 throw new ArgumentOutOfRangeException(nameof(bucketDataLength), "Parameter bucketDataLength needs to be greater than or equal to 100");
             }
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException(nameof(configurationService));
-            }
 
-            this.dateTimeProvider = dateTimeProvider;
             this.timeInMilliseconds = timeInMilliseconds;
             this.numberOfBuckets = numberOfBuckets;
             this.bucketDataLength = bucketDataLength;
-            this.configurationService = configurationService;
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
+            this.configurationService = configurationService ?? throw new ArgumentNullException(nameof(configurationService));
 
             bucketSizeInMilliseconds = this.timeInMilliseconds / this.numberOfBuckets;
 
@@ -149,7 +139,7 @@ namespace Hystrix.Dotnet
 
         private RollingPercentileBucket GetCurrentBucket()
         {
-            long currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds();
+            long currentTime = dateTimeProvider.CurrentTimeInMilliseconds;
 
             /* a shortcut to try and get the most common result of immediately finding the current bucket */
 
