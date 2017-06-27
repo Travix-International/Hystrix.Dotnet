@@ -8,7 +8,7 @@ namespace Hystrix.Dotnet
     {
         private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixCircuitBreaker));
 
-        private readonly DateTimeProvider dateTimeProvider;
+        private readonly IDateTimeProvider dateTimeProvider;
         private readonly HystrixCommandIdentifier commandIdentifier;
         private readonly IHystrixConfigurationService configurationService;
         private readonly IHystrixCommandMetrics commandMetrics;
@@ -17,31 +17,12 @@ namespace Hystrix.Dotnet
 
         private long circuitOpenedOrLastTestedTime;
 
-        public HystrixCircuitBreaker(HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService, IHystrixCommandMetrics commandMetrics)
-            :this(new DateTimeProvider(), commandIdentifier,configurationService, commandMetrics)
+        public HystrixCircuitBreaker(IDateTimeProvider dateTimeProvider, HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService, IHystrixCommandMetrics commandMetrics)
         {
-        }
-
-        [Obsolete("This constructor is only used for testing in order to inject a DateTimeProvider mock")]
-        public HystrixCircuitBreaker(DateTimeProvider dateTimeProvider, HystrixCommandIdentifier commandIdentifier, IHystrixConfigurationService configurationService, IHystrixCommandMetrics commandMetrics)
-        {
-            if (commandIdentifier == null)
-            {
-                throw new ArgumentNullException(nameof(commandIdentifier));
-            }
-            if (configurationService == null)
-            {
-                throw new ArgumentNullException(nameof(configurationService));
-            }
-            if (commandMetrics == null)
-            {
-                throw new ArgumentNullException(nameof(commandMetrics));
-            }
-
-            this.dateTimeProvider = dateTimeProvider;
-            this.commandIdentifier = commandIdentifier;
-            this.configurationService = configurationService;
-            this.commandMetrics = commandMetrics;
+            this.dateTimeProvider = dateTimeProvider ?? throw new ArgumentNullException(nameof(dateTimeProvider));
+            this.commandIdentifier = commandIdentifier ?? throw new ArgumentNullException(nameof(commandIdentifier));
+            this.configurationService = configurationService ?? throw new ArgumentNullException(nameof(configurationService));
+            this.commandMetrics = commandMetrics ?? throw new ArgumentNullException(nameof(commandMetrics));
         }
 
         /// <inheritdoc/>
@@ -96,9 +77,9 @@ namespace Hystrix.Dotnet
             int circuitBreakerSleepWindowInMilliseconds = configurationService.GetCircuitBreakerSleepWindowInMilliseconds();
 
             if (// check if sleep window has passed
-                CircuitIsOpen && (dateTimeProvider.GetCurrentTimeInMilliseconds() - circuitOpenedOrLastTestedTime) > circuitBreakerSleepWindowInMilliseconds &&
+                CircuitIsOpen && (dateTimeProvider.CurrentTimeInMilliseconds - circuitOpenedOrLastTestedTime) > circuitBreakerSleepWindowInMilliseconds &&
                 // update circuitOpenedOrLastTestedTime if it hasn't been updated by another request in the meantime
-                Interlocked.CompareExchange(ref circuitOpenedOrLastTestedTime, dateTimeProvider.GetCurrentTimeInMilliseconds(), localCircuitOpenedOrLastTestedTime) == localCircuitOpenedOrLastTestedTime)
+                Interlocked.CompareExchange(ref circuitOpenedOrLastTestedTime, dateTimeProvider.CurrentTimeInMilliseconds, localCircuitOpenedOrLastTestedTime) == localCircuitOpenedOrLastTestedTime)
             {
                 log.InfoFormat("Allowing single test request through circuit breaker for group {0} and key {1}.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
@@ -117,7 +98,7 @@ namespace Hystrix.Dotnet
                 log.WarnFormat("Circuit breaker for group {0} and key {1} has opened.", commandIdentifier.GroupKey, commandIdentifier.CommandKey);
 
                 CircuitIsOpen = true;
-                circuitOpenedOrLastTestedTime = dateTimeProvider.GetCurrentTimeInMilliseconds();                
+                circuitOpenedOrLastTestedTime = dateTimeProvider.CurrentTimeInMilliseconds;                
             }
         }
 

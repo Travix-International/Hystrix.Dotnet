@@ -29,17 +29,12 @@ namespace Hystrix.Dotnet.Metrics
 
         public HystrixMetricsStreamEndpoint(IHystrixCommandFactory commandFactory, int pollingInterval)
         {
-            if (commandFactory == null)
-            {
-                throw new ArgumentNullException(nameof(commandFactory));
-            }
-
             if (pollingInterval < 100)
             {
                 throw new ArgumentOutOfRangeException(nameof(pollingInterval), "Parameter pollingInterval needs to be greater than or equal to 100");
             }
 
-            this.commandFactory = commandFactory;
+            this.commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
             this.pollingInterval = pollingInterval;
         }
 
@@ -127,7 +122,7 @@ namespace Hystrix.Dotnet.Metrics
                     type = "HystrixCommand",
                     name = commandIdentifier.CommandKey,
                     group = commandIdentifier.GroupKey,
-                    currentTime = dateTimeProvider.GetCurrentTimeInMilliseconds(),
+                    currentTime = dateTimeProvider.CurrentTimeInMilliseconds,
                     isCircuitBreakerOpen = circuitBreaker != null && circuitBreaker.CircuitIsOpen,
 
                     errorPercentage = healthCounts.GetErrorPercentage(),

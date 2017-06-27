@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Moq;
 using Xunit;
+// ReSharper disable MethodSupportsCancellation
 
 namespace Hystrix.Dotnet.UnitTests
 {
@@ -1769,7 +1770,7 @@ namespace Hystrix.Dotnet.UnitTests
                 configurationServiceMock.Setup(x => x.GetHystrixCommandEnabled()).Returns(true);
                 circuitBreakerMock.Setup(x => x.AllowRequest()).Returns(false);
                 // http://stackoverflow.com/questions/537308/how-to-verify-that-method-was-not-called-in-moq
-                commandMetricsMock.Setup(x => x.MarkFallbackSuccess()).Throws(new Exception("Shouldn't be called.")); ;
+                commandMetricsMock.Setup(x => x.MarkFallbackSuccess()).Throws(new Exception("Shouldn't be called."));
 
                 // Act
                 await Assert.ThrowsAsync<Exception>(() => hystrixCommand.ExecuteAsync(primaryFunction, fallbackFunction));

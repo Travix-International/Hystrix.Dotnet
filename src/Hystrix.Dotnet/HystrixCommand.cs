@@ -65,7 +65,7 @@ namespace Hystrix.Dotnet
         {
             return InnerExecute(
                 primaryFunction,
-                innerExceptions => { throw new HystrixCommandException(innerExceptions); },
+                innerExceptions => throw new HystrixCommandException(innerExceptions),
                 cancellationTokenSource);
         }
 
@@ -155,7 +155,7 @@ namespace Hystrix.Dotnet
         {
             return await InnerExecuteAsync(
                 primaryFunction,
-                innerExceptions => { throw new HystrixCommandException(innerExceptions); },
+                innerExceptions => throw new HystrixCommandException(innerExceptions),
                 cancellationTokenSource).ConfigureAwait(false);
         }
 

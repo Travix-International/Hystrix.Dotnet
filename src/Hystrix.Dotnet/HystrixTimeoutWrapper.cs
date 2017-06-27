@@ -45,7 +45,7 @@ namespace Hystrix.Dotnet
             catch (AggregateException ae)
             {                
                 // unwrap exception, the Wait or Result wraps it in an AggregateException
-                throw ae.InnerException;
+                throw ae.InnerException ?? ae;
             }
 
             // primaryFunction continues to occupy a thread until it finishes, although nothing will be done with the result; unless we have a cancellationToken and can cancel the task

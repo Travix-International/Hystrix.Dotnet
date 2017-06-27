@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Hystrix.Dotnet.ConcurrencyUtilities;
 using Moq;
 using Xunit;
@@ -11,62 +10,79 @@ namespace Hystrix.Dotnet.UnitTests
         public class Constructor
         {
             [Fact]
+            public void Throws_ArgumentNullException_When_DateTimeProvider_Is_Null()
+            {
+                var timeInMilliseconds = 1000;
+                var numberOfBuckets = 10;
+                var bucketDataLength = 100;
+                var configurationServiceMock = new Mock<IHystrixConfigurationService>();
+
+                // Act
+                Assert.Throws<ArgumentNullException>(() => new HystrixRollingPercentile(null, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
+            }
+
+            [Fact]
             public void Throws_ArgumentOutOfRangeException_When_TimeInMilliseconds_Is_Zero_Or_Less()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 0;
                 var numberOfBuckets = 10;
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
                 // Act
-                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
+                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
 
             [Fact]
             public void Throws_ArgumentOutOfRangeException_When_NumberOfBuckets_Is_Zero_Or_Less()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 0;
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
                 // Act
-                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
+                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
 
             [Fact]
             public void Throws_ArgumentOutOfRangeException_When_BucketDataLength_Is_Less_Than_One_Hundred()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 10;
                 var bucketDataLength = 99;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
                 // Act
-                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
+                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
 
             [Fact]
             public void Throws_ArgumentNullException_When_ConfigurationService_Is_Null()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 0;
                 var bucketDataLength = 100;
 
                 // Act
-                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, null));
+                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, null));
             }
 
             [Fact]
             public void Throws_ArgumentOutOfRangeException_When_TimeInMilliseconds_Is_Not_An_Exact_Multiple_Of_NumberOfBuckets()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 7;
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
                 // Act
-                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
+                Assert.Throws<ArgumentOutOfRangeException>(() => new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object));
             }
         }
 
@@ -75,12 +91,14 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Adds_Value_To_Current_Bucket_When_GetMetricsRollingPercentileEnabled_Is_True()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 10;
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
                 configurationServiceMock.Setup(x => x.GetMetricsRollingPercentileEnabled()).Returns(true);
-                var rollingPercentile = new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object);
+
+                var rollingPercentile = new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object);
 
                 // Act
                 rollingPercentile.AddValue(243);
@@ -92,16 +110,20 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Returns_The_Mean_Of_All_Values_In_The_Snapshot_When_GetMetricsRollingPercentileEnabled_Is_True()
             {
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var timeInMilliseconds = 10000;
                 var numberOfBuckets = 10;
                 var bucketDataLength = 100;
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
                 configurationServiceMock.Setup(x => x.GetMetricsRollingPercentileEnabled()).Returns(true);
-                var rollingPercentile = new HystrixRollingPercentile(timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object);
+
+                dateTimeProvider.SetupGet(d => d.CurrentTimeInMilliseconds).Returns(0);
+
+                var rollingPercentile = new HystrixRollingPercentile(dateTimeProvider.Object, timeInMilliseconds, numberOfBuckets, bucketDataLength, configurationServiceMock.Object);
                 rollingPercentile.AddValue(243);
                 rollingPercentile.AddValue(157);
 
-                Thread.Sleep(1500);
+                dateTimeProvider.SetupGet(d => d.CurrentTimeInMilliseconds).Returns(1500);
 
                 // Act
                 var mean = rollingPercentile.GetMean();
@@ -124,12 +146,10 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void TestRolling()
             {
-                //MockedTime time = new MockedTime();
-                var dateTimeProviderMock = new Mock<DateTimeProvider>();
-                var currentTime = new DateTimeProvider().GetCurrentTimeInMilliseconds();
-                dateTimeProviderMock.Setup(time => time.GetCurrentTimeInMilliseconds()).Returns(currentTime);
+                var dateTimeProviderMock = new Mock<IDateTimeProvider>();
+                var currentTime = new DateTime(2017, 6, 26, 14, 0, 0).Ticks / TimeSpan.TicksPerMillisecond;
+                dateTimeProviderMock.Setup(time => time.CurrentTimeInMilliseconds).Returns(currentTime);
 
-                //HystrixRollingPercentile p = new HystrixRollingPercentile(time, 60000, 12, 1000, true);
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
                 configurationServiceMock.Setup(x => x.GetMetricsRollingPercentileEnabled()).Returns(true);
                 HystrixRollingPercentile p = new HystrixRollingPercentile(dateTimeProviderMock.Object, 60000, 12, 1000, configurationServiceMock.Object);
@@ -144,7 +164,7 @@ namespace Hystrix.Dotnet.UnitTests
                 Assert.Equal(0, p.GetPercentile(50));
 
                 currentTime += 6000;
-                dateTimeProviderMock.Setup(time => time.GetCurrentTimeInMilliseconds()).Returns(currentTime);
+                dateTimeProviderMock.Setup(time => time.CurrentTimeInMilliseconds).Returns(currentTime);
 
                 // still only 1 bucket until we touch it again
                 Assert.Equal(1, p.Buckets.Length);
@@ -173,7 +193,7 @@ namespace Hystrix.Dotnet.UnitTests
 
                 // increment to another bucket so we include all of the above in the PercentileSnapshot
                 currentTime += 6000;
-                dateTimeProviderMock.Setup(time => time.GetCurrentTimeInMilliseconds()).Returns(currentTime);
+                dateTimeProviderMock.Setup(time => time.CurrentTimeInMilliseconds).Returns(currentTime);
 
                 // the rolling version should have the same data as creating a snapshot like this
                 PercentileSnapshot ps = new PercentileSnapshot(1000, 1000, 1000, 2000, 1000, 500, 200, 200, 1600, 200, 1600, 1600);
@@ -182,13 +202,6 @@ namespace Hystrix.Dotnet.UnitTests
                 Assert.Equal(ps.GetPercentile(0.50), p.GetPercentile(0.50));
                 Assert.Equal(ps.GetPercentile(0.90), p.GetPercentile(0.90));
                 Assert.Equal(ps.GetPercentile(0.995), p.GetPercentile(0.995));
-
-                //System.out.println("100th: " + ps.GetPercentile(100) + "  " + p.GetPercentile(100));
-                //System.out.println("99.5th: " + ps.GetPercentile(99.5) + "  " + p.GetPercentile(99.5));
-                //System.out.println("99th: " + ps.GetPercentile(99) + "  " + p.GetPercentile(99));
-                //System.out.println("90th: " + ps.GetPercentile(90) + "  " + p.GetPercentile(90));
-                //System.out.println("50th: " + ps.GetPercentile(50) + "  " + p.GetPercentile(50));
-                //System.out.println("10th: " + ps.GetPercentile(10) + "  " + p.GetPercentile(10));
 
                 // mean = 1000+1000+1000+2000+1000+500+200+200+1600+200+1600+1600/12
                 Assert.Equal(991, ps.GetMean());

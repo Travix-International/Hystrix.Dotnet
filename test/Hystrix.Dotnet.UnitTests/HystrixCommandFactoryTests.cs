@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace Hystrix.Dotnet.UnitTests
@@ -75,7 +74,7 @@ namespace Hystrix.Dotnet.UnitTests
                 for (int i = 0; i < 100000; i++)
                 {
                     var commandIdentifier = new HystrixCommandIdentifier("group", "key"+ (i%10));
-                    var hystrixCommand = factory.GetHystrixCommand(commandIdentifier);
+                    factory.GetHystrixCommand(commandIdentifier);
                 }
 
                 stopwatch.Stop();
@@ -83,6 +82,7 @@ namespace Hystrix.Dotnet.UnitTests
             }
         }
 
+        // ReSharper disable once InconsistentNaming
         public class GetHystrixCommand_With_GroupKey_And_CommandKey
         {
             private readonly HystrixOptions defaultOptions = HystrixOptions.CreateDefault();
@@ -149,7 +149,7 @@ namespace Hystrix.Dotnet.UnitTests
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 for (int i = 0; i < 100000; i++)
                 {
-                    var hystrixCommand = factory.GetHystrixCommand("group", "key" + (i % 10));
+                    factory.GetHystrixCommand("group", "key" + (i % 10));
                 }
 
                 stopwatch.Stop();

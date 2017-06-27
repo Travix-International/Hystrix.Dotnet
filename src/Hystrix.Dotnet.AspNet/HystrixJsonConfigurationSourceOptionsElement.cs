@@ -7,22 +7,22 @@ namespace Hystrix.Dotnet.AspNet
         [ConfigurationProperty("pollingIntervalInMilliseconds", IsRequired = false, DefaultValue = 60000)]
         public int PollingIntervalInMilliseconds 
         {
-            get { return (int)this["pollingIntervalInMilliseconds"]; }
-            set { this["pollingIntervalInMilliseconds"] = value; }
+            get => (int)this["pollingIntervalInMilliseconds"];
+            set => this["pollingIntervalInMilliseconds"] = value;
         }
 
         [ConfigurationProperty("locationPattern", IsRequired = true)]
         public string LocationPattern
         {
-            get { return this["locationPattern"].ToString(); }
-            set { this["locationPattern"] = value; }
+            get => this["locationPattern"].ToString();
+            set => this["locationPattern"] = value;
         }
 
         [ConfigurationProperty("baseLocation", IsRequired = true)]
         public string BaseLocation
         {
-            get { return this["baseLocation"].ToString(); }
-            set { this["baseLocation"] = value; }
+            get => this["baseLocation"].ToString();
+            set => this["baseLocation"] = value;
         }
     }
 }

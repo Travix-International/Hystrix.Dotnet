@@ -9,7 +9,7 @@ namespace Hystrix.Dotnet.UnitTests
         public class Constructor
         {
             [Fact]
-            public void Throws_ArgumentNullException_When_CommandIdentifier_Is_Null()
+            public void Throws_ArgumentNullException_When_DateTimeProvider_Is_Null()
             {
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
 
@@ -20,10 +20,10 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Throws_ArgumentNullException_When_ConfigurationService_Is_Null()
             {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
 
                 // Act
-                Assert.Throws<ArgumentNullException>(() => new HystrixCommandMetrics(commandIdentifier, null));
+                Assert.Throws<ArgumentNullException>(() => new HystrixCommandMetrics(dateTimeProvider.Object, null));
             }
         }
 
@@ -32,14 +32,14 @@ namespace Hystrix.Dotnet.UnitTests
             [Fact]
             public void Returns_HealthCounts_With_All_Zero_Values_When_No_Requests_Have_Been_Processed()
             {
-                var commandIdentifier = new HystrixCommandIdentifier("group", "key");
+                var dateTimeProvider = new Mock<IDateTimeProvider>();
                 var configurationServiceMock = new Mock<IHystrixConfigurationService>();
                 configurationServiceMock.Setup(service => service.GetMetricsRollingStatisticalWindowInMilliseconds()).Returns(10000);
                 configurationServiceMock.Setup(service => service.GetMetricsRollingStatisticalWindowBuckets()).Returns(10);
                 configurationServiceMock.Setup(service => service.GetMetricsRollingPercentileWindowInMilliseconds()).Returns(10000);
                 configurationServiceMock.Setup(service => service.GetMetricsRollingPercentileWindowBuckets()).Returns(10);
                 configurationServiceMock.Setup(service => service.GetMetricsRollingPercentileBucketSize()).Returns(1000);
-                var metricsCollector = new HystrixCommandMetrics(commandIdentifier, configurationServiceMock.Object);
+                var metricsCollector = new HystrixCommandMetrics(dateTimeProvider.Object, configurationServiceMock.Object);
 
                 // Act
                 var healthCounts = metricsCollector.GetHealthCounts();

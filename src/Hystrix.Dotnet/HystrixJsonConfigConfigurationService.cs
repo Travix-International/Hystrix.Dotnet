@@ -27,17 +27,12 @@ namespace Hystrix.Dotnet
 
         public HystrixJsonConfigConfigurationService(HystrixCommandIdentifier commandIdentifier, HystrixJsonConfigurationSourceOptions options)
         {
-            if (commandIdentifier == null)
-            {
-                throw new ArgumentNullException(nameof(commandIdentifier));
-            }
-
             if (options == null)
             {
                 throw new ArgumentNullException(nameof(options));
             }
 
-            this.commandIdentifier = commandIdentifier;
+            this.commandIdentifier = commandIdentifier ?? throw new ArgumentNullException(nameof(commandIdentifier));
 
             pollingIntervalInMillisecond = options.PollingIntervalInMilliseconds;
 
@@ -111,7 +106,7 @@ namespace Hystrix.Dotnet
                 }
                 catch (Exception ex)
                 {
-                    log.Warn(string.Format("Failed loading {0}", configurationFileUrl), ex);
+                    log.Warn($"Failed loading {configurationFileUrl}", ex);
                 }
             }).ConfigureAwait(false);
         }
@@ -165,7 +160,7 @@ namespace Hystrix.Dotnet
             }
             else
             {
-                var message = string.Format("Schema {0} for base url {1} is not supported", configurationFileUrl.Scheme, configurationFileUrl);
+                var message = $"Schema {configurationFileUrl.Scheme} for base url {configurationFileUrl} is not supported";
                 log.Error(message);
                 throw new NotSupportedException(message);
             }

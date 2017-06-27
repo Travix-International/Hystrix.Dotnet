@@ -15,12 +15,7 @@ namespace Hystrix.Dotnet
 
         public HystrixCommandFactory(HystrixOptions options)
         {
-            if (options == null)
-            {
-                throw new ArgumentException("The HystrixOptions must be specified in order to use Hystrix.Dotnet", nameof(options));
-            }
-
-            this.options = options;
+            this.options = options ?? throw new ArgumentException("The HystrixOptions must be specified in order to use Hystrix.Dotnet", nameof(options));
         }
 
         public IHystrixCommand GetHystrixCommand(HystrixCommandIdentifier commandIdentifier)
@@ -62,10 +57,12 @@ namespace Hystrix.Dotnet
                 ? (IHystrixConfigurationService)new HystrixJsonConfigConfigurationService(commandIdentifier, options.JsonConfigurationSourceOptions)
                 : new HystrixLocalConfigurationService(commandIdentifier, options.LocalOptions);
 
-            var commandMetrics = new HystrixCommandMetrics(commandIdentifier, configurationService);
+            var dateTimeProvider = new DateTimeProvider();
+
+            var commandMetrics = new HystrixCommandMetrics(dateTimeProvider, configurationService);
             var timeoutWrapper = new HystrixTimeoutWrapper(commandIdentifier, configurationService);
-            var circuitBreaker = new HystrixCircuitBreaker(commandIdentifier, configurationService, commandMetrics);
-            var threadPoolMetrics = new HystrixThreadPoolMetrics(commandIdentifier, configurationService);
+            var circuitBreaker = new HystrixCircuitBreaker(dateTimeProvider, commandIdentifier, configurationService, commandMetrics);
+            var threadPoolMetrics = new HystrixThreadPoolMetrics(dateTimeProvider, configurationService);
 
             return new HystrixCommand(commandIdentifier, timeoutWrapper, circuitBreaker, commandMetrics, threadPoolMetrics, configurationService);
         }
