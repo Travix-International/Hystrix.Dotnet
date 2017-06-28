@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Travix.Core.ShoppingContext.WebService.Controllers
+namespace Hystrix.Dotnet.Samples.AspNetCore
 {
     [Route("[controller]")]
     [Route("")]
