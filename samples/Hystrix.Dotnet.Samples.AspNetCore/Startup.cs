@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using log4net.Config;
 using System.IO;
 using System.Reflection;
 using Serilog;
