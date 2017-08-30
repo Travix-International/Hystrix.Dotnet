@@ -1,6 +1,6 @@
 # Hystrix.Dotnet
 
-A combination of circuit breaker and timeout. The .net version of the open source [Hystrix library](https://github.com/Netflix/Hystrix library) built by Netflix.
+A combination of circuit breaker and timeout. The .NET version of the open source [Hystrix library](https://github.com/Netflix/Hystrix) built by Netflix.
 
 [![Build Status .NET](https://ci.appveyor.com/api/projects/status/github/Travix-International/Hystrix.Dotnet?svg=true)](https://ci.appveyor.com/project/Travix-International/Hystrix.Dotnet/)
 [![Version](https://img.shields.io/nuget/v/Hystrix.Dotnet.svg)](https://www.nuget.org/packages/Hystrix.Dotnet)
