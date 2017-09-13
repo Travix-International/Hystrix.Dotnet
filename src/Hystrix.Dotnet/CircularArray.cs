@@ -30,6 +30,12 @@ namespace Hystrix.Dotnet
 
             var localArray = internalQueue.ToArray();
 
+            // NOTE: We have to do the check again, because another thread might have modified the queue in the meantime.
+            if (localArray.Length == 0)
+            {
+                return default(T);
+            }
+
             return localArray[localArray.Length - 1];
         }
 
