@@ -10,15 +10,23 @@ namespace Hystrix.Dotnet.Owin
     {
         private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixStreamExtensions));
 
-
         public static IAppBuilder UseHystrixStream(this IAppBuilder app)
+        {
+            return app.UseHystrixStream("/hystrix.stream");
+        }
+
+        public static IAppBuilder UseHystrixStream(
+            this IAppBuilder app,
+            string route)
         {
             var helper = new AspNetHystrixCommandFactoryHelper();
 
-            return app.UseHystrixStream(helper.CreateFactory());
+            return app.UseHystrixStream(helper.CreateFactory(), route);
         }
 
-        public static IAppBuilder UseHystrixStream(this IAppBuilder app, IHystrixCommandFactory hystrixCommandFactory)
+        public static IAppBuilder UseHystrixStream(this IAppBuilder app,
+            IHystrixCommandFactory hystrixCommandFactory,
+            string route)
         {
             var configSection = ConfigurationManager.GetSection("hystrix.dotnet/hystrix") as HystrixConfigSection;
 
@@ -30,12 +38,15 @@ namespace Hystrix.Dotnet.Owin
                 hystrixCommandFactory,
                 pollingInterval);
 
-            return app.UseHystrixStream(endpoint);
+            return app.UseHystrixStream(endpoint, route);
         }
 
-        public static IAppBuilder UseHystrixStream(this IAppBuilder app, IHystrixMetricsStreamEndpoint endpoint)
+        public static IAppBuilder UseHystrixStream(
+            this IAppBuilder app,
+            IHystrixMetricsStreamEndpoint endpoint,
+            string route)
         {
-            app.Use<HystrixStreamMiddleware>(endpoint);
+            app.Use<HystrixStreamMiddleware>(endpoint, route);
 
             return app;
         }

@@ -9,18 +9,25 @@ namespace Hystrix.Dotnet.Owin
     {
         private static readonly ILog log = LogProvider.GetLogger(typeof(HystrixStreamMiddleware));
         private readonly IHystrixMetricsStreamEndpoint endpoint;
+        private readonly string route;
 
         public HystrixStreamMiddleware(OwinMiddleware next,
-            IHystrixMetricsStreamEndpoint endpoint) : base(next)
+            IHystrixMetricsStreamEndpoint endpoint,
+            string route) : base(next)
         {
+            this.endpoint = endpoint;
+            this.route = route.StartsWith("/") ? route : $"/{route}";
         }
 
         public override async Task Invoke(IOwinContext context)
         {
-            if (!context.Request.Path.StartsWithSegments(PathString.FromUriComponent("/hystrix.stream")))
-                await base.Next.Invoke(context);
-            else
-                await ProcessHystrix(context);
+            if (!context.Request.Path.Value.StartsWith(this.route))
+            {
+                await Next.Invoke(context);
+                return;
+            }
+
+            await ProcessHystrix(context);
         }
 
         async Task ProcessHystrix(IOwinContext context)
