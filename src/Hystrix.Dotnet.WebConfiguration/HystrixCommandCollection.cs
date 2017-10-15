@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace Hystrix.Dotnet.AspNet
+namespace Hystrix.Dotnet.WebConfiguration
 {
     public class HystrixCommandCollection : ConfigurationElementCollection
     {

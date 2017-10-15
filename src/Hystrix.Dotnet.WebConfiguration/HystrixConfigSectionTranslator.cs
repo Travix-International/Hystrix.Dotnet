@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Hystrix.Dotnet.AspNet
+namespace Hystrix.Dotnet.WebConfiguration
 {
     internal class HystrixConfigSectionTranslator
     {

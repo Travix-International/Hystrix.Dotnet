@@ -17,14 +17,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hystrix.Dotnet.WebConfiguration\Hystrix.Dotnet.WebConfiguration.csproj" />
     <ProjectReference Include="..\Hystrix.Dotnet\Hystrix.Dotnet.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.Web" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
 
 </Project>
