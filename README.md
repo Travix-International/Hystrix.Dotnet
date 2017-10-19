@@ -79,11 +79,18 @@ Or use the async version
 T result = await hystrixCommand.ExecuteAsync<T>(() => myAsyncFunctionWithReturnTypeT());
 ```
 
-Furthermore, a fallback can be defined as a second lambda expression just after the encapsulated command. This way e.g. in case of a failing network connection the fallback can return some cached or default value.
+Furthermore, a fallback can be defined as a second lambda expression right after the encapsulated command. This way e.g. in case of a failing network connection the fallback can return some cached or default value.
 
 ```csharp
-T result = hystrixCommand.Execute<T>(() => mySyncFunctionWithReturnTypeT(), () => mySyncFallbackFunctionWithReturnTypeT());
-T result = await hystrixCommand.ExecuteAsync<T>(() => myAsyncFunctionWithReturnTypeT(), () => myAsyncFallbackFunctionWithReturnTypeT());
+T result = hystrixCommand.Execute<T>(
+    () => mySyncFunctionWithReturnTypeT(), 
+    () => mySyncFallbackFunctionWithReturnTypeT()
+);
+
+T result = await hystrixCommand.ExecuteAsync<T>(
+    () => myAsyncFunctionWithReturnTypeT(), 
+    () => myAsyncFallbackFunctionWithReturnTypeT()
+);
 ```
 
 
