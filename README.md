@@ -93,9 +93,6 @@ T result = await hystrixCommand.ExecuteAsync<T>(
 );
 ```
 
-
-
-
 ## Configuration
 
 All the configuration parameters are controller via an `IOptions<HystrixOptions>` object, which is passed in to the `HystrixCommandFactory`.
