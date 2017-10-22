@@ -32,7 +32,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.Owin", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.WebConfiguration", "src\Hystrix.Dotnet.WebConfiguration\Hystrix.Dotnet.WebConfiguration.csproj", "{022AF60C-5950-4FE1-BF64-53F5BDF505A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Dotnet.WebConfiguration.UnitTests", "test\Hystrix.Dotnet.WebConfiguration.UnitTests\Hystrix.Dotnet.WebConfiguration.UnitTests.csproj", "{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.WebConfiguration.UnitTests", "test\Hystrix.Dotnet.WebConfiguration.UnitTests\Hystrix.Dotnet.WebConfiguration.UnitTests.csproj", "{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{8E7B5B99-5040-41F4-A79B-804D5954B874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Dotnet.Samples.Owin", "samples\Hystrix.Dotnet.Samples.Owin\Hystrix.Dotnet.Samples.Owin.csproj", "{0B27395A-8391-4077-805E-E7CBCBAE2152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +80,10 @@ Global
 		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +98,7 @@ Global
 		{A87BD416-04E6-46D1-8391-388A6EC78A76} = {148A131E-9B31-42A7-9043-004954218C0A}
 		{022AF60C-5950-4FE1-BF64-53F5BDF505A1} = {148A131E-9B31-42A7-9043-004954218C0A}
 		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
+		{0B27395A-8391-4077-805E-E7CBCBAE2152} = {8E7B5B99-5040-41F4-A79B-804D5954B874}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17C13872-5204-4DA2-974C-A9DA56B838A4}
