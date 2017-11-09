@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>5c173ca4-1efe-4658-96de-e10fb6802e0a</ProjectGuid>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
     <DebugType>full</DebugType>

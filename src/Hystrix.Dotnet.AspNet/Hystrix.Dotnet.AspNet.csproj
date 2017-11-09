@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>e0e8f4f2-1930-4c66-9509-8444b352fac1</ProjectGuid>
+  </PropertyGroup>
+
   <PropertyGroup>
     <Description>ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.</Description>
     <Authors>Travix International</Authors>

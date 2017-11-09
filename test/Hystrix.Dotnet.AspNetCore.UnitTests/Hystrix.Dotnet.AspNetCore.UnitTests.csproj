@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>204d1a1d-b09c-494e-999d-6bbcb6a69dc0</ProjectGuid>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <DebugType>full</DebugType>

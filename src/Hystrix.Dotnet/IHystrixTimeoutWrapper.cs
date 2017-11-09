@@ -7,7 +7,7 @@ namespace Hystrix.Dotnet
     public interface IHystrixTimeoutWrapper
     {
         /// <summary>
-        /// Executes synchronous <see cref="primaryFunction"/> against a timeout value fetched internally; a failure to execute within that time results in a <see cref="HystrixCommandException"/>
+        /// Executes synchronous <paramref name="primaryFunction"/> against a timeout value fetched internally; a failure to execute within that time results in a <see cref="HystrixCommandException"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="primaryFunction"></param>
@@ -16,7 +16,7 @@ namespace Hystrix.Dotnet
         T Execute<T>(Func<T> primaryFunction, CancellationTokenSource cancellationTokenSource = null);
 
         /// <summary>
-        /// Executes asynchronous <see cref="primaryTask"/> against a timeout value fetched internally; a failure to execute within that time results in a <see cref="HystrixCommandException"/>
+        /// Executes asynchronous <paramref name="primaryTask"/> against a timeout value fetched internally; a failure to execute within that time results in a <see cref="HystrixCommandException"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="primaryTask"></param>

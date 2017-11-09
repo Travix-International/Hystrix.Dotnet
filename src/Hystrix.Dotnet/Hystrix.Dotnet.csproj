@@ -6,7 +6,8 @@
     <VersionPrefix>1.0.4</VersionPrefix>
     <DebugType>full</DebugType>
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
-    <NoWarn>$(NoWarn);0618</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);0618;CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>Hystrix.Dotnet</AssemblyName>
     <PackageId>Hystrix.Dotnet</PackageId>
@@ -33,6 +34,10 @@
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
   </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>558ef94d-0bb1-4284-91cf-7d96576a42d1</ProjectGuid>
+  </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
     <DefineConstants>$(DefineConstants);COREFX</DefineConstants>
