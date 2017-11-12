@@ -1,0 +1,1969 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LogExtensions
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LogExtensions
+   ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hystrix.Dotnet.Logging.LogExtensions">
+  
+  
+  <h1 id="Hystrix_Dotnet_Logging_LogExtensions" data-uid="Hystrix.Dotnet.Logging.LogExtensions" class="text-break">Class LogExtensions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LogExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hystrix.Dotnet.Logging.html">Hystrix.Dotnet.Logging</a></h6>
+  <h6><strong>Assembly</strong>: Hystrix.Dotnet.dll</h6>
+  <h5 id="Hystrix_Dotnet_Logging_LogExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class LogExtensions : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog%2CException%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L189">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Debug_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])">Debug(ILog, Exception, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Debug(this ILog logger, Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Func_System_String__.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog%2CFunc%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L170">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Debug_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Func_System_String__" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,Func{System.String})">Debug(ILog, Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Debug(this ILog logger, Func&lt;string&gt; messageFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_String_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L176">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Debug_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_String_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.String)">Debug(ILog, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Debug(this ILog logger, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L184">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Debug_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">Debug(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Debug(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L202">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_DebugException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.DebugException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,Exception)">DebugException(ILog, String, Exception)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DebugException(this ILog logger, string message, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L210">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_DebugException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.DebugException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])">DebugException(ILog, String, Exception, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DebugException(this ILog logger, string message, Exception exception, params object[] formatParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_DebugFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.DebugFormat(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L194">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_DebugFormat_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.DebugFormat*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_DebugFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.DebugFormat(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">DebugFormat(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DebugFormat(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog%2CException%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L237">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Error_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])">Error(ILog, Exception, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(this ILog logger, Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Func_System_String__.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog%2CFunc%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L218">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Error_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Func_System_String__" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,Func{System.String})">Error(ILog, Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(this ILog logger, Func&lt;string&gt; messageFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_String_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L224">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Error_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_String_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.String)">Error(ILog, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(this ILog logger, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L232">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Error_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">Error(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_ErrorException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L250">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_ErrorException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.ErrorException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_ErrorException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])">ErrorException(ILog, String, Exception, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ErrorException(this ILog logger, string message, Exception exception, params object[] formatParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_ErrorFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.ErrorFormat(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L242">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_ErrorFormat_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.ErrorFormat*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_ErrorFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.ErrorFormat(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">ErrorFormat(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ErrorFormat(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog%2CException%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L276">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])">Fatal(ILog, Exception, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Fatal(this ILog logger, Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Func_System_String__.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog%2CFunc%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L258">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Func_System_String__" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,Func{System.String})">Fatal(ILog, Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Fatal(this ILog logger, Func&lt;string&gt; messageFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_String_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L263">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_String_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.String)">Fatal(ILog, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Fatal(this ILog logger, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L271">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">Fatal(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Fatal(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_FatalException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L289">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_FatalException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.FatalException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_FatalException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])">FatalException(ILog, String, Exception, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FatalException(this ILog logger, string message, Exception exception, params object[] formatParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_FatalFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.FatalFormat(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L281">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_FatalFormat_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.FatalFormat*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_FatalFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.FatalFormat(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">FatalFormat(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FatalFormat(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog%2CException%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L316">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Info_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])">Info(ILog, Exception, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Info(this ILog logger, Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Func_System_String__.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog%2CFunc%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L297">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Info_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Func_System_String__" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,Func{System.String})">Info(ILog, Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Info(this ILog logger, Func&lt;string&gt; messageFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_String_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L303">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Info_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_String_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.String)">Info(ILog, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Info(this ILog logger, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L311">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Info_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">Info(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Info(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_InfoException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L329">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_InfoException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.InfoException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_InfoException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])">InfoException(ILog, String, Exception, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void InfoException(this ILog logger, string message, Exception exception, params object[] formatParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_InfoFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.InfoFormat(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L321">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_InfoFormat_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.InfoFormat*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_InfoFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.InfoFormat(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">InfoFormat(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void InfoFormat(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_IsDebugEnabled_Hystrix_Dotnet_Logging_ILog_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.IsDebugEnabled(Hystrix.Dotnet.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L134">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_IsDebugEnabled_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsDebugEnabled*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_IsDebugEnabled_Hystrix_Dotnet_Logging_ILog_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsDebugEnabled(Hystrix.Dotnet.Logging.ILog)">IsDebugEnabled(ILog)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsDebugEnabled(this ILog logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_IsErrorEnabled_Hystrix_Dotnet_Logging_ILog_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.IsErrorEnabled(Hystrix.Dotnet.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L140">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_IsErrorEnabled_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsErrorEnabled*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_IsErrorEnabled_Hystrix_Dotnet_Logging_ILog_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsErrorEnabled(Hystrix.Dotnet.Logging.ILog)">IsErrorEnabled(ILog)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsErrorEnabled(this ILog logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_IsFatalEnabled_Hystrix_Dotnet_Logging_ILog_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.IsFatalEnabled(Hystrix.Dotnet.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L146">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_IsFatalEnabled_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsFatalEnabled*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_IsFatalEnabled_Hystrix_Dotnet_Logging_ILog_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsFatalEnabled(Hystrix.Dotnet.Logging.ILog)">IsFatalEnabled(ILog)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsFatalEnabled(this ILog logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_IsInfoEnabled_Hystrix_Dotnet_Logging_ILog_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.IsInfoEnabled(Hystrix.Dotnet.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L152">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_IsInfoEnabled_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsInfoEnabled*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_IsInfoEnabled_Hystrix_Dotnet_Logging_ILog_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsInfoEnabled(Hystrix.Dotnet.Logging.ILog)">IsInfoEnabled(ILog)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsInfoEnabled(this ILog logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_IsTraceEnabled_Hystrix_Dotnet_Logging_ILog_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.IsTraceEnabled(Hystrix.Dotnet.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L158">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_IsTraceEnabled_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsTraceEnabled*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_IsTraceEnabled_Hystrix_Dotnet_Logging_ILog_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsTraceEnabled(Hystrix.Dotnet.Logging.ILog)">IsTraceEnabled(ILog)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsTraceEnabled(this ILog logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_IsWarnEnabled_Hystrix_Dotnet_Logging_ILog_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.IsWarnEnabled(Hystrix.Dotnet.Logging.ILog)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L164">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_IsWarnEnabled_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsWarnEnabled*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_IsWarnEnabled_Hystrix_Dotnet_Logging_ILog_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.IsWarnEnabled(Hystrix.Dotnet.Logging.ILog)">IsWarnEnabled(ILog)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsWarnEnabled(this ILog logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog%2CException%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L356">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Trace_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])">Trace(ILog, Exception, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Trace(this ILog logger, Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Func_System_String__.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog%2CFunc%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L337">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Trace_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Func_System_String__" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,Func{System.String})">Trace(ILog, Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Trace(this ILog logger, Func&lt;string&gt; messageFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_String_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L343">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Trace_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_String_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.String)">Trace(ILog, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Trace(this ILog logger, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L351">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Trace_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">Trace(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Trace(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_TraceException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L369">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_TraceException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.TraceException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_TraceException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])">TraceException(ILog, String, Exception, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void TraceException(this ILog logger, string message, Exception exception, params object[] formatParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_TraceFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.TraceFormat(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L361">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_TraceFormat_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.TraceFormat*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_TraceFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.TraceFormat(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">TraceFormat(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void TraceFormat(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog%2CException%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L396">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Warn_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])">Warn(ILog, Exception, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warn(this ILog logger, Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Func_System_String__.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog%2CFunc%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L377">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Warn_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Func_System_String__" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,Func{System.String})">Warn(ILog, Func&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warn(this ILog logger, Func&lt;string&gt; messageFunc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_String_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L383">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Warn_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_String_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.String)">Warn(ILog, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warn(this ILog logger, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L391">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_Warn_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">Warn(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warn(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_WarnException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L409">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_WarnException_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.WarnException*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_WarnException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])">WarnException(ILog, String, Exception, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WarnException(this ILog logger, string message, Exception exception, params object[] formatParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParams</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions_WarnFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions.WarnFormat(Hystrix.Dotnet.Logging.ILog%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L401">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_LogExtensions_WarnFormat_" data-uid="Hystrix.Dotnet.Logging.LogExtensions.WarnFormat*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_LogExtensions_WarnFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___" data-uid="Hystrix.Dotnet.Logging.LogExtensions.WarnFormat(Hystrix.Dotnet.Logging.ILog,System.String,System.Object[])">WarnFormat(ILog, String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WarnFormat(this ILog logger, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.ILog.html">ILog</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_LogExtensions.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.LogExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L128" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace Hystrix.Dotnet.ConcurrencyUtilities
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace Hystrix.Dotnet.ConcurrencyUtilities
+   ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hystrix.Dotnet.ConcurrencyUtilities">
+  
+  <h1 id="Hystrix_Dotnet_ConcurrencyUtilities" data-uid="Hystrix.Dotnet.ConcurrencyUtilities" class="text-break">Namespace Hystrix.Dotnet.ConcurrencyUtilities
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.LongMaxUpdater.html">LongMaxUpdater</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.Striped64.html">Striped64</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.Striped64.Cell.html">Striped64.Cell</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.StripedLongAdder.html">StripedLongAdder</a></h4>
+      <section><p>One or more variables that together maintain an initially zero sum.
+When updates are contended cross threads, the set of variables may grow dynamically to reduce contention.
+Method GetValue() returns the current total combined across the variables maintaining the sum.</p>
+<p>This class is usually preferable to AtomicLong when multiple threads update a common sum that is used for purposes such
+as collecting statistics, not for fine-grained synchronization control.</p>
+<p>Under low update contention, the two classes have similar characteristics. 
+But under high contention, expected throughput of this class is significantly higher, at the expense of higher space consumption.</p>
+</section>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.ThreadLocalRandom.html">ThreadLocalRandom</a></h4>
+      <section><p>Helper class to generate Random values is a thread safe way. Not suitable for cryptographic operations.</p>
+</section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.AtomicInteger.html">AtomicInteger</a></h4>
+      <section><p>Atomic int value. Operations exposed on this class are performed using System.Threading.Interlocked class and are thread safe.
+For AtomicInt values that are stored in arrays PaddedAtomicInt is recommended.</p>
+</section>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.AtomicLong.html">AtomicLong</a></h4>
+      <section><p>Atomic long value. Operations exposed on this class are performed using System.Threading.Interlocked class and are thread safe.
+For AtomicLong values that are stored in arrays PaddedAtomicLong is recommended.</p>
+</section>
+      <h4><a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.html">PaddedAtomicLong</a></h4>
+      <section><p>Padded version of the AtomicLong to avoid false CPU cache sharing. Recommended for cases where instances of 
+AtomicLong end up close to each other in memory - when stored in an array for ex. </p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

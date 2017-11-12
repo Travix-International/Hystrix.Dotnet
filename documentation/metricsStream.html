@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Visualizing metrics </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Visualizing metrics ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="visualizing-metrics">Visualizing metrics</h1>
+
+<p>In order to expose the metrics of all of your Hystrix commands, we need to publish them in our web application. In ASP.NET we have to use a handler, while in ASP.NET Core we should add a middleware to our pipeline.</p>
+<h2 id="aspnet">ASP.NET</h2>
+<p>In ASP.NET we can publish the metrics stream by adding the <strong>HystrixStreamHandler</strong> to our application.</p>
+<pre><code class="lang-xml">&lt;system.webServer&gt;
+    &lt;handlers&gt;
+        ...
+        &lt;add name=&quot;HystrixStreamHandler&quot; verb=&quot;*&quot; path=&quot;hystrix.stream&quot; type=&quot;Hystrix.Dotnet.AspNet.HystrixStreamHandler&quot; preCondition=&quot;integratedMode,runtimeVersionv4.0&quot; /&gt;
+        ...
+    &lt;/handlers&gt;
+&lt;/add&gt;system.webServer&gt;
+</code></pre><p>For both MVC and WebApi application the path <code>/hystrix.stream</code> will be picked up by either MVC or WebApi instead of the handler. To make sure a request makes its way to the handler add the following Ignore to your <strong>global.asax.cs</strong>:</p>
+<pre><code class="lang-csharp">protected void Application_Start()
+{
+    // ignore route for hystrix.stream httphandler
+    RouteTable.Routes.Ignore(&quot;hystrix.stream/{*pathInfo}&quot;);
+
+    ...
+}
+</code></pre><h2 id="aspnet-core">ASP.NET Core</h2>
+<p>In ASP.NET Core we have to add a middleware to our pipeline to publish the metrics. We can do this in the <code>Configure</code> method of our <code>Startup</code> class.</p>
+<pre><code class="lang-csharp">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    ...
+    app.UseHystrixMetricsEndpoint(&quot;hystrix.stream&quot;);
+}
+</code></pre><h2 id="the-metrics-stream">The metrics stream</h2>
+<p>The hystrix.stream is a <strong>text/event-stream</strong> that pushes the information from the server to the requester of the url. It does this at an interval defined by the <strong>MetricsStreamPollIntervalInMilliseconds</strong> configuration parameter, which we can specify in our web.config or appsettings.json file.</p>
+<p>In order to see your Hystrix command in action spin up the following docker container locally:</p>
+<pre><code>docker run -d -p 8080:8080 travix/hystrix-dashboard
+</code></pre><p>And then in the dashboard - at <a href="http://192.168.99.100:8080/">http://192.168.99.100:8080/</a> in case you use Kitematic - paste the following url where <mylocalip> points to the web application running on your local machine.<p>
+<pre><code>http://&lt;mylocalip&gt;/hystrix.stream
+</code></pre><p>When requesting urls for your local application that hit your Hystrix command it should show up in the dashboard. For more info on how to read the dashboard, see <a href="https://github.com/Netflix/Hystrix/wiki/Dashboard">https://github.com/Netflix/Hystrix/wiki/Dashboard</a></p>
+</mylocalip></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/docs/documentation/metricsStream.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

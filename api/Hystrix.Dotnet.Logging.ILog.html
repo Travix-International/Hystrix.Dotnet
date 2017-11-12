@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ILog
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ILog
+   ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hystrix.Dotnet.Logging.ILog">
+  
+  
+  <h1 id="Hystrix_Dotnet_Logging_ILog" data-uid="Hystrix.Dotnet.Logging.ILog" class="text-break">Interface ILog
+  </h1>
+  <div class="markdown level0 summary"><p>Simple interface that represent a logger.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hystrix.Dotnet.Logging.html">Hystrix.Dotnet.Logging</a></h6>
+  <h6><strong>Assembly</strong>: Hystrix.Dotnet.dll</h6>
+  <h5 id="Hystrix_Dotnet_Logging_ILog_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ILog</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_ILog_Log_Hystrix_Dotnet_Logging_LogLevel_Func_System_String__Exception_System_Object___.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel%2CFunc%7BSystem.String%7D%2CException%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L101">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_Logging_ILog_Log_" data-uid="Hystrix.Dotnet.Logging.ILog.Log*"></a>
+  <h4 id="Hystrix_Dotnet_Logging_ILog_Log_Hystrix_Dotnet_Logging_LogLevel_Func_System_String__Exception_System_Object___" data-uid="Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel,Func{System.String},Exception,System.Object[])">Log(LogLevel, Func&lt;String&gt;, Exception, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log a message the specified log level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Log(LogLevel logLevel, Func&lt;string&gt; messageFunc, Exception exception = null, params object[] formatParameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hystrix.Dotnet.Logging.LogLevel.html">LogLevel</a></td>
+        <td><span class="parametername">logLevel</span></td>
+        <td><p>The log level.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messageFunc</span></td>
+        <td><p>The message function.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An optional exception.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">formatParameters</span></td>
+        <td><p>Optional format parameters for the message generated by the messagefunc. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the message was logged. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Hystrix_Dotnet_Logging_ILog_Log_Hystrix_Dotnet_Logging_LogLevel_Func_System_String__Exception_System_Object____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note to implementers: the message func should not be called if the loglevel is not enabled
+so as not to incur performance penalties.</p>
+<p>To check IsEnabled call Log with only LogLevel and check the return value, no event will be written.</p>
+</div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_IsDebugEnabled_Hystrix_Dotnet_Logging_ILog_">LogExtensions.IsDebugEnabled(ILog)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_IsErrorEnabled_Hystrix_Dotnet_Logging_ILog_">LogExtensions.IsErrorEnabled(ILog)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_IsFatalEnabled_Hystrix_Dotnet_Logging_ILog_">LogExtensions.IsFatalEnabled(ILog)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_IsInfoEnabled_Hystrix_Dotnet_Logging_ILog_">LogExtensions.IsInfoEnabled(ILog)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_IsTraceEnabled_Hystrix_Dotnet_Logging_ILog_">LogExtensions.IsTraceEnabled(ILog)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_IsWarnEnabled_Hystrix_Dotnet_Logging_ILog_">LogExtensions.IsWarnEnabled(ILog)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Func_System_String__">LogExtensions.Debug(ILog, Func&lt;String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_String_">LogExtensions.Debug(ILog, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.Debug(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___">LogExtensions.Debug(ILog, Exception, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.DebugFormat(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_">LogExtensions.DebugException(ILog, String, Exception)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___">LogExtensions.DebugException(ILog, String, Exception, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Func_System_String__">LogExtensions.Error(ILog, Func&lt;String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_String_">LogExtensions.Error(ILog, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.Error(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___">LogExtensions.Error(ILog, Exception, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_ErrorFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.ErrorFormat(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_ErrorException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___">LogExtensions.ErrorException(ILog, String, Exception, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Func_System_String__">LogExtensions.Fatal(ILog, Func&lt;String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_String_">LogExtensions.Fatal(ILog, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.Fatal(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___">LogExtensions.Fatal(ILog, Exception, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_FatalFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.FatalFormat(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_FatalException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___">LogExtensions.FatalException(ILog, String, Exception, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Func_System_String__">LogExtensions.Info(ILog, Func&lt;String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_String_">LogExtensions.Info(ILog, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.Info(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___">LogExtensions.Info(ILog, Exception, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_InfoFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.InfoFormat(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_InfoException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___">LogExtensions.InfoException(ILog, String, Exception, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Func_System_String__">LogExtensions.Trace(ILog, Func&lt;String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_String_">LogExtensions.Trace(ILog, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.Trace(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___">LogExtensions.Trace(ILog, Exception, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_TraceFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.TraceFormat(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_TraceException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___">LogExtensions.TraceException(ILog, String, Exception, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Func_System_String__">LogExtensions.Warn(ILog, Func&lt;String&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_String_">LogExtensions.Warn(ILog, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.Warn(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___">LogExtensions.Warn(ILog, Exception, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_WarnFormat_Hystrix_Dotnet_Logging_ILog_System_String_System_Object___">LogExtensions.WarnFormat(ILog, String, Object[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_WarnException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___">LogExtensions.WarnException(ILog, String, Exception, Object[])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_Logging_ILog.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.Logging.ILog%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/LibLog.cs/#L81" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

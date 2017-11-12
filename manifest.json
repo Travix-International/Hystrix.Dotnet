@@ -1,0 +1,1005 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Workspaces/Github/Hystrix.Dotnet/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.AspNetHystrixCommandFactoryHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.AspNetHystrixCommandFactoryHelper.html",
+          "hash": "Se7Fks9PR5tKVjnHNIpExg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandCollection.html",
+          "hash": "w1O4KR7oCbhreFmlD/tY5w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandElement.html",
+          "hash": "j0CjhqqViisPfCUSXnRmdw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandGroupCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandGroupCollection.html",
+          "hash": "TUd4OpfEuChDo0+MYyi7Sw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandGroupElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixCommandGroupElement.html",
+          "hash": "Lq/bZrVt+5kc2Z4lP7ZQhg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixConfigSection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixConfigSection.html",
+          "hash": "VhgBehn2hYwENq26w2Wv5Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixJsonConfigurationSourceOptionsElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixJsonConfigurationSourceOptionsElement.html",
+          "hash": "5imT8SHSLQV1dPopTHjiFQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixLocalOptionsElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixLocalOptionsElement.html",
+          "hash": "omfIUv3h3TT47sD3X3kNRg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.HystrixStreamHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.HystrixStreamHandler.html",
+          "hash": "Rx54dT4mGcT0om3G89ukGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNet.html",
+          "hash": "lHAzjq1wvU+Tm1je0ItTHQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.html",
+          "hash": "RyKvhfTsYb39Nhb4xbx+sQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.html",
+          "hash": "7p4xUnv9ZT/FI/SvglQMtg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.html",
+          "hash": "R3qlk8X2WccoIL/r4iGaqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.AspNetCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.AspNetCore.html",
+          "hash": "pPSyjuG7o9QEjdiRcWvn3A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.AtomicInteger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.AtomicInteger.html",
+          "hash": "T40SK6QM0WLT+UVkbaStdg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.AtomicLong.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.AtomicLong.html",
+          "hash": "s+DXBvuku0VOW8Ce1z+ZXw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.LongMaxUpdater.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.LongMaxUpdater.html",
+          "hash": "/e7bNs5ZuKYdWNJyfGUMUw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.html",
+          "hash": "Frn0ggN+0OMo7oxnYAd7Xg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.Striped64.Cell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.Striped64.Cell.html",
+          "hash": "KHy+LyH4wCVcL83PhZQxLg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.Striped64.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.Striped64.html",
+          "hash": "NaoTBCRNb6gMUK8cOIw7Uw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.StripedLongAdder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.StripedLongAdder.html",
+          "hash": "5gIKYOWrUbSP16Ztvb9bkg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.ThreadLocalRandom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.ThreadLocalRandom.html",
+          "hash": "p0Xvnfygl8+Cj9ERI/1M2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConcurrencyUtilities.html",
+          "hash": "pRysW3A8zDXXzPKbCbsUWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.ConfigurationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.ConfigurationException.html",
+          "hash": "iQwulQ8TnqIfpSaGNLecow=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.DateTimeProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.DateTimeProvider.html",
+          "hash": "1gG41ceeIpzcr/y4nXF2vQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.EventKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.EventKind.html",
+          "hash": "O1i1oVUJamaLD6PqSxG99g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.FakeHystrixCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.FakeHystrixCommand.html",
+          "hash": "L4RYqmkKV1zM2SJdshzKbQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.FakeHystrixCommandFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.FakeHystrixCommandFactory.html",
+          "hash": "CfyvEZXHJf7oY0u1fziVTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCircuitBreaker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCircuitBreaker.html",
+          "hash": "gkoJf8ZzzbMmM6ZOGeDbHw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCommand.html",
+          "hash": "vp9q/xbjZdyPuW6nKJNsKw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCommandException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCommandException.html",
+          "hash": "Wr0+eaDDd1AFYdn2motD7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCommandFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCommandFactory.html",
+          "hash": "pBV6hrAlMJhhvRXjUkW++A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCommandIdentifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCommandIdentifier.html",
+          "hash": "ANRMsNmLqFeNj3x+K+jjXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCommandMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCommandMetrics.html",
+          "hash": "t/Je3QxLELwL8k88OAOjoQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixCommandOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixCommandOptions.html",
+          "hash": "SgLeqTZXWNCVIaXOaMlB7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixHealthCounts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixHealthCounts.html",
+          "hash": "l5/9FRqg3/LWtidgakmAdw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixJsonConfigConfigurationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixJsonConfigConfigurationService.html",
+          "hash": "PdkI0C4B7epi/H5L4bW/vQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixJsonConfigurationSourceOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixJsonConfigurationSourceOptions.html",
+          "hash": "Ei1UXbPOjaGQEuUwuZuIhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixLocalConfigurationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixLocalConfigurationService.html",
+          "hash": "DrehKp33U9g6YZICv8iciA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixLocalOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixLocalOptions.html",
+          "hash": "Q/XgqwgoZMN5gKIzp2pwZg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixOptions.html",
+          "hash": "WdB6cGIV62mHuDSPIgQwcQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixRollingNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixRollingNumber.html",
+          "hash": "hBSV1Oj7jW9ml2mtZ1DCJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixRollingNumberEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixRollingNumberEvent.html",
+          "hash": "6MUGHnLhc9duxE9kEdppAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixRollingNumberEventExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixRollingNumberEventExtensions.html",
+          "hash": "LiQeXv+CR8MDMCU1PWjaIg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixRollingPercentile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixRollingPercentile.html",
+          "hash": "yZNdshYsIqKQYDmH+Fdkhw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixThreadPoolMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixThreadPoolMetrics.html",
+          "hash": "MFCVCBWWDUHMnYWZysJASw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixTimeoutException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixTimeoutException.html",
+          "hash": "6kXNgusepLn5f6dZV7M6VQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.HystrixTimeoutWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.HystrixTimeoutWrapper.html",
+          "hash": "IgBT8bz6dvM98QvmRAzUVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IDateTimeProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IDateTimeProvider.html",
+          "hash": "/n/qZNKNQIXInJsdZ5htjA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixCircuitBreaker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixCircuitBreaker.html",
+          "hash": "gkFLfcTDgDfsYEgQXcWsYw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixCommand.html",
+          "hash": "NEhkgkpdZTcYRt+Bjx8sGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixCommandFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixCommandFactory.html",
+          "hash": "z0uzKRm1fYuijG5agYTU2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixCommandMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixCommandMetrics.html",
+          "hash": "KIrRr0nrGvCatyenYrWOwQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixConfigurationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixConfigurationService.html",
+          "hash": "W+X8NBnj6EXqDJKknBwtnA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixThreadPoolMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixThreadPoolMetrics.html",
+          "hash": "fKPb/P1Yv1EawC9JsDSpAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.IHystrixTimeoutWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.IHystrixTimeoutWrapper.html",
+          "hash": "Y8tFXclqQiH2UgDrWcKsqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.ILog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.ILog.html",
+          "hash": "BlmnFk/I/y//LRX22GWiTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.ILogProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.ILogProvider.html",
+          "hash": "/6qamX7ItK2cdVNO7lw+hw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.LogExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.LogExtensions.html",
+          "hash": "+jBwt57nhhJpYDx0G79Ktg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.LogLevel.html",
+          "hash": "F/luXvc9Q/dI+Ewy5+1nSg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.LogProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.LogProvider.html",
+          "hash": "PsIr0n7ejfsliOJLbQL+EA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.Logger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.Logger.html",
+          "hash": "7p82QUYGLuJx/8/KEaNBpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Logging.html",
+          "hash": "JQqPMDzGhWeXB6Y9U+FuTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html",
+          "hash": "V9SnCcO9L89m7km3nry+Cg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.html",
+          "hash": "mPn+vw+wzOv1xKGQEMFu7w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.Metrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.Metrics.html",
+          "hash": "dWbCjv9zIlv8oeOBYiLcwQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.PercentileBucketData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.PercentileBucketData.html",
+          "hash": "qikt1pVWQMXyZlLimhKyCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hystrix.Dotnet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hystrix.Dotnet.html",
+          "hash": "edw3S1jX1GeZYdTolZh5Tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "kbAmr6U2Kc7mWQ/iqehFZw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "bZPxjKwjlFGeeZBc4gG2jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/configuration.html",
+          "hash": "TtYlhPqGhiX07z0I9iRf2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/intro.html",
+          "hash": "iPBduLNYyV1+2sDr0ElYYg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/issues.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/issues.html",
+          "hash": "CwPT6C0hkcFsrAYdc73RqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/logging.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/logging.html",
+          "hash": "sVeYzgjugd47kFGJLHQl2A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/metricsStream.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/metricsStream.html",
+          "hash": "mJLU6XuSURyNMWhLZyhESA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/samples.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/samples.html",
+          "hash": "c0smYw16Ca4EziAmDajMew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "documentation/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/toc.html",
+          "hash": "XTUH7CVxEDCD6lUeax04Kw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "pVlThR01hH+zZzXEP2nt3A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "0Rf+rceRp74RaZkYc0L5sQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "RestApiDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

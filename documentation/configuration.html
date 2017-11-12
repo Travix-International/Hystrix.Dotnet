@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configuration ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="configuration">Configuration</h1>
+
+<p>All the configuration parameters are controller via an <code>IOptions&lt;HystrixOptions&gt;</code> object, which is passed in to the <code>HystrixCommandFactory</code>.
+There are two main modes of configuring our individual commands, based on the value of the <code>ConfigurationServiceImplementation</code> property.</p>
+<ul>
+<li>If the value is <strong>HystrixLocalConfigConfigurationService</strong>, then the configuration is read from the <code>LocalOptions</code> property, which is populated from the configuration deployed with the application. (in ASP.NET it is coming from the web.config, while  in ASP.NET Core, it&#39;s typically in an appsettings.json file.)</li>
+<li><p>If the value is <strong>HystrixJsonConfigConfigurationService</strong>, then the configuration is retrieved from an external service, so that it can by dynamically changed in near real time.</p>
+<h2 id="using-local-deployed-configuration">Using local (deployed) configuration</h2>
+<h3 id="aspnet">ASP.NET</h3>
+<p>With ASP.NET, we have to add the following configuration to our web.config.</p>
+</li>
+</ul>
+<pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;configSections&gt;
+    &lt;sectionGroup name=&quot;hystrix.dotnet&quot;&gt;
+      &lt;section name=&quot;hystrix&quot; type=&quot;Hystrix.Dotnet.AspNet.HystrixConfigSection, Hystrix.Dotnet.AspNet&quot; /&gt;
+    &lt;/sectionGroup&gt;
+  &lt;/configSections&gt;
+
+  &lt;hystrix.dotnet&gt;
+    &lt;hystrix serviceImplementation=&quot;HystrixLocalConfigurationService&quot; metricsStreamPollIntervalInMilliseconds=&quot;2000&quot;&gt;
+      &lt;localOptions&gt;
+        &lt;commandGroups&gt;
+          &lt;add key=&quot;GroupKey&quot;&gt;
+            &lt;commands&gt;
+              &lt;add key=&quot;CommandKey&quot;
+                hystrixCommandEnabled=&quot;true&quot;
+                commandTimeoutInMilliseconds=&quot;1250&quot;
+                circuitBreakerForcedOpen=&quot;false&quot;
+                circuitBreakerForcedClosed=&quot;false&quot;
+                circuitBreakerErrorThresholdPercentage=&quot;50&quot;
+                circuitBreakerSleepWindowInMilliseconds=&quot;5000&quot;
+                circuitBreakerRequestVolumeThreshold=&quot;20&quot;
+                metricsHealthSnapshotIntervalInMilliseconds=&quot;500&quot;
+                metricsRollingStatisticalWindowInMilliseconds=&quot;10000&quot;
+                metricsRollingStatisticalWindowBuckets=&quot;10&quot;
+                metricsRollingPercentileEnabled=&quot;true&quot;
+                metricsRollingPercentileWindowInMilliseconds=&quot;60000&quot;
+                metricsRollingPercentileWindowBuckets=&quot;6&quot;
+                metricsRollingPercentileBucketSize=&quot;100&quot; /&gt;
+            &lt;/commands&gt;
+          &lt;/add&gt;
+        &lt;/commandGroups&gt;
+      &lt;/localOptions&gt;
+    &lt;/hystrix&gt;
+  &lt;/hystrix.dotnet&gt;
+</code></pre><p>This way we can add multiple groups and commands, and fine-tune each independently.
+The above values are also the defaults if we omit any of the attributes. (Or if we don&#39;t add any configuration to the web.config.)</p>
+<h3 id="aspnet-core">ASP.NET Core</h3>
+<p>With ASP.NET Core we can use the Options configuration model to do the same setup.
+First add an <strong>appsettings.json</strong> to our project, with the following content.</p>
+<pre><code class="lang-json">{
+    &quot;Hystrix&quot;: {
+        &quot;ConfigurationServiceImplementation&quot;: &quot;HystrixLocalConfigurationService&quot;,
+        &quot;MetricsStreamPollIntervalInMilliseconds&quot;: 2000,
+        &quot;LocalOptions&quot;: {
+            &quot;CommandGroups&quot;: {
+                &quot;GroupKey&quot;: {
+                    &quot;CommandKey&quot;: {
+                        &quot;HystrixCommandEnabled&quot;: true,
+                        &quot;CommandTimeoutInMilliseconds&quot;: 1250,
+                        &quot;CircuitBreakerForcedOpen&quot;: false,
+                        &quot;CircuitBreakerForcedClosed&quot;: false,
+                        &quot;CircuitBreakerErrorThresholdPercentage&quot;: 60,
+                        &quot;CircuitBreakerSleepWindowInMilliseconds&quot;: 5000,
+                        &quot;CircuitBreakerRequestVolumeThreshold&quot;: 20,
+                        &quot;MetricsHealthSnapshotIntervalInMilliseconds&quot;: 500,
+                        &quot;MetricsRollingStatisticalWindowInMilliseconds&quot;: 10000,
+                        &quot;MetricsRollingStatisticalWindowBuckets&quot;: 10,
+                        &quot;MetricsRollingPercentileEnabled&quot;: true,
+                        &quot;MetricsRollingPercentileWindowInMilliseconds&quot;: 60000,
+                        &quot;MetricsRollingPercentileWindowBuckets&quot;: 6,
+                        &quot;MetricsRollingPercentileBucketSize&quot;: 100
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre><p>Then set up the options object in our DI configuration, in the <code>ConfigureServices</code> method of the <code>Startup</code> class.</p>
+<pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.Configure&lt;HystrixOptions&gt;(options =&gt; Configuration.GetSection(&quot;Hystrix&quot;).Bind(options));
+}
+</code></pre><h2 id="using-external-json-configuration">Using external Json Configuration</h2>
+<p>In order to be able to control the settings near realtime you&#39;re better off using the <strong>HystrixJsonConfigConfigurationService</strong>. It can fetch a json object containing the configuration from a remote url.</p>
+<p>We have to publish the configuration to a URL (<a href="http://hystrix-config.mydomain.com/Hystrix-GroupKey-CommandKey.json">http://hystrix-config.mydomain.com/Hystrix-GroupKey-CommandKey.json</a>) in the following Json format.</p>
+<pre><code class="lang-json">{
+    &quot;HystrixCommandEnabled&quot;: true,
+    &quot;CommandTimeoutInMilliseconds&quot;:1000,
+    &quot;CircuitBreakerForcedOpen&quot;:false,
+    &quot;CircuitBreakerForcedClosed&quot;:false,
+    &quot;CircuitBreakerErrorThresholdPercentage&quot;:50,
+    &quot;CircuitBreakerSleepWindowInMilliseconds&quot;:5000,
+    &quot;CircuitBreakerRequestVolumeThreshold&quot;:20,
+    &quot;MetricsHealthSnapshotIntervalInMilliseconds&quot;:500,
+    &quot;MetricsRollingStatisticalWindowInMilliseconds&quot;:10000,
+    &quot;MetricsRollingStatisticalWindowBuckets&quot;:10,
+    &quot;MetricsRollingPercentileEnabled&quot;:true,
+    &quot;MetricsRollingPercentileWindowInMilliseconds&quot;:60000,
+    &quot;MetricsRollingPercentileWindowBuckets&quot;:6,
+    &quot;MetricsRollingPercentileBucketSize&quot;:100
+}
+</code></pre><p>And configure Hystrix to use it instead of the local configuration.
+In ASP.NET web.config.</p>
+<pre><code class="lang-xml">&lt;hystrix.dotnet&gt;
+&lt;hystrix serviceImplementation=&quot;HystrixJsonConfigConfigurationService&quot; metricsStreamPollIntervalInMilliseconds=&quot;2000&quot;&gt;
+  &lt;jsonConfigurationSourceOptions
+    pollingIntervalInMilliseconds=&quot;5000&quot; 
+    locationPattern=&quot;Hystrix-{0}-{1}.json&quot;
+    baseLocation=&quot;http://hystrix-config.mydomain.com/&quot; /&gt;
+&lt;/hystrix&gt;
+&lt;/hystrix.dotnet&gt;
+</code></pre><p>Or in the appsettings.json in ASP.NET Core.</p>
+<pre><code class="lang-json">{
+    &quot;Hystrix&quot;: {
+        &quot;ConfigurationServiceImplementation&quot;: &quot;HystrixJsonConfigConfigurationService&quot;,
+        &quot;JsonConfigurationSourceOptions&quot;: {
+            &quot;PollingIntervalInMilliseconds&quot;: 5000,
+            &quot;LocationPattern&quot;: &quot;Hystrix-{0}-{1}.json&quot;,
+            &quot;BaseLocation&quot;:&quot;http://hystrix-config.mydomain.com/&quot;
+        }
+    }
+}
+</code></pre><p>The first time a Hystrix command is created by the factory, it waits for the remote config to be fetched. After that it updates in a non-blocking way using a background thread at an interval defined by the earlier appsetting. It will also fail silently continuing to use the last known configuration.</p>
+<p>For more info on the configuration see <a href="https://github.com/Netflix/Hystrix/wiki/configuration">https://github.com/Netflix/Hystrix/wiki/configuration</a> and <a href="https://github.com/Netflix/Hystrix/wiki/Operations">https://github.com/Netflix/Hystrix/wiki/Operations</a> on how to tune it for first use.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/docs/documentation/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

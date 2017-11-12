@@ -1,0 +1,932 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct PaddedAtomicLong
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct PaddedAtomicLong
+   ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong">
+  
+  
+  <h1 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong" class="text-break">Struct PaddedAtomicLong
+  </h1>
+  <div class="markdown level0 summary"><p>Padded version of the AtomicLong to avoid false CPU cache sharing. Recommended for cases where instances of 
+AtomicLong end up close to each other in memory - when stored in an array for ex. </p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hystrix.Dotnet.ConcurrencyUtilities.html">Hystrix.Dotnet.ConcurrencyUtilities</a></h6>
+  <h6><strong>Assembly</strong>: Hystrix.Dotnet.dll</h6>
+  <h5 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct PaddedAtomicLong : IAtomicValue&lt;long&gt;, IVolatileValue&lt;long&gt;, IValueWriter&lt;long&gt;, IValueAdder&lt;long&gt;, IValueReader&lt;long&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong__ctor_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.%23ctor(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L23">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong__ctor_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.#ctor*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong__ctor_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.#ctor(System.Int64)">PaddedAtomicLong(Int64)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance with the specified <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaddedAtomicLong(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Initial value of the instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_SizeInBytes.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.SizeInBytes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L14">View Source</a>
+  </span>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_SizeInBytes" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.SizeInBytes">SizeInBytes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly int SizeInBytes</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Add_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Add(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L86">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Add_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Add*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Add_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Add(System.Int64)">Add(Int64)</h4>
+  <div class="markdown level1 summary"><p>Add <code data-dev-comment-type="paramref" class="paramref">value</code> to this instance and return the resulting value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Add(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The amount to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of this instance + the amount added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_CompareAndSwap_System_Int64_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.CompareAndSwap(System.Int64%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L197">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_CompareAndSwap_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.CompareAndSwap*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_CompareAndSwap_System_Int64_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.CompareAndSwap(System.Int64,System.Int64)">CompareAndSwap(Int64, Int64)</h4>
+  <div class="markdown level1 summary"><p>Replace the value of this instance, if the current value is equal to the <code data-dev-comment-type="paramref" class="paramref">expected</code> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CompareAndSwap(long expected, long updated)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">expected</span></td>
+        <td><p>Value this instance is expected to be equal with.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">updated</span></td>
+        <td><p>Value to set this instance to, if the current value is equal to the expected value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the update was made, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Decrement.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Decrement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L159">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Decrement_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Decrement*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Decrement" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Decrement">Decrement()</h4>
+  <div class="markdown level1 summary"><p>Decrement this instance and return the value after the decrement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Decrement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>after</em> the decrement.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Decrement_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Decrement(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L168">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Decrement_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Decrement*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Decrement_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Decrement(System.Int64)">Decrement(Int64)</h4>
+  <div class="markdown level1 summary"><p>Decrement this instance with <code data-dev-comment-type="paramref" class="paramref">value</code> and return the value after the decrement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Decrement(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>after</em> the decrement.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndAdd_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndAdd(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L96">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndAdd_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndAdd*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndAdd_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndAdd(System.Int64)">GetAndAdd(Int64)</h4>
+  <div class="markdown level1 summary"><p>Add <code data-dev-comment-type="paramref" class="paramref">value</code> to this instance and return the value this instance had before the add operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndAdd(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The amount to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of this instance before the amount was added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndDecrement.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndDecrement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L123">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndDecrement_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndDecrement*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndDecrement" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndDecrement">GetAndDecrement()</h4>
+  <div class="markdown level1 summary"><p>Decrement this instance and return the value the instance had before the decrement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndDecrement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>before</em> the decrement.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndDecrement_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndDecrement(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L132">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndDecrement_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndDecrement*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndDecrement_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndDecrement(System.Int64)">GetAndDecrement(Int64)</h4>
+  <div class="markdown level1 summary"><p>Decrement this instance with <code data-dev-comment-type="paramref" class="paramref">value</code> and return the value the instance had before the decrement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndDecrement(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>before</em> the decrement.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndIncrement.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndIncrement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L105">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndIncrement_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndIncrement*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndIncrement" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndIncrement">GetAndIncrement()</h4>
+  <div class="markdown level1 summary"><p>Increment this instance and return the value the instance had before the increment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndIncrement()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>before</em> the increment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndIncrement_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndIncrement(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L114">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndIncrement_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndIncrement*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndIncrement_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndIncrement(System.Int64)">GetAndIncrement(Int64)</h4>
+  <div class="markdown level1 summary"><p>Increment this instance with <code data-dev-comment-type="paramref" class="paramref">value</code> and return the value the instance had before the increment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndIncrement(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>before</em> the increment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndReset.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndReset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L177">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndReset_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndReset*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndReset" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndReset">GetAndReset()</h4>
+  <div class="markdown level1 summary"><p>Returns the current value of the instance and sets it to zero as an atomic operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndReset()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The current value of the instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndSet_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndSet(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L186">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndSet_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndSet*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetAndSet_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetAndSet(System.Int64)">GetAndSet(Int64)</h4>
+  <div class="markdown level1 summary"><p>Returns the current value of the instance and sets it to <code data-dev-comment-type="paramref" class="paramref">newValue</code> as an atomic operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetAndSet(long newValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">newValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The current value of the instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetValue.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L32">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetValue_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetValue*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_GetValue" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.GetValue">GetValue()</h4>
+  <div class="markdown level1 summary"><p>Returns the latest value of this instance written by any processor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long GetValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The latest written value of this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Increment.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Increment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L141">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Increment_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Increment*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Increment" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Increment">Increment()</h4>
+  <div class="markdown level1 summary"><p>Increment this instance and return the value after the increment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Increment()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>after</em> the increment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Increment_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Increment(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L150">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Increment_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Increment*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_Increment_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.Increment(System.Int64)">Increment(Int64)</h4>
+  <div class="markdown level1 summary"><p>Increment this instance with <code data-dev-comment-type="paramref" class="paramref">value</code> and return the value after the increment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Increment(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the instance <em>after</em> the increment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_LazySetValue_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.LazySetValue(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L67">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_LazySetValue_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.LazySetValue*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_LazySetValue_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.LazySetValue(System.Int64)">LazySetValue(Int64)</h4>
+  <div class="markdown level1 summary"><p>From the Java Version:
+Eventually sets to the given value.
+The semantics are that the write is guaranteed not to be re-ordered with any previous write, 
+but may be reordered with subsequent operations (or equivalently, might not be visible to other threads) 
+until some other volatile write or synchronizing action occurs).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LazySetValue(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The new value for this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_LazySetValue_System_Int64__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Currently implemented by calling Volatile.Write which is different from the java version. 
+Not sure if it is possible on CLR to implement this.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_NonVolatileGetValue.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.NonVolatileGetValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L41">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_NonVolatileGetValue_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.NonVolatileGetValue*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_NonVolatileGetValue" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.NonVolatileGetValue">NonVolatileGetValue()</h4>
+  <div class="markdown level1 summary"><p>Returns the current value of the instance without using Volatile.Read fence and ordering.  </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long NonVolatileGetValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The current value of the instance in a non-volatile way (might not observe changes on other threads).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_NonVolatileSetValue_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.NonVolatileSetValue(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L76">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_NonVolatileSetValue_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.NonVolatileSetValue*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_NonVolatileSetValue_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.NonVolatileSetValue(System.Int64)">NonVolatileSetValue(Int64)</h4>
+  <div class="markdown level1 summary"><p>Set the value without using Volatile.Write fence and ordering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void NonVolatileSetValue(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The new value for this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_SetValue_System_Int64_.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.SetValue(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L50">View Source</a>
+  </span>
+  <a id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_SetValue_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.SetValue*"></a>
+  <h4 id="Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong_SetValue_System_Int64_" data-uid="Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong.SetValue(System.Int64)">SetValue(Int64)</h4>
+  <div class="markdown level1 summary"><p>Write a new value to this instance. The value is immediately seen by all processors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValue(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The new value for this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/new/docfx-generation/apiSpec/new?filename=Hystrix_Dotnet_ConcurrencyUtilities_PaddedAtomicLong.md&amp;value=---%0Auid%3A%20Hystrix.Dotnet.ConcurrencyUtilities.PaddedAtomicLong%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/src/Hystrix.Dotnet/ConcurrencyUtilities/PaddedAtomicLong.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

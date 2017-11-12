@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>How to use </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="How to use ">
+    <meta name="generator" content="docfx 2.25.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav level1 navbar-nav">
+                <li>
+                  <a href="../index.html" title="Home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-use">How to use</h1>
+
+<p>Circuit breakers are the main concept in Hystrix, and they are identifyable by a group and command key, which are arbitrary strings to support structuring and organizing the various circuit breakers we have in our application. Every circuit breaker can have its own configuration regarding its timeout, fallback mechanism, error threshold, etc.</p>
+<p>Once we have a reference to a circuit breaker (represented by the <code>IHystrixCommand</code> interface), we can execute an operation through it using either the synchronous version:</p>
+<pre><code class="lang-csharp">T result = hystrixCommand.Execute&lt;T&gt;(() =&gt; myFunctionWithReturnTypeT());
+</code></pre><p>Or use the async version:</p>
+<pre><code class="lang-csharp">T result = await hystrixCommand.ExecuteAsync&lt;T&gt;(() =&gt; myAsyncFunctionWithReturnTypeTaskT());
+</code></pre><h2 id="accessing-commands">Accessing commands</h2>
+<p>Getting a reference to a particular command happens through a factory object. Creating the factory can happen differently depending on what kind of environment we are in.</p>
+<h3 id="creating-the-factory-manually">Creating the factory manually</h3>
+<p>We can always create a factory manually. This is only recommended if we don&#39;t use any dependency injection, for example it can be useful in a console application.</p>
+<pre><code class="lang-csharp">var options = HystrixOptions.CreateDefault();
+var hystrixCommandFactory = new HystrixCommandFactory(options);
+var hystrixCommand = hystrixCommandFactory.GetHystrixCommand(&quot;groupKey&quot;, &quot;commandKey&quot;);
+</code></pre><h3 id="creating-the-factory-in-aspnet">Creating the factory in ASP.NET</h3>
+<p>In ASP.NET we can use the <code>AspNetHystrixCommandFactoryHelper</code> helper class to create our factory, which will automatically pick up the configuration from the web.config.</p>
+<pre><code class="lang-csharp">var helper = new AspNetHystrixCommandFactoryHelper();
+var factory = helper.CreateFactory();
+var hystrixCommand = hystrixCommandFactory.GetHystrixCommand(&quot;groupKey&quot;, &quot;commandKey&quot;);
+</code></pre><h2 id="creating-the-factory-in-aspnet-core">Creating the factory in ASP.NET Core</h2>
+<p>With ASP.NET Core we can leverage the built-in dependency injection, so we won&#39;t need a helper class, we can simply inject the factory into our controllers.</p>
+<p>In our <code>Startup</code> class we have to call the <code>AddHystrix()</code> method on our service collection.</p>
+<pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.AddHystrix();
+}
+</code></pre><p>And then inject the <code>IHystrixCommandFactory</code> into our controller.</p>
+<pre><code class="lang-csharp">public class ExampleController : Controller
+{
+    private readonly IHystrixCommandFactory hystrixCommandFactory;
+
+    public ExampleController(IHystrixCommandFactory hystrixCommandFactory)
+    {
+        this.hystrixCommandFactory = hystrixCommandFactory;
+    }
+
+    public IActionResult Get()
+    {
+        ...
+        var hystrixCommand = hystrixCommandFactory.GetHystrixCommand(&quot;groupKey&quot;, &quot;commandKey&quot;);
+        ...
+    }
+</code></pre><h2 id="setting-up-fallbacks">Setting up fallbacks</h2>
+<p>A fallback can be defined as a second lambda expression right after the encapsulated command. This way e.g. in case of a failing network connection the fallback can return some cached or default value.</p>
+<pre><code class="lang-csharp">T result = hystrixCommand.Execute&lt;T&gt;(
+    () =&gt; mySyncFunctionWithReturnTypeT(), 
+    () =&gt; mySyncFallbackFunctionWithReturnTypeT()
+);
+
+T result = await hystrixCommand.ExecuteAsync&lt;T&gt;(
+    () =&gt; myAsyncFunctionWithReturnTypeT(), 
+    () =&gt; myAsyncFallbackFunctionWithReturnTypeT()
+);
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/docfx-generation/docs/documentation/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
