@@ -487,11 +487,11 @@ references:
   commentId: T:Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions
   fullName: Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions
   nameWithType: ApplicationBuilderExtensions
-- uid: Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(IApplicationBuilder,System.String)
+- uid: Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String)
   name: UseHystrixMetricsEndpoint(IApplicationBuilder, String)
-  href: api/Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.html#Hystrix_Dotnet_AspNetCore_ApplicationBuilderExtensions_UseHystrixMetricsEndpoint_IApplicationBuilder_System_String_
-  commentId: M:Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(IApplicationBuilder,System.String)
-  fullName: Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(IApplicationBuilder, System.String)
+  href: api/Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.html#Hystrix_Dotnet_AspNetCore_ApplicationBuilderExtensions_UseHystrixMetricsEndpoint_Microsoft_AspNetCore_Builder_IApplicationBuilder_System_String_
+  commentId: M:Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String)
+  fullName: Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(Microsoft.AspNetCore.Builder.IApplicationBuilder, System.String)
   nameWithType: ApplicationBuilderExtensions.UseHystrixMetricsEndpoint(IApplicationBuilder, String)
 - uid: Hystrix.Dotnet.AspNetCore.ApplicationBuilderExtensions.UseHystrixMetricsEndpoint*
   name: UseHystrixMetricsEndpoint
@@ -505,11 +505,11 @@ references:
   commentId: T:Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware
   fullName: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware
   nameWithType: HystrixStreamMiddleware
-- uid: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.#ctor(RequestDelegate)
+- uid: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)
   name: HystrixStreamMiddleware(RequestDelegate)
-  href: api/Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.html#Hystrix_Dotnet_AspNetCore_HystrixStreamMiddleware__ctor_RequestDelegate_
-  commentId: M:Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.#ctor(RequestDelegate)
-  fullName: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.HystrixStreamMiddleware(RequestDelegate)
+  href: api/Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.html#Hystrix_Dotnet_AspNetCore_HystrixStreamMiddleware__ctor_Microsoft_AspNetCore_Http_RequestDelegate_
+  commentId: M:Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)
+  fullName: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.HystrixStreamMiddleware(Microsoft.AspNetCore.Http.RequestDelegate)
   nameWithType: HystrixStreamMiddleware.HystrixStreamMiddleware(RequestDelegate)
 - uid: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.#ctor*
   name: HystrixStreamMiddleware
@@ -517,11 +517,11 @@ references:
   commentId: Overload:Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.#ctor
   fullName: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.HystrixStreamMiddleware
   nameWithType: HystrixStreamMiddleware.HystrixStreamMiddleware
-- uid: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke(HttpContext,Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint)
+- uid: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext,Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint)
   name: Invoke(HttpContext, IHystrixMetricsStreamEndpoint)
-  href: api/Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.html#Hystrix_Dotnet_AspNetCore_HystrixStreamMiddleware_Invoke_HttpContext_Hystrix_Dotnet_Metrics_IHystrixMetricsStreamEndpoint_
-  commentId: M:Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke(HttpContext,Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint)
-  fullName: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke(HttpContext, Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint)
+  href: api/Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.html#Hystrix_Dotnet_AspNetCore_HystrixStreamMiddleware_Invoke_Microsoft_AspNetCore_Http_HttpContext_Hystrix_Dotnet_Metrics_IHystrixMetricsStreamEndpoint_
+  commentId: M:Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext,Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint)
+  fullName: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext, Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint)
   nameWithType: HystrixStreamMiddleware.Invoke(HttpContext, IHystrixMetricsStreamEndpoint)
 - uid: Hystrix.Dotnet.AspNetCore.HystrixStreamMiddleware.Invoke*
   name: Invoke
@@ -535,11 +535,11 @@ references:
   commentId: T:Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions
   fullName: Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions
   nameWithType: ServiceCollectionExtensions
-- uid: Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix(IServiceCollection)
+- uid: Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix(Microsoft.Extensions.DependencyInjection.IServiceCollection)
   name: AddHystrix(IServiceCollection)
-  href: api/Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.html#Hystrix_Dotnet_AspNetCore_ServiceCollectionExtensions_AddHystrix_IServiceCollection_
-  commentId: M:Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix(IServiceCollection)
-  fullName: Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix(IServiceCollection)
+  href: api/Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.html#Hystrix_Dotnet_AspNetCore_ServiceCollectionExtensions_AddHystrix_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix(Microsoft.Extensions.DependencyInjection.IServiceCollection)
   nameWithType: ServiceCollectionExtensions.AddHystrix(IServiceCollection)
 - uid: Hystrix.Dotnet.AspNetCore.ServiceCollectionExtensions.AddHystrix*
   name: AddHystrix
@@ -1738,48 +1738,48 @@ references:
   commentId: Overload:Hystrix.Dotnet.FakeHystrixCommand.Execute
   fullName: Hystrix.Dotnet.FakeHystrixCommand.Execute
   nameWithType: FakeHystrixCommand.Execute
-- uid: Hystrix.Dotnet.FakeHystrixCommand.Execute``1(Func{``0},CancellationTokenSource)
-  name: Execute<T>(Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_Execute__1_Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.Execute``1(Func{``0},CancellationTokenSource)
-  name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.FakeHystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
-  nameWithType: FakeHystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
-  nameWithType.vb: FakeHystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
-- uid: Hystrix.Dotnet.FakeHystrixCommand.Execute``1(Func{``0},Func{``0},CancellationTokenSource)
+- uid: Hystrix.Dotnet.FakeHystrixCommand.Execute``1(System.Func{``0},System.Func{``0},System.Threading.CancellationTokenSource)
   name: Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_Execute__1_Func___0__Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.Execute``1(Func{``0},Func{``0},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_Execute__1_System_Func___0__System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.Execute``1(System.Func{``0},System.Func{``0},System.Threading.CancellationTokenSource)
   name.vb: Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.FakeHystrixCommand.Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.FakeHystrixCommand.Execute<T>(System.Func<T>, System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.Execute(Of T)(System.Func(Of T), System.Func(Of T), System.Threading.CancellationTokenSource)
   nameWithType: FakeHystrixCommand.Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
   nameWithType.vb: FakeHystrixCommand.Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
+- uid: Hystrix.Dotnet.FakeHystrixCommand.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
+  name: Execute<T>(Func<T>, CancellationTokenSource)
+  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_Execute__1_System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
+  name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.FakeHystrixCommand.Execute<T>(System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.Execute(Of T)(System.Func(Of T), System.Threading.CancellationTokenSource)
+  nameWithType: FakeHystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
+  nameWithType.vb: FakeHystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
 - uid: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync*
   name: ExecuteAsync
   href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_ExecuteAsync_
   commentId: Overload:Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync
   fullName: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync
   nameWithType: FakeHystrixCommand.ExecuteAsync
-- uid: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
-  name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_ExecuteAsync__1_Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
-  name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  nameWithType: FakeHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  nameWithType.vb: FakeHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-- uid: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(Func{Task{``0}},Func{Task{``0}},CancellationTokenSource)
+- uid: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name: ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_ExecuteAsync__1_Func_Task___0___Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(Func{Task{``0}},Func{Task{``0}},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
   nameWithType: FakeHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
   nameWithType.vb: FakeHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
+- uid: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
+  name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
+  href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
+  name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.FakeHystrixCommand.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
+  nameWithType: FakeHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
+  nameWithType.vb: FakeHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
 - uid: Hystrix.Dotnet.FakeHystrixCommand.ThreadPoolMetrics
   name: ThreadPoolMetrics
   href: api/Hystrix.Dotnet.FakeHystrixCommand.html#Hystrix_Dotnet_FakeHystrixCommand_ThreadPoolMetrics
@@ -1990,48 +1990,48 @@ references:
   commentId: Overload:Hystrix.Dotnet.HystrixCommand.Execute
   fullName: Hystrix.Dotnet.HystrixCommand.Execute
   nameWithType: HystrixCommand.Execute
-- uid: Hystrix.Dotnet.HystrixCommand.Execute``1(Func{``0},CancellationTokenSource)
-  name: Execute<T>(Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_Execute__1_Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.HystrixCommand.Execute``1(Func{``0},CancellationTokenSource)
-  name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.HystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.HystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
-  nameWithType: HystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
-  nameWithType.vb: HystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
-- uid: Hystrix.Dotnet.HystrixCommand.Execute``1(Func{``0},Func{``0},CancellationTokenSource)
+- uid: Hystrix.Dotnet.HystrixCommand.Execute``1(System.Func{``0},System.Func{``0},System.Threading.CancellationTokenSource)
   name: Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_Execute__1_Func___0__Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.HystrixCommand.Execute``1(Func{``0},Func{``0},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_Execute__1_System_Func___0__System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.HystrixCommand.Execute``1(System.Func{``0},System.Func{``0},System.Threading.CancellationTokenSource)
   name.vb: Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.HystrixCommand.Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.HystrixCommand.Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.HystrixCommand.Execute<T>(System.Func<T>, System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.HystrixCommand.Execute(Of T)(System.Func(Of T), System.Func(Of T), System.Threading.CancellationTokenSource)
   nameWithType: HystrixCommand.Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
   nameWithType.vb: HystrixCommand.Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
+- uid: Hystrix.Dotnet.HystrixCommand.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
+  name: Execute<T>(Func<T>, CancellationTokenSource)
+  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_Execute__1_System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.HystrixCommand.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
+  name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.HystrixCommand.Execute<T>(System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.HystrixCommand.Execute(Of T)(System.Func(Of T), System.Threading.CancellationTokenSource)
+  nameWithType: HystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
+  nameWithType.vb: HystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
 - uid: Hystrix.Dotnet.HystrixCommand.ExecuteAsync*
   name: ExecuteAsync
   href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_ExecuteAsync_
   commentId: Overload:Hystrix.Dotnet.HystrixCommand.ExecuteAsync
   fullName: Hystrix.Dotnet.HystrixCommand.ExecuteAsync
   nameWithType: HystrixCommand.ExecuteAsync
-- uid: Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
-  name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_ExecuteAsync__1_Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
-  name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.HystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.HystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  nameWithType: HystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  nameWithType.vb: HystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-- uid: Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(Func{Task{``0}},Func{Task{``0}},CancellationTokenSource)
+- uid: Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name: ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_ExecuteAsync__1_Func_Task___0___Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(Func{Task{``0}},Func{Task{``0}},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.HystrixCommand.ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.HystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.HystrixCommand.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.HystrixCommand.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
   nameWithType: HystrixCommand.ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
   nameWithType.vb: HystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
+- uid: Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
+  name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
+  href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.HystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
+  name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.HystrixCommand.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.HystrixCommand.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
+  nameWithType: HystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
+  nameWithType.vb: HystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
 - uid: Hystrix.Dotnet.HystrixCommand.ThreadPoolMetrics
   name: ThreadPoolMetrics
   href: api/Hystrix.Dotnet.HystrixCommand.html#Hystrix_Dotnet_HystrixCommand_ThreadPoolMetrics
@@ -2056,13 +2056,13 @@ references:
   commentId: M:Hystrix.Dotnet.HystrixCommandException.#ctor
   fullName: Hystrix.Dotnet.HystrixCommandException.HystrixCommandException()
   nameWithType: HystrixCommandException.HystrixCommandException()
-- uid: Hystrix.Dotnet.HystrixCommandException.#ctor(IEnumerable{Exception})
+- uid: Hystrix.Dotnet.HystrixCommandException.#ctor(System.Collections.Generic.IEnumerable{System.Exception})
   name: HystrixCommandException(IEnumerable<Exception>)
-  href: api/Hystrix.Dotnet.HystrixCommandException.html#Hystrix_Dotnet_HystrixCommandException__ctor_IEnumerable_Exception__
-  commentId: M:Hystrix.Dotnet.HystrixCommandException.#ctor(IEnumerable{Exception})
+  href: api/Hystrix.Dotnet.HystrixCommandException.html#Hystrix_Dotnet_HystrixCommandException__ctor_System_Collections_Generic_IEnumerable_System_Exception__
+  commentId: M:Hystrix.Dotnet.HystrixCommandException.#ctor(System.Collections.Generic.IEnumerable{System.Exception})
   name.vb: HystrixCommandException(IEnumerable(Of Exception))
-  fullName: Hystrix.Dotnet.HystrixCommandException.HystrixCommandException(IEnumerable<Exception>)
-  fullName.vb: Hystrix.Dotnet.HystrixCommandException.HystrixCommandException(IEnumerable(Of Exception))
+  fullName: Hystrix.Dotnet.HystrixCommandException.HystrixCommandException(System.Collections.Generic.IEnumerable<System.Exception>)
+  fullName.vb: Hystrix.Dotnet.HystrixCommandException.HystrixCommandException(System.Collections.Generic.IEnumerable(Of System.Exception))
   nameWithType: HystrixCommandException.HystrixCommandException(IEnumerable<Exception>)
   nameWithType.vb: HystrixCommandException.HystrixCommandException(IEnumerable(Of Exception))
 - uid: Hystrix.Dotnet.HystrixCommandException.#ctor*
@@ -3958,13 +3958,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.HystrixTimeoutWrapper.Execute
   fullName: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute
   nameWithType: HystrixTimeoutWrapper.Execute
-- uid: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute``1(Func{``0},CancellationTokenSource)
+- uid: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
   name: Execute<T>(Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.HystrixTimeoutWrapper.html#Hystrix_Dotnet_HystrixTimeoutWrapper_Execute__1_Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.HystrixTimeoutWrapper.Execute``1(Func{``0},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.HystrixTimeoutWrapper.html#Hystrix_Dotnet_HystrixTimeoutWrapper_Execute__1_System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.HystrixTimeoutWrapper.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
   name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute<T>(Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute(Of T)(Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute<T>(System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.HystrixTimeoutWrapper.Execute(Of T)(System.Func(Of T), System.Threading.CancellationTokenSource)
   nameWithType: HystrixTimeoutWrapper.Execute<T>(Func<T>, CancellationTokenSource)
   nameWithType.vb: HystrixTimeoutWrapper.Execute(Of T)(Func(Of T), CancellationTokenSource)
 - uid: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync*
@@ -3973,13 +3973,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync
   fullName: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync
   nameWithType: HystrixTimeoutWrapper.ExecuteAsync
-- uid: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
+- uid: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.HystrixTimeoutWrapper.html#Hystrix_Dotnet_HystrixTimeoutWrapper_ExecuteAsync__1_Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.HystrixTimeoutWrapper.html#Hystrix_Dotnet_HystrixTimeoutWrapper_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.HystrixTimeoutWrapper.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
   nameWithType: HystrixTimeoutWrapper.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
   nameWithType.vb: HystrixTimeoutWrapper.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
 - uid: Hystrix.Dotnet.IDateTimeProvider
@@ -4114,48 +4114,48 @@ references:
   commentId: Overload:Hystrix.Dotnet.IHystrixCommand.Execute
   fullName: Hystrix.Dotnet.IHystrixCommand.Execute
   nameWithType: IHystrixCommand.Execute
-- uid: Hystrix.Dotnet.IHystrixCommand.Execute``1(Func{``0},CancellationTokenSource)
-  name: Execute<T>(Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_Execute__1_Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.IHystrixCommand.Execute``1(Func{``0},CancellationTokenSource)
-  name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.IHystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.IHystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
-  nameWithType: IHystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
-  nameWithType.vb: IHystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
-- uid: Hystrix.Dotnet.IHystrixCommand.Execute``1(Func{``0},Func{``0},CancellationTokenSource)
+- uid: Hystrix.Dotnet.IHystrixCommand.Execute``1(System.Func{``0},System.Func{``0},System.Threading.CancellationTokenSource)
   name: Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_Execute__1_Func___0__Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.IHystrixCommand.Execute``1(Func{``0},Func{``0},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_Execute__1_System_Func___0__System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.IHystrixCommand.Execute``1(System.Func{``0},System.Func{``0},System.Threading.CancellationTokenSource)
   name.vb: Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.IHystrixCommand.Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.IHystrixCommand.Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.IHystrixCommand.Execute<T>(System.Func<T>, System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.IHystrixCommand.Execute(Of T)(System.Func(Of T), System.Func(Of T), System.Threading.CancellationTokenSource)
   nameWithType: IHystrixCommand.Execute<T>(Func<T>, Func<T>, CancellationTokenSource)
   nameWithType.vb: IHystrixCommand.Execute(Of T)(Func(Of T), Func(Of T), CancellationTokenSource)
+- uid: Hystrix.Dotnet.IHystrixCommand.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
+  name: Execute<T>(Func<T>, CancellationTokenSource)
+  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_Execute__1_System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.IHystrixCommand.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
+  name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.IHystrixCommand.Execute<T>(System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.IHystrixCommand.Execute(Of T)(System.Func(Of T), System.Threading.CancellationTokenSource)
+  nameWithType: IHystrixCommand.Execute<T>(Func<T>, CancellationTokenSource)
+  nameWithType.vb: IHystrixCommand.Execute(Of T)(Func(Of T), CancellationTokenSource)
 - uid: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync*
   name: ExecuteAsync
   href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_ExecuteAsync_
   commentId: Overload:Hystrix.Dotnet.IHystrixCommand.ExecuteAsync
   fullName: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync
   nameWithType: IHystrixCommand.ExecuteAsync
-- uid: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
-  name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_ExecuteAsync__1_Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
-  name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  nameWithType: IHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  nameWithType.vb: IHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-- uid: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(Func{Task{``0}},Func{Task{``0}},CancellationTokenSource)
+- uid: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name: ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_ExecuteAsync__1_Func_Task___0___Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(Func{Task{``0}},Func{Task{``0}},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
   nameWithType: IHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, Func<Task<T>>, CancellationTokenSource)
   nameWithType.vb: IHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), Func(Of Task(Of T)), CancellationTokenSource)
+- uid: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
+  name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
+  href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.IHystrixCommand.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
+  name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.IHystrixCommand.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
+  nameWithType: IHystrixCommand.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
+  nameWithType.vb: IHystrixCommand.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
 - uid: Hystrix.Dotnet.IHystrixCommand.ThreadPoolMetrics
   name: ThreadPoolMetrics
   href: api/Hystrix.Dotnet.IHystrixCommand.html#Hystrix_Dotnet_IHystrixCommand_ThreadPoolMetrics
@@ -4906,13 +4906,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute
   fullName: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute
   nameWithType: IHystrixTimeoutWrapper.Execute
-- uid: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute``1(Func{``0},CancellationTokenSource)
+- uid: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
   name: Execute<T>(Func<T>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.IHystrixTimeoutWrapper.html#Hystrix_Dotnet_IHystrixTimeoutWrapper_Execute__1_Func___0__CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute``1(Func{``0},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.IHystrixTimeoutWrapper.html#Hystrix_Dotnet_IHystrixTimeoutWrapper_Execute__1_System_Func___0__System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute``1(System.Func{``0},System.Threading.CancellationTokenSource)
   name.vb: Execute(Of T)(Func(Of T), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute<T>(Func<T>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute(Of T)(Func(Of T), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute<T>(System.Func<T>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.IHystrixTimeoutWrapper.Execute(Of T)(System.Func(Of T), System.Threading.CancellationTokenSource)
   nameWithType: IHystrixTimeoutWrapper.Execute<T>(Func<T>, CancellationTokenSource)
   nameWithType.vb: IHystrixTimeoutWrapper.Execute(Of T)(Func(Of T), CancellationTokenSource)
 - uid: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync*
@@ -4921,13 +4921,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync
   fullName: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync
   nameWithType: IHystrixTimeoutWrapper.ExecuteAsync
-- uid: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
+- uid: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name: ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  href: api/Hystrix.Dotnet.IHystrixTimeoutWrapper.html#Hystrix_Dotnet_IHystrixTimeoutWrapper_ExecuteAsync__1_Func_Task___0___CancellationTokenSource_
-  commentId: M:Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync``1(Func{Task{``0}},CancellationTokenSource)
+  href: api/Hystrix.Dotnet.IHystrixTimeoutWrapper.html#Hystrix_Dotnet_IHystrixTimeoutWrapper_ExecuteAsync__1_System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationTokenSource_
+  commentId: M:Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationTokenSource)
   name.vb: ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
-  fullName: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
-  fullName.vb: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
+  fullName: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync<T>(System.Func<System.Threading.Tasks.Task<T>>, System.Threading.CancellationTokenSource)
+  fullName.vb: Hystrix.Dotnet.IHystrixTimeoutWrapper.ExecuteAsync(Of T)(System.Func(Of System.Threading.Tasks.Task(Of T)), System.Threading.CancellationTokenSource)
   nameWithType: IHystrixTimeoutWrapper.ExecuteAsync<T>(Func<Task<T>>, CancellationTokenSource)
   nameWithType.vb: IHystrixTimeoutWrapper.ExecuteAsync(Of T)(Func(Of Task(Of T)), CancellationTokenSource)
 - uid: Hystrix.Dotnet.Logging
@@ -4942,13 +4942,13 @@ references:
   commentId: T:Hystrix.Dotnet.Logging.ILog
   fullName: Hystrix.Dotnet.Logging.ILog
   nameWithType: ILog
-- uid: Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel,Func{System.String},Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel,System.Func{System.String},System.Exception,System.Object[])
   name: Log(LogLevel, Func<String>, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.ILog.html#Hystrix_Dotnet_Logging_ILog_Log_Hystrix_Dotnet_Logging_LogLevel_Func_System_String__Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel,Func{System.String},Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.ILog.html#Hystrix_Dotnet_Logging_ILog_Log_Hystrix_Dotnet_Logging_LogLevel_System_Func_System_String__System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel,System.Func{System.String},System.Exception,System.Object[])
   name.vb: Log(LogLevel, Func(Of String), Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel, Func<System.String>, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel, Func(Of System.String), Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel, System.Func<System.String>, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.ILog.Log(Hystrix.Dotnet.Logging.LogLevel, System.Func(Of System.String), System.Exception, System.Object())
   nameWithType: ILog.Log(LogLevel, Func<String>, Exception, Object[])
   nameWithType.vb: ILog.Log(LogLevel, Func(Of String), Exception, Object())
 - uid: Hystrix.Dotnet.Logging.ILog.Log*
@@ -5005,22 +5005,22 @@ references:
   commentId: T:Hystrix.Dotnet.Logging.LogExtensions
   fullName: Hystrix.Dotnet.Logging.LogExtensions
   nameWithType: LogExtensions
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name: Debug(ILog, Exception, String, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_Exception_System_String_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name.vb: Debug(ILog, Exception, String, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object())
   nameWithType: LogExtensions.Debug(ILog, Exception, String, Object[])
   nameWithType.vb: LogExtensions.Debug(ILog, Exception, String, Object())
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name: Debug(ILog, Func<String>)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_Func_System_String__
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Debug_Hystrix_Dotnet_Logging_ILog_System_Func_System_String__
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name.vb: Debug(ILog, Func(Of String))
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, Func<System.String>)
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, Func(Of System.String))
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, System.Func<System.String>)
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog, System.Func(Of System.String))
   nameWithType: LogExtensions.Debug(ILog, Func<String>)
   nameWithType.vb: LogExtensions.Debug(ILog, Func(Of String))
 - uid: Hystrix.Dotnet.Logging.LogExtensions.Debug(Hystrix.Dotnet.Logging.ILog,System.String)
@@ -5044,19 +5044,19 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.Debug
   fullName: Hystrix.Dotnet.Logging.LogExtensions.Debug
   nameWithType: LogExtensions.Debug
-- uid: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,Exception)
+- uid: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception)
   name: DebugException(ILog, String, Exception)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,Exception)
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog, System.String, Exception)
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception)
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception)
   nameWithType: LogExtensions.DebugException(ILog, String, Exception)
-- uid: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name: DebugException(ILog, String, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_DebugException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name.vb: DebugException(ILog, String, Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.DebugException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object())
   nameWithType: LogExtensions.DebugException(ILog, String, Exception, Object[])
   nameWithType.vb: LogExtensions.DebugException(ILog, String, Exception, Object())
 - uid: Hystrix.Dotnet.Logging.LogExtensions.DebugException*
@@ -5080,22 +5080,22 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.DebugFormat
   fullName: Hystrix.Dotnet.Logging.LogExtensions.DebugFormat
   nameWithType: LogExtensions.DebugFormat
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name: Error(ILog, Exception, String, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_Exception_System_String_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name.vb: Error(ILog, Exception, String, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object())
   nameWithType: LogExtensions.Error(ILog, Exception, String, Object[])
   nameWithType.vb: LogExtensions.Error(ILog, Exception, String, Object())
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name: Error(ILog, Func<String>)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_Func_System_String__
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Error_Hystrix_Dotnet_Logging_ILog_System_Func_System_String__
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name.vb: Error(ILog, Func(Of String))
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, Func<System.String>)
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, Func(Of System.String))
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, System.Func<System.String>)
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog, System.Func(Of System.String))
   nameWithType: LogExtensions.Error(ILog, Func<String>)
   nameWithType.vb: LogExtensions.Error(ILog, Func(Of String))
 - uid: Hystrix.Dotnet.Logging.LogExtensions.Error(Hystrix.Dotnet.Logging.ILog,System.String)
@@ -5119,13 +5119,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.Error
   fullName: Hystrix.Dotnet.Logging.LogExtensions.Error
   nameWithType: LogExtensions.Error
-- uid: Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name: ErrorException(ILog, String, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_ErrorException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_ErrorException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name.vb: ErrorException(ILog, String, Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.ErrorException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object())
   nameWithType: LogExtensions.ErrorException(ILog, String, Exception, Object[])
   nameWithType.vb: LogExtensions.ErrorException(ILog, String, Exception, Object())
 - uid: Hystrix.Dotnet.Logging.LogExtensions.ErrorException*
@@ -5149,22 +5149,22 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.ErrorFormat
   fullName: Hystrix.Dotnet.Logging.LogExtensions.ErrorFormat
   nameWithType: LogExtensions.ErrorFormat
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name: Fatal(ILog, Exception, String, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_Exception_System_String_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name.vb: Fatal(ILog, Exception, String, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object())
   nameWithType: LogExtensions.Fatal(ILog, Exception, String, Object[])
   nameWithType.vb: LogExtensions.Fatal(ILog, Exception, String, Object())
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name: Fatal(ILog, Func<String>)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_Func_System_String__
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Fatal_Hystrix_Dotnet_Logging_ILog_System_Func_System_String__
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name.vb: Fatal(ILog, Func(Of String))
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, Func<System.String>)
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, Func(Of System.String))
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, System.Func<System.String>)
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog, System.Func(Of System.String))
   nameWithType: LogExtensions.Fatal(ILog, Func<String>)
   nameWithType.vb: LogExtensions.Fatal(ILog, Func(Of String))
 - uid: Hystrix.Dotnet.Logging.LogExtensions.Fatal(Hystrix.Dotnet.Logging.ILog,System.String)
@@ -5188,13 +5188,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.Fatal
   fullName: Hystrix.Dotnet.Logging.LogExtensions.Fatal
   nameWithType: LogExtensions.Fatal
-- uid: Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name: FatalException(ILog, String, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_FatalException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_FatalException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name.vb: FatalException(ILog, String, Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.FatalException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object())
   nameWithType: LogExtensions.FatalException(ILog, String, Exception, Object[])
   nameWithType.vb: LogExtensions.FatalException(ILog, String, Exception, Object())
 - uid: Hystrix.Dotnet.Logging.LogExtensions.FatalException*
@@ -5218,22 +5218,22 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.FatalFormat
   fullName: Hystrix.Dotnet.Logging.LogExtensions.FatalFormat
   nameWithType: LogExtensions.FatalFormat
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name: Info(ILog, Exception, String, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_Exception_System_String_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name.vb: Info(ILog, Exception, String, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object())
   nameWithType: LogExtensions.Info(ILog, Exception, String, Object[])
   nameWithType.vb: LogExtensions.Info(ILog, Exception, String, Object())
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name: Info(ILog, Func<String>)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_Func_System_String__
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Info_Hystrix_Dotnet_Logging_ILog_System_Func_System_String__
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name.vb: Info(ILog, Func(Of String))
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, Func<System.String>)
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, Func(Of System.String))
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, System.Func<System.String>)
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog, System.Func(Of System.String))
   nameWithType: LogExtensions.Info(ILog, Func<String>)
   nameWithType.vb: LogExtensions.Info(ILog, Func(Of String))
 - uid: Hystrix.Dotnet.Logging.LogExtensions.Info(Hystrix.Dotnet.Logging.ILog,System.String)
@@ -5257,13 +5257,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.Info
   fullName: Hystrix.Dotnet.Logging.LogExtensions.Info
   nameWithType: LogExtensions.Info
-- uid: Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name: InfoException(ILog, String, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_InfoException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_InfoException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name.vb: InfoException(ILog, String, Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.InfoException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object())
   nameWithType: LogExtensions.InfoException(ILog, String, Exception, Object[])
   nameWithType.vb: LogExtensions.InfoException(ILog, String, Exception, Object())
 - uid: Hystrix.Dotnet.Logging.LogExtensions.InfoException*
@@ -5359,22 +5359,22 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.IsWarnEnabled
   fullName: Hystrix.Dotnet.Logging.LogExtensions.IsWarnEnabled
   nameWithType: LogExtensions.IsWarnEnabled
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name: Trace(ILog, Exception, String, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_Exception_System_String_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name.vb: Trace(ILog, Exception, String, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object())
   nameWithType: LogExtensions.Trace(ILog, Exception, String, Object[])
   nameWithType.vb: LogExtensions.Trace(ILog, Exception, String, Object())
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name: Trace(ILog, Func<String>)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_Func_System_String__
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Trace_Hystrix_Dotnet_Logging_ILog_System_Func_System_String__
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name.vb: Trace(ILog, Func(Of String))
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, Func<System.String>)
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, Func(Of System.String))
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, System.Func<System.String>)
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog, System.Func(Of System.String))
   nameWithType: LogExtensions.Trace(ILog, Func<String>)
   nameWithType.vb: LogExtensions.Trace(ILog, Func(Of String))
 - uid: Hystrix.Dotnet.Logging.LogExtensions.Trace(Hystrix.Dotnet.Logging.ILog,System.String)
@@ -5398,13 +5398,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.Trace
   fullName: Hystrix.Dotnet.Logging.LogExtensions.Trace
   nameWithType: LogExtensions.Trace
-- uid: Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name: TraceException(ILog, String, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_TraceException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_TraceException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name.vb: TraceException(ILog, String, Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.TraceException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object())
   nameWithType: LogExtensions.TraceException(ILog, String, Exception, Object[])
   nameWithType.vb: LogExtensions.TraceException(ILog, String, Exception, Object())
 - uid: Hystrix.Dotnet.Logging.LogExtensions.TraceException*
@@ -5428,22 +5428,22 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.TraceFormat
   fullName: Hystrix.Dotnet.Logging.LogExtensions.TraceFormat
   nameWithType: LogExtensions.TraceFormat
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name: Warn(ILog, Exception, String, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Exception_System_String_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,Exception,System.String,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_Exception_System_String_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.Exception,System.String,System.Object[])
   name.vb: Warn(ILog, Exception, String, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, Exception, System.String, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, System.Exception, System.String, System.Object())
   nameWithType: LogExtensions.Warn(ILog, Exception, String, Object[])
   nameWithType.vb: LogExtensions.Warn(ILog, Exception, String, Object())
-- uid: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+- uid: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name: Warn(ILog, Func<String>)
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_Func_System_String__
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,Func{System.String})
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_Warn_Hystrix_Dotnet_Logging_ILog_System_Func_System_String__
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.Func{System.String})
   name.vb: Warn(ILog, Func(Of String))
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, Func<System.String>)
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, Func(Of System.String))
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, System.Func<System.String>)
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog, System.Func(Of System.String))
   nameWithType: LogExtensions.Warn(ILog, Func<String>)
   nameWithType.vb: LogExtensions.Warn(ILog, Func(Of String))
 - uid: Hystrix.Dotnet.Logging.LogExtensions.Warn(Hystrix.Dotnet.Logging.ILog,System.String)
@@ -5467,13 +5467,13 @@ references:
   commentId: Overload:Hystrix.Dotnet.Logging.LogExtensions.Warn
   fullName: Hystrix.Dotnet.Logging.LogExtensions.Warn
   nameWithType: LogExtensions.Warn
-- uid: Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+- uid: Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name: WarnException(ILog, String, Exception, Object[])
-  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_WarnException_Hystrix_Dotnet_Logging_ILog_System_String_Exception_System_Object___
-  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog,System.String,Exception,System.Object[])
+  href: api/Hystrix.Dotnet.Logging.LogExtensions.html#Hystrix_Dotnet_Logging_LogExtensions_WarnException_Hystrix_Dotnet_Logging_ILog_System_String_System_Exception_System_Object___
+  commentId: M:Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog,System.String,System.Exception,System.Object[])
   name.vb: WarnException(ILog, String, Exception, Object())
-  fullName: Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object[])
-  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog, System.String, Exception, System.Object())
+  fullName: Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object[])
+  fullName.vb: Hystrix.Dotnet.Logging.LogExtensions.WarnException(Hystrix.Dotnet.Logging.ILog, System.String, System.Exception, System.Object())
   nameWithType: LogExtensions.WarnException(ILog, String, Exception, Object[])
   nameWithType.vb: LogExtensions.WarnException(ILog, String, Exception, Object())
 - uid: Hystrix.Dotnet.Logging.LogExtensions.WarnException*
@@ -5572,11 +5572,11 @@ references:
   commentId: M:Hystrix.Dotnet.Logging.LogProvider.GetLogger(System.String)
   fullName: Hystrix.Dotnet.Logging.LogProvider.GetLogger(System.String)
   nameWithType: LogProvider.GetLogger(String)
-- uid: Hystrix.Dotnet.Logging.LogProvider.GetLogger(Type,System.String)
+- uid: Hystrix.Dotnet.Logging.LogProvider.GetLogger(System.Type,System.String)
   name: GetLogger(Type, String)
-  href: api/Hystrix.Dotnet.Logging.LogProvider.html#Hystrix_Dotnet_Logging_LogProvider_GetLogger_Type_System_String_
-  commentId: M:Hystrix.Dotnet.Logging.LogProvider.GetLogger(Type,System.String)
-  fullName: Hystrix.Dotnet.Logging.LogProvider.GetLogger(Type, System.String)
+  href: api/Hystrix.Dotnet.Logging.LogProvider.html#Hystrix_Dotnet_Logging_LogProvider_GetLogger_System_Type_System_String_
+  commentId: M:Hystrix.Dotnet.Logging.LogProvider.GetLogger(System.Type,System.String)
+  fullName: Hystrix.Dotnet.Logging.LogProvider.GetLogger(System.Type, System.String)
   nameWithType: LogProvider.GetLogger(Type, String)
 - uid: Hystrix.Dotnet.Logging.LogProvider.GetLogger*
   name: GetLogger
@@ -5662,11 +5662,11 @@ references:
   commentId: Overload:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.#ctor
   fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.HystrixMetricsStreamEndpoint
   nameWithType: HystrixMetricsStreamEndpoint.HystrixMetricsStreamEndpoint
-- uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream,Action,CancellationToken)
+- uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream(System.IO.Stream,System.Action,System.Threading.CancellationToken)
   name: PushContentToOutputStream(Stream, Action, CancellationToken)
-  href: api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_HystrixMetricsStreamEndpoint_PushContentToOutputStream_Stream_Action_CancellationToken_
-  commentId: M:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream,Action,CancellationToken)
-  fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream, Action, CancellationToken)
+  href: api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_HystrixMetricsStreamEndpoint_PushContentToOutputStream_System_IO_Stream_System_Action_System_Threading_CancellationToken_
+  commentId: M:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream(System.IO.Stream,System.Action,System.Threading.CancellationToken)
+  fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream(System.IO.Stream, System.Action, System.Threading.CancellationToken)
   nameWithType: HystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream, Action, CancellationToken)
 - uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream*
   name: PushContentToOutputStream
@@ -5674,11 +5674,11 @@ references:
   commentId: Overload:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream
   fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.PushContentToOutputStream
   nameWithType: HystrixMetricsStreamEndpoint.PushContentToOutputStream
-- uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(Stream,CancellationToken)
+- uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(System.IO.Stream,System.Threading.CancellationToken)
   name: WriteAllCommandsJsonToOutputStream(Stream, CancellationToken)
-  href: api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_HystrixMetricsStreamEndpoint_WriteAllCommandsJsonToOutputStream_Stream_CancellationToken_
-  commentId: M:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(Stream,CancellationToken)
-  fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(Stream, CancellationToken)
+  href: api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_HystrixMetricsStreamEndpoint_WriteAllCommandsJsonToOutputStream_System_IO_Stream_System_Threading_CancellationToken_
+  commentId: M:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(System.IO.Stream,System.Threading.CancellationToken)
+  fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(System.IO.Stream, System.Threading.CancellationToken)
   nameWithType: HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream(Stream, CancellationToken)
 - uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream*
   name: WriteAllCommandsJsonToOutputStream
@@ -5686,11 +5686,11 @@ references:
   commentId: Overload:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream
   fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream
   nameWithType: HystrixMetricsStreamEndpoint.WriteAllCommandsJsonToOutputStream
-- uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson(Hystrix.Dotnet.IHystrixCommand,Stream)
+- uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson(Hystrix.Dotnet.IHystrixCommand,System.IO.Stream)
   name: WriteCommandJson(IHystrixCommand, Stream)
-  href: api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_HystrixMetricsStreamEndpoint_WriteCommandJson_Hystrix_Dotnet_IHystrixCommand_Stream_
-  commentId: M:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson(Hystrix.Dotnet.IHystrixCommand,Stream)
-  fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson(Hystrix.Dotnet.IHystrixCommand, Stream)
+  href: api/Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_HystrixMetricsStreamEndpoint_WriteCommandJson_Hystrix_Dotnet_IHystrixCommand_System_IO_Stream_
+  commentId: M:Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson(Hystrix.Dotnet.IHystrixCommand,System.IO.Stream)
+  fullName: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson(Hystrix.Dotnet.IHystrixCommand, System.IO.Stream)
   nameWithType: HystrixMetricsStreamEndpoint.WriteCommandJson(IHystrixCommand, Stream)
 - uid: Hystrix.Dotnet.Metrics.HystrixMetricsStreamEndpoint.WriteCommandJson*
   name: WriteCommandJson
@@ -5704,11 +5704,11 @@ references:
   commentId: T:Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint
   fullName: Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint
   nameWithType: IHystrixMetricsStreamEndpoint
-- uid: Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream,Action,CancellationToken)
+- uid: Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream(System.IO.Stream,System.Action,System.Threading.CancellationToken)
   name: PushContentToOutputStream(Stream, Action, CancellationToken)
-  href: api/Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_IHystrixMetricsStreamEndpoint_PushContentToOutputStream_Stream_Action_CancellationToken_
-  commentId: M:Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream,Action,CancellationToken)
-  fullName: Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream, Action, CancellationToken)
+  href: api/Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.html#Hystrix_Dotnet_Metrics_IHystrixMetricsStreamEndpoint_PushContentToOutputStream_System_IO_Stream_System_Action_System_Threading_CancellationToken_
+  commentId: M:Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream(System.IO.Stream,System.Action,System.Threading.CancellationToken)
+  fullName: Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream(System.IO.Stream, System.Action, System.Threading.CancellationToken)
   nameWithType: IHystrixMetricsStreamEndpoint.PushContentToOutputStream(Stream, Action, CancellationToken)
 - uid: Hystrix.Dotnet.Metrics.IHystrixMetricsStreamEndpoint.PushContentToOutputStream*
   name: PushContentToOutputStream

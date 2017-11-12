@@ -85,11 +85,35 @@
     <h5>Implements</h5>
     <div><a class="xref" href="Hystrix.Dotnet.IHystrixConfigurationService.html">IHystrixConfigurationService</a></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Hystrix.Dotnet.html">Hystrix.Dotnet</a></h6>
   <h6><strong>Assembly</strong>: Hystrix.Dotnet.dll</h6>
   <h5 id="Hystrix_Dotnet_HystrixLocalConfigurationService_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class HystrixLocalConfigurationService : object, IHystrixConfigurationService</code></pre>
+    <pre><code class="lang-csharp hljs">public class HystrixLocalConfigurationService : IHystrixConfigurationService</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -141,7 +165,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerErrorThresholdPercentage_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerErrorThresholdPercentage*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerErrorThresholdPercentage" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerErrorThresholdPercentage">GetCircuitBreakerErrorThresholdPercentage()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns the percentage of errors at which to trip the circuit breaker for the command the instances is tied to</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -171,7 +196,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerForcedClosed_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerForcedClosed*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerForcedClosed" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerForcedClosed">GetCircuitBreakerForcedClosed()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns whether the circuit breaker is forced closed for the command the instances is tied to</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -201,7 +227,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerForcedOpen_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerForcedOpen*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerForcedOpen" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerForcedOpen">GetCircuitBreakerForcedOpen()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns whether the circuit breaker is forced open for the command the instances is tied to</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -231,7 +258,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerRequestVolumeThreshold_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerRequestVolumeThreshold*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerRequestVolumeThreshold" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerRequestVolumeThreshold">GetCircuitBreakerRequestVolumeThreshold()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns the number of requests required for the circuit breaker to become active</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -261,7 +289,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerSleepWindowInMilliseconds_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerSleepWindowInMilliseconds*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCircuitBreakerSleepWindowInMilliseconds" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCircuitBreakerSleepWindowInMilliseconds">GetCircuitBreakerSleepWindowInMilliseconds()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns the number of milliseconds to sleep before letting a canary request through an open circuit breaker</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -291,7 +320,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCommandTimeoutInMilliseconds_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCommandTimeoutInMilliseconds*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetCommandTimeoutInMilliseconds" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetCommandTimeoutInMilliseconds">GetCommandTimeoutInMilliseconds()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns the timeout value for the command the instances is tied to</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -321,7 +351,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetHystrixCommandEnabled_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetHystrixCommandEnabled*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetHystrixCommandEnabled" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetHystrixCommandEnabled">GetHystrixCommandEnabled()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates whether hystrix command logic is enabled or not</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -351,7 +382,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsHealthSnapshotIntervalInMilliseconds_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsHealthSnapshotIntervalInMilliseconds*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsHealthSnapshotIntervalInMilliseconds" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsHealthSnapshotIntervalInMilliseconds">GetMetricsHealthSnapshotIntervalInMilliseconds()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns the snapshot interval for tracking health metrics</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -381,7 +413,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileBucketSize_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileBucketSize*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileBucketSize" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileBucketSize">GetMetricsRollingPercentileBucketSize()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The maximum number of response times are collected in a single bucket; if more requests happen the earlier recorded values are overwritten</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -411,7 +444,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileEnabled_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileEnabled*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileEnabled" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileEnabled">GetMetricsRollingPercentileEnabled()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates whether percentile metrics are collected</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -441,7 +475,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileWindowBuckets_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileWindowBuckets*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileWindowBuckets" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileWindowBuckets">GetMetricsRollingPercentileWindowBuckets()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The number of buckets that sliding window is split into</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -471,7 +506,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileWindowInMilliseconds_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileWindowInMilliseconds*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingPercentileWindowInMilliseconds" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingPercentileWindowInMilliseconds">GetMetricsRollingPercentileWindowInMilliseconds()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The total sliding window over which percentiles are collected</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -501,7 +537,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingStatisticalWindowBuckets_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingStatisticalWindowBuckets*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingStatisticalWindowBuckets" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingStatisticalWindowBuckets">GetMetricsRollingStatisticalWindowBuckets()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The number of buckets the time during which stats are tracked is divided in</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -531,7 +568,8 @@
   </span>
   <a id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingStatisticalWindowInMilliseconds_" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingStatisticalWindowInMilliseconds*"></a>
   <h4 id="Hystrix_Dotnet_HystrixLocalConfigurationService_GetMetricsRollingStatisticalWindowInMilliseconds" data-uid="Hystrix.Dotnet.HystrixLocalConfigurationService.GetMetricsRollingStatisticalWindowInMilliseconds">GetMetricsRollingStatisticalWindowInMilliseconds()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The number of milliseconds to keep track of stats</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -587,7 +625,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            Licensed under <a href="https://github.com/Travix-International/Hystrix.Dotnet/blob/master/LICENSE" target="_blank">MIT</a> by <a href="https://travix.com/" target="_blank">Travix International</a>.<br>Generated by <strong>DocFX</strong>.
           </div>
         </div>
       </footer>
