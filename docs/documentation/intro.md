@@ -1,8 +1,26 @@
 # How to use
 
-The circuit breakers are identifyable by group and command key. To make sure you get the same Hystrix command object for each group and command key combination you should use the factory the retrieve the command.
+Circuit breakers are the main concept in Hystrix, and they are identifyable by a group and command key, which are arbitrary strings to support structuring and organizing the various circuit breakers we have in our application. Every circuit breaker can have its own configuration regarding its timeout, fallback mechanism, error threshold, etc.
 
-## Creating the factory manually
+Once we have a reference to a circuit breaker (represented by the `IHystrixCommand` interface), we can execute an operation through it using either the synchronous version:
+
+```csharp
+T result = hystrixCommand.Execute<T>(() => myFunctionWithReturnTypeT());
+```
+
+Or use the async version:
+
+```csharp
+T result = await hystrixCommand.ExecuteAsync<T>(() => myAsyncFunctionWithReturnTypeTaskT());
+```
+
+## Accessing commands
+
+Getting a reference to a particular command happens through a factory object. Creating the factory can happen differently depending on what kind of environment we are in.
+
+### Creating the factory manually
+
+We can always create a factory manually. This is only recommended if we don't use any dependency injection, for example it can be useful in a console application.
 
 ```csharp
 var options = HystrixOptions.CreateDefault();
@@ -10,7 +28,7 @@ var hystrixCommandFactory = new HystrixCommandFactory(options);
 var hystrixCommand = hystrixCommandFactory.GetHystrixCommand("groupKey", "commandKey");
 ```
 
-## Creating the factory in ASP.NET
+### Creating the factory in ASP.NET
 
 In ASP.NET we can use the `AspNetHystrixCommandFactoryHelper` helper class to create our factory, which will automatically pick up the configuration from the web.config.
 
@@ -52,18 +70,6 @@ public class ExampleController : Controller
         var hystrixCommand = hystrixCommandFactory.GetHystrixCommand("groupKey", "commandKey");
         ...
     }
-```
-
-The command is a combination of circuit breaker and timeout pattern. To wrap your function with it use either the sync version:
-
-```csharp
-T result = hystrixCommand.Execute<T>(() => mySyncFunctionWithReturnTypeT());
-```
-
-Or use the async version
-
-```csharp
-T result = await hystrixCommand.ExecuteAsync<T>(() => myAsyncFunctionWithReturnTypeT());
 ```
 
 ## Setting up fallbacks
