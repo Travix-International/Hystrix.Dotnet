@@ -35,10 +35,6 @@
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
   </ItemGroup>
 
-  <PropertyGroup Label="Globals">
-    <ProjectGuid>558ef94d-0bb1-4284-91cf-7d96576a42d1</ProjectGuid>
-  </PropertyGroup>
-
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
     <DefineConstants>$(DefineConstants);COREFX</DefineConstants>
   </PropertyGroup>

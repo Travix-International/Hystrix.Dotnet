@@ -1,9 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup Label="Globals">
-    <ProjectGuid>18e713d1-ad8d-4aca-ac55-62f677323c08</ProjectGuid>
-  </PropertyGroup>
-
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>Hystrix.Dotnet.UnitTests</AssemblyName>
