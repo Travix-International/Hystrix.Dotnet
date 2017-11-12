@@ -13,4 +13,4 @@ In order to isolate failure in one dependency from taking down another component
 
 ## How to use?
 
-See the details and examples in the [Documentation](documentation/intro.html), and in the [API Reference](api/index.html).
+See the details and examples in the [Documentation](documentation/intro.md), and in the [API Reference](api/index.md).
