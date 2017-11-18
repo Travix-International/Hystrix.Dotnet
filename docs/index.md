@@ -7,6 +7,8 @@ A combination of circuit breaker and timeout. The .NET version of the open sourc
 [![Coverage Status](https://coveralls.io/repos/github/Travix-International/Hystrix.Dotnet/badge.svg?branch=upgrade-to-net-core)](https://coveralls.io/github/Travix-International/Hystrix.Dotnet?branch=upgrade-to-net-core)
 [![License](https://img.shields.io/github/license/Travix-International/Hystrix.Dotnet.svg)](https://github.com/Travix-International/Hystrix.Dotnet/blob/master/LICENSE)
 
+You can find the source on [GitHub](https://github.com/Travix-International/Hystrix.Dotnet/).
+
 ## Why?
 
 In order to isolate failure in one dependency from taking down another component. Whenever the circuit breaker opens it returns an exception or runs the fallback without burdening the failing system. It sends through a single request on a regular interval to see if the dependent system is back in business.
