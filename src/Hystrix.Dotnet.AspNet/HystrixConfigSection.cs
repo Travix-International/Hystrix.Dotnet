@@ -2,6 +2,9 @@
 
 namespace Hystrix.Dotnet.AspNet
 {
+    /// <summary>
+    /// This is a test comment.
+    /// </summary>
     public class HystrixConfigSection : ConfigurationSection
     {
         [ConfigurationProperty("serviceImplementation", DefaultValue = "HystrixLocalConfigurationService", IsRequired = false)]

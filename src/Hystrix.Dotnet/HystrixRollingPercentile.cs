@@ -49,16 +49,14 @@ namespace Hystrix.Dotnet
 
             buckets = new CircularArray<RollingPercentileBucket>(this.numberOfBuckets);
         }
-
-        /**
-         * Add value (or values) to current bucket.
-         * 
-         * @param value
-         *            Value to be stored in current bucket such as execution latency in milliseconds
-         */
+        
+        /// <summary>
+        /// Add value (or values) to current bucket.
+        /// </summary>
+        /// <param name="values">Value to be stored in current bucket such as execution latency in milliseconds.</param>
         public void AddValue(params int[] values)
         {
-            /* no-op if disabled */
+            // no-op if disabled
             if (!configurationService.GetMetricsRollingPercentileEnabled())
             {
                 return;
@@ -77,20 +75,16 @@ namespace Hystrix.Dotnet
             }
         }
 
-        /**
-         * Compute a percentile from the underlying rolling buckets of values.
-         * <p>
-         * For performance reasons it maintains a single snapshot of the sorted values from all buckets that is re-generated each time the bucket rotates.
-         * <p>
-         * This means that if a bucket is 5000ms, then this method will re-compute a percentile at most once every 5000ms.
-         * 
-         * @param percentile
-         *            value such as 99 (99th percentile), 99.5 (99.5th percentile), 50 (median, 50th percentile) to compute and retrieve percentile from rolling buckets.
-         * @return int percentile value
-         */
+        /// <summary>
+        /// Compute a percentile from the underlying rolling buckets of values.
+        /// For performance reasons it maintains a single snapshot of the sorted values from all buckets that is re-generated each time the bucket rotates.
+        /// This means that if a bucket is 5000ms, then this method will re-compute a percentile at most once every 5000ms.
+        /// </summary>
+        /// <param name="percentile">Value such as 99 (99th percentile), 99.5 (99.5th percentile), 50 (median, 50th percentile) to compute and retrieve percentile from rolling buckets.</param>
+        /// <returns>The percentile value.</returns>
         public int GetPercentile(double percentile)
         {
-            /* no-op if disabled */
+            // no-op if disabled
             if (!configurationService.GetMetricsRollingPercentileEnabled())
             {
                 return -1;
@@ -103,14 +97,13 @@ namespace Hystrix.Dotnet
             return GetCurrentPercentileSnapshot().GetPercentile(percentile);
         }
 
-        /**
-         * This returns the mean (average) of all values in the current snapshot. This is not a percentile but often desired so captured and exposed here.
-         * 
-         * @return mean of all values
-         */
+        /// <summary>
+        /// This returns the mean (average) of all values in the current snapshot. This is not a percentile but often desired so captured and exposed here.
+        /// </summary>
+        /// <returns>Mean of all values.</returns>
         public int GetMean()
         {
-            /* no-op if disabled */
+            // no-op if disabled
             if (!configurationService.GetMetricsRollingPercentileEnabled())
             {
                 return -1;
@@ -123,13 +116,13 @@ namespace Hystrix.Dotnet
             return GetCurrentPercentileSnapshot().GetMean();
         }
 
-        /**
-         * This will retrieve the current snapshot or create a new one if one does not exist.
-         * <p>
-         * It will NOT include data from the current bucket, but all previous buckets.
-         * <p>
-         * It remains cached until the next bucket rotates at which point a new one will be created.
-         */
+        /// <summary>
+        /// Retrieves the current snapshot or create a new one if one does not exist.
+        /// </summary>
+        /// <remarks>
+        /// It will NOT include data from the current bucket, but all previous buckets.
+        /// It remains cached until the next bucket rotates at which point a new one will be created.
+        /// </remarks>
         private PercentileSnapshot GetCurrentPercentileSnapshot()
         {
             return currentPercentileSnapshot;
@@ -141,13 +134,10 @@ namespace Hystrix.Dotnet
         {
             long currentTime = dateTimeProvider.CurrentTimeInMilliseconds;
 
-            /* a shortcut to try and get the most common result of immediately finding the current bucket */
+            // A shortcut to try and get the most common result of immediately finding the current bucket.
 
-            /**
-             * Retrieve the latest bucket if the given time is BEFORE the end of the bucket window, otherwise it returns NULL.
-             * 
-             * NOTE: This is thread-safe because it's accessing 'buckets' which is a LinkedBlockingDeque
-             */
+            // Retrieve the latest bucket if the given time is BEFORE the end of the bucket window, otherwise it returns NULL.
+            // NOTE: This is thread-safe because it's accessing 'buckets' which is a LinkedBlockingDeque
             RollingPercentileBucket currentBucket = buckets.GetTail();
             if (currentBucket != null && currentTime < currentBucket.WindowStart + bucketSizeInMilliseconds)
             {
@@ -157,30 +147,26 @@ namespace Hystrix.Dotnet
                 return currentBucket;
             }
 
-            /* if we didn't find the current bucket above, then we have to create one */
+            // If we didn't find the current bucket above, then we have to create one.
 
-            /**
-             * The following needs to be synchronized/locked even with a synchronized/thread-safe data structure such as LinkedBlockingDeque because
-             * the logic involves multiple steps to check existence, create an object then insert the object. The 'check' or 'insertion' themselves
-             * are thread-safe by themselves but not the aggregate algorithm, thus we put this entire block of logic inside synchronized.
-             * 
-             * I am using a tryLock if/then (http://download.oracle.com/javase/6/docs/api/java/util/concurrent/locks/Lock.html#tryLock())
-             * so that a single thread will get the lock and as soon as one thread gets the lock all others will go the 'else' block
-             * and just return the currentBucket until the newBucket is created. This should allow the throughput to be far higher
-             * and only slow down 1 thread instead of blocking all of them in each cycle of creating a new bucket based on some testing
-             * (and it makes sense that it should as well).
-             * 
-             * This means the timing won't be exact to the millisecond as to what data ends up in a bucket, but that's acceptable.
-             * It's not critical to have exact precision to the millisecond, as long as it's rolling, if we can instead reduce the impact synchronization.
-             * 
-             * More importantly though it means that the 'if' block within the lock needs to be careful about what it changes that can still
-             * be accessed concurrently in the 'else' block since we're not completely synchronizing access.
-             * 
-             * For example, we can't have a multi-step process to add a bucket, remove a bucket, then update the sum since the 'else' block of code
-             * can retrieve the sum while this is all happening. The trade-off is that we don't maintain the rolling sum and let readers just iterate
-             * bucket to calculate the sum themselves. This is an example of favoring write-performance instead of read-performance and how the tryLock
-             * versus a synchronized block needs to be accommodated.
-             */
+            // The following needs to be synchronized/locked even with a synchronized/thread-safe data structure such as LinkedBlockingDeque because
+            //the logic involves multiple steps to check existence, create an object then insert the object. The 'check' or 'insertion' themselves
+            // are thread-safe by themselves but not the aggregate algorithm, thus we put this entire block of logic inside synchronized.
+            // I am using a tryLock if/then (http://download.oracle.com/javase/6/docs/api/java/util/concurrent/locks/Lock.html#tryLock())
+            // so that a single thread will get the lock and as soon as one thread gets the lock all others will go the 'else' block
+            // and just return the currentBucket until the newBucket is created. This should allow the throughput to be far higher
+            // and only slow down 1 thread instead of blocking all of them in each cycle of creating a new bucket based on some testing
+            // (and it makes sense that it should as well).
+            // This means the timing won't be exact to the millisecond as to what data ends up in a bucket, but that's acceptable.
+            // It's not critical to have exact precision to the millisecond, as long as it's rolling, if we can instead reduce the impact synchronization.
+             
+            // More importantly though it means that the 'if' block within the lock needs to be careful about what it changes that can still
+            // be accessed concurrently in the 'else' block since we're not completely synchronizing access.
+             
+            // For example, we can't have a multi-step process to add a bucket, remove a bucket, then update the sum since the 'else' block of code
+            // can retrieve the sum while this is all happening. The trade-off is that we don't maintain the rolling sum and let readers just iterate
+            // bucket to calculate the sum themselves. This is an example of favoring write-performance instead of read-performance and how the tryLock
+            // versus a synchronized block needs to be accommodated.
             if (Monitor.TryEnter(newBucketLock))
             {
                 try
@@ -247,12 +233,13 @@ namespace Hystrix.Dotnet
             return GetCurrentBucket();
         }
 
-        /**
-         * Force a reset so that percentiles start being gathered from scratch.
-         */
+        
+        /// <summary>
+        /// Force a reset so that percentiles start being gathered from scratch.
+        /// </summary>
         public void Reset()
         {
-            /* no-op if disabled */
+            // No-op if disabled.
             if (!configurationService.GetMetricsRollingPercentileEnabled())
             {
                 return;

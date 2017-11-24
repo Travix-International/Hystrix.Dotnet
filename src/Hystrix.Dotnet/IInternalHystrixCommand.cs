@@ -22,7 +22,7 @@ namespace Hystrix.Dotnet
         IHystrixCommandMetrics CommandMetrics { get; }
 
         /// <summary>
-        /// Runs the synchronous <see cref="primaryFunction"/> wrapped by circuit breaker and timeout pattern, without a fallback; an error, timeout or open circuit breaker will result in a <see cref="HystrixCommandException"/>
+        /// Runs the synchronous <paramref name="primaryFunction"/> wrapped by circuit breaker and timeout pattern, without a fallback; an error, timeout or open circuit breaker will result in a <see cref="HystrixCommandException"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="primaryFunction"></param>
@@ -31,7 +31,7 @@ namespace Hystrix.Dotnet
         T Execute<T>(Func<T> primaryFunction, CancellationTokenSource cancellationTokenSource = null);
 
         /// <summary>
-        /// Runs the synchronous <see cref="primaryFunction"/> wrapped by circuit breaker and timeout pattern, with a fallback function; an error, timeout or open circuit breaker will execute the <see cref="fallbackFunction"/>
+        /// Runs the synchronous <paramref name="primaryFunction"/> wrapped by circuit breaker and timeout pattern, with a fallback function; an error, timeout or open circuit breaker will execute the <paramref name="fallbackFunction"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="primaryFunction"></param>
@@ -41,7 +41,7 @@ namespace Hystrix.Dotnet
         T Execute<T>(Func<T> primaryFunction, Func<T> fallbackFunction, CancellationTokenSource cancellationTokenSource = null);
 
         /// <summary>
-        /// Runs the asynchronous <see cref="primaryFunction"/> wrapped by circuit breaker and timeout pattern, without a fallback; an error, timeout or open circuit breaker will result in a <see cref="HystrixCommandException"/>
+        /// Runs the asynchronous <paramref name="primaryFunction"/> wrapped by circuit breaker and timeout pattern, without a fallback; an error, timeout or open circuit breaker will result in a <see cref="HystrixCommandException"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="primaryFunction"></param>
@@ -50,7 +50,7 @@ namespace Hystrix.Dotnet
         Task<T> ExecuteAsync<T>(Func<Task<T>> primaryFunction, CancellationTokenSource cancellationTokenSource = null);
 
         /// <summary>
-        /// Runs the asynchronous <see cref="primaryFunction"/> wrapped by circuit breaker and timeout pattern, with a fallback function; an error, timeout or open circuit breaker will execute the <see cref="fallbackFunction"/>
+        /// Runs the asynchronous <paramref name="primaryFunction"/> wrapped by circuit breaker and timeout pattern, with a fallback function; an error, timeout or open circuit breaker will execute the <paramref name="fallbackFunction"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="primaryFunction"></param>

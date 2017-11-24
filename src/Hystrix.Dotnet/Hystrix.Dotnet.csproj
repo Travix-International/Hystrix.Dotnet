@@ -6,7 +6,8 @@
     <VersionPrefix>1.0.4</VersionPrefix>
     <DebugType>full</DebugType>
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
-    <NoWarn>$(NoWarn);0618</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);0618;CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>Hystrix.Dotnet</AssemblyName>
     <PackageId>Hystrix.Dotnet</PackageId>

@@ -145,13 +145,9 @@ namespace Hystrix.Dotnet
         {
             long currentTime = dateTimeProvider.CurrentTimeInMilliseconds;
 
-            /* a shortcut to try and get the most common result of immediately finding the current bucket */
-
-            /**
-             * Retrieve the latest bucket if the given time is BEFORE the end of the bucket window, otherwise it returns NULL.
-             * 
-             * NOTE: This is thread-safe because it's accessing 'buckets' which is a LinkedBlockingDeque
-             */
+            // A shortcut to try and get the most common result of immediately finding the current bucket.
+            // Retrieve the latest bucket if the given time is BEFORE the end of the bucket window, otherwise it returns NULL.
+            // NOTE: This is thread-safe because it's accessing 'buckets' which is a LinkedBlockingDeque
             RollingNumberBucket currentBucket = buckets.GetTail();
             if (currentBucket != null && currentTime < currentBucket.WindowStart + BucketSizeInMillseconds)
             {
@@ -161,31 +157,23 @@ namespace Hystrix.Dotnet
                 return currentBucket;
             }
 
-            /* if we didn't find the current bucket above, then we have to create one */
-
-            /**
-             * The following needs to be synchronized/locked even with a synchronized/thread-safe data structure such as LinkedBlockingDeque because
-             * the logic involves multiple steps to check existence, create an object then insert the object. The 'check' or 'insertion' themselves
-             * are thread-safe by themselves but not the aggregate algorithm, thus we put this entire block of logic inside synchronized.
-             * 
-             * I am using a tryLock if/then (http://download.oracle.com/javase/6/docs/api/java/util/concurrent/locks/Lock.html#tryLock())
-             * so that a single thread will get the lock and as soon as one thread gets the lock all others will go the 'else' block
-             * and just return the currentBucket until the newBucket is created. This should allow the throughput to be far higher
-             * and only slow down 1 thread instead of blocking all of them in each cycle of creating a new bucket based on some testing
-             * (and it makes sense that it should as well).
-             * 
-             * This means the timing won't be exact to the millisecond as to what data ends up in a bucket, but that's acceptable.
-             * It's not critical to have exact precision to the millisecond, as long as it's rolling, if we can instead reduce the impact synchronization.
-             * 
-             * More importantly though it means that the 'if' block within the lock needs to be careful about what it changes that can still
-             * be accessed concurrently in the 'else' block since we're not completely synchronizing access.
-             * 
-             * For example, we can't have a multi-step process to add a bucket, remove a bucket, then update the sum since the 'else' block of code
-             * can retrieve the sum while this is all happening. The trade-off is that we don't maintain the rolling sum and let readers just iterate
-             * bucket to calculate the sum themselves. This is an example of favoring write-performance instead of read-performance and how the tryLock
-             * versus a synchronized block needs to be accommodated.
-             */
-
+            // If we didn't find the current bucket above, then we have to create one.
+            // The following needs to be synchronized/locked even with a synchronized/thread-safe data structure such as LinkedBlockingDeque because
+            // the logic involves multiple steps to check existence, create an object then insert the object. The 'check' or 'insertion' themselves
+            // are thread-safe by themselves but not the aggregate algorithm, thus we put this entire block of logic inside synchronized.
+            // I am using a tryLock if/then (http://download.oracle.com/javase/6/docs/api/java/util/concurrent/locks/Lock.html#tryLock())
+            // so that a single thread will get the lock and as soon as one thread gets the lock all others will go the 'else' block
+            // and just return the currentBucket until the newBucket is created. This should allow the throughput to be far higher
+            // and only slow down 1 thread instead of blocking all of them in each cycle of creating a new bucket based on some testing
+            // (and it makes sense that it should as well).
+            // This means the timing won't be exact to the millisecond as to what data ends up in a bucket, but that's acceptable.
+            // It's not critical to have exact precision to the millisecond, as long as it's rolling, if we can instead reduce the impact synchronization.
+            // More importantly though it means that the 'if' block within the lock needs to be careful about what it changes that can still
+            // be accessed concurrently in the 'else' block since we're not completely synchronizing access.
+            // For example, we can't have a multi-step process to add a bucket, remove a bucket, then update the sum since the 'else' block of code
+            // can retrieve the sum while this is all happening. The trade-off is that we don't maintain the rolling sum and let readers just iterate
+            // bucket to calculate the sum themselves. This is an example of favoring write-performance instead of read-performance and how the tryLock
+            // versus a synchronized block needs to be accommodated.
             if (Monitor.TryEnter(newBucketLock))
             {
                 try
