@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
+    <VersionPrefix>$(VersionPrefix)</VersionPrefix>
+    <DebugType>$(DebugType)</DebugType>
+    <AssemblyName>Hystrix.Dotnet.WebConfiguration</AssemblyName>
+    <PackageId>Hystrix.Dotnet.WebConfiguration</PackageId>
+    <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
+    <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
+    <RepositoryType>$(RepositoryType)</RepositoryType>
+    <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

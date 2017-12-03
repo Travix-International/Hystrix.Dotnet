@@ -1,7 +1,10 @@
 ﻿using Hystrix.Dotnet.Logging;
 using Hystrix.Dotnet.Metrics;
 using Microsoft.Owin;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+
+[assembly: InternalsVisibleTo("Hystrix.Dotnet.Owin.UnitTests")]
 
 namespace Hystrix.Dotnet.Owin
 {

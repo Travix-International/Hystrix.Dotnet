@@ -2,10 +2,16 @@
 
 In order to use Hystrix.Dotnet in ASP.NET we need to do the following steps.
 
-Add a dependency to the package `Hystrix.Dotnet.AspNet` using the Manage NuGet Packages window, or by using the Package Manager Console and issue the following command.
+Reference those packages
+
+* Hystrix.Dotnet.AspNet
+* Hystrix.Dotnet.WebConfiguration
+
+using the Manage NuGet Packages window, or by using the Package Manager Console and issue the following command.
 
 ```
 Install-Package Hystrix.Dotnet.AspNet
+Install-Package Hystrix.Dotnet.WebConfiguration
 ```
 
 (Optional) Add our custom configuration to the `web.config`.
@@ -13,7 +19,7 @@ Install-Package Hystrix.Dotnet.AspNet
 ```xml
   <configSections>
     <sectionGroup name="hystrix.dotnet">
-      <section name="hystrix" type="Hystrix.Dotnet.AspNet.HystrixConfigSection, Hystrix.Dotnet.AspNet" />
+      <section name="hystrix" type="Hystrix.Dotnet.WebConfiguration.HystrixConfigSection, Hystrix.Dotnet.WebConfiguration" />
     </sectionGroup>
   </configSections>
 

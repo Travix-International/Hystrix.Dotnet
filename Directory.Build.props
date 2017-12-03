@@ -1,0 +1,10 @@
+<Project>
+ <PropertyGroup>
+   <VersionPrefix>2.0.0</VersionPrefix>
+   <DebugType>full</DebugType>
+   <PackageProjectUrl>https://github.com/Travix-International/Hystrix.Dotnet</PackageProjectUrl>
+   <PackageLicenseUrl>https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE</PackageLicenseUrl>
+   <RepositoryType>git</RepositoryType>
+   <RepositoryUrl>git://github.com/Travix-International/Hystrix.Dotnet.git</RepositoryUrl>
+ </PropertyGroup>
+</Project>

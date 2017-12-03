@@ -3,7 +3,6 @@ using Hystrix.Dotnet.Logging;
 using Hystrix.Dotnet.Metrics;
 using Hystrix.Dotnet.Owin;
 using Hystrix.Dotnet.WebConfiguration;
-using Owin;
 using System.Configuration;
 
 namespace Owin

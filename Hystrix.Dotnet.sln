@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		coverage.sh = coverage.sh
 		coveralls.sh = coveralls.sh
+		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -38,11 +39,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{8E7B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.Samples.Owin", "samples\Hystrix.Dotnet.Samples.Owin\Hystrix.Dotnet.Samples.Owin.csproj", "{0B27395A-8391-4077-805E-E7CBCBAE2152}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{895C2BB2-C54B-44DC-82E6-A2ADDE94D6F4}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.Samples.AspNetCore", "samples\Hystrix.Dotnet.Samples.AspNetCore\Hystrix.Dotnet.Samples.AspNetCore.csproj", "{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Dotnet.Samples.AspNet", "samples\Hystrix.Dotnet.Samples.AspNet\Hystrix.Dotnet.Samples.AspNet\Hystrix.Dotnet.Samples.AspNet.csproj", "{8FA6FAC4-4B5D-4846-8D85-11FF0F1FB5B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Dotnet.Owin.UnitTests", "test\Hystrix.Dotnet.Owin.UnitTests\Hystrix.Dotnet.Owin.UnitTests.csproj", "{AB6B9427-B676-423C-B813-7EAB9AC9338D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,10 +93,10 @@ Global
 		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FA6FAC4-4B5D-4846-8D85-11FF0F1FB5B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FA6FAC4-4B5D-4846-8D85-11FF0F1FB5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FA6FAC4-4B5D-4846-8D85-11FF0F1FB5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FA6FAC4-4B5D-4846-8D85-11FF0F1FB5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,7 +113,7 @@ Global
 		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
 		{0B27395A-8391-4077-805E-E7CBCBAE2152} = {8E7B5B99-5040-41F4-A79B-804D5954B874}
 		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C} = {8E7B5B99-5040-41F4-A79B-804D5954B874}
-		{8FA6FAC4-4B5D-4846-8D85-11FF0F1FB5B1} = {8E7B5B99-5040-41F4-A79B-804D5954B874}
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17C13872-5204-4DA2-974C-A9DA56B838A4}

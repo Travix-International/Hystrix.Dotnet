@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
+    <VersionPrefix>$(VersionPrefix)</VersionPrefix>
+    <DebugType>$(DebugType)</DebugType>
+    <AssemblyName>Hystrix.Dotnet.Owin</AssemblyName>
+    <PackageId>Hystrix.Dotnet.Owin</PackageId>
+    <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
+    <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
+    <RepositoryType>$(RepositoryType)</RepositoryType>
+    <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
