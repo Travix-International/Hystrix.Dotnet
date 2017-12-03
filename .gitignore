@@ -103,3 +103,6 @@ artifacts/
 
 # Coverage reports
 /coverage/
+
+# Vim temp files
+*.un~
