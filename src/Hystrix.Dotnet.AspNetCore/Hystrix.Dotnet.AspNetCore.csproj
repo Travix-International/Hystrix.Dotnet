@@ -3,17 +3,17 @@
   <PropertyGroup>
     <Description>ASP.NET extensions for Hystrix.Dotnet, the .NET version of the open source Hystrix library built by Netflix.</Description>
     <Authors>Travix International</Authors>
-    <VersionPrefix>1.0.4</VersionPrefix>
-    <DebugType>full</DebugType>
+    <VersionPrefix>$(VersionPrefix)</VersionPrefix>
+    <DebugType>$(DebugType)</DebugType>
     <TargetFrameworks>netstandard1.3;net451</TargetFrameworks>
     <NoWarn>$(NoWarn);0618</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>Hystrix.Dotnet.AspNetCore</AssemblyName>
     <PackageId>Hystrix.Dotnet.AspNetCore</PackageId>
-    <PackageProjectUrl>https://github.com/Travix-International/Hystrix.Dotnet</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/Travix-International/Hystrix.Dotnet.git</RepositoryUrl>
+    <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
+    <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
+    <RepositoryType>$(RepositoryType)</RepositoryType>
+    <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

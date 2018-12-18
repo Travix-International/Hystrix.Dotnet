@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{148A131E-9B31-42A7-9043-004954218C0A}"
 EndProject
@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		coverage.sh = coverage.sh
 		coveralls.sh = coveralls.sh
+		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -27,6 +28,20 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.AspNet.UnitTests", "test\Hystrix.Dotnet.AspNet.UnitTests\Hystrix.Dotnet.AspNet.UnitTests.csproj", "{5C173CA4-1EFE-4658-96DE-E10FB6802E0A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.AspNetCore.UnitTests", "test\Hystrix.Dotnet.AspNetCore.UnitTests\Hystrix.Dotnet.AspNetCore.UnitTests.csproj", "{204D1A1D-B09C-494E-999D-6BBCB6A69DC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.Owin", "src\Hystrix.Dotnet.Owin\Hystrix.Dotnet.Owin.csproj", "{A87BD416-04E6-46D1-8391-388A6EC78A76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.WebConfiguration", "src\Hystrix.Dotnet.WebConfiguration\Hystrix.Dotnet.WebConfiguration.csproj", "{022AF60C-5950-4FE1-BF64-53F5BDF505A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.WebConfiguration.UnitTests", "test\Hystrix.Dotnet.WebConfiguration.UnitTests\Hystrix.Dotnet.WebConfiguration.UnitTests.csproj", "{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{8E7B5B99-5040-41F4-A79B-804D5954B874}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.Samples.Owin", "samples\Hystrix.Dotnet.Samples.Owin\Hystrix.Dotnet.Samples.Owin.csproj", "{0B27395A-8391-4077-805E-E7CBCBAE2152}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hystrix.Dotnet.Samples.AspNetCore", "samples\Hystrix.Dotnet.Samples.AspNetCore\Hystrix.Dotnet.Samples.AspNetCore.csproj", "{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hystrix.Dotnet.Owin.UnitTests", "test\Hystrix.Dotnet.Owin.UnitTests\Hystrix.Dotnet.Owin.UnitTests.csproj", "{AB6B9427-B676-423C-B813-7EAB9AC9338D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +73,30 @@ Global
 		{204D1A1D-B09C-494E-999D-6BBCB6A69DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{204D1A1D-B09C-494E-999D-6BBCB6A69DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{204D1A1D-B09C-494E-999D-6BBCB6A69DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87BD416-04E6-46D1-8391-388A6EC78A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87BD416-04E6-46D1-8391-388A6EC78A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87BD416-04E6-46D1-8391-388A6EC78A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87BD416-04E6-46D1-8391-388A6EC78A76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{022AF60C-5950-4FE1-BF64-53F5BDF505A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022AF60C-5950-4FE1-BF64-53F5BDF505A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022AF60C-5950-4FE1-BF64-53F5BDF505A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022AF60C-5950-4FE1-BF64-53F5BDF505A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B27395A-8391-4077-805E-E7CBCBAE2152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +108,14 @@ Global
 		{96FC26C5-4215-481F-9A1E-C1D454E64E0A} = {148A131E-9B31-42A7-9043-004954218C0A}
 		{5C173CA4-1EFE-4658-96DE-E10FB6802E0A} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
 		{204D1A1D-B09C-494E-999D-6BBCB6A69DC0} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
+		{A87BD416-04E6-46D1-8391-388A6EC78A76} = {148A131E-9B31-42A7-9043-004954218C0A}
+		{022AF60C-5950-4FE1-BF64-53F5BDF505A1} = {148A131E-9B31-42A7-9043-004954218C0A}
+		{B25E6D7C-D97A-419A-A3CF-1B49675B6BDF} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
+		{0B27395A-8391-4077-805E-E7CBCBAE2152} = {8E7B5B99-5040-41F4-A79B-804D5954B874}
+		{89E7E92C-5C0C-47D8-8D4E-12B194B52C1C} = {8E7B5B99-5040-41F4-A79B-804D5954B874}
+		{AB6B9427-B676-423C-B813-7EAB9AC9338D} = {E1CB0C26-CFBE-4D30-AD4D-C72DF5754AD4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17C13872-5204-4DA2-974C-A9DA56B838A4}
 	EndGlobalSection
 EndGlobal

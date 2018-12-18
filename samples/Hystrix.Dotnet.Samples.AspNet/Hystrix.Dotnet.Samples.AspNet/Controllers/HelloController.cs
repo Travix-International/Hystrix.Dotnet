@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Hystrix.Dotnet.AspNet;
+using Hystrix.Dotnet.WebConfiguration;
 
 namespace Hystrix.Dotnet.Samples.AspNet.Controllers
 {

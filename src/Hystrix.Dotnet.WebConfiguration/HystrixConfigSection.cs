@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Hystrix.Dotnet.AspNet
+namespace Hystrix.Dotnet.WebConfiguration
 {
     /// <summary>
     /// This is a test comment.

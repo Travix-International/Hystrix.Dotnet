@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Hystrix.Dotnet.Metrics;
 using Hystrix.Dotnet.Logging;
+using Hystrix.Dotnet.WebConfiguration;
 
 namespace Hystrix.Dotnet.AspNet
 {

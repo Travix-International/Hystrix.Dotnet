@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Hystrix.Dotnet.AspNet.UnitTests
+namespace Hystrix.Dotnet.WebConfiguration.UnitTests
 {
     public class HystrixConfigSectionTranslatorTests
     {
