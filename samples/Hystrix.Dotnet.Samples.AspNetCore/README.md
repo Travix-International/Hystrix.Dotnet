@@ -26,6 +26,9 @@ Add a dependency to the package `Hystrix.Dotnet.AspNetCore` in our project.json.
                         "CircuitBreakerErrorThresholdPercentage": 60
                     }
                 }
+            },
+            "DefaultOptions": {
+                "CommandTimeoutInMilliseconds": 1500
             }
         }
     }

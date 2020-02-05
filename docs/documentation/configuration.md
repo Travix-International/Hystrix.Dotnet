@@ -43,6 +43,7 @@ There are two main modes of configuring our individual commands, based on the va
             </commands>
           </add>
         </commandGroups>
+        <defaultConfiguration commandTimeoutInMilliseconds="1500" />
       </localOptions>
     </hystrix>
   </hystrix.dotnet>
@@ -50,6 +51,8 @@ There are two main modes of configuring our individual commands, based on the va
 
 This way we can add multiple groups and commands, and fine-tune each independently.
 The above values are also the defaults if we omit any of the attributes. (Or if we don't add any configuration to the web.config.)
+
+In the `defaultConfiguration` element we can adjust the "default" configuration, which is used for commands which don't have specific configuration specified for them.
 
 ### ASP.NET Core
 
@@ -81,11 +84,16 @@ First add an **appsettings.json** to our project, with the following content.
                         "MetricsRollingPercentileBucketSize": 100
                     }
                 }
+            },
+            "DefaultOptions": {
+                "CommandTimeoutInMilliseconds": 1500
             }
         }
     }
 }
 ```
+
+In the `DefaultOptions` field we can adjust the "default" configuration, which is used for commands which don't have specific configuration specified for them.
 
 Then set up the options object in our DI configuration, in the `ConfigureServices` method of the `Startup` class.
 

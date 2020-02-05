@@ -16,27 +16,25 @@ namespace Hystrix.Dotnet
 
         public Dictionary<string, Dictionary<string, HystrixCommandOptions>> CommandGroups { get; set; }
 
+        public HystrixCommandOptions DefaultOptions { get; set; }
+
         public HystrixCommandOptions GetCommandOptions(HystrixCommandIdentifier id) => GetCommandOptions(id.GroupKey, id.CommandKey);
 
         public HystrixCommandOptions GetCommandOptions(string groupKey, string commandKey)
         {
             if (CommandGroups == null)
             {
-                return HystrixCommandOptions.CreateDefault();
+                return DefaultOptions ?? HystrixCommandOptions.CreateDefault();
             }
 
-            Dictionary<string, HystrixCommandOptions> groupCommands;
-
-            if (!CommandGroups.TryGetValue(groupKey, out groupCommands))
+            if (!CommandGroups.TryGetValue(groupKey, out var groupCommands))
             {
-                return HystrixCommandOptions.CreateDefault();
+                return DefaultOptions ?? HystrixCommandOptions.CreateDefault();
             }
 
-            HystrixCommandOptions commandOptions;
-
-            if (!groupCommands.TryGetValue(commandKey, out commandOptions))
+            if (!groupCommands.TryGetValue(commandKey, out var commandOptions))
             {
-                return HystrixCommandOptions.CreateDefault();
+                return DefaultOptions ?? HystrixCommandOptions.CreateDefault();
             }
 
             return commandOptions;

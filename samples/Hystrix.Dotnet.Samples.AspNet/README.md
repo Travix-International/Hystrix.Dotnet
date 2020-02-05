@@ -27,6 +27,7 @@ Install-Package Hystrix.Dotnet.AspNet
             </commands>
           </add>
         </commandGroups>
+        <defaultConfiguration commandTimeoutInMilliseconds="1500" />
       </localOptions>
     </hystrix>
   </hystrix.dotnet>

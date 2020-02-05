@@ -60,4 +60,4 @@ artifacts:
 #     deployment configuration    #
 #---------------------------------#
 
-deploy: off  
+deploy: off
