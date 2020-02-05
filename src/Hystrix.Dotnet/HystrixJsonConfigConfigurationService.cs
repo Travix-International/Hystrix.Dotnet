@@ -174,7 +174,7 @@ namespace Hystrix.Dotnet
         /// <inheritdoc/>
         public int GetCommandTimeoutInMilliseconds()
         {
-            return configurationObject != null ? configurationObject.CommandTimeoutInMilliseconds : 1000;
+            return configurationObject != null ? configurationObject.CommandTimeoutInMilliseconds : 60000;
         }
 
         /// <inheritdoc/>

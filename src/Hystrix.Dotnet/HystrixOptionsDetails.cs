@@ -7,7 +7,7 @@
             return new HystrixCommandOptions();
         }
 
-        public int CommandTimeoutInMilliseconds { get; set; } = 1000;
+        public int CommandTimeoutInMilliseconds { get; set; } = 60000;
 
         public bool CircuitBreakerForcedOpen { get; set; } = false;
 

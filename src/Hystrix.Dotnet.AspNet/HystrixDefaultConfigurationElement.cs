@@ -4,7 +4,7 @@ namespace Hystrix.Dotnet.AspNet
 {
     public class HystrixDefaultConfigurationElement : ConfigurationElement
     {
-        [ConfigurationProperty("commandTimeoutInMilliseconds", IsRequired = false, DefaultValue = 1000)]
+        [ConfigurationProperty("commandTimeoutInMilliseconds", IsRequired = false, DefaultValue = 60000)]
         public int CommandTimeoutInMilliseconds
         {
             get => (int)this["commandTimeoutInMilliseconds"];

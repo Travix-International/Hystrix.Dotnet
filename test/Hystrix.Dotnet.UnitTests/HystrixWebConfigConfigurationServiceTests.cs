@@ -52,7 +52,7 @@ namespace Hystrix.Dotnet.UnitTests
             }
 
             [Fact]
-            public void Returns_1000_If_AppSetting_Does_Not_Exist()
+            public void Returns_60000_If_AppSetting_Does_Not_Exist()
             {
                 var hystrixCommandIdentifier = new HystrixCommandIdentifier("NonExistingGroup", "NonExistingCommand");
                 var hystrixConfigurationService = new HystrixLocalConfigurationService(hystrixCommandIdentifier, options);
@@ -60,7 +60,7 @@ namespace Hystrix.Dotnet.UnitTests
                 // Act
                 int value = hystrixConfigurationService.GetCommandTimeoutInMilliseconds();
 
-                Assert.Equal(1000, value);
+                Assert.Equal(60000, value);
             }
         }
 
