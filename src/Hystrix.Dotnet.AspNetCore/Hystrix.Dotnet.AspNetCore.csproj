@@ -11,7 +11,7 @@
     <AssemblyName>Hystrix.Dotnet.AspNetCore</AssemblyName>
     <PackageId>Hystrix.Dotnet.AspNetCore</PackageId>
     <PackageProjectUrl>https://github.com/Travix-International/Hystrix.Dotnet</PackageProjectUrl>
-    <PackageLicenseFile>https://raw.githubusercontent.com/Travix-International/Hystrix.Dotnet/master/LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/Travix-International/Hystrix.Dotnet.git</RepositoryUrl>
   </PropertyGroup>
