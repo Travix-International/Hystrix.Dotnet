@@ -11,5 +11,12 @@ namespace Hystrix.Dotnet.AspNet
             get => (HystrixCommandGroupCollection)this["commandGroups"];
             set => this["commandGroups"] = value;
         }
+
+        [ConfigurationProperty("defaultConfiguration", DefaultValue = null)]
+        public HystrixDefaultConfigurationElement DefaultConfiguration
+        {
+            get => (HystrixDefaultConfigurationElement)this["defaultConfiguration"];
+            set => this["defaultConfiguration"] = value;
+        }
     }
 }

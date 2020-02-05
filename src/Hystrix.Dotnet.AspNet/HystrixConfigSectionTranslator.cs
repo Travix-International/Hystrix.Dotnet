@@ -37,6 +37,7 @@ namespace Hystrix.Dotnet.AspNet
         {
             return new HystrixLocalOptions
             {
+                DefaultOptions = TranslateToCommandOptions(element.DefaultConfiguration),
                 CommandGroups = element.CommandGroups
                     .Cast<HystrixCommandGroupElement>()
                     .ToDictionary(
@@ -46,6 +47,27 @@ namespace Hystrix.Dotnet.AspNet
                             .ToDictionary(
                                 command => command.Key,
                                 TranslateToCommandOptions))
+            };
+        }
+
+        private HystrixCommandOptions TranslateToCommandOptions(HystrixDefaultConfigurationElement defaultConfig)
+        {
+            return new HystrixCommandOptions
+            {
+                CommandTimeoutInMilliseconds = defaultConfig.CommandTimeoutInMilliseconds,
+                CircuitBreakerForcedOpen = defaultConfig.CircuitBreakerForcedOpen,
+                CircuitBreakerForcedClosed = defaultConfig.CircuitBreakerForcedClosed,
+                CircuitBreakerErrorThresholdPercentage = defaultConfig.CircuitBreakerErrorThresholdPercentage,
+                CircuitBreakerSleepWindowInMilliseconds = defaultConfig.CircuitBreakerSleepWindowInMilliseconds,
+                CircuitBreakerRequestVolumeThreshold = defaultConfig.CircuitBreakerRequestVolumeThreshold,
+                MetricsHealthSnapshotIntervalInMilliseconds = defaultConfig.MetricsHealthSnapshotIntervalInMilliseconds,
+                MetricsRollingStatisticalWindowInMilliseconds = defaultConfig.MetricsRollingStatisticalWindowInMilliseconds,
+                MetricsRollingStatisticalWindowBuckets = defaultConfig.MetricsRollingStatisticalWindowBuckets,
+                MetricsRollingPercentileEnabled = defaultConfig.MetricsRollingPercentileEnabled,
+                MetricsRollingPercentileWindowInMilliseconds = defaultConfig.MetricsRollingPercentileWindowInMilliseconds,
+                MetricsRollingPercentileWindowBuckets = defaultConfig.MetricsRollingPercentileWindowBuckets,
+                MetricsRollingPercentileBucketSize = defaultConfig.MetricsRollingPercentileBucketSize,
+                HystrixCommandEnabled = defaultConfig.HystrixCommandEnabled,
             };
         }
 
